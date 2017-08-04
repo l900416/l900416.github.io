@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -115,7 +113,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -398,11 +396,11 @@
         
           
             <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。</p>
-<h3 id="UIDocumentInteractionController"><a href="#UIDocumentInteractionController" class="headerlink" title="UIDocumentInteractionController"></a>UIDocumentInteractionController</h3><p>界面表现上和AirDrop长得很像，这个也可以进行AirDrop蓝牙分享很强大的功能，与之不同的是，在与文件类型关联的备选APP列表中，会有类似 <strong>[拷贝至 微信]</strong> 应用的选择，如下：<br><img src="https://l900416.github.io/img/post/iOS/Objective-C/file_preview_1.png" alt="">    </p>
+<h3 id="UIDocumentInteractionController"><a href="#UIDocumentInteractionController" class="headerlink" title="UIDocumentInteractionController"></a>UIDocumentInteractionController</h3><p>界面表现上和AirDrop长得很像，这个也可以进行AirDrop蓝牙分享很强大的功能，与之不同的是，在与文件类型关联的备选APP列表中，会有类似 <strong>[拷贝至 微信]</strong> 应用的选择，如下：<br><img src="/post/iOS/Objective-C/file_preview_1.png" alt="">    </p>
 <h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//引用</div><div class="line">@property (nonatomic, strong) UIDocumentInteractionController* docInteractionController;</div><div class="line"></div><div class="line"></div><div class="line">//初始化及动作定义</div><div class="line">NSURL* filePath = xxx;//文件路径</div><div class="line">_docInteractionController = [UIDocumentInteractionController  interactionControllerWithURL:filePath];</div><div class="line">_docInteractionController.delegate = self;</div><div class="line">[_docInteractionController presentOpenInMenuFromRect:CGRectZero</div><div class="line">                                              inView:self.view</div><div class="line">                                            animated:YES];</div></pre></td></tr></table></figure>
 <h4 id="实现常用协议"><a href="#实现常用协议" class="headerlink" title="实现常用协议"></a>实现常用协议</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#pragma mark - UIDocumentInteractionControllerDelegate</div><div class="line">-(void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application &#123;//将要发送的应用</div><div class="line">&#125;</div><div class="line"></div><div class="line">//下面是他的代理方法</div><div class="line"></div><div class="line">-(void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application&#123;//已经发送的应用</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)documentInteractionControllerDidDismissOpenInMenu:(UIDocumentInteractionController *)controller&#123;//dismiss</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="UIActivityViewController"><a href="#UIActivityViewController" class="headerlink" title="UIActivityViewController"></a>UIActivityViewController</h3><p>与UIDocumentInteractionController不同的是，UIActivityViewController无类似 <strong>[拷贝至 微信]</strong> 应用的选择。其界面和备选应用等可自行定制(屏蔽)，如下：    </p>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/file_preview_2.png" alt="">    </p>
+<p><img src="/post/iOS/Objective-C/file_preview_2.png" alt="">    </p>
 <pre><code class="Objective-C">NSURL* fileURL = [NSURL URLWithString:@&quot;http://xxx.dwg&quot;];
 
 //注：activityItems可以是包含文字、图片、URL地址的数组，至少包含一项；applicationActivities参数可以对平台进行自定义
@@ -418,7 +416,7 @@ if (popover) {
 }
 [self presentViewController:activity animated:YES completion:nil];
 </code></pre>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/file_preview_3.png" alt=""> </p>
+<p><img src="/post/iOS/Objective-C/file_preview_3.png" alt=""> </p>
 <h3 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h3><p>第三方平台比如微信、新浪微博等平台的分享，集成其提供的SDK即可。此处不再赘述。若需要多分享平台集成，建议使用第三方平台比如友盟、ShareSDK等</p>
 
           
@@ -1899,10 +1897,7 @@ if (popover) {
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。</p>
+            <p>​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。</p>
 <h3 id="方案设想"><a href="#方案设想" class="headerlink" title="方案设想"></a>方案设想</h3><p>在上一篇文章中有提到iBeacon应用场景举例。这里从3各方面进行描述：   </p>
 <ul>
 <li><p>测距</p>
@@ -2058,7 +2053,7 @@ if (popover) {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2069,7 +2064,7 @@ if (popover) {
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2080,7 +2075,7 @@ if (popover) {
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -94,20 +92,20 @@
 
 
 
-<meta name="description" content="content{:toc}  ​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手">
+<meta name="description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
 <meta name="keywords" content="Bluetooth">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iBeacon基础">
 <meta property="og:url" content="http://yoursite.com/2017/02/11/iOS_bluetooth_iBeacon1/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="content{:toc}  ​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手">
+<meta property="og:description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/iBeacon/uuid_major_minor.png">
-<meta property="og:updated_time" content="2017-08-04T02:22:09.000Z">
+<meta property="og:image" content="http://yoursite.com/post/iOS/iBeacon/uuid_major_minor.png">
+<meta property="og:updated_time" content="2017-08-04T06:18:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iBeacon基础">
-<meta name="twitter:description" content="content{:toc}  ​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手">
-<meta name="twitter:image" content="https://l900416.github.io/img/post/iOS/iBeacon/uuid_major_minor.png">
+<meta name="twitter:description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
+<meta name="twitter:image" content="http://yoursite.com/post/iOS/iBeacon/uuid_major_minor.png">
 
 
 
@@ -119,7 +117,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -395,10 +393,7 @@
       
 
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    <a href="https://developer.apple.com/ibeacon/" target="_blank" rel="external"> iBeacon </a> 标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。</p>
+        <p>​    <a href="https://developer.apple.com/ibeacon/" target="_blank" rel="external"> iBeacon </a> 标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。</p>
 <h3 id="位置服务"><a href="#位置服务" class="headerlink" title="位置服务"></a>位置服务</h3><p>​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在屏幕左下角显示该应用的图标。<a href="http://lbs.amap.com/" target="_blank" rel="external"> 高德地图 </a>中的地理围栏就是一个实际应用场景。位置服务有以下缺点：   </p>
 <ul>
 <li>GPS本身定位精度能力有限，位置服务不可能提供精确的位置服务；</li>
@@ -411,7 +406,7 @@
 <li>Measured Power</li>
 <li>RSSI    </li>
 </ul>
-<p>关于iBeacon区域的定义，由3个值来唯一确定一个区域，举例如下图：<br><img src="https://l900416.github.io/img/post/iOS/iBeacon/uuid_major_minor.png" alt=""><br>图描述的很清楚了，我们可以通过ProximityUUID、Major和Minor三个值来定义不同的有关联的区域（事物），并通过不同的值组合来做很多有意思的事情。</p>
+<p>关于iBeacon区域的定义，由3个值来唯一确定一个区域，举例如下图：<br><img src="/post/iOS/iBeacon/uuid_major_minor.png" alt=""><br>图描述的很清楚了，我们可以通过ProximityUUID、Major和Minor三个值来定义不同的有关联的区域（事物），并通过不同的值组合来做很多有意思的事情。</p>
 <h3 id="iBeacon基础场景"><a href="#iBeacon基础场景" class="headerlink" title="iBeacon基础场景"></a>iBeacon基础场景</h3><h4 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h4><p>​    区域监听(Region Monitoring)即当设备进入／离开某个／某类区域的时候，可以触发后续联动，其监听的区域可能是ProximityUUID代表的某个大的类别区域比如一个公司在全国的所有子公司、或者由ProximityUUID和Major组合的相对小的区域比如某个城市中的子公司。至于什么区域就比较灵活了。<br>​    一般情况下，iOS程序退出或者后台挂起后，程序是不能执行的(其他Background-Mode除外)。但是这里所说的区域监听是托管给iOS系统，也就是说程序设置完监听区域后，iOS系统会托管，当设备进入／离开监听区域时，系统会触发相应的操作，并唤醒程序。</p>
 <h4 id="测距"><a href="#测距" class="headerlink" title="测距"></a>测距</h4><p>测距（Ranging）即设备与Beacon区域中心点的接近距离（接近状态），包括：   </p>
 <ul>
@@ -498,7 +493,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/21/2016-12-21-iOS-Develop-Introduction-MyFramework/" rel="next" title="浅谈iOS框架">
+              <a href="/2016/12/21/iOS_develop_overview_framework_2/" rel="next" title="浅谈iOS框架">
                 <i class="fa fa-chevron-left"></i> 浅谈iOS框架
               </a>
             
@@ -617,7 +612,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -628,7 +623,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -639,7 +634,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

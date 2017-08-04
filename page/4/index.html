@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -115,7 +113,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -293,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/20/2016-11-20-note-Swift-Language-Functions/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/20/iOS_Swift_language_note_Functions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -312,7 +310,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/20/2016-11-20-note-Swift-Language-Functions/" itemprop="url">Swift Functions</a></h1>
+                <a class="post-title-link" href="/2016/11/20/iOS_Swift_language_note_Functions/" itemprop="url">Swift Functions</a></h1>
         
 
         <div class="post-meta">
@@ -347,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -365,9 +363,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/20/2016-11-20-note-Swift-Language-Functions/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/20/iOS_Swift_language_note_Functions/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/20/2016-11-20-note-Swift-Language-Functions/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/20/iOS_Swift_language_note_Functions/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,10 +395,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    函数是执行特定功能的独立代码块，可以通过函数名字调用函数执行其功能。Swift的函数统一语法可以很灵活地表达任何东西，无论是没有参数的C风格函数还是拥有多个名字和参数的ObjC风格函数。参数可以提供默认值以简化函数调用、当参数变量需要改变的时候，参数也可以作为输入输出(<code>in-out</code>)参数.<br>在Swift中，每个函数都有一个类型，包括参数类型和返回值类型。你可以像Swift中其他任何一个类型一样使用函数，这使得将函数作为函数参数、作为函数返回值变得非常简单。函数也可以写在其他函数内部以限制其作用域（内部函数）。</p>
+            <p>​    函数是执行特定功能的独立代码块，可以通过函数名字调用函数执行其功能。Swift的函数统一语法可以很灵活地表达任何东西，无论是没有参数的C风格函数还是拥有多个名字和参数的ObjC风格函数。参数可以提供默认值以简化函数调用、当参数变量需要改变的时候，参数也可以作为输入输出(<code>in-out</code>)参数.<br>在Swift中，每个函数都有一个类型，包括参数类型和返回值类型。你可以像Swift中其他任何一个类型一样使用函数，这使得将函数作为函数参数、作为函数返回值变得非常简单。函数也可以写在其他函数内部以限制其作用域（内部函数）。</p>
 <h3 id="函数的声明和调用"><a href="#函数的声明和调用" class="headerlink" title="函数的声明和调用"></a>函数的声明和调用</h3><p>当定义函数的时候，可以选择性的定义一个或多个名字，定义一些输入类型值作为参数，也可以选择性的定义一类值作为输出类型。每一个函数都有一个名字，用来表明函数的功能，可以通过调用该函数的名字来使用函数，并且通过传递输入值（参数）来匹配函数的参数，调用函数时，输入参数类型必须和函数声明时类型的参数类型顺序一致。</p>
 <p>函数以关键字<code>func</code>开头，返回值类型紧跟符号<code>-&gt;</code>。说了这么多，还是直接看例子，函数名字为：<code>greet(person:)</code>参数和返回值是String类型，定义及调用如下：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(person: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">let</span> greeting = <span class="string">"Hello, "</span> + person + <span class="string">"!"</span></div><div class="line">    <span class="keyword">return</span> greeting</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(greet(person: <span class="string">"Anna"</span>))</div><div class="line"><span class="comment">// Prints "Hello, Anna!"</span></div><div class="line"><span class="built_in">print</span>(greet(person: <span class="string">"Brian"</span>))</div><div class="line"><span class="comment">// Prints "Hello, Brian!"</span></div></pre></td></tr></table></figure>
@@ -527,7 +522,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/17/2016-11-17-note-Swift-Language-Control-Flow/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/17/iOS_Swift_language_note_Control-Flow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -546,7 +541,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/17/2016-11-17-note-Swift-Language-Control-Flow/" itemprop="url">Swift Control Flow</a></h1>
+                <a class="post-title-link" href="/2016/11/17/iOS_Swift_language_note_Control-Flow/" itemprop="url">Swift Control Flow</a></h1>
         
 
         <div class="post-meta">
@@ -581,8 +576,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -599,9 +594,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/17/2016-11-17-note-Swift-Language-Control-Flow/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/17/iOS_Swift_language_note_Control-Flow/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/17/2016-11-17-note-Swift-Language-Control-Flow/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/17/iOS_Swift_language_note_Control-Flow/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -631,10 +626,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    Swift提供了很多流程控制语法，包括可以通过使用<code>while</code>循环来重复执行一个任务，可以通过<code>if</code>、<code>guard</code>和<code>switch</code>来进行条件判断从而执行不同代码分支，可以通过<code>break</code>和<code>continue</code>来跳转到特定代码位置。<br>​    Swift也提供了诸如可以通过<code>for-in</code>循环来遍历数组，字典，区间(range)，字符串和其他一些序列(sequences)。<br>​    Swift的<code>switch</code>语句相对比C语言的<code>强大</code>(该关键字与其他多数语言不同，至于算不算优点，意见保留)。在Swift中，该语句中的<code>case</code>语法不会自动流转到下一个<code>case</code>，这避免了像C语言中因为缺失<code>break</code>语句导致的错误。而Swift中的Case语句也相对比较强大，可以匹配多种包括整型、元组、转换的特殊类型等形式。在Case语句中匹配的值可以被绑定到一个临时的常量或者变量中，从而在<code>case</code>语句对一个的代码块(body)中使用，一些复杂的匹配可以通过使用<code>where</code>表达式进行。</p>
+            <p>​    Swift提供了很多流程控制语法，包括可以通过使用<code>while</code>循环来重复执行一个任务，可以通过<code>if</code>、<code>guard</code>和<code>switch</code>来进行条件判断从而执行不同代码分支，可以通过<code>break</code>和<code>continue</code>来跳转到特定代码位置。<br>​    Swift也提供了诸如可以通过<code>for-in</code>循环来遍历数组，字典，区间(range)，字符串和其他一些序列(sequences)。<br>​    Swift的<code>switch</code>语句相对比C语言的<code>强大</code>(该关键字与其他多数语言不同，至于算不算优点，意见保留)。在Swift中，该语句中的<code>case</code>语法不会自动流转到下一个<code>case</code>，这避免了像C语言中因为缺失<code>break</code>语句导致的错误。而Swift中的Case语句也相对比较强大，可以匹配多种包括整型、元组、转换的特殊类型等形式。在Case语句中匹配的值可以被绑定到一个临时的常量或者变量中，从而在<code>case</code>语句对一个的代码块(body)中使用，一些复杂的匹配可以通过使用<code>where</code>表达式进行。</p>
 <h3 id="for-in-循环"><a href="#for-in-循环" class="headerlink" title="for-in 循环"></a>for-in 循环</h3><p>可以使用<code>for-in</code>循环来遍历一个序列，比如一个区间(range)中的数字、数组中的元素、字符串的字符，例如：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用index变量来访问range中的具体值。注意操作符`...`的用法</span></div><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span>...<span class="number">5</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(index)</span> times 5 is <span class="subst">\(index * <span class="number">5</span>)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//不关心range中的具体值，可以使用下划线’_’</span></div><div class="line"><span class="keyword">let</span> base = <span class="number">3</span></div><div class="line"><span class="keyword">let</span> power = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> answer = <span class="number">1</span></div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">1</span>...power &#123;</div><div class="line">    answer *= base</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(base)</span> to the power of <span class="subst">\(power)</span> is <span class="subst">\(answer)</span>"</span>)</div><div class="line"><span class="comment">//遍历数组</span></div><div class="line"><span class="keyword">let</span> names = [<span class="string">"Anna"</span>, <span class="string">"Alex"</span>, <span class="string">"Brian"</span>, <span class="string">"Jack"</span>]</div><div class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Hello, <span class="subst">\(name)</span>!"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//字典，是以元组的形式来匹配的，当然也可以使用下划线’_’</span></div><div class="line"><span class="keyword">let</span> numberOfLegs = [<span class="string">"spider"</span>: <span class="number">8</span>, <span class="string">"ant"</span>: <span class="number">6</span>, <span class="string">"cat"</span>: <span class="number">4</span>]</div><div class="line"><span class="keyword">for</span> (animalName, legCount) <span class="keyword">in</span> numberOfLegs &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(animalName)</span>s have <span class="subst">\(legCount)</span> legs"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>while的代码块会一直被执行，知道条件变为flase。这类循环主要用在不确定遍历次数的情况下，Swift提供了两种while循环语法：<code>while</code>和<code>repeat-while</code></p>
@@ -729,7 +721,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/06/2016-11-06-note-Swift-Language-Collection-Types/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/06/iOS_Swift_language_note_Collection-Types/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -748,7 +740,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/06/2016-11-06-note-Swift-Language-Collection-Types/" itemprop="url">Swift Collection Types</a></h1>
+                <a class="post-title-link" href="/2016/11/06/iOS_Swift_language_note_Collection-Types/" itemprop="url">Swift Collection Types</a></h1>
         
 
         <div class="post-meta">
@@ -783,8 +775,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -801,9 +793,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/06/2016-11-06-note-Swift-Language-Collection-Types/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/06/iOS_Swift_language_note_Collection-Types/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/06/2016-11-06-note-Swift-Language-Collection-Types/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/06/iOS_Swift_language_note_Collection-Types/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -833,10 +825,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    同其他语言类型类似，Swift提供了3个集合类型<code>Array</code>、<code>Set</code>和<code>Dictionary</code>来存储集合值。与ObjC不同的是，Swift中的集合属于范型，不能不同类型的数据添加的同一个集合类型中，且Swift中的集合类型变量都支持修改。<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt=""></p>
+            <p>​    同其他语言类型类似，Swift提供了3个集合类型<code>Array</code>、<code>Set</code>和<code>Dictionary</code>来存储集合值。与ObjC不同的是，Swift中的集合属于范型，不能不同类型的数据添加的同一个集合类型中，且Swift中的集合类型变量都支持修改。<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt=""></p>
 <h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>数组类型是存储相同类型数据的有序列表，其中数组不同位置存储的数可以相同。Swift中的<code>Array</code>类型是Foundation框架中的<code>NSArray</code>类型的桥接.Swift中Array属于范型类，具体的写法是<code>Array&lt;Element&gt;</code>或者<code>[Element]</code>，两种写法相同。</p>
 <h4 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h4><p>可以通过<code>[Element](), []</code>的形式创建空数组，可以通过Array提供方法进行创建，当然也可以通过字面值<code>[value 1, value 2, value 3]</code>的形式创建并初始化一个数组</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> someInts = [<span class="type">Int</span>]()<span class="comment">//创建一个空的Int数组</span></div><div class="line">someInts.append(<span class="number">3</span>)<span class="comment">//数组中添加一个元素</span></div><div class="line">someInts = []<span class="comment">//数组被清空</span></div><div class="line"></div><div class="line"><span class="comment">// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]</span></div><div class="line"><span class="keyword">var</span> threeDoubles = <span class="type">Array</span>(repeating: <span class="number">0.0</span>, <span class="built_in">count</span>: <span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> shoppingList: [<span class="type">String</span>] = [<span class="string">"Eggs"</span>, <span class="string">"Milk”]</span></div></pre></td></tr></table></figure>
@@ -932,7 +921,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/05/2016-11-05-note-Swift-Language-String-and-Characters/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/05/iOS_Swift_language_note_String-and-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -951,7 +940,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/05/2016-11-05-note-Swift-Language-String-and-Characters/" itemprop="url">Swift String and Characters</a></h1>
+                <a class="post-title-link" href="/2016/11/05/iOS_Swift_language_note_String-and-Characters/" itemprop="url">Swift String and Characters</a></h1>
         
 
         <div class="post-meta">
@@ -986,8 +975,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1004,9 +993,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/05/2016-11-05-note-Swift-Language-String-and-Characters/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/05/iOS_Swift_language_note_String-and-Characters/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/05/2016-11-05-note-Swift-Language-String-and-Characters/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/05/iOS_Swift_language_note_String-and-Characters/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1036,10 +1025,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    字符串<code>String</code>是一系列字符集合，Swift提供了一种快速、Unicode的方式的字符串和字符类型。和C语言的字符串字面值语法类似，Swift的字符串的创建和操作是轻量级、可读性的。可以通过<code>+</code>操作符连接两个字符串。Swift的字符串中的每个字符都是由<code>Unicode</code>编码的字符组成，并支持以各种方式访问这些字符。<br>    注：Swift中的String类型通过Foundation框架的NSString类型桥接，Foundation也对String类型对应扩展了NSString中定义的方法。这就意味着如果引用了Foundation，就可以不用转换直接使用NSString中的方法。</p>
+            <p>​    字符串<code>String</code>是一系列字符集合，Swift提供了一种快速、Unicode的方式的字符串和字符类型。和C语言的字符串字面值语法类似，Swift的字符串的创建和操作是轻量级、可读性的。可以通过<code>+</code>操作符连接两个字符串。Swift的字符串中的每个字符都是由<code>Unicode</code>编码的字符组成，并支持以各种方式访问这些字符。<br>    注：Swift中的String类型通过Foundation框架的NSString类型桥接，Foundation也对String类型对应扩展了NSString中定义的方法。这就意味着如果引用了Foundation，就可以不用转换直接使用NSString中的方法。</p>
 <h3 id="字符串的字面值"><a href="#字符串的字面值" class="headerlink" title="字符串的字面值"></a>字符串的字面值</h3><p>​    可以通过双引号<code>&quot;</code>来定义字符串字面值，Swift会根据字符串字面值将对应类型推断为字符串类型。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someString = <span class="string">"Some string literal value"</span></div></pre></td></tr></table></figure>
 <h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><h4 id="空字符串"><a href="#空字符串" class="headerlink" title="空字符串"></a>空字符串</h4><p>​    初始化，检查字符串是否为空。</p>
@@ -1132,7 +1118,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/04/2016-11-04-note-Swift-Language-Basic-Operators/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/04/iOS_Swift_language_note_Basic-Operators/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1151,7 +1137,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/04/2016-11-04-note-Swift-Language-Basic-Operators/" itemprop="url">Swift Basic Operators</a></h1>
+                <a class="post-title-link" href="/2016/11/04/iOS_Swift_language_note_Basic-Operators/" itemprop="url">Swift Basic Operators</a></h1>
         
 
         <div class="post-meta">
@@ -1186,8 +1172,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1204,9 +1190,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/04/2016-11-04-note-Swift-Language-Basic-Operators/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/04/iOS_Swift_language_note_Basic-Operators/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/04/2016-11-04-note-Swift-Language-Basic-Operators/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/04/iOS_Swift_language_note_Basic-Operators/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1236,10 +1222,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(<code>=</code>)不再拥有返回值来阻止被错误的使用在比较运算符(<code>==</code>)的场合；算术运算符(<code>+, -, *, /, % 等</code>)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(<code>a..&lt;b</code>和<code>a...b</code>)，用来快捷表达一个区域范围值。</p>
+            <p>​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(<code>=</code>)不再拥有返回值来阻止被错误的使用在比较运算符(<code>==</code>)的场合；算术运算符(<code>+, -, *, /, % 等</code>)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(<code>a..&lt;b</code>和<code>a...b</code>)，用来快捷表达一个区域范围值。</p>
 <h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>​    用来初始化或者更新左值<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">5</span> </div><div class="line"><span class="keyword">let</span> (x, y) = (<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// x is equal to 1, and y is equal to 2</span></div><div class="line"><span class="keyword">if</span> x = y &#123;</div><div class="line">    <span class="comment">// 存在语法错误，因为赋值运算符没有返回值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>​    Swift支持四个标准的算术运算符<code>+, -, *, /</code>；与其他语言不同的是，这些运算符默认情况下不允许被重写。另外<code>+</code>运算符也支持字符串连接。</p>
 <h5 id="取模运算符"><a href="#取模运算符" class="headerlink" title="取模运算符"></a>取模运算符</h5><p>​    与其他语言一样，注意一点：<code>a % b</code>的符号与<code>a</code>相同</p>
@@ -1316,7 +1299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/02/2016-11-02-note-Swift-Language-The-Basics/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/02/iOS_Swift_language_note_The-Basics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1335,7 +1318,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/02/2016-11-02-note-Swift-Language-The-Basics/" itemprop="url">Swift The Basics</a></h1>
+                <a class="post-title-link" href="/2016/11/02/iOS_Swift_language_note_The-Basics/" itemprop="url">Swift The Basics</a></h1>
         
 
         <div class="post-meta">
@@ -1370,8 +1353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1388,9 +1371,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/02/2016-11-02-note-Swift-Language-The-Basics/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/02/iOS_Swift_language_note_The-Basics/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/02/2016-11-02-note-Swift-Language-The-Basics/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/02/iOS_Swift_language_note_The-Basics/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1420,10 +1403,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    Swift的很多地方类似C和Objective-C语言。在Swift中，用<code>Int</code>表示整型，用<code>Double</code>和<code>Float</code>表示浮点类型，用<code>Bool</code>表示布尔类型，用<code>String</code>表示文本类型。另外还提供有一些集合类型，比如<code>Array</code>，<code>Set</code>和<code>Dictionary</code>。是一种类型安全的语言。<br>​    Swift拥有和C语言类似变量和常量。还有一些高级的类型例如元组<code>tuples</code>（同PL/SQL中的类似）、不仅仅用在Class上的可选类型<code>optional types</code>(<code>Optionals say either “there is a value, and it equals x” or “there isn’t a value at all”.</code>)</p>
+            <p>​    Swift的很多地方类似C和Objective-C语言。在Swift中，用<code>Int</code>表示整型，用<code>Double</code>和<code>Float</code>表示浮点类型，用<code>Bool</code>表示布尔类型，用<code>String</code>表示文本类型。另外还提供有一些集合类型，比如<code>Array</code>，<code>Set</code>和<code>Dictionary</code>。是一种类型安全的语言。<br>​    Swift拥有和C语言类似变量和常量。还有一些高级的类型例如元组<code>tuples</code>（同PL/SQL中的类似）、不仅仅用在Class上的可选类型<code>optional types</code>(<code>Optionals say either “there is a value, and it equals x” or “there isn’t a value at all”.</code>)</p>
 <h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><p>​    常量和变量在使用前必须声明，使用<code>var</code>来声明变量，使用<code>let</code>来声明常量，例如</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> maximumNumberOfLoginAttempts = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> currentLoginAttempt = <span class="number">0</span></div><div class="line"><span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span>, z = <span class="number">0.0</span></div></pre></td></tr></table></figure>
 <p>​    可以通过<code>let(var) name: type</code>来明确常量或变量的类型，例如：</p>
@@ -1569,7 +1549,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/01/2016-11-01-note-Swift-Language-Introduction/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/30/iOS_develop_ObjC_basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1588,315 +1568,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/01/2016-11-01-note-Swift-Language-Introduction/" itemprop="url">Swift 学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-01T22:06:31+08:00">
-                2016-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/01/2016-11-01-note-Swift-Language-Introduction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/01/2016-11-01-note-Swift-Language-Introduction/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>Swift3 发布有段时间了，考虑到需要将项目中的Swift2.x中的语言转换到3.x版本，就打算把苹果官方文档给看一遍，顺便记录下来</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    Swift builds on the best of C and Objective-C, without the constraints of C compatibility.Swift adopts safe programming patterns and adds modern features to make programming easier, more flexible, and more fun. is an opportunity to reimagine how software development works.</p>
-<p>​    Swift采用安全的编程模式，并添加了使编程更加简单、灵活、有趣的特色，重新定义软件开发过程！和ObjC语言类似，采用可读性的参数命名方式，是一款友好的脚本语言。</p>
-<h3 id="Release-Log"><a href="#Release-Log" class="headerlink" title="Release Log"></a>Release Log</h3><table>
-<thead>
-<tr>
-<th>开始时间</th>
-<th style="text-align:right">耗时</th>
-<th style="text-align:center">内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2016／11／02</td>
-<td style="text-align:right">4H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/02/iOS-Swift-Language-The-Basics/" target="_blank" rel="external">基础知识</a></td>
-</tr>
-<tr>
-<td>2016／11／04</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/04/iOS-Swift-Language-Basic-Operators/" target="_blank" rel="external">基本操作符</a></td>
-</tr>
-<tr>
-<td>2016／11／05</td>
-<td style="text-align:right">3H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/05/iOS-Swift-Language-String-and-Characters/" target="_blank" rel="external">字符串和字符</a></td>
-</tr>
-<tr>
-<td>2016／11／06</td>
-<td style="text-align:right">3H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/06/iOS-Swift-Language-Collection-Types/" target="_blank" rel="external">集合类型</a></td>
-</tr>
-<tr>
-<td>2016／11／17</td>
-<td style="text-align:right">4H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/17/iOS-Swift-Language-Control-Flow/" target="_blank" rel="external">流程控制</a></td>
-</tr>
-<tr>
-<td>2016／11／20</td>
-<td style="text-align:right">6H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/20/iOS-Swift-Language-Functions/" target="_blank" rel="external">函数</a></td>
-</tr>
-<tr>
-<td>2016／11／22</td>
-<td style="text-align:right">6H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/22/iOS-Swift-Language-Closures/" target="_blank" rel="external">闭包</a></td>
-</tr>
-<tr>
-<td>2016／11／23</td>
-<td style="text-align:right">6H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/23/iOS-Swift-Language-Enumerations/" target="_blank" rel="external">枚举</a></td>
-</tr>
-<tr>
-<td>2016／11／24</td>
-<td style="text-align:right">4H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/24/iOS-Swift-Language-Classes-and-Structures/" target="_blank" rel="external">类和结构体</a></td>
-</tr>
-<tr>
-<td>2016／11／25</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/25/iOS-Swift-Language-Properties/" target="_blank" rel="external">属性</a></td>
-</tr>
-<tr>
-<td>2016／11／25</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/25/iOS-Swift-Language-Methods/" target="_blank" rel="external">方法</a></td>
-</tr>
-<tr>
-<td>2016／11／26</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/25/iOS-Swift-Language-Subscripts/" target="_blank" rel="external">下标</a></td>
-</tr>
-<tr>
-<td>2016／11／26</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/26/iOS-Swift-Language-Inheritance/" target="_blank" rel="external">继承</a></td>
-</tr>
-<tr>
-<td>2016／11／28</td>
-<td style="text-align:right">8H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/27/iOS-Swift-Language-Initialization/" target="_blank" rel="external">构造过程</a></td>
-</tr>
-<tr>
-<td>2016／11／28</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/28/iOS-Swift-Language-Deinitialization/" target="_blank" rel="external">析构过程</a></td>
-</tr>
-<tr>
-<td>2016／11／29</td>
-<td style="text-align:right">4H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/29/iOS-Swift-Language-ARC/" target="_blank" rel="external">ARC</a></td>
-</tr>
-<tr>
-<td>2016／11／30</td>
-<td style="text-align:right">3H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/30/iOS-Swift-Language-Optional-Chaining/" target="_blank" rel="external">可选链</a></td>
-</tr>
-<tr>
-<td>2016／12／01</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/30/iOS-Swift-Language-Error-Handling/" target="_blank" rel="external">错误处理</a></td>
-</tr>
-<tr>
-<td>2016／12／01</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/11/30/iOS-Swift-Language-Type-Casting/" target="_blank" rel="external">类型转换</a></td>
-</tr>
-<tr>
-<td>2016／12／02</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/12/01/iOS-Swift-Language-Extensions/" target="_blank" rel="external">扩展</a></td>
-</tr>
-<tr>
-<td>2016／12／02</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/12/01/iOS-Swift-Language-Nested-Types/" target="_blank" rel="external">嵌套类型</a></td>
-</tr>
-<tr>
-<td>2016／12／03</td>
-<td style="text-align:right">5H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/12/02/iOS-Swift-Language-Protocols/" target="_blank" rel="external">协议</a></td>
-</tr>
-<tr>
-<td>2016／12／03</td>
-<td style="text-align:right">2H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/12/02/iOS-Swift-Language-Generics/" target="_blank" rel="external">泛型</a></td>
-</tr>
-<tr>
-<td>2016／12／05</td>
-<td style="text-align:right">3H</td>
-<td style="text-align:center"><a href="https://l900416.github.io/2016/12/05/iOS-Swift-Language-Access-Control/" target="_blank" rel="external">访问控制</a></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:right"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:right"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>历经一个月，终于把Swift3.x文档看了一遍，鉴于个人英文阅读能力，后期在阅读官方文档的同时参照了<a href="http://wiki.jikexueyuan.com/project/swift" target="_blank" rel="external">极客学院Swift翻译教程</a>。<br><br><br>在阅读的过程中，也思考并查阅了很多在使用Objective-C的过程中没有注意到的问题，比如闭包；也学习到了一些与其他语言不同的东西，比如构造过程；对于一些问题的理解更加深刻了，比如ARC等。<br><br>总体来说，这次收获还是蛮多的。</p>
-<p><br>毕竟语言只是一种表达自己想法的途径，接下来的时间，就通过实践来慢慢消化吧。<br><br><br><br><br><br>—    后记于 2016/12/05晚<br><br></p>
-
-
-
-<p>&gt;</p>
-<p>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
-<blockquote>
-<p>​Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/30/2016-10-30-iOS-Develop-Introduction-ObjC-扫盲1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/30/2016-10-30-iOS-Develop-Introduction-ObjC-扫盲1/" itemprop="url">Objective-C 知识普及</a></h1>
+                <a class="post-title-link" href="/2016/10/30/iOS_develop_ObjC_basic/" itemprop="url">Objective-C 知识普及</a></h1>
         
 
         <div class="post-meta">
@@ -1931,8 +1603,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1949,9 +1621,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/10/30/2016-10-30-iOS-Develop-Introduction-ObjC-扫盲1/#comments" itemprop="discussionUrl">
+                <a href="/2016/10/30/iOS_develop_ObjC_basic/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/30/2016-10-30-iOS-Develop-Introduction-ObjC-扫盲1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/10/30/iOS_develop_ObjC_basic/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1981,10 +1653,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行</p>
+            <p>讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行</p>
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>​    一种带有局部变量的匿名函数。语法结构：<code>^</code> <code>返回值类型</code> <code>参数列表</code> <code>表达式</code></p>
 <p>比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^int(int count)&#123;return count+1;&#125;</div></pre></td></tr></table></figure>
@@ -2067,7 +1736,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/25/2016-10-25-iOS-Develop-Introduction-Life-Circle/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/25/iOS_develop_viewController_life_circle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -2086,7 +1755,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/25/2016-10-25-iOS-Develop-Introduction-Life-Circle/" itemprop="url">ViewController Life-Circle</a></h1>
+                <a class="post-title-link" href="/2016/10/25/iOS_develop_viewController_life_circle/" itemprop="url">ViewController Life-Circle</a></h1>
         
 
         <div class="post-meta">
@@ -2121,8 +1790,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -2139,9 +1808,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/10/25/2016-10-25-iOS-Develop-Introduction-Life-Circle/#comments" itemprop="discussionUrl">
+                <a href="/2016/10/25/iOS_develop_viewController_life_circle/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/25/2016-10-25-iOS-Develop-Introduction-Life-Circle/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/10/25/iOS_develop_viewController_life_circle/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2171,10 +1840,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>对ViewController生命周期进行介绍，同时会说一些曾经遇到过的坑及注意事项</p>
+            <p>对ViewController生命周期进行介绍，同时会说一些曾经遇到过的坑及注意事项</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    这部分其实没啥好说的，苹果UIViewController接口文档对各个接口的描述写的很详细。<br>​    在视图的生命周期中，我曾经出问题的地方包括是UI表现异常；通知监听与释放没有成对出现；异步闭包回调引起的循环引用的资源无法释放；<code>__weak</code>和<code>__strong</code>问题导致的程序闪退等。这里就是把这些坑给记下来，（如果你碰巧）遇到这类问题后不会感到莫名其妙。</p>
 <h3 id="UIViewController的生命周期"><a href="#UIViewController的生命周期" class="headerlink" title="UIViewController的生命周期"></a>UIViewController的生命周期</h3><blockquote>
 <p>视图出现的时候调用顺序</p>
@@ -2298,7 +1964,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/21/2016-10-21-iOS-Develop-Introduction-Overview/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/21/iOS_develop_overview_framework_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -2317,7 +1983,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/21/2016-10-21-iOS-Develop-Introduction-Overview/" itemprop="url">iOS移动App开发综述</a></h1>
+                <a class="post-title-link" href="/2016/10/21/iOS_develop_overview_framework_1/" itemprop="url">iOS移动App开发综述</a></h1>
         
 
         <div class="post-meta">
@@ -2352,8 +2018,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -2370,9 +2036,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/10/21/2016-10-21-iOS-Develop-Introduction-Overview/#comments" itemprop="discussionUrl">
+                <a href="/2016/10/21/iOS_develop_overview_framework_1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/21/2016-10-21-iOS-Develop-Introduction-Overview/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/10/21/iOS_develop_overview_framework_1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2402,10 +2068,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>对iOS端移动App使用的开发语言、框架等信息进行介绍</p>
+            <p>对iOS端移动App使用的开发语言、框架等信息进行介绍</p>
 <h3 id="环境及工具"><a href="#环境及工具" class="headerlink" title="环境及工具"></a>环境及工具</h3><ul>
 <li>OS<ul>
 <li>macOS , OSX</li>
@@ -2559,6 +2222,181 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/" itemprop="url">LTxMenu</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T15:10:12+08:00">
+                2016-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>content<br>{:toc}</li>
+</ul>
+<p><strong>[ Update v1.0.0 ]</strong> Similar to Facebook News Feed , Alipay Life , QZone and other social applications . click a drop-down button to display more functions</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>​         In Facebook News Feed , Alipay Life , QZone and other social applications , they all contain a function drop-down button which would show a list of more functions when taped . I didn’t find any on GitHub , so I wrote a similar UI controls myself using Objective-C. ：</p>
+<p><img src="https://raw.githubusercontent.com/l900416/LTxMenu/64a7706ae5c6fbde8e7b5f2eb6706b6f56795b05/screenshots/1.gif" alt=""></p>
+<blockquote>
+<blockquote>
+<p>GitHub link : <a href="https://github.com/l900416/LTxMenu" target="_blank" rel="external">LTxMenu</a></p>
+</blockquote>
+</blockquote>
+<h3 id="Get-Start"><a href="#Get-Start" class="headerlink" title="Get Start"></a>Get Start</h3><blockquote>
+<ul>
+<li>Manually add the files into your Xcode project.</li>
+<li>LTxMenu is available as LTxMenu in Cocoapods.</li>
+</ul>
+</blockquote>
+<h3 id="How-To-Use"><a href="#How-To-Use" class="headerlink" title="How To Use"></a>How To Use</h3><p>​    Create a LTxMenuView Object:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong)LTxMenuView* menuView;</div></pre></td></tr></table></figure>
+<p>​    I was too lazy to write a protocol 😄，use callback methods：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">_menuView = [[LTxMenuView alloc] init];//init</div><div class="line">__weak __typeof(self) weakSelf = self;</div><div class="line">_menuView.numberOfRows = ^()&#123;//row numbers</div><div class="line">    return (int)weakSelf.menuItems.count;</div><div class="line">&#125;;</div><div class="line">_menuView.heightForRow = ^(NSInteger row)&#123;//height of a row</div><div class="line">    return 50.f;</div><div class="line">&#125;;</div><div class="line">_menuView.rowAtIndex = ^(NSInteger row)&#123;//the content of a row</div><div class="line">    NSDictionary* menuItem = [weakSelf.menuItems objectAtIndex:row];</div><div class="line">    return [LTxMenuItem menuItemWithImage:[menuItem objectForKey:@&quot;image&quot;]</div><div class="line">                                    title:[menuItem objectForKey:@&quot;title&quot;]</div><div class="line">                            rightBtnItems:[menuItem objectForKey:@&quot;more&quot;]//An array contains subClass of UIView</div><div class="line">                                 tapBlock:^(NSString *identifier) &#123;</div><div class="line">                                     NSLog(@&quot;tap at %@&quot;,identifier);</div><div class="line">                                     __strong __typeof(weakSelf)strongSelf = weakSelf;</div><div class="line">                                     [strongSelf.menuView dismissMenu];</div><div class="line">                                 &#125;];</div><div class="line">&#125;;</div><div class="line">[_menuView showMenuInView:self.view</div><div class="line">                 fromRect:sender.frame];</div></pre></td></tr></table></figure>
+<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><p>​    LTxMenu use <strong>LTxMenuItem</strong> class to config view showed in row. and <strong>LTxMenuView</strong> class with callback methods to calculate the UI performance .  draw arrow and the border use  <strong>UIBezierPath</strong> class . and the show/hide animation use <strong>UIKit</strong>.</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>​    <a href="https://github.com/kolyvan/kxmenu" target="_blank" rel="external">https://github.com/kolyvan/kxmenu</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2609,7 +2447,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2620,7 +2458,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2631,7 +2469,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

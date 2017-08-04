@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -115,7 +113,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -293,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/2016-11-29-note-Swift-Language-ARC/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/iOS_Swift_language_note_ARC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -312,7 +310,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/29/2016-11-29-note-Swift-Language-ARC/" itemprop="url">Swift ARC</a></h1>
+                <a class="post-title-link" href="/2016/11/29/iOS_Swift_language_note_ARC/" itemprop="url">Swift ARC</a></h1>
         
 
         <div class="post-meta">
@@ -347,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -365,9 +363,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/29/2016-11-29-note-Swift-Language-ARC/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/29/iOS_Swift_language_note_ARC/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/29/2016-11-29-note-Swift-Language-ARC/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/29/iOS_Swift_language_note_ARC/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,10 +395,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    Swift 使用自动引用计数（ARC）机制来跟踪和管理你的应用程序的内存。通常情况下，Swift 内存管理机制会一直起作用，你无须自己来考虑内存的管理。ARC 会在类的实例不再被使用时，自动释放其占用的内存。然而在少数情况下，为了能帮助你管理内存，ARC 需要更多的，代码之间关系的信息。在 Swift 使用 ARC 与在 Obejctive-C 中使用 ARC 非常类似<br>    引用计数仅仅应用于类的实例。结构体和枚举类型是值类型，不是引用类型，也不是通过引用的方式存储和传递。</p>
+            <p>​    Swift 使用自动引用计数（ARC）机制来跟踪和管理你的应用程序的内存。通常情况下，Swift 内存管理机制会一直起作用，你无须自己来考虑内存的管理。ARC 会在类的实例不再被使用时，自动释放其占用的内存。然而在少数情况下，为了能帮助你管理内存，ARC 需要更多的，代码之间关系的信息。在 Swift 使用 ARC 与在 Obejctive-C 中使用 ARC 非常类似<br>    引用计数仅仅应用于类的实例。结构体和枚举类型是值类型，不是引用类型，也不是通过引用的方式存储和传递。</p>
 <h3 id="ARC工作机制"><a href="#ARC工作机制" class="headerlink" title="ARC工作机制"></a>ARC工作机制</h3><p>当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信息，以及这个实例所有相关的存储型属性的值。<br>当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的实例，不会一直占用内存空间。</p>
 <p>然而，当 ARC 收回和释放了正在被使用中的实例，该实例的属性和方法将不能再被访问和调用。实际上，如果你试图访问这个实例，你的应用程序很可能会崩溃。<br>为了确保使用中的实例不会被销毁，ARC 会跟踪和计算每一个实例正在被多少属性，常量和变量所引用。哪怕实例的引用数为1，ARC都不会销毁这个实例。</p>
 <p>为了使上述成为可能，无论你将实例赋值给属性、常量或变量，它们都会创建此实例的强引用。之所以称之为“强”引用，是因为它会将实例牢牢地保持住，只要强引用还在，实例是不允许被销毁的。</p>
@@ -547,7 +542,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/28/2016-11-29-note-Swift-Language-Deinitialization/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/28/iOS_Swift_language_note_Deinitialization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -566,7 +561,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/28/2016-11-29-note-Swift-Language-Deinitialization/" itemprop="url">Swift Deinitialization</a></h1>
+                <a class="post-title-link" href="/2016/11/28/iOS_Swift_language_note_Deinitialization/" itemprop="url">Swift Deinitialization</a></h1>
         
 
         <div class="post-meta">
@@ -601,8 +596,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -619,9 +614,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/28/2016-11-29-note-Swift-Language-Deinitialization/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/28/iOS_Swift_language_note_Deinitialization/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/28/2016-11-29-note-Swift-Language-Deinitialization/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/28/iOS_Swift_language_note_Deinitialization/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -651,10 +646,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。</p>
+            <p>​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。</p>
 <h3 id="析构过程"><a href="#析构过程" class="headerlink" title="析构过程"></a>析构过程</h3><p>Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放之前手动去关闭该文件。</p>
 <p>在类的定义中，每个类最多只能有一个析构器，而且析构器不带任何参数，如下所示：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="comment">// perform the deinitialization</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -732,7 +724,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/27/2016-11-28-note-Swift-Language-Initialization/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/27/iOS_Swift_language_note_Initialization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -751,7 +743,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/27/2016-11-28-note-Swift-Language-Initialization/" itemprop="url">Swift Initialization</a></h1>
+                <a class="post-title-link" href="/2016/11/27/iOS_Swift_language_note_Initialization/" itemprop="url">Swift Initialization</a></h1>
         
 
         <div class="post-meta">
@@ -786,8 +778,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -804,9 +796,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/27/2016-11-28-note-Swift-Language-Initialization/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/27/iOS_Swift_language_note_Initialization/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/27/2016-11-28-note-Swift-Language-Initialization/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/27/iOS_Swift_language_note_Initialization/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -836,10 +828,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    构造过程是使用类、结构体、枚举的实例之前的准备过程。具体操作包括设置实例中每个存储型属性的初始值和执行其他必须的设置或初始化工作。在新实例可用前必须执行这个过程。<br>通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法。与 Objective-C 中的构造器不同，Swift 的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化。<br>类的实例也可以通过定义析构器在实例释放之前执行特定的清除工作。</p>
+            <p>​    构造过程是使用类、结构体、枚举的实例之前的准备过程。具体操作包括设置实例中每个存储型属性的初始值和执行其他必须的设置或初始化工作。在新实例可用前必须执行这个过程。<br>通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法。与 Objective-C 中的构造器不同，Swift 的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化。<br>类的实例也可以通过定义析构器在实例释放之前执行特定的清除工作。</p>
 <h3 id="存储属性的初始化值"><a href="#存储属性的初始化值" class="headerlink" title="存储属性的初始化值"></a>存储属性的初始化值</h3><p>类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值。存储型属性的值不能处于一个未知的状态。你可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值。<br>    为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者。</p>
 <h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><p>构造器在创建某个特定类型的新实例时被调用。它的最简形式类似于一个不带任何参数的实例方法，以关键字 <code>init</code> 命名：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">init</span>() &#123;</div><div class="line">    <span class="comment">// perform some initialization here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1081,7 +1070,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/26/2016-11-27-note-Swift-Language-Inheritance/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/26/iOS_Swift_language_note_Subscripts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1100,7 +1089,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/26/2016-11-27-note-Swift-Language-Inheritance/" itemprop="url">Swift Inheritance</a></h1>
+                <a class="post-title-link" href="/2016/11/26/iOS_Swift_language_note_Subscripts/" itemprop="url">Swift Subscripts</a></h1>
         
 
         <div class="post-meta">
@@ -1135,8 +1124,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1153,9 +1142,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/26/2016-11-27-note-Swift-Language-Inheritance/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/26/iOS_Swift_language_note_Subscripts/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/26/2016-11-27-note-Swift-Language-Inheritance/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/26/iOS_Swift_language_note_Subscripts/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1185,10 +1174,186 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
+            <p>​    下标可以定义在类、结构体和枚举中，为访问集合，列表或序列中元素提供便捷。可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法。举例来说，用下标访问一个Array实例中的元素可以写作someArray[index]，访问Dictionary实例中的元素可以写作someDictionary[key]。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>下标允许你通过在实例化对象后边的中括号中添加一个或多个索引值来查询或修改实例。语法类似于实例方法语法和计算型属性语法。通过关键字 <code>subscript</code> 定义，并指定一个或多个输入参数和返回类型；与实例方法不同的是。下标语法可以设定为读写( <code>read-write</code> )或只读( <code>read-only</code> )。这种行为由 getter 和 setter 实现，有点类似计算型属性：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">get</span> &#123;</div><div class="line">        <span class="comment">// return an appropriate subscript value here</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">set</span>(newValue) &#123;</div><div class="line">        <span class="comment">// perform a suitable setting action here</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>newValue的类型和下标的返回类型相同。如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数。如同只读计算型属性，可以省略只读下标的get关键字：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="comment">// return an appropriate subscript value here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面代码演示了只读下标的实现：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TimesTable</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> multiplier: <span class="type">Int</span></div><div class="line">    <span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> multiplier * index</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> threeTimesTable = <span class="type">TimesTable</span>(multiplier: <span class="number">3</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"six times three is <span class="subst">\(threeTimesTable[<span class="number">6</span>])</span>"</span>)</div><div class="line"><span class="comment">// Prints "six times three is 18"</span></div></pre></td></tr></table></figure>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>下标的含义通常取决于使用场景，通常在集合、列表和序列中快速访问用。你也可以根据自己的特定类型实现下标功能。<br>例如Swift中的字典Dictionary使用下标语法对实例中储存的值进行存取操作。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numberOfLegs = [<span class="string">"spider"</span>: <span class="number">8</span>, <span class="string">"ant"</span>: <span class="number">6</span>, <span class="string">"cat"</span>: <span class="number">4</span>]</div><div class="line">numberOfLegs[<span class="string">"bird"</span>] = <span class="number">2</span></div></pre></td></tr></table></figure>
+<pre><code>Swift 的Dictionary类型的下标接受并返回可选类型的值。因为不是每个键都有个对应的值，同时这也提供了一种通过键删除对应值的方式，只需将键对应的值赋值为nil即可。
+</code></pre><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>下标可以接受任意数量的入参，并且这些入参可以是任意类型。下标的返回值也可以是任意类型。下标可以使用变量参数和可变参数，但不能使用输入输出参数，也不能给参数设置默认值。<br>一个类或结构体可以根据自身需要提供多个下标实现</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> rows: <span class="type">Int</span>, columns: <span class="type">Int</span></div><div class="line">    <span class="keyword">var</span> grid: [<span class="type">Double</span>]</div><div class="line">    <span class="keyword">init</span>(rows: <span class="type">Int</span>, columns: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.rows = rows</div><div class="line">        <span class="keyword">self</span>.columns = columns</div><div class="line">        grid = <span class="type">Array</span>(repeating: <span class="number">0.0</span>, <span class="built_in">count</span>: rows * columns)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">indexIsValid</span><span class="params">(row: Int, column: Int)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; column &gt;= <span class="number">0</span> &amp;&amp; column &lt; columns</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">subscript</span>(row: <span class="type">Int</span>, column: <span class="type">Int</span>) -&gt; <span class="type">Double</span> &#123;</div><div class="line">        <span class="keyword">get</span> &#123;</div><div class="line">            <span class="built_in">assert</span>(indexIsValid(row: row, column: column), <span class="string">"Index out of range"</span>)</div><div class="line">            <span class="keyword">return</span> grid[(row * columns) + column]</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">set</span> &#123;</div><div class="line">            <span class="built_in">assert</span>(indexIsValid(row: row, column: column), <span class="string">"Index out of range"</span>)</div><div class="line">            grid[(row * columns) + column] = newValue</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以通过传入合适的row和column的数量来构造一个新的Matrix实例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> matrix = <span class="type">Matrix</span>(rows: <span class="number">2</span>, columns: <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>将row和column的值传入下标来为矩阵设值，下标的入参使用逗号分隔：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">matrix[<span class="number">0</span>, <span class="number">1</span>] = <span class="number">1.5</span></div><div class="line">matrix[<span class="number">1</span>, <span class="number">0</span>] = <span class="number">3.2</span></div></pre></td></tr></table></figure>
+<p>访问</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> rightTopValue = matrix[<span class="number">0</span>, <span class="number">1</span>]</div><div class="line"><span class="comment">// 1.5</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> someValue = matrix[<span class="number">2</span>, <span class="number">2</span>]</div><div class="line"><span class="comment">// this triggers an assert, because [2, 2] is outside of the matrix bounds</span></div></pre></td></tr></table></figure>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html/" target="_blank" rel="external">Subscripts</a> </li>
 </ul>
-<p>​    一个类可以继承另一个类的方法，属性和其它特性。当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类）。在 Swift 中，继承是区分「类」与其它类型的一个基本特征。<br>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。<br>可以为类中继承来的属性添加属性观察器，这样一来，当属性值改变时，类就会被通知到。可以为任何属性添加属性观察器，无论它原本被定义为存储型属性还是计算型属性。</p>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/26/iOS_Swift_language_note_Inheritance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/26/iOS_Swift_language_note_Inheritance/" itemprop="url">Swift Inheritance</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-26T00:20:11+08:00">
+                2016-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/26/iOS_Swift_language_note_Inheritance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/26/iOS_Swift_language_note_Inheritance/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    一个类可以继承另一个类的方法，属性和其它特性。当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类）。在 Swift 中，继承是区分「类」与其它类型的一个基本特征。<br>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。<br>可以为类中继承来的属性添加属性观察器，这样一来，当属性值改变时，类就会被通知到。可以为任何属性添加属性观察器，无论它原本被定义为存储型属性还是计算型属性。</p>
 <h3 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h3><p>不继承于其它类的类，称之为基类。<br>    Swift 中的类并不是从一个通用的基类继承而来。如果你不为你定义的类指定一个超类的话，这个类就自动成为基类。</p>
 <p>下面的例子定义了一个叫Vehicle的基类。包含一个currentSpeed存储属性，一个description的只读计算属性，一个makeNoise方法，方法什么都不做，子类会重写该方法。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> currentSpeed = <span class="number">0.0</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"traveling at <span class="subst">\(currentSpeed)</span> miles per hour"</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">makeNoise</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="comment">// do nothing - an arbitrary vehicle doesn't necessarily make a noise</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1280,7 +1445,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/26/2016-11-26-note-Swift-Language-Subscripts/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/iOS_Swift_language_note_Methods/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1299,189 +1464,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/26/2016-11-26-note-Swift-Language-Subscripts/" itemprop="url">Swift Subscripts</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-26T00:20:11+08:00">
-                2016-11-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/26/2016-11-26-note-Swift-Language-Subscripts/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/26/2016-11-26-note-Swift-Language-Subscripts/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    下标可以定义在类、结构体和枚举中，为访问集合，列表或序列中元素提供便捷。可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法。举例来说，用下标访问一个Array实例中的元素可以写作someArray[index]，访问Dictionary实例中的元素可以写作someDictionary[key]。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>下标允许你通过在实例化对象后边的中括号中添加一个或多个索引值来查询或修改实例。语法类似于实例方法语法和计算型属性语法。通过关键字 <code>subscript</code> 定义，并指定一个或多个输入参数和返回类型；与实例方法不同的是。下标语法可以设定为读写( <code>read-write</code> )或只读( <code>read-only</code> )。这种行为由 getter 和 setter 实现，有点类似计算型属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">get</span> &#123;</div><div class="line">        <span class="comment">// return an appropriate subscript value here</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">set</span>(newValue) &#123;</div><div class="line">        <span class="comment">// perform a suitable setting action here</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>newValue的类型和下标的返回类型相同。如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数。如同只读计算型属性，可以省略只读下标的get关键字：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="comment">// return an appropriate subscript value here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面代码演示了只读下标的实现：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TimesTable</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> multiplier: <span class="type">Int</span></div><div class="line">    <span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> multiplier * index</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> threeTimesTable = <span class="type">TimesTable</span>(multiplier: <span class="number">3</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"six times three is <span class="subst">\(threeTimesTable[<span class="number">6</span>])</span>"</span>)</div><div class="line"><span class="comment">// Prints "six times three is 18"</span></div></pre></td></tr></table></figure>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>下标的含义通常取决于使用场景，通常在集合、列表和序列中快速访问用。你也可以根据自己的特定类型实现下标功能。<br>例如Swift中的字典Dictionary使用下标语法对实例中储存的值进行存取操作。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numberOfLegs = [<span class="string">"spider"</span>: <span class="number">8</span>, <span class="string">"ant"</span>: <span class="number">6</span>, <span class="string">"cat"</span>: <span class="number">4</span>]</div><div class="line">numberOfLegs[<span class="string">"bird"</span>] = <span class="number">2</span></div></pre></td></tr></table></figure>
-<pre><code>Swift 的Dictionary类型的下标接受并返回可选类型的值。因为不是每个键都有个对应的值，同时这也提供了一种通过键删除对应值的方式，只需将键对应的值赋值为nil即可。
-</code></pre><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>下标可以接受任意数量的入参，并且这些入参可以是任意类型。下标的返回值也可以是任意类型。下标可以使用变量参数和可变参数，但不能使用输入输出参数，也不能给参数设置默认值。<br>一个类或结构体可以根据自身需要提供多个下标实现</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> rows: <span class="type">Int</span>, columns: <span class="type">Int</span></div><div class="line">    <span class="keyword">var</span> grid: [<span class="type">Double</span>]</div><div class="line">    <span class="keyword">init</span>(rows: <span class="type">Int</span>, columns: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.rows = rows</div><div class="line">        <span class="keyword">self</span>.columns = columns</div><div class="line">        grid = <span class="type">Array</span>(repeating: <span class="number">0.0</span>, <span class="built_in">count</span>: rows * columns)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">indexIsValid</span><span class="params">(row: Int, column: Int)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; column &gt;= <span class="number">0</span> &amp;&amp; column &lt; columns</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">subscript</span>(row: <span class="type">Int</span>, column: <span class="type">Int</span>) -&gt; <span class="type">Double</span> &#123;</div><div class="line">        <span class="keyword">get</span> &#123;</div><div class="line">            <span class="built_in">assert</span>(indexIsValid(row: row, column: column), <span class="string">"Index out of range"</span>)</div><div class="line">            <span class="keyword">return</span> grid[(row * columns) + column]</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">set</span> &#123;</div><div class="line">            <span class="built_in">assert</span>(indexIsValid(row: row, column: column), <span class="string">"Index out of range"</span>)</div><div class="line">            grid[(row * columns) + column] = newValue</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>你可以通过传入合适的row和column的数量来构造一个新的Matrix实例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> matrix = <span class="type">Matrix</span>(rows: <span class="number">2</span>, columns: <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>将row和column的值传入下标来为矩阵设值，下标的入参使用逗号分隔：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">matrix[<span class="number">0</span>, <span class="number">1</span>] = <span class="number">1.5</span></div><div class="line">matrix[<span class="number">1</span>, <span class="number">0</span>] = <span class="number">3.2</span></div></pre></td></tr></table></figure>
-<p>访问</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> rightTopValue = matrix[<span class="number">0</span>, <span class="number">1</span>]</div><div class="line"><span class="comment">// 1.5</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> someValue = matrix[<span class="number">2</span>, <span class="number">2</span>]</div><div class="line"><span class="comment">// this triggers an assert, because [2, 2] is outside of the matrix bounds</span></div></pre></td></tr></table></figure>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html/" target="_blank" rel="external">Subscripts</a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/2016-11-26-note-Swift-Language-Methods/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/25/2016-11-26-note-Swift-Language-Methods/" itemprop="url">Swift Methods</a></h1>
+                <a class="post-title-link" href="/2016/11/25/iOS_Swift_language_note_Methods/" itemprop="url">Swift Methods</a></h1>
         
 
         <div class="post-meta">
@@ -1516,8 +1499,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1534,9 +1517,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/25/2016-11-26-note-Swift-Language-Methods/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/25/iOS_Swift_language_note_Methods/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/25/2016-11-26-note-Swift-Language-Methods/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/25/iOS_Swift_language_note_Methods/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1566,10 +1549,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法；实例方法为给定类型的实例封装了具体的任务与功能。类、结构体、枚举也可以定义类型方法；类型方法与类型本身相关联。类型方法与 Objective-C 中的类方法（class methods）相似。<br>结构体和枚举能够定义方法是 Swift 与 C/Objective-C 的主要区别之一。在 Objective-C 中，类是唯一能定义方法的类型。但在 Swift 中，你不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在你创建的类型（类/结构体/枚举）上定义方法。</p>
+            <p>​    方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法；实例方法为给定类型的实例封装了具体的任务与功能。类、结构体、枚举也可以定义类型方法；类型方法与类型本身相关联。类型方法与 Objective-C 中的类方法（class methods）相似。<br>结构体和枚举能够定义方法是 Swift 与 C/Objective-C 的主要区别之一。在 Objective-C 中，类是唯一能定义方法的类型。但在 Swift 中，你不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在你创建的类型（类/结构体/枚举）上定义方法。</p>
 <h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p>实例方法是属于某个特定类、结构体或者枚举类型实例的方法。实例方法提供访问和修改实例属性的方法或提供与实例目的相关的功能，并以此来支撑实例的功能。实例方法的语法与函数完全一致。<br>实例方法要写在它所属的类型的前后大括号之间。实例方法能够隐式访问它所属类型的所有的其他实例方法和属性。实例方法只能被它所属的类的某个特定实例调用。实例方法只能由实例调用。<br>下面的例子，定义一个很简单的Counter类，Counter能被用来对一个动作发生的次数进行计数：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> <span class="built_in">count</span> = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">count</span> += <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">(by amount: Int)</span></span> &#123;</div><div class="line">        <span class="built_in">count</span> += amount</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reset</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">count</span> = <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Counter这个类定义了一个属性和3个方法，其实例可以通过点语法来调用属性和方法</p>
@@ -1659,7 +1639,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/2016-11-25-note-Swift-Language-Properties/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/iOS_Swift_language_note_Properties/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1678,7 +1658,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/25/2016-11-25-note-Swift-Language-Properties/" itemprop="url">Swift Properties</a></h1>
+                <a class="post-title-link" href="/2016/11/25/iOS_Swift_language_note_Properties/" itemprop="url">Swift Properties</a></h1>
         
 
         <div class="post-meta">
@@ -1713,8 +1693,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1731,9 +1711,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/25/2016-11-25-note-Swift-Language-Properties/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/25/iOS_Swift_language_note_Properties/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/25/2016-11-25-note-Swift-Language-Properties/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/25/iOS_Swift_language_note_Properties/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1763,10 +1743,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算（不是存储）一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。<br>存储属性和计算属性通常与特定类型的<code>实例</code>关联。但是，属性也可以直接作用于<code>类型</code>本身，这种属性称为类型属性。<br>另外，还可以定义属性观察器来监控属性值的变化，以此来触发一个自定义的操作。属性观察器可以添加到自己定义的存储属性上，也可以添加到从父类继承的属性上。</p>
+            <p>​    属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算（不是存储）一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。<br>存储属性和计算属性通常与特定类型的<code>实例</code>关联。但是，属性也可以直接作用于<code>类型</code>本身，这种属性称为类型属性。<br>另外，还可以定义属性观察器来监控属性值的变化，以此来触发一个自定义的操作。属性观察器可以添加到自己定义的存储属性上，也可以添加到从父类继承的属性上。</p>
 <h3 id="存储属性"><a href="#存储属性" class="headerlink" title="存储属性"></a>存储属性</h3><p>简单来说，一个存储属性就是存储在特定类或结构体实例里的一个常量(<code>let</code>)或变量(<code>var</code>)。可以在定义存储属性的时候指定默认值。也可以在构造过程中设置或修改存储属性的值，甚至修改常量存储属性的值。</p>
 <p>下面的例子定义了一个名为 FixedLengthRange 的结构体，该结构体用于描述整数的范围，且这个范围值在被创建后不能被修改，因为它是一个常量存储属性。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FixedLengthRange</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> firstValue: <span class="type">Int</span></div><div class="line">    <span class="keyword">let</span> length: <span class="type">Int</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> rangeOfThreeItems = <span class="type">FixedLengthRange</span>(firstValue: <span class="number">0</span>, length: <span class="number">3</span>)</div><div class="line"><span class="comment">// the range represents integer values 0, 1, and 2</span></div><div class="line">rangeOfThreeItems.firstValue = <span class="number">6</span></div><div class="line"><span class="comment">// the range now represents integer values 6, 7, and 8</span></div></pre></td></tr></table></figure>
@@ -1863,7 +1840,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/24/2016-11-24-note-Swift-Language-Classes and Structures/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/24/iOS_Swift_language_note_Classes and Structures/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1882,7 +1859,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/24/2016-11-24-note-Swift-Language-Classes and Structures/" itemprop="url">Swift Classes and Structures</a></h1>
+                <a class="post-title-link" href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="url">Swift Classes and Structures</a></h1>
         
 
         <div class="post-meta">
@@ -1917,8 +1894,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1935,9 +1912,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/24/2016-11-24-note-Swift-Language-Classes and Structures/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/24/2016-11-24-note-Swift-Language-Classes and Structures/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1967,10 +1944,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    类和结构体是人们构建代码所用的一种通用且灵活的构造体。你可以使用几乎完全相同的语法规则给类和结构体定义属性、添加方法。与其他语言不同的是，Swift不需要你为自定义类和结构体去独立创建接口和实现文件。在Swwift中，你只需要使用一个单独的文件来定义类和结构体，系统会自动生成面向其他代码的外部接口。<br>    通常类的实例被称为对象，Swift中类和结构体的关系比在其他语言中要密切</p>
+            <p>​    类和结构体是人们构建代码所用的一种通用且灵活的构造体。你可以使用几乎完全相同的语法规则给类和结构体定义属性、添加方法。与其他语言不同的是，Swift不需要你为自定义类和结构体去独立创建接口和实现文件。在Swwift中，你只需要使用一个单独的文件来定义类和结构体，系统会自动生成面向其他代码的外部接口。<br>    通常类的实例被称为对象，Swift中类和结构体的关系比在其他语言中要密切</p>
 <h3 id="类和结构体的对比"><a href="#类和结构体的对比" class="headerlink" title="类和结构体的对比"></a>类和结构体的对比</h3><p>类和结构体在Swift中有很多共同点，例如：</p>
 <ul>
 <li>定义属性用于存储值</li>
@@ -2095,7 +2069,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/2016-11-23-note-Swift-Language-Enumerations/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS_Swift_language_note_Enumerations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -2114,7 +2088,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/23/2016-11-23-note-Swift-Language-Enumerations/" itemprop="url">Swift Enumerations</a></h1>
+                <a class="post-title-link" href="/2016/11/23/iOS_Swift_language_note_Enumerations/" itemprop="url">Swift Enumerations</a></h1>
         
 
         <div class="post-meta">
@@ -2149,8 +2123,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -2167,9 +2141,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/23/2016-11-23-note-Swift-Language-Enumerations/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/23/iOS_Swift_language_note_Enumerations/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/23/2016-11-23-note-Swift-Language-Enumerations/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/23/iOS_Swift_language_note_Enumerations/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2199,10 +2173,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    枚举为一系相关联的值定义了一个公共的组类型来保证你在类型安全的情况下去使用这些值。 C语言里边的枚举是一系列整型值；Swift中的枚举更佳灵活，而且你不需要为枚举的每个成员赋值，枚举中的原始值（raw）可以是字符串、字符、数字等。<br>​    就像其他语言中的联合体和变体，枚举中的成员可以被指定为不同于其他成员的可以存储的类型，你可以在一个枚举中定义一组相关的枚举成员，每一个枚举成员都可以有适当类型的关联值。<br>​    在Swift中，枚举是一等（<code>first-class</code>）类型，它们支持了很多在传统上只被类（class）所支持的特性，比如计算属性（computed properties），用于提供枚举值的附加信息，实例方法（instance methods），用于提供和枚举值相关联的功能。枚举也可以定义构造函数（initializers）来提供一个初始值；可以在原始实现的基础上扩展它们的功能；还可以遵循协议（protocols）来提供标准的功能。</p>
+            <p>​    枚举为一系相关联的值定义了一个公共的组类型来保证你在类型安全的情况下去使用这些值。 C语言里边的枚举是一系列整型值；Swift中的枚举更佳灵活，而且你不需要为枚举的每个成员赋值，枚举中的原始值（raw）可以是字符串、字符、数字等。<br>​    就像其他语言中的联合体和变体，枚举中的成员可以被指定为不同于其他成员的可以存储的类型，你可以在一个枚举中定义一组相关的枚举成员，每一个枚举成员都可以有适当类型的关联值。<br>​    在Swift中，枚举是一等（<code>first-class</code>）类型，它们支持了很多在传统上只被类（class）所支持的特性，比如计算属性（computed properties），用于提供枚举值的附加信息，实例方法（instance methods），用于提供和枚举值相关联的功能。枚举也可以定义构造函数（initializers）来提供一个初始值；可以在原始实现的基础上扩展它们的功能；还可以遵循协议（protocols）来提供标准的功能。</p>
 <h3 id="枚举语法"><a href="#枚举语法" class="headerlink" title="枚举语法"></a>枚举语法</h3><p>使用enum关键词来创建枚举并且把它们的整个定义放在一对大括号内：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">SomeEnumeration</span> </span>&#123;</div><div class="line">    <span class="comment">// enumeration definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>例如一个指南针方向的例子：</p>
@@ -2310,7 +2281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/22/2016-11-22-note-Swift-Language-Closures/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/22/iOS_Swift_language_note_Closures/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -2329,7 +2300,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/22/2016-11-22-note-Swift-Language-Closures/" itemprop="url">Swift Closures</a></h1>
+                <a class="post-title-link" href="/2016/11/22/iOS_Swift_language_note_Closures/" itemprop="url">Swift Closures</a></h1>
         
 
         <div class="post-meta">
@@ -2364,8 +2335,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -2382,9 +2353,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/22/2016-11-22-note-Swift-Language-Closures/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/22/iOS_Swift_language_note_Closures/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/22/2016-11-22-note-Swift-Language-Closures/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/22/iOS_Swift_language_note_Closures/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2414,10 +2385,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    闭包是一种可以在代码中传递和使用的自包含代码块。Swift中的闭包盒C／ObjC中的闭包与其它语言中的lambdas表达式类似。闭包可用捕获其被定义的上下文中的变量或常量。Swift会为你处理所有的通过捕获的内存管理。函数章节介绍的全局／嵌套函数，是闭包的特殊形式，闭包采取以下三种形式之一</p>
+            <p>​    闭包是一种可以在代码中传递和使用的自包含代码块。Swift中的闭包盒C／ObjC中的闭包与其它语言中的lambdas表达式类似。闭包可用捕获其被定义的上下文中的变量或常量。Swift会为你处理所有的通过捕获的内存管理。函数章节介绍的全局／嵌套函数，是闭包的特殊形式，闭包采取以下三种形式之一</p>
 <blockquote>
 <ul>
 <li>全局函数是一个有名字且不捕获任何值的闭包</li>
@@ -2579,7 +2547,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2590,7 +2558,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2601,7 +2569,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

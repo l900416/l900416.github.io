@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -115,7 +113,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -397,10 +395,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    <a href="https://developer.apple.com/ibeacon/" target="_blank" rel="external"> iBeacon </a> 标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。</p>
+            <p>​    <a href="https://developer.apple.com/ibeacon/" target="_blank" rel="external"> iBeacon </a> 标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。</p>
 <h3 id="位置服务"><a href="#位置服务" class="headerlink" title="位置服务"></a>位置服务</h3><p>​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在屏幕左下角显示该应用的图标。<a href="http://lbs.amap.com/" target="_blank" rel="external"> 高德地图 </a>中的地理围栏就是一个实际应用场景。位置服务有以下缺点：   </p>
 <ul>
 <li>GPS本身定位精度能力有限，位置服务不可能提供精确的位置服务；</li>
@@ -413,7 +408,7 @@
 <li>Measured Power</li>
 <li>RSSI    </li>
 </ul>
-<p>关于iBeacon区域的定义，由3个值来唯一确定一个区域，举例如下图：<br><img src="https://l900416.github.io/img/post/iOS/iBeacon/uuid_major_minor.png" alt=""><br>图描述的很清楚了，我们可以通过ProximityUUID、Major和Minor三个值来定义不同的有关联的区域（事物），并通过不同的值组合来做很多有意思的事情。</p>
+<p>关于iBeacon区域的定义，由3个值来唯一确定一个区域，举例如下图：<br><img src="/post/iOS/iBeacon/uuid_major_minor.png" alt=""><br>图描述的很清楚了，我们可以通过ProximityUUID、Major和Minor三个值来定义不同的有关联的区域（事物），并通过不同的值组合来做很多有意思的事情。</p>
 <h3 id="iBeacon基础场景"><a href="#iBeacon基础场景" class="headerlink" title="iBeacon基础场景"></a>iBeacon基础场景</h3><h4 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h4><p>​    区域监听(Region Monitoring)即当设备进入／离开某个／某类区域的时候，可以触发后续联动，其监听的区域可能是ProximityUUID代表的某个大的类别区域比如一个公司在全国的所有子公司、或者由ProximityUUID和Major组合的相对小的区域比如某个城市中的子公司。至于什么区域就比较灵活了。<br>​    一般情况下，iOS程序退出或者后台挂起后，程序是不能执行的(其他Background-Mode除外)。但是这里所说的区域监听是托管给iOS系统，也就是说程序设置完监听区域后，iOS系统会托管，当设备进入／离开监听区域时，系统会触发相应的操作，并唤醒程序。</p>
 <h4 id="测距"><a href="#测距" class="headerlink" title="测距"></a>测距</h4><p>测距（Ranging）即设备与Beacon区域中心点的接近距离（接近状态），包括：   </p>
 <ul>
@@ -489,7 +484,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/21/2016-12-21-iOS-Develop-Introduction-MyFramework/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/21/iOS_develop_overview_framework_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -508,7 +503,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/21/2016-12-21-iOS-Develop-Introduction-MyFramework/" itemprop="url">浅谈iOS框架</a></h1>
+                <a class="post-title-link" href="/2016/12/21/iOS_develop_overview_framework_2/" itemprop="url">浅谈iOS框架</a></h1>
         
 
         <div class="post-meta">
@@ -543,8 +538,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -561,9 +556,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/21/2016-12-21-iOS-Develop-Introduction-MyFramework/#comments" itemprop="discussionUrl">
+                <a href="/2016/12/21/iOS_develop_overview_framework_2/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/21/2016-12-21-iOS-Develop-Introduction-MyFramework/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/12/21/iOS_develop_overview_framework_2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -593,10 +588,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>记录下个人从事iOS开发过程中，使用过的程序框架，谈谈个人的理解。</p>
+            <p>记录下个人从事iOS开发过程中，使用过的程序框架，谈谈个人的理解。</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    回顾最近三年，我主要从事iOS前端开发工作。一个一无所知的摸石头过河，慢慢在前端开发的道路上寻找、探索。之前我是做嵌入式开发的，转做iOS前端开发可以说是一个幸运的意外。因为业务需要，看了两个星期的斯坦福大学大学iOS公开课，就开始了我的踩坑、脱坑之旅。这里就聊一聊近3年来iOS前端开发使用的框架吧。</p>
 <h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>​    第一次接触MVC这个框架，是在大三的一门《J2EE》教材的最后一章，当时还沉浸在JSP+Servlet各种组合中，提到这个的时候，因为是接触的第一个框架，所以印象特别深刻，直到后来实习的时候使用Struct框架做了一个管理系统，才算<code>真正</code>的理解。后来在斯坦福iOS视频教程中又一次的遇到她。<br>概念不用再赘述，当时主要是使用Xib+ObjC开发。鉴于应用本身的弱Model，当时的整个应用看起来都是ViewController。文件组织特别的乱，结果就是很不好维护。在经历了iOS5～iOS10系统的适配后，在代码复用方面，简直是个噩梦！在这里就主要记录下使用她的过程中遇到的问题吧   </p>
 <ul>
@@ -608,7 +600,7 @@
 </ul>
 <p>以上很多因素，最终导致了App的ViewController特别臃肿，且页面间组织关系不好梳理，代码复用等这里真心无力再吐槽了。期间界面组织方式有<code>StoryBoard+ObjC</code>、<code>Xib+ObjC</code>和<code>ObjC纯代码</code>，开发的应用包括《效率助手》、《知识库》、《因泰在线》，使用该框架过程中对其结构进行了调整，和后边的MVVM框架思想类似。</p>
 <h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>​    对于这个框架，感觉是先使用后，才了解到其概念的。先使用的主要原因是MVC的Controller太过庞大，且维护起来很不容易。很多逻辑感觉不应该放到控制器中，所以将Controller进行了分割，使用起来确实解决了代码复用问题，程序结构变得清晰起来。使用该框架开发的应用包括《数据采集》、《路桥在线》等。因为在查询框架资料时，使用的和这个不谋而合。所以这个框架使用的周期相对较短。</p>
-<h3 id="自定义框架"><a href="#自定义框架" class="headerlink" title="自定义框架"></a>自定义框架</h3><p>​    之前主要从事嵌入式开发，对某个车载导航产品的结构比较熟悉，所以就仿造她自己编写了一套框架，主要为了解决代码分类。层级结构包括：界面展示层HMI、交互层PF、数据传输层HMI-Core、核心功能层FunctionCore、数据持有层Model、共同层Common等，功能模块横向纵向通过Symbol（Event或者Notification）的形式实现，通过反射等机制来协调各功能。<br><img src="https://l900416.github.io/img/post/iOS/Other/Introduction-MyFramework-1.png" alt=""></p>
+<h3 id="自定义框架"><a href="#自定义框架" class="headerlink" title="自定义框架"></a>自定义框架</h3><p>​    之前主要从事嵌入式开发，对某个车载导航产品的结构比较熟悉，所以就仿造她自己编写了一套框架，主要为了解决代码分类。层级结构包括：界面展示层HMI、交互层PF、数据传输层HMI-Core、核心功能层FunctionCore、数据持有层Model、共同层Common等，功能模块横向纵向通过Symbol（Event或者Notification）的形式实现，通过反射等机制来协调各功能。<br><img src="/post/iOS/Other/Introduction-MyFramework-1.png" alt=""></p>
 <h3 id="MVVM变种"><a href="#MVVM变种" class="headerlink" title="MVVM变种"></a>MVVM变种</h3><p>​    这个(自己定的名字)是主要使用的，一个类似MVMCV但严格上来说不属于MVMCV框架的框架。与之的主要区别是View-Model的组织，我目前在VM（View-Model）中放置了部分业务逻辑，少量的业务逻辑还是在C（Controller）中。主要原因是目前iOS前端移动应用由我一人进行承担，部分业务逻辑放在Controller中一定程度上可以加快开发速度（应该是错觉，反正我说了算）。这里主要提一点就是 <strong>pod</strong> 的使用，她解决了很大的APP适配问题。</p>
 <h3 id="MVMCV"><a href="#MVMCV" class="headerlink" title="MVMCV"></a>MVMCV</h3><p>​    目前使用这个框架开发过聊天功能界面。感觉多人合作的时候这个框架还是非常清晰的；从工作分配到代码编写、问题调查，实在是找不出拒绝她的理由。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    虽然目前主要使用MVVM的一种变种形式，将View-Model中的逻辑进行了初步的分类。但后续过程中，我还是会向MVMCV结构变更的，因为现在已经尝到了MVMCV结构的甜头。</p>
@@ -660,7 +652,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/05/2016-12-05-note-Swift-Language-Access Control/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/05/iOS_Swift_language_note_Access-Control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -679,7 +671,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/05/2016-12-05-note-Swift-Language-Access Control/" itemprop="url">Swift Access Control</a></h1>
+                <a class="post-title-link" href="/2016/12/05/iOS_Swift_language_note_Access-Control/" itemprop="url">Swift Access Control</a></h1>
         
 
         <div class="post-meta">
@@ -714,8 +706,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -732,9 +724,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/05/2016-12-05-note-Swift-Language-Access Control/#comments" itemprop="discussionUrl">
+                <a href="/2016/12/05/iOS_Swift_language_note_Access-Control/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/05/2016-12-05-note-Swift-Language-Access Control/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/12/05/iOS_Swift_language_note_Access-Control/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -764,9 +756,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}<br>​<br>​    访问控制可以限定其他源文件或模块中的代码对你的代码的访问级别。这个特性可以让我们隐藏代码的一些实现细节，并且可以为其他人可以访问和使用的代码提供接口。</li>
-</ul>
+            <p>​<br>​    访问控制可以限定其他源文件或模块中的代码对你的代码的访问级别。这个特性可以让我们隐藏代码的一些实现细节，并且可以为其他人可以访问和使用的代码提供接口。</p>
 <p>你可以明确地给单个类型（类、结构体、枚举）设置访问级别，也可以给这些类型的属性、方法、构造器、下标等设置访问级别。协议也可以被限定在一定的范围内使用，包括协议里的全局常量、变量和函数。<br>Swift 不仅提供了多种不同的访问级别，还为某些典型场景提供了默认的访问级别，这样就不需要我们在每段代码中都申明显式访问级别。其实，如果只是开发一个单一目标的应用程序，我们完全可以不用显式声明代码的访问级别。</p>
 <h3 id="模板和源文件"><a href="#模板和源文件" class="headerlink" title="模板和源文件"></a>模板和源文件</h3><p>Swift 中的访问控制模型基于模块和源文件这两个概念。<br>模块指的是独立的代码单元，框架或应用程序会作为一个独立的模块来构建和发布。在 Swift 中，一个模块可以使用 import 关键字导入另外一个模块。<br>在 Swift 中，Xcode 的每个目标（例如框架或应用程序）都被当作独立的模块处理。如果你是为了实现某个通用的功能，或者是为了封装一些常用方法而将代码打包成独立的框架，这个框架就是 Swift 中的一个模块。当它被导入到某个应用程序或者其他框架时，框架内容都将属于这个独立的模块。<br>源文件就是 Swift 中的源代码文件，它通常属于一个模块，即一个应用程序或者框架。尽管我们一般会将不同的类型分别定义在不同的源文件中，但是同一个源文件也可以包含多个类型、函数之类的定义。</p>
 <h3 id="访问级别"><a href="#访问级别" class="headerlink" title="访问级别"></a>访问级别</h3><p>Swift 为代码中的实体提供了五种不同的访问级别。这些访问级别不仅与源文件中定义的实体相关，同时也与源文件所属的模块相关。</p>
@@ -890,7 +880,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/2016-12-01-note-Swift-Language-Protocols/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/iOS_Swift_language_note_Protocols/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -909,7 +899,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/02/2016-12-01-note-Swift-Language-Protocols/" itemprop="url">Swift Protocols</a></h1>
+                <a class="post-title-link" href="/2016/12/02/iOS_Swift_language_note_Protocols/" itemprop="url">Swift Protocols</a></h1>
         
 
         <div class="post-meta">
@@ -944,8 +934,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -962,9 +952,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/02/2016-12-01-note-Swift-Language-Protocols/#comments" itemprop="discussionUrl">
+                <a href="/2016/12/02/iOS_Swift_language_note_Protocols/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/02/2016-12-01-note-Swift-Language-Protocols/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/12/02/iOS_Swift_language_note_Protocols/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -994,10 +984,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    协议 定义了用来实现某一特定任务或者功能的方法、属性，以及其他需要的东西的一个蓝图。类、结构体或枚举都可以遵循协议，并为协议定义的这些要求提供具体实现。任何类型能够满足某个协议的要求，就可以说该类型遵循这个协议。<br>除了遵循协议的类型必须实现的要求外，还可以对协议进行扩展，通过扩展来实现一部分要求或者实现一些附加功能，这样遵循协议的类型就能够使用这些功能。</p>
+            <p>​    协议 定义了用来实现某一特定任务或者功能的方法、属性，以及其他需要的东西的一个蓝图。类、结构体或枚举都可以遵循协议，并为协议定义的这些要求提供具体实现。任何类型能够满足某个协议的要求，就可以说该类型遵循这个协议。<br>除了遵循协议的类型必须实现的要求外，还可以对协议进行扩展，通过扩展来实现一部分要求或者实现一些附加功能，这样遵循协议的类型就能够使用这些功能。</p>
 <h3 id="协议语法"><a href="#协议语法" class="headerlink" title="协议语法"></a>协议语法</h3><p>协议的定义方式与类、结构体和枚举的定义非常相似：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SomeProtocol</span> </span>&#123;</div><div class="line">    <span class="comment">// protocol definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>要让自定义类型遵循某个协议，在定义类型时，需要在类型名称后加上协议名称，中间以冒号（:）分隔。遵循多个协议时，各协议之间用逗号（,）分隔：</p>
@@ -1206,7 +1193,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/2016-12-02-note-Swift-Language-Generics/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/iOS_Swift_language_note_Generics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1225,7 +1212,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/02/2016-12-02-note-Swift-Language-Generics/" itemprop="url">Swift Generics</a></h1>
+                <a class="post-title-link" href="/2016/12/02/iOS_Swift_language_note_Generics/" itemprop="url">Swift Generics</a></h1>
         
 
         <div class="post-meta">
@@ -1260,8 +1247,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1278,9 +1265,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/02/2016-12-02-note-Swift-Language-Generics/#comments" itemprop="discussionUrl">
+                <a href="/2016/12/02/iOS_Swift_language_note_Generics/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/02/2016-12-02-note-Swift-Language-Generics/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/12/02/iOS_Swift_language_note_Generics/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1310,9 +1297,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}<br>​<br>​    泛型代码让你编写出适用于任意类型、灵活可重用的函数及类型。它能让你避免代码的重复，用一种清晰和抽象的方式来表达代码的意图。 </li>
-</ul>
+            <p>​<br>​    泛型代码让你编写出适用于任意类型、灵活可重用的函数及类型。它能让你避免代码的重复，用一种清晰和抽象的方式来表达代码的意图。 </p>
 <h3 id="泛型所解决的问题"><a href="#泛型所解决的问题" class="headerlink" title="泛型所解决的问题"></a>泛型所解决的问题</h3><p>下面是一个标准的非泛型函数 swapTwoInts(<em>:</em>:)，用来交换两个 Int 值：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Int, <span class="number">_</span> b: <span class="keyword">inout</span> Int)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> temporaryA = a</div><div class="line">    a = b</div><div class="line">    b = temporaryA</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>swapTwoInts(<em>:</em>:) 函数交换 b 的原始值到 a，并交换 a 的原始值到 b。你可以调用这个函数交换两个 Int 变量的值：</p>
@@ -1449,7 +1434,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/2016-12-01-note-Swift-Language-Nested Types/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/iOS_Swift_language_note_Nested-Types/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1468,7 +1453,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/01/2016-12-01-note-Swift-Language-Nested Types/" itemprop="url">Swift Nested Types</a></h1>
+                <a class="post-title-link" href="/2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="url">Swift Nested Types</a></h1>
         
 
         <div class="post-meta">
@@ -1503,8 +1488,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1521,9 +1506,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/01/2016-12-01-note-Swift-Language-Nested Types/#comments" itemprop="discussionUrl">
+                <a href="/2016/12/01/iOS_Swift_language_note_Nested-Types/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/01/2016-12-01-note-Swift-Language-Nested Types/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1553,10 +1538,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    枚举常被用于为特定类或结构体实现某些功能。类似的，枚举可以方便的定义工具类或结构体，从而为某个复杂的类型所使用。为了实现这种功能，Swift 允许你定义嵌套类型，可以在支持的类型中定义嵌套的枚举、类和结构体。<br>要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的{}内，而且可以根据需要定义多级嵌套。</p>
+            <p>​    枚举常被用于为特定类或结构体实现某些功能。类似的，枚举可以方便的定义工具类或结构体，从而为某个复杂的类型所使用。为了实现这种功能，Swift 允许你定义嵌套类型，可以在支持的类型中定义嵌套的枚举、类和结构体。<br>要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的{}内，而且可以根据需要定义多级嵌套。</p>
 <h3 id="嵌套类型实践"><a href="#嵌套类型实践" class="headerlink" title="嵌套类型实践"></a>嵌套类型实践</h3><p>下面这个例子定义了一个结构体BlackjackCard，用来模拟BlackjackCard中的扑克牌点数。BlackjackCard结构体包含两个嵌套定义的枚举类型Suit和Rank。<br>在BlackjackCard中，Ace牌可以表示1或者11，Ace牌的这一特征通过一个嵌套在Rank枚举中的结构体Values来表示：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BlackjackCard</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">// nested Suit enumeration</span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Suit</span>: <span class="title">Character</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> spades = <span class="string">"♠"</span>, hearts = <span class="string">"♡"</span>, diamonds = <span class="string">"♢"</span>, clubs = <span class="string">"♣"</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// nested Rank enumeration</span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Rank</span>: <span class="title">Int</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> two = <span class="number">2</span>, three, four, five, six, seven, eight, nine, ten</div><div class="line">        <span class="keyword">case</span> jack, queen, king, ace</div><div class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Values</span> </span>&#123;</div><div class="line">            <span class="keyword">let</span> first: <span class="type">Int</span>, second: <span class="type">Int</span>?</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> values: <span class="type">Values</span> &#123;</div><div class="line">            <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">            <span class="keyword">case</span> .ace:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">1</span>, second: <span class="number">11</span>)</div><div class="line">            <span class="keyword">case</span> .jack, .queen, .king:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">10</span>, second: <span class="literal">nil</span>)</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="keyword">self</span>.rawValue, second: <span class="literal">nil</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// BlackjackCard properties and methods</span></div><div class="line">    <span class="keyword">let</span> rank: <span class="type">Rank</span>, suit: <span class="type">Suit</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">var</span> output = <span class="string">"suit is <span class="subst">\(suit.rawValue)</span>,"</span></div><div class="line">        output += <span class="string">" value is <span class="subst">\(rank.values.first)</span>"</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> second = rank.values.second &#123;</div><div class="line">            output += <span class="string">" or <span class="subst">\(second)</span>"</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Suit枚举用来描述扑克牌的四种花色，并用一个Character类型的原始值表示花色符号。<br>Rank枚举用来描述扑克牌从Ace~10，以及J、Q、K，这13种牌，并用一个Int类型的原始值表示牌的面值。（这个Int类型的原始值未用于Ace、J、Q、K这4种牌。）<br>如上所述，Rank枚举在内部定义了一个嵌套结构体Values。结构体Values中定义了两个属性，用于反映只有Ace有两个数值，其余牌都只有一个数值：</p>
@@ -1629,7 +1611,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/2016-12-01-note-Swift-Language-Extensions/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/iOS_Swift_language_note_Extensions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1648,7 +1630,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/01/2016-12-01-note-Swift-Language-Extensions/" itemprop="url">Swift Extensions</a></h1>
+                <a class="post-title-link" href="/2016/12/01/iOS_Swift_language_note_Extensions/" itemprop="url">Swift Extensions</a></h1>
         
 
         <div class="post-meta">
@@ -1683,8 +1665,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1701,9 +1683,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/01/2016-12-01-note-Swift-Language-Extensions/#comments" itemprop="discussionUrl">
+                <a href="/2016/12/01/iOS_Swift_language_note_Extensions/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/01/2016-12-01-note-Swift-Language-Extensions/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/12/01/iOS_Swift_language_note_Extensions/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1733,10 +1715,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}    </li>
-</ul>
-<p>​    扩展为一个已有的类、结构体、枚举类型或者协议类型添加新功能。这包括在没有权限获取原始源代码的情况下扩展类型的能力（即 逆向建模 ）。扩展和 Objective-C 中的分类类似。（与 Objective-C 不同的是，Swift 的扩展没有名字。）<br>在Swift中，扩展可以：</p>
+            <p>​    扩展为一个已有的类、结构体、枚举类型或者协议类型添加新功能。这包括在没有权限获取原始源代码的情况下扩展类型的能力（即 逆向建模 ）。扩展和 Objective-C 中的分类类似。（与 Objective-C 不同的是，Swift 的扩展没有名字。）<br>在Swift中，扩展可以：</p>
 <ul>
 <li>添加计算型属性和计算型类型属性</li>
 <li>定义实例方法和类型方法</li>
@@ -1840,7 +1819,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/2016-11-30-note-Swift-Language-Type Casting/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/iOS_Swift_language_note_Error-Handling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -1859,7 +1838,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/30/2016-11-30-note-Swift-Language-Type Casting/" itemprop="url">Swift Type Casting</a></h1>
+                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Error-Handling/" itemprop="url">Swift Error Handling</a></h1>
         
 
         <div class="post-meta">
@@ -1894,8 +1873,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1912,9 +1891,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/30/2016-11-30-note-Swift-Language-Type Casting/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/30/iOS_Swift_language_note_Error-Handling/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/30/2016-11-30-note-Swift-Language-Type Casting/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/30/iOS_Swift_language_note_Error-Handling/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1944,206 +1923,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。<br>​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议</p>
-<h3 id="定义一个类层次作为例子"><a href="#定义一个类层次作为例子" class="headerlink" title="定义一个类层次作为例子"></a>定义一个类层次作为例子</h3><p>你可以将类型转换用在类和子类的层次结构上，检查特定类实例的类型并且转换这个类实例的类型成为这个层次结构中的其他类型。下面的三个代码段定义了一个类层次和一个包含了这些类实例的数组，作为类型转换的例子。<br>第一个代码片段定义了一个新的基类 MediaItem。这个类为任何出现在数字媒体库的媒体项提供基础功能。特别的，它声明了一个 String 类型的 name 属性，和一个 init(name:) 初始化器。（假定所有的媒体项都有个名称。）</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下一个代码段定义了 MediaItem 的两个子类。第一个子类 Movie 封装了与电影相关的额外信息，在父类（或者说基类）的基础上增加了一个 director（导演）属性，和相应的初始化器。第二个子类 Song，在父类的基础上增加了一个 artist（艺术家）属性，和相应的初始化器：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Movie</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> director: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, director: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.director = director</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Song</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> artist: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, artist: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.artist = artist</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后一个代码段创建了一个数组常量 library，包含两个 Movie 实例和三个 Song 实例。library 的类型是在它被初始化时根据它数组中所包含的内容推断来的。Swift 的类型检测器能够推断出 Movie 和 Song 有共同的父类 MediaItem，所以它推断出 [MediaItem] 类作为 library 的类型：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> library = [</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Casablanca"</span>, director: <span class="string">"Michael Curtiz"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Blue Suede Shoes"</span>, artist: <span class="string">"Elvis Presley"</span>),</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Citizen Kane"</span>, director: <span class="string">"Orson Welles"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"The One And Only"</span>, artist: <span class="string">"Chesney Hawkes"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Never Gonna Give You Up"</span>, artist: <span class="string">"Rick Astley"</span>)</div><div class="line">]</div><div class="line"><span class="comment">// the type of "library" is inferred to be [MediaItem]</span></div></pre></td></tr></table></figure>
-<p>在幕后 library 里存储的媒体项依然是 Movie 和 Song 类型的。但是，若你迭代它，依次取出的实例会是 MediaItem 类型的，而不是 Movie 和 Song 类型。为了让它们作为原本的类型工作，你需要检查它们的类型或者向下转换它们到其它类型，就像下面描述的一样。</p>
-<h3 id="检查类型"><a href="#检查类型" class="headerlink" title="检查类型"></a>检查类型</h3><p>用类型检查操作符（ <code>is</code> ）来检查一个实例是否属于特定子类型。若实例属于那个子类型，类型检查操作符返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
-<p>下面的例子定义了两个变量，movieCount 和 songCount，用来计算数组 library 中 Movie 和 Song 类型的实例数量：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> movieCount = <span class="number">0</span></div><div class="line"><span class="keyword">var</span> songCount = <span class="number">0</span></div><div class="line"> </div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> library &#123;</div><div class="line">    <span class="keyword">if</span> item <span class="keyword">is</span> <span class="type">Movie</span> &#123;</div><div class="line">        movieCount += <span class="number">1</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> item <span class="keyword">is</span> <span class="type">Song</span> &#123;</div><div class="line">        songCount += <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="built_in">print</span>(<span class="string">"Media library contains <span class="subst">\(movieCount)</span> movies and <span class="subst">\(songCount)</span> songs"</span>)</div><div class="line"><span class="comment">// Prints "Media library contains 2 movies and 3 songs"</span></div></pre></td></tr></table></figure>
-<p>若当前 MediaItem 是一个 Movie 类型的实例，item is Movie 返回 true，否则返回 false。同样的，item is Song 检查 item 是否为 Song 类型的实例。在循环结束后，movieCount 和 songCount 的值就是被找到的属于各自类型的实例的数量。</p>
-<h3 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h3><p>某类型的一个常量或变量可能在幕后实际上属于一个子类。当确定是这种情况时，你可以尝试向下转到它的子类型，用类型转换操作符（as? 或 as!）。<br>因为向下转型可能会失败，类型转型操作符带有两种不同形式。条件形式as? 返回一个你试图向下转成的类型的可选值。强制形式 as! 把试图向下转型和强制解包转换结果结合为一个操作。</p>
-<p>当你不确定向下转型可以成功时，用类型转换的条件形式（as?）。条件形式的类型转换总是返回一个可选值，并且若下转是不可能的，可选值将是 nil。这使你能够检查向下转型是否成功。<br>只有你可以确定向下转型一定会成功时，才使用强制形式（as!）。当你试图向下转型为一个不正确的类型时，强制形式的类型转换会触发一个运行时错误。</p>
-<p>下面的例子，迭代了 library 里的每一个 MediaItem，并打印出适当的描述。要这样做，item 需要真正作为 Movie 或 Song 的类型来使用，而不仅仅是作为 MediaItem。为了能够在描述中使用 Movie 或 Song 的 director 或 artist 属性，这是必要的。<br>在这个示例中，数组中的每一个 item 可能是 Movie 或 Song。事前你不知道每个 item 的真实类型，所以这里使用条件形式的类型转换（as?）去检查循环里的每次下转：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> library &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> movie = item <span class="keyword">as</span>? <span class="type">Movie</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Movie: <span class="subst">\(movie.name)</span>, dir. <span class="subst">\(movie.director)</span>"</span>)</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">let</span> song = item <span class="keyword">as</span>? <span class="type">Song</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Song: <span class="subst">\(song.name)</span>, by <span class="subst">\(song.artist)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// Movie: Casablanca, dir. Michael Curtiz</span></div><div class="line"><span class="comment">// Song: Blue Suede Shoes, by Elvis Presley</span></div><div class="line"><span class="comment">// Movie: Citizen Kane, dir. Orson Welles</span></div><div class="line"><span class="comment">// Song: The One And Only, by Chesney Hawkes</span></div><div class="line"><span class="comment">// Song: Never Gonna Give You Up, by Rick Astley</span></div></pre></td></tr></table></figure>
-<p>示例首先试图将 item 下转为 Movie。因为 item 是一个 MediaItem 类型的实例，它可能是一个 Movie；同样，它也可能是一个 Song，或者仅仅是基类 MediaItem。因为不确定，as? 形式在试图下转时将返回一个可选值。item as? Movie 的返回值是 Movie? 或者说“可选 Movie”。</p>
-<p>当向下转型为 Movie 应用在两个 Song 实例时将会失败。为了处理这种情况，上面的例子使用了可选绑定（optional binding）来检查可选 Movie 真的包含一个值（这个是为了判断下转是否成功。）可选绑定是这样写的“if let movie = item as? Movie”，可以这样解读：</p>
-<p>“尝试将 item 转为 Movie 类型。若成功，设置一个新的临时常量 movie 来存储返回的可选 Movie 中的值”</p>
-<p>若向下转型成功，然后 movie 的属性将用于打印一个 Movie 实例的描述，包括它的导演的名字 director。相似的原理被用来检测 Song 实例，当 Song 被找到时则打印它的描述（包含 artist 的名字）。<br>    转换没有真的改变实例或它的值。根本的实例保持不变；只是简单地把它作为它被转换成的类型来使用。</p>
-<h3 id="Any-和-AnyObject-的类型转换"><a href="#Any-和-AnyObject-的类型转换" class="headerlink" title="Any 和 AnyObject 的类型转换"></a>Any 和 AnyObject 的类型转换</h3><p>Swift 为不确定类型提供了两种特殊的类型别名：</p>
-<ul>
-<li>可以表示任何类型，包括函数类型。</li>
-<li>可以表示任何类类型的实例。</li>
-</ul>
-<p>只有当你确实需要它们的行为和功能时才使用 Any 和 AnyObject。代码中最好使用明确的类型。</p>
-<p>这里有个示例，使用 Any 类型来和混合的不同类型一起工作，包括函数类型和非类类型。它创建了一个可以存储 Any 类型的数组 things：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> things = [<span class="type">Any</span>]()</div><div class="line"> </div><div class="line">things.append(<span class="number">0</span>)</div><div class="line">things.append(<span class="number">0.0</span>)</div><div class="line">things.append(<span class="number">42</span>)</div><div class="line">things.append(<span class="number">3.14159</span>)</div><div class="line">things.append(<span class="string">"hello"</span>)</div><div class="line">things.append((<span class="number">3.0</span>, <span class="number">5.0</span>))</div><div class="line">things.append(<span class="type">Movie</span>(name: <span class="string">"Ghostbusters"</span>, director: <span class="string">"Ivan Reitman"</span>))</div><div class="line">things.append(&#123; (name: <span class="type">String</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span> <span class="string">"Hello, <span class="subst">\(name)</span>"</span> &#125;)</div></pre></td></tr></table></figure>
-<p>things 数组包含两个 Int 值，两个 Double 值，一个 String 值，一个元组 (Double, Double)，一个Movie实例“Ghostbusters”，以及一个接受 String 值并返回另一个 String 值的闭包表达式。<br>你可以在 switch 表达式的 case 中使用 is 和 as 操作符来找出只知道是 Any 或 AnyObject 类型的常量或变量的具体类型。下面的示例迭代 things 数组中的每一项，并用 switch 语句查找每一项的类型。有几个 switch 语句的 case 绑定它们匹配到的值到一个指定类型的常量，从而可以打印这些值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> thing <span class="keyword">in</span> things &#123;</div><div class="line">    <span class="keyword">switch</span> thing &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span> <span class="keyword">as</span> <span class="type">Int</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"zero as an Int"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span> <span class="keyword">as</span> <span class="type">Double</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"zero as a Double"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someInt <span class="keyword">as</span> <span class="type">Int</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"an integer value of <span class="subst">\(someInt)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someDouble <span class="keyword">as</span> <span class="type">Double</span> <span class="keyword">where</span> someDouble &gt; <span class="number">0</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a positive double value of <span class="subst">\(someDouble)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">is</span> <span class="type">Double</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"some other double value that I don't want to print"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someString <span class="keyword">as</span> <span class="type">String</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a string value of \"<span class="subst">\(someString)</span>\""</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> (x, y) <span class="keyword">as</span> (<span class="type">Double</span>, <span class="type">Double</span>):</div><div class="line">        <span class="built_in">print</span>(<span class="string">"an (x, y) point at <span class="subst">\(x)</span>, <span class="subst">\(y)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> movie <span class="keyword">as</span> <span class="type">Movie</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a movie called <span class="subst">\(movie.name)</span>, dir. <span class="subst">\(movie.director)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> stringConverter <span class="keyword">as</span> (<span class="type">String</span>) -&gt; <span class="type">String</span>:</div><div class="line">        <span class="built_in">print</span>(stringConverter(<span class="string">"Michael"</span>))</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"something else"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// zero as an Int</span></div><div class="line"><span class="comment">// zero as a Double</span></div><div class="line"><span class="comment">// an integer value of 42</span></div><div class="line"><span class="comment">// a positive double value of 3.14159</span></div><div class="line"><span class="comment">// a string value of "hello"</span></div><div class="line"><span class="comment">// an (x, y) point at 3.0, 5.0</span></div><div class="line"><span class="comment">// a movie called Ghostbusters, dir. Ivan Reitman</span></div><div class="line"><span class="comment">// Hello, Michael</span></div></pre></td></tr></table></figure>
-<pre><code>Any类型可以表示所有类型的值，包括可选类型。Swift 会在你用Any类型来表示一个可选值的时候，给你一个警告。如果你确实想使用Any类型来承载可选值，你可以使用as操作符显示转换为Any，如下所示：
-</code></pre><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> optionalNumber: <span class="type">Int</span>? = <span class="number">3</span></div><div class="line">things.append(optionalNumber)        <span class="comment">// Warning</span></div><div class="line">things.append(optionalNumber <span class="keyword">as</span> <span class="type">Any</span>) <span class="comment">// No warning</span></div></pre></td></tr></table></figure>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html/" target="_blank" rel="external"> Type Casting </a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/2016-11-30-note-Swift-Language-Error Handling/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/30/2016-11-30-note-Swift-Language-Error Handling/" itemprop="url">Swift Error Handling</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T23:20:11+08:00">
-                2016-11-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/30/2016-11-30-note-Swift-Language-Error Handling/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/30/2016-11-30-note-Swift-Language-Error Handling/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    错误处理（Error handling）是响应错误以及从错误中恢复的过程。Swift 提供了在运行时对可恢复错误的抛出、捕获、传递和操作的一等公民支持。<br>某些操作无法保证总是执行完所有代码或总是生成有用的结果。可选类型可用来表示值缺失，但是当某个操作失败时，最好能得知失败的原因，从而可以作出相应的应对。<br>举个例子，假如有个从磁盘上的某个文件读取数据并进行处理的任务，该任务会有多种可能失败的情况，包括指定路径下文件并不存在，文件不具有可读权限，或者文件编码格式不兼容。区分这些不同的失败情况可以让程序解决并处理某些错误，然后把它解决不了的错误报告给用户。<br>    Swift 中的错误处理涉及到错误处理模式，这会用到 Cocoa 和 Objective-C 中的NSError。</p>
+            <p>​    错误处理（Error handling）是响应错误以及从错误中恢复的过程。Swift 提供了在运行时对可恢复错误的抛出、捕获、传递和操作的一等公民支持。<br>某些操作无法保证总是执行完所有代码或总是生成有用的结果。可选类型可用来表示值缺失，但是当某个操作失败时，最好能得知失败的原因，从而可以作出相应的应对。<br>举个例子，假如有个从磁盘上的某个文件读取数据并进行处理的任务，该任务会有多种可能失败的情况，包括指定路径下文件并不存在，文件不具有可读权限，或者文件编码格式不兼容。区分这些不同的失败情况可以让程序解决并处理某些错误，然后把它解决不了的错误报告给用户。<br>    Swift 中的错误处理涉及到错误处理模式，这会用到 Cocoa 和 Objective-C 中的NSError。</p>
 <h3 id="表示并抛出错误"><a href="#表示并抛出错误" class="headerlink" title="表示并抛出错误"></a>表示并抛出错误</h3><p>在 Swift 中，错误用符合Error协议的类型的值来表示。这个空协议表明该类型可以用于错误处理。<br>Swift 的枚举类型尤为适合构建一组相关的错误状态，枚举的关联值还可以提供错误状态的额外信息。例如，你可以这样表示在一个游戏中操作自动贩卖机时可能会出现的错误状态：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">VendingMachineError</span>: <span class="title">Error</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> invalidSelection</div><div class="line">    <span class="keyword">case</span> insufficientFunds(coinsNeeded: <span class="type">Int</span>)</div><div class="line">    <span class="keyword">case</span> outOfStock</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>抛出一个错误可以让你表明有意外情况发生，导致正常的执行流程无法继续执行。抛出错误使用throw关键字。例如，下面的代码抛出一个错误，提示贩卖机还需要5个硬币：</p>
@@ -2234,7 +2014,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/2016-11-29-note-Swift-Language-Optional Chaining/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/iOS_Swift_language_note_Type-Casting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -2253,7 +2033,200 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/30/2016-11-29-note-Swift-Language-Optional Chaining/" itemprop="url">Swift Optional Chaining</a></h1>
+                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" itemprop="url">Swift Type Casting</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T23:20:11+08:00">
+                2016-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/30/iOS_Swift_language_note_Type-Casting/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/30/iOS_Swift_language_note_Type-Casting/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。<br>​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议</p>
+<h3 id="定义一个类层次作为例子"><a href="#定义一个类层次作为例子" class="headerlink" title="定义一个类层次作为例子"></a>定义一个类层次作为例子</h3><p>你可以将类型转换用在类和子类的层次结构上，检查特定类实例的类型并且转换这个类实例的类型成为这个层次结构中的其他类型。下面的三个代码段定义了一个类层次和一个包含了这些类实例的数组，作为类型转换的例子。<br>第一个代码片段定义了一个新的基类 MediaItem。这个类为任何出现在数字媒体库的媒体项提供基础功能。特别的，它声明了一个 String 类型的 name 属性，和一个 init(name:) 初始化器。（假定所有的媒体项都有个名称。）</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下一个代码段定义了 MediaItem 的两个子类。第一个子类 Movie 封装了与电影相关的额外信息，在父类（或者说基类）的基础上增加了一个 director（导演）属性，和相应的初始化器。第二个子类 Song，在父类的基础上增加了一个 artist（艺术家）属性，和相应的初始化器：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Movie</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> director: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, director: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.director = director</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Song</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> artist: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, artist: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.artist = artist</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后一个代码段创建了一个数组常量 library，包含两个 Movie 实例和三个 Song 实例。library 的类型是在它被初始化时根据它数组中所包含的内容推断来的。Swift 的类型检测器能够推断出 Movie 和 Song 有共同的父类 MediaItem，所以它推断出 [MediaItem] 类作为 library 的类型：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> library = [</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Casablanca"</span>, director: <span class="string">"Michael Curtiz"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Blue Suede Shoes"</span>, artist: <span class="string">"Elvis Presley"</span>),</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Citizen Kane"</span>, director: <span class="string">"Orson Welles"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"The One And Only"</span>, artist: <span class="string">"Chesney Hawkes"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Never Gonna Give You Up"</span>, artist: <span class="string">"Rick Astley"</span>)</div><div class="line">]</div><div class="line"><span class="comment">// the type of "library" is inferred to be [MediaItem]</span></div></pre></td></tr></table></figure>
+<p>在幕后 library 里存储的媒体项依然是 Movie 和 Song 类型的。但是，若你迭代它，依次取出的实例会是 MediaItem 类型的，而不是 Movie 和 Song 类型。为了让它们作为原本的类型工作，你需要检查它们的类型或者向下转换它们到其它类型，就像下面描述的一样。</p>
+<h3 id="检查类型"><a href="#检查类型" class="headerlink" title="检查类型"></a>检查类型</h3><p>用类型检查操作符（ <code>is</code> ）来检查一个实例是否属于特定子类型。若实例属于那个子类型，类型检查操作符返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
+<p>下面的例子定义了两个变量，movieCount 和 songCount，用来计算数组 library 中 Movie 和 Song 类型的实例数量：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> movieCount = <span class="number">0</span></div><div class="line"><span class="keyword">var</span> songCount = <span class="number">0</span></div><div class="line"> </div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> library &#123;</div><div class="line">    <span class="keyword">if</span> item <span class="keyword">is</span> <span class="type">Movie</span> &#123;</div><div class="line">        movieCount += <span class="number">1</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> item <span class="keyword">is</span> <span class="type">Song</span> &#123;</div><div class="line">        songCount += <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="built_in">print</span>(<span class="string">"Media library contains <span class="subst">\(movieCount)</span> movies and <span class="subst">\(songCount)</span> songs"</span>)</div><div class="line"><span class="comment">// Prints "Media library contains 2 movies and 3 songs"</span></div></pre></td></tr></table></figure>
+<p>若当前 MediaItem 是一个 Movie 类型的实例，item is Movie 返回 true，否则返回 false。同样的，item is Song 检查 item 是否为 Song 类型的实例。在循环结束后，movieCount 和 songCount 的值就是被找到的属于各自类型的实例的数量。</p>
+<h3 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h3><p>某类型的一个常量或变量可能在幕后实际上属于一个子类。当确定是这种情况时，你可以尝试向下转到它的子类型，用类型转换操作符（as? 或 as!）。<br>因为向下转型可能会失败，类型转型操作符带有两种不同形式。条件形式as? 返回一个你试图向下转成的类型的可选值。强制形式 as! 把试图向下转型和强制解包转换结果结合为一个操作。</p>
+<p>当你不确定向下转型可以成功时，用类型转换的条件形式（as?）。条件形式的类型转换总是返回一个可选值，并且若下转是不可能的，可选值将是 nil。这使你能够检查向下转型是否成功。<br>只有你可以确定向下转型一定会成功时，才使用强制形式（as!）。当你试图向下转型为一个不正确的类型时，强制形式的类型转换会触发一个运行时错误。</p>
+<p>下面的例子，迭代了 library 里的每一个 MediaItem，并打印出适当的描述。要这样做，item 需要真正作为 Movie 或 Song 的类型来使用，而不仅仅是作为 MediaItem。为了能够在描述中使用 Movie 或 Song 的 director 或 artist 属性，这是必要的。<br>在这个示例中，数组中的每一个 item 可能是 Movie 或 Song。事前你不知道每个 item 的真实类型，所以这里使用条件形式的类型转换（as?）去检查循环里的每次下转：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> library &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> movie = item <span class="keyword">as</span>? <span class="type">Movie</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Movie: <span class="subst">\(movie.name)</span>, dir. <span class="subst">\(movie.director)</span>"</span>)</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">let</span> song = item <span class="keyword">as</span>? <span class="type">Song</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Song: <span class="subst">\(song.name)</span>, by <span class="subst">\(song.artist)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// Movie: Casablanca, dir. Michael Curtiz</span></div><div class="line"><span class="comment">// Song: Blue Suede Shoes, by Elvis Presley</span></div><div class="line"><span class="comment">// Movie: Citizen Kane, dir. Orson Welles</span></div><div class="line"><span class="comment">// Song: The One And Only, by Chesney Hawkes</span></div><div class="line"><span class="comment">// Song: Never Gonna Give You Up, by Rick Astley</span></div></pre></td></tr></table></figure>
+<p>示例首先试图将 item 下转为 Movie。因为 item 是一个 MediaItem 类型的实例，它可能是一个 Movie；同样，它也可能是一个 Song，或者仅仅是基类 MediaItem。因为不确定，as? 形式在试图下转时将返回一个可选值。item as? Movie 的返回值是 Movie? 或者说“可选 Movie”。</p>
+<p>当向下转型为 Movie 应用在两个 Song 实例时将会失败。为了处理这种情况，上面的例子使用了可选绑定（optional binding）来检查可选 Movie 真的包含一个值（这个是为了判断下转是否成功。）可选绑定是这样写的“if let movie = item as? Movie”，可以这样解读：</p>
+<p>“尝试将 item 转为 Movie 类型。若成功，设置一个新的临时常量 movie 来存储返回的可选 Movie 中的值”</p>
+<p>若向下转型成功，然后 movie 的属性将用于打印一个 Movie 实例的描述，包括它的导演的名字 director。相似的原理被用来检测 Song 实例，当 Song 被找到时则打印它的描述（包含 artist 的名字）。<br>    转换没有真的改变实例或它的值。根本的实例保持不变；只是简单地把它作为它被转换成的类型来使用。</p>
+<h3 id="Any-和-AnyObject-的类型转换"><a href="#Any-和-AnyObject-的类型转换" class="headerlink" title="Any 和 AnyObject 的类型转换"></a>Any 和 AnyObject 的类型转换</h3><p>Swift 为不确定类型提供了两种特殊的类型别名：</p>
+<ul>
+<li>可以表示任何类型，包括函数类型。</li>
+<li>可以表示任何类类型的实例。</li>
+</ul>
+<p>只有当你确实需要它们的行为和功能时才使用 Any 和 AnyObject。代码中最好使用明确的类型。</p>
+<p>这里有个示例，使用 Any 类型来和混合的不同类型一起工作，包括函数类型和非类类型。它创建了一个可以存储 Any 类型的数组 things：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> things = [<span class="type">Any</span>]()</div><div class="line"> </div><div class="line">things.append(<span class="number">0</span>)</div><div class="line">things.append(<span class="number">0.0</span>)</div><div class="line">things.append(<span class="number">42</span>)</div><div class="line">things.append(<span class="number">3.14159</span>)</div><div class="line">things.append(<span class="string">"hello"</span>)</div><div class="line">things.append((<span class="number">3.0</span>, <span class="number">5.0</span>))</div><div class="line">things.append(<span class="type">Movie</span>(name: <span class="string">"Ghostbusters"</span>, director: <span class="string">"Ivan Reitman"</span>))</div><div class="line">things.append(&#123; (name: <span class="type">String</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span> <span class="string">"Hello, <span class="subst">\(name)</span>"</span> &#125;)</div></pre></td></tr></table></figure>
+<p>things 数组包含两个 Int 值，两个 Double 值，一个 String 值，一个元组 (Double, Double)，一个Movie实例“Ghostbusters”，以及一个接受 String 值并返回另一个 String 值的闭包表达式。<br>你可以在 switch 表达式的 case 中使用 is 和 as 操作符来找出只知道是 Any 或 AnyObject 类型的常量或变量的具体类型。下面的示例迭代 things 数组中的每一项，并用 switch 语句查找每一项的类型。有几个 switch 语句的 case 绑定它们匹配到的值到一个指定类型的常量，从而可以打印这些值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> thing <span class="keyword">in</span> things &#123;</div><div class="line">    <span class="keyword">switch</span> thing &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span> <span class="keyword">as</span> <span class="type">Int</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"zero as an Int"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span> <span class="keyword">as</span> <span class="type">Double</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"zero as a Double"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someInt <span class="keyword">as</span> <span class="type">Int</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"an integer value of <span class="subst">\(someInt)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someDouble <span class="keyword">as</span> <span class="type">Double</span> <span class="keyword">where</span> someDouble &gt; <span class="number">0</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a positive double value of <span class="subst">\(someDouble)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">is</span> <span class="type">Double</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"some other double value that I don't want to print"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someString <span class="keyword">as</span> <span class="type">String</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a string value of \"<span class="subst">\(someString)</span>\""</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> (x, y) <span class="keyword">as</span> (<span class="type">Double</span>, <span class="type">Double</span>):</div><div class="line">        <span class="built_in">print</span>(<span class="string">"an (x, y) point at <span class="subst">\(x)</span>, <span class="subst">\(y)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> movie <span class="keyword">as</span> <span class="type">Movie</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a movie called <span class="subst">\(movie.name)</span>, dir. <span class="subst">\(movie.director)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> stringConverter <span class="keyword">as</span> (<span class="type">String</span>) -&gt; <span class="type">String</span>:</div><div class="line">        <span class="built_in">print</span>(stringConverter(<span class="string">"Michael"</span>))</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"something else"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// zero as an Int</span></div><div class="line"><span class="comment">// zero as a Double</span></div><div class="line"><span class="comment">// an integer value of 42</span></div><div class="line"><span class="comment">// a positive double value of 3.14159</span></div><div class="line"><span class="comment">// a string value of "hello"</span></div><div class="line"><span class="comment">// an (x, y) point at 3.0, 5.0</span></div><div class="line"><span class="comment">// a movie called Ghostbusters, dir. Ivan Reitman</span></div><div class="line"><span class="comment">// Hello, Michael</span></div></pre></td></tr></table></figure>
+<pre><code>Any类型可以表示所有类型的值，包括可选类型。Swift 会在你用Any类型来表示一个可选值的时候，给你一个警告。如果你确实想使用Any类型来承载可选值，你可以使用as操作符显示转换为Any，如下所示：
+</code></pre><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> optionalNumber: <span class="type">Int</span>? = <span class="number">3</span></div><div class="line">things.append(optionalNumber)        <span class="comment">// Warning</span></div><div class="line">things.append(optionalNumber <span class="keyword">as</span> <span class="type">Any</span>) <span class="comment">// No warning</span></div></pre></td></tr></table></figure>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html/" target="_blank" rel="external"> Type Casting </a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/iOS_Swift_language_note_Optional-Chaining/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" itemprop="url">Swift Optional Chaining</a></h1>
         
 
         <div class="post-meta">
@@ -2288,8 +2261,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -2306,9 +2279,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/30/2016-11-29-note-Swift-Language-Optional Chaining/#comments" itemprop="discussionUrl">
+                <a href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/30/2016-11-29-note-Swift-Language-Optional Chaining/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/11/30/iOS_Swift_language_note_Optional-Chaining/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2338,10 +2311,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>​    可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。<br>    Swift 的可选链式调用和 Objective-C 中向nil发送消息有些相像，但是 Swift 的可选链式调用可以应用于任意类型，并且能检查调用是否成功。</p>
+            <p>​    可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。<br>    Swift 的可选链式调用和 Objective-C 中向nil发送消息有些相像，但是 Swift 的可选链式调用可以应用于任意类型，并且能检查调用是否成功。</p>
 <h3 id="使用可选链式调用代替强制展开"><a href="#使用可选链式调用代替强制展开" class="headerlink" title="使用可选链式调用代替强制展开"></a>使用可选链式调用代替强制展开</h3><p>通过在想调用的属性、方法、或下标的可选值后面放一个问号（?），可以定义一个可选链。这一点很像在可选值后面放一个叹号（!）来强制展开它的值。它们的主要区别在于当可选值为空时可选链式调用只会调用失败，然而强制展开将会触发运行时错误。</p>
 <p>为了反映可选链式调用可以在空值（nil）上调用的事实，不论这个调用的属性、方法及下标返回的值是不是可选值，它的返回结果都是一个可选值。你可以利用这个返回值来判断你的可选链式调用是否调用成功，如果调用有返回值则说明调用成功，返回nil则说明调用失败。</p>
 <p>特别地，可选链式调用的返回结果与原本的返回结果具有相同的类型，但是被包装成了一个可选值。例如，使用可选链式调用访问属性，当可选链式调用成功时，如果属性原本的返回结果是Int类型，则会变为Int?类型。</p>
@@ -2507,7 +2477,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2518,7 +2488,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2529,7 +2499,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

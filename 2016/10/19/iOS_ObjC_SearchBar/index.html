@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -102,18 +100,18 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="参照一些常用应用对UISearchBar进行UI展示自定义 前言​        系统默认的搜索栏（UISearchBar）默认样子真心不好看，而平时iOS移动项目中又缺不了搜索功能，参照一些常用应用对UISearchBar进行UI展示自定义，效果图如下：  UISearchBar介绍​        如图所示，包括placeholder、textfiled、clearButton、bookmar">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/Objective-C/rendering.gif">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/Objective-C/default_1.png">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/Objective-C/default_2.png">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/Objective-C/process_2.png">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/Objective-C/process_3.png">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/Objective-C/process_4.png">
-<meta property="og:image" content="https://l900416.github.io/img/post/iOS/Objective-C/process_6.png">
-<meta property="og:updated_time" content="2017-08-04T02:27:48.000Z">
+<meta property="og:image" content="http://yoursite.com/post/iOS/Objective-C/rendering.gif">
+<meta property="og:image" content="http://yoursite.com/post/iOS/Objective-C/default_1.png">
+<meta property="og:image" content="http://yoursite.com/post/iOS/Objective-C/default_2.png">
+<meta property="og:image" content="http://yoursite.com/post/iOS/Objective-C/process_2.png">
+<meta property="og:image" content="http://yoursite.com/post/iOS/Objective-C/process_3.png">
+<meta property="og:image" content="http://yoursite.com/post/iOS/Objective-C/process_4.png">
+<meta property="og:image" content="http://yoursite.com/post/iOS/Objective-C/process_6.png">
+<meta property="og:updated_time" content="2017-08-04T06:20:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UISearchBar自定义">
 <meta name="twitter:description" content="参照一些常用应用对UISearchBar进行UI展示自定义 前言​        系统默认的搜索栏（UISearchBar）默认样子真心不好看，而平时iOS移动项目中又缺不了搜索功能，参照一些常用应用对UISearchBar进行UI展示自定义，效果图如下：  UISearchBar介绍​        如图所示，包括placeholder、textfiled、clearButton、bookmar">
-<meta name="twitter:image" content="https://l900416.github.io/img/post/iOS/Objective-C/rendering.gif">
+<meta name="twitter:image" content="http://yoursite.com/post/iOS/Objective-C/rendering.gif">
 
 
 
@@ -125,7 +123,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -403,9 +401,9 @@
       
         <p>参照一些常用应用对UISearchBar进行UI展示自定义</p>
 <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​        系统默认的搜索栏（UISearchBar）默认样子真心不好看，而平时iOS移动项目中又缺不了搜索功能，参照一些常用应用对UISearchBar进行UI展示自定义，效果图如下：</p>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/rendering.gif" alt=""></p>
+<p><img src="/post/iOS/Objective-C/rendering.gif" alt=""></p>
 <h4 id="UISearchBar介绍"><a href="#UISearchBar介绍" class="headerlink" title="UISearchBar介绍"></a>UISearchBar介绍</h4><p>​        如图所示，包括placeholder、textfiled、clearButton、bookmarkButton、leftView等：</p>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/default_1.png" alt=""></p>
+<p><img src="/post/iOS/Objective-C/default_1.png" alt=""></p>
 <blockquote>
 <blockquote>
 <ul>
@@ -415,7 +413,7 @@
 </ul>
 </blockquote>
 </blockquote>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/default_2.png" alt=""></p>
+<p><img src="/post/iOS/Objective-C/default_2.png" alt=""></p>
 <blockquote>
 <blockquote>
 <ul>
@@ -432,17 +430,17 @@
 <li><strong>2、修改所搜索框背景图片，并切圆角</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//输入框背景图片</div><div class="line">[self setSearchFieldBackgroundImage:[self searchFieldBackgroundImage] forState:UIControlStateNormal];</div><div class="line">//将输入框切圆角</div><div class="line">[self setSearchTextBackgroundCorner];</div></pre></td></tr></table></figure>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/process_2.png" alt=""></p>
+<p><img src="/post/iOS/Objective-C/process_2.png" alt=""></p>
 <ul>
 <li><strong>3、显示BookmarkButton，并设置其显示图标</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//显示BookmarkButton，并设置其图标（照相机）</div><div class="line">self.showsBookmarkButton = YES;</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_camera&quot;] forSearchBarIcon:UISearchBarIconBookmark  state:UIControlStateNormal];</div></pre></td></tr></table></figure>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/process_3.png" alt=""></p>
+<p><img src="/post/iOS/Objective-C/process_3.png" alt=""></p>
 <ul>
 <li><strong>4、设置「清空」图标图标</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//文本发生变更的时候，修改「清空」图标</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateNormal];</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateHighlighted];</div></pre></td></tr></table></figure>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/process_4.png" alt=""></p>
+<p><img src="/post/iOS/Objective-C/process_4.png" alt=""></p>
 <ul>
 <li><strong>5、修改搜索框左侧的图标</strong></li>
 </ul>
@@ -451,7 +449,7 @@
 <li><strong>6、修改输入框文本颜色</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//改变searcher的textcolor</div><div class="line">searchField.textColor = [UIColor whiteColor];</div><div class="line">//改变placeholder的颜色</div><div class="line">[searchField setValue:[UIColor whiteColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</div></pre></td></tr></table></figure>
-<p><img src="https://l900416.github.io/img/post/iOS/Objective-C/process_6.png" alt=""></p>
+<p><img src="/post/iOS/Objective-C/process_6.png" alt=""></p>
 <ul>
 <li><strong>7、附上调用方法</strong></li>
 </ul>
@@ -524,7 +522,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/20/2016-10-20-iOS-OC-LTxMenu/" rel="prev" title="LTxMenu">
+              <a href="/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/" rel="prev" title="LTxMenu">
                 LTxMenu <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -633,7 +631,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -644,7 +642,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -655,7 +653,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
