@@ -1821,183 +1821,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/iOS_Swift_language_note_Nested-Types/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="url">Swift Nested Types</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T19:20:11+08:00">
-                2016-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/01/iOS_Swift_language_note_Nested-Types/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    枚举常被用于为特定类或结构体实现某些功能。类似的，枚举可以方便的定义工具类或结构体，从而为某个复杂的类型所使用。为了实现这种功能，Swift 允许你定义嵌套类型，可以在支持的类型中定义嵌套的枚举、类和结构体。<br>要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的{}内，而且可以根据需要定义多级嵌套。</p>
-<h3 id="嵌套类型实践"><a href="#嵌套类型实践" class="headerlink" title="嵌套类型实践"></a>嵌套类型实践</h3><p>下面这个例子定义了一个结构体BlackjackCard，用来模拟BlackjackCard中的扑克牌点数。BlackjackCard结构体包含两个嵌套定义的枚举类型Suit和Rank。<br>在BlackjackCard中，Ace牌可以表示1或者11，Ace牌的这一特征通过一个嵌套在Rank枚举中的结构体Values来表示：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BlackjackCard</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">// nested Suit enumeration</span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Suit</span>: <span class="title">Character</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> spades = <span class="string">"♠"</span>, hearts = <span class="string">"♡"</span>, diamonds = <span class="string">"♢"</span>, clubs = <span class="string">"♣"</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// nested Rank enumeration</span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Rank</span>: <span class="title">Int</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> two = <span class="number">2</span>, three, four, five, six, seven, eight, nine, ten</div><div class="line">        <span class="keyword">case</span> jack, queen, king, ace</div><div class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Values</span> </span>&#123;</div><div class="line">            <span class="keyword">let</span> first: <span class="type">Int</span>, second: <span class="type">Int</span>?</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> values: <span class="type">Values</span> &#123;</div><div class="line">            <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">            <span class="keyword">case</span> .ace:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">1</span>, second: <span class="number">11</span>)</div><div class="line">            <span class="keyword">case</span> .jack, .queen, .king:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">10</span>, second: <span class="literal">nil</span>)</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="keyword">self</span>.rawValue, second: <span class="literal">nil</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// BlackjackCard properties and methods</span></div><div class="line">    <span class="keyword">let</span> rank: <span class="type">Rank</span>, suit: <span class="type">Suit</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">var</span> output = <span class="string">"suit is <span class="subst">\(suit.rawValue)</span>,"</span></div><div class="line">        output += <span class="string">" value is <span class="subst">\(rank.values.first)</span>"</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> second = rank.values.second &#123;</div><div class="line">            output += <span class="string">" or <span class="subst">\(second)</span>"</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Suit枚举用来描述扑克牌的四种花色，并用一个Character类型的原始值表示花色符号。<br>Rank枚举用来描述扑克牌从Ace~10，以及J、Q、K，这13种牌，并用一个Int类型的原始值表示牌的面值。（这个Int类型的原始值未用于Ace、J、Q、K这4种牌。）<br>如上所述，Rank枚举在内部定义了一个嵌套结构体Values。结构体Values中定义了两个属性，用于反映只有Ace有两个数值，其余牌都只有一个数值：</p>
-<ul>
-<li>first, of type Int</li>
-<li>second, of type Int?, or “optional Int”</li>
-</ul>
-<p>Rank还定义了一个计算型属性values，它将会返回一个Values结构体的实例。这个计算型属性会根据牌的面值，用适当的数值去初始化Values实例。对于J、Q、K、Ace这四种牌，会使用特殊数值。对于数字面值的牌，使用枚举实例的原始值。</p>
-<p>BlackjackCard结构体拥有两个属性——rank与suit。它也同样定义了一个计算型属性description，description属性用rank和suit中的内容来构建对扑克牌名字和数值的描述。该属性使用可选绑定来检查可选类型second是否有值，若有值，则在原有的描述中增加对second的描述。</p>
-<p>因为BlackjackCard是一个没有自定义构造器的结构体,有默认的成员构造器，所以你可以用默认的构造器去初始化新常量theAceOfSpades：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> theAceOfSpades = <span class="type">BlackjackCard</span>(rank: .ace, suit: .spades)</div><div class="line"><span class="built_in">print</span>(<span class="string">"theAceOfSpades: <span class="subst">\(theAceOfSpades.description)</span>"</span>)</div><div class="line"><span class="comment">// Prints "theAceOfSpades: suit is ♠, value is 1 or 11"</span></div></pre></td></tr></table></figure>
-<p>尽管Rank和Suit嵌套在BlackjackCard中，但它们的类型仍可从上下文中推断出来，所以在初始化实例时能够单独通过成员名称（.Ace和.Spades）引用枚举实例。在上面的例子中，description属性正确地反映了黑桃A牌具有1和11两个值。</p>
-<h3 id="引用嵌套类型"><a href="#引用嵌套类型" class="headerlink" title="引用嵌套类型"></a>引用嵌套类型</h3><p>在外部引用嵌套类型时，在嵌套类型的类型名前加上其外部类型的类型名作为前缀：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> heartsSymbol = <span class="type">BlackjackCard</span>.<span class="type">Suit</span>.hearts.rawValue</div><div class="line"><span class="comment">// heartsSymbol is "♡"</span></div></pre></td></tr></table></figure>
-<p>对于上面这个例子，这样可以使Suit、Rank和Values的名字尽可能的短，因为它们的名字可以由定义它们的上下文来限定。</p>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/NestedTypes.html/" target="_blank" rel="external"> NestedTypes </a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/iOS_Swift_language_note_Extensions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2149,6 +1972,183 @@
 <p>该例子为 Int 添加了嵌套枚举。这个名为 Kind 的枚举表示特定整数的类型。具体来说，就是表示整数是正数、零或者负数。<br>这个例子还为 Int 添加了一个计算型实例属性，即 kind，用来根据整数返回适当的 Kind 枚举成员。<br>现在，这个嵌套枚举可以和任意 Int 值一起使用了：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printIntegerKinds</span><span class="params">(<span class="number">_</span> numbers: [Int])</span></span> &#123;</div><div class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">        <span class="keyword">switch</span> number.kind &#123;</div><div class="line">        <span class="keyword">case</span> .negative:</div><div class="line">            <span class="built_in">print</span>(<span class="string">"- "</span>, terminator: <span class="string">""</span>)</div><div class="line">        <span class="keyword">case</span> .zero:</div><div class="line">            <span class="built_in">print</span>(<span class="string">"0 "</span>, terminator: <span class="string">""</span>)</div><div class="line">        <span class="keyword">case</span> .positive:</div><div class="line">            <span class="built_in">print</span>(<span class="string">"+ "</span>, terminator: <span class="string">""</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">print</span>(<span class="string">""</span>)</div><div class="line">&#125;</div><div class="line">printIntegerKinds([<span class="number">3</span>, <span class="number">19</span>, -<span class="number">27</span>, <span class="number">0</span>, -<span class="number">6</span>, <span class="number">0</span>, <span class="number">7</span>])</div><div class="line"><span class="comment">// Prints "+ + - 0 - 0 + "</span></div></pre></td></tr></table></figure>
 <p>函数 printIntegerKinds(_:) 接受一个 Int 数组，然后对该数组进行迭代。在每次迭代过程中，对当前整数的计算型属性 kind 的值进行评估，并打印出适当的描述。<br>    由于已知 number.kind 是 Int.Kind 类型，因此在 switch 语句中，Int.Kind 中的所有成员值都可以使用简写形式，例如使用 . Negative 而不是 Int.Kind.Negative。</p>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/NestedTypes.html/" target="_blank" rel="external"> NestedTypes </a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/iOS_Swift_language_note_Nested-Types/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="url">Swift Nested Types</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T19:20:11+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/01/iOS_Swift_language_note_Nested-Types/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    枚举常被用于为特定类或结构体实现某些功能。类似的，枚举可以方便的定义工具类或结构体，从而为某个复杂的类型所使用。为了实现这种功能，Swift 允许你定义嵌套类型，可以在支持的类型中定义嵌套的枚举、类和结构体。<br>要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的{}内，而且可以根据需要定义多级嵌套。</p>
+<h3 id="嵌套类型实践"><a href="#嵌套类型实践" class="headerlink" title="嵌套类型实践"></a>嵌套类型实践</h3><p>下面这个例子定义了一个结构体BlackjackCard，用来模拟BlackjackCard中的扑克牌点数。BlackjackCard结构体包含两个嵌套定义的枚举类型Suit和Rank。<br>在BlackjackCard中，Ace牌可以表示1或者11，Ace牌的这一特征通过一个嵌套在Rank枚举中的结构体Values来表示：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BlackjackCard</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">// nested Suit enumeration</span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Suit</span>: <span class="title">Character</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> spades = <span class="string">"♠"</span>, hearts = <span class="string">"♡"</span>, diamonds = <span class="string">"♢"</span>, clubs = <span class="string">"♣"</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// nested Rank enumeration</span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Rank</span>: <span class="title">Int</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> two = <span class="number">2</span>, three, four, five, six, seven, eight, nine, ten</div><div class="line">        <span class="keyword">case</span> jack, queen, king, ace</div><div class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Values</span> </span>&#123;</div><div class="line">            <span class="keyword">let</span> first: <span class="type">Int</span>, second: <span class="type">Int</span>?</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> values: <span class="type">Values</span> &#123;</div><div class="line">            <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">            <span class="keyword">case</span> .ace:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">1</span>, second: <span class="number">11</span>)</div><div class="line">            <span class="keyword">case</span> .jack, .queen, .king:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">10</span>, second: <span class="literal">nil</span>)</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="keyword">self</span>.rawValue, second: <span class="literal">nil</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// BlackjackCard properties and methods</span></div><div class="line">    <span class="keyword">let</span> rank: <span class="type">Rank</span>, suit: <span class="type">Suit</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">var</span> output = <span class="string">"suit is <span class="subst">\(suit.rawValue)</span>,"</span></div><div class="line">        output += <span class="string">" value is <span class="subst">\(rank.values.first)</span>"</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> second = rank.values.second &#123;</div><div class="line">            output += <span class="string">" or <span class="subst">\(second)</span>"</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Suit枚举用来描述扑克牌的四种花色，并用一个Character类型的原始值表示花色符号。<br>Rank枚举用来描述扑克牌从Ace~10，以及J、Q、K，这13种牌，并用一个Int类型的原始值表示牌的面值。（这个Int类型的原始值未用于Ace、J、Q、K这4种牌。）<br>如上所述，Rank枚举在内部定义了一个嵌套结构体Values。结构体Values中定义了两个属性，用于反映只有Ace有两个数值，其余牌都只有一个数值：</p>
+<ul>
+<li>first, of type Int</li>
+<li>second, of type Int?, or “optional Int”</li>
+</ul>
+<p>Rank还定义了一个计算型属性values，它将会返回一个Values结构体的实例。这个计算型属性会根据牌的面值，用适当的数值去初始化Values实例。对于J、Q、K、Ace这四种牌，会使用特殊数值。对于数字面值的牌，使用枚举实例的原始值。</p>
+<p>BlackjackCard结构体拥有两个属性——rank与suit。它也同样定义了一个计算型属性description，description属性用rank和suit中的内容来构建对扑克牌名字和数值的描述。该属性使用可选绑定来检查可选类型second是否有值，若有值，则在原有的描述中增加对second的描述。</p>
+<p>因为BlackjackCard是一个没有自定义构造器的结构体,有默认的成员构造器，所以你可以用默认的构造器去初始化新常量theAceOfSpades：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> theAceOfSpades = <span class="type">BlackjackCard</span>(rank: .ace, suit: .spades)</div><div class="line"><span class="built_in">print</span>(<span class="string">"theAceOfSpades: <span class="subst">\(theAceOfSpades.description)</span>"</span>)</div><div class="line"><span class="comment">// Prints "theAceOfSpades: suit is ♠, value is 1 or 11"</span></div></pre></td></tr></table></figure>
+<p>尽管Rank和Suit嵌套在BlackjackCard中，但它们的类型仍可从上下文中推断出来，所以在初始化实例时能够单独通过成员名称（.Ace和.Spades）引用枚举实例。在上面的例子中，description属性正确地反映了黑桃A牌具有1和11两个值。</p>
+<h3 id="引用嵌套类型"><a href="#引用嵌套类型" class="headerlink" title="引用嵌套类型"></a>引用嵌套类型</h3><p>在外部引用嵌套类型时，在嵌套类型的类型名前加上其外部类型的类型名作为前缀：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> heartsSymbol = <span class="type">BlackjackCard</span>.<span class="type">Suit</span>.hearts.rawValue</div><div class="line"><span class="comment">// heartsSymbol is "♡"</span></div></pre></td></tr></table></figure>
+<p>对于上面这个例子，这样可以使Suit、Rank和Values的名字尽可能的短，因为它们的名字可以由定义它们的上下文来限定。</p>
 <h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
 <ul>
 <li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/NestedTypes.html/" target="_blank" rel="external"> NestedTypes </a> </li>
