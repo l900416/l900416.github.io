@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/21/iOS_develop_overview_framework_1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/27/database_sqlite3_fmdb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -310,7 +310,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/21/iOS_develop_overview_framework_1/" itemprop="url">iOS移动App开发综述</a></h1>
+                <a class="post-title-link" href="/2017/04/27/database_sqlite3_fmdb/" itemprop="url">FMDB</a></h1>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-21T23:50:12+08:00">
-                2016-10-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T12:07:43+08:00">
+                2017-04-27
               </time>
             
 
@@ -345,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
                   </a>
                 </span>
 
@@ -363,9 +363,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/10/21/iOS_develop_overview_framework_1/#comments" itemprop="discussionUrl">
+                <a href="/2017/04/27/database_sqlite3_fmdb/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/21/iOS_develop_overview_framework_1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/04/27/database_sqlite3_fmdb/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -395,125 +395,36 @@
       
         
           
-            <p>对iOS端移动App使用的开发语言、框架等信息进行介绍</p>
-<h3 id="环境及工具"><a href="#环境及工具" class="headerlink" title="环境及工具"></a>环境及工具</h3><ul>
-<li>OS<ul>
-<li>macOS , OSX</li>
-</ul>
-</li>
-<li>TOOL<ul>
-<li>XCode： <code>Version 8.0+</code> , 早期版本</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>建议：鉴于苹果的习惯，如果没有特殊需求，保持最新的系统和工具版本。</p>
-</blockquote>
-<h3 id="开发语言选择"><a href="#开发语言选择" class="headerlink" title="开发语言选择"></a>开发语言选择</h3><p>​        首先要对开发的应用的功能有一定的了解，结合应用需要的功能及部署系统版本选择合适的开发语言。可以使用的主要开发语言包括：</p>
+            <p>​    SQLite是一款轻型的数据库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它使用B+树存储表，整个SQLite数据库就是这些B+树组成的森林。。它的设计目标是嵌入式的，目前被广泛应用。<a href="https://github.com/ccgus/fmdb/" target="_blank" rel="external"> FMDB </a> 是基于SQLite的实现 。</p>
+<h3 id="数据库（连接）"><a href="#数据库（连接）" class="headerlink" title="数据库（连接）"></a>数据库（连接）</h3><p>数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是一个单一的用来执行SQL语句的数据库连接，使用同步的方式进行，如果需要在多线程执行查询或者更新，则需要使用FMDatabaseQueue</p>
+<h4 id="FMDatabase"><a href="#FMDatabase" class="headerlink" title="FMDatabase"></a>FMDatabase</h4><p>FMDatabase可以用来执行增、删、改、查相关的SQL语句，通常情况下，不会有什么问题。这里需要说明的一点是移动端在涉及到多线程操作时，不要使用单例模式建立一个FMDatabase对象，否则会发生死锁问题。其官方文档中也有给出警告: Do not instantiate a single <code>FMDatabase</code> object and use it across multiple threads.</p>
+<h4 id="FMDatabaseQueue"><a href="#FMDatabaseQueue" class="headerlink" title="FMDatabaseQueue"></a>FMDatabaseQueue</h4><p>FMDatabaseQueue的方法调用时异步的，通常在多线程中使用。即使在不同的闭包中使用，也是在发送在同一个线程中。</p>
+<h3 id="表结构操作"><a href="#表结构操作" class="headerlink" title="表结构操作"></a>表结构操作</h3><p>SQLite对于每个表的元数据(表名、根节点地址、表scheme等)信息均记录在一个叫’sql_master’的表中。常见的表结构变更包括创建、修改、删除，这些信息的变更均会影响’sql_master’表。</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>表的创建跟通常sql语句区别不大，通常在表创建时设置主键、默认值等。使用语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> RecordSign(recordId <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>, </div><div class="line">					projectName <span class="built_in">TEXT</span>, </div><div class="line">					visibleState <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> , </div><div class="line">					lastTriggerTime <span class="built_in">text</span> <span class="keyword">DEFAULT</span> <span class="string">'2017-03-13 23:59:59'</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>判断某个表是否存在，语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
+<p>判断某个表中是否存在某列，语法如下（通过判断sql语句中是否包含列名）：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span> <span class="keyword">and</span> <span class="keyword">sql</span> <span class="keyword">like</span> %列表%</div></pre></td></tr></table></figure></p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>表的删除，使用drop语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
+<h3 id="表内容操作"><a href="#表内容操作" class="headerlink" title="表内容操作"></a>表内容操作</h3><p>多表联合操作使用关键字：<code>join</code>，或者<code>in</code>(如果不需要跨表取字段的话)，比如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString* filterBusinessIDSql = [NSString stringWithFormat:@"select businessID from BeaconRelatedPolicyAndBusiness where isValid = 1 and policyID in ('%@')", [minPriorityPolicyIDArray componentsJoinedByString:@"','"]];  </div><div class="line"></div><div class="line">NSString* retSql = [NSString stringWithFormat:@"select * from BeaconBusinessMsg where businessID in (%@) and isValid = 1 order by priority asc",filterBusinessIDSql];</div></pre></td></tr></table></figure></p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>支持使用<code>insert</code> 或 <code>insert or replace</code> 或 <code>insert or ignore</code> 等语法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div></pre></td></tr></table></figure></p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>使用<code>update</code>语句进行表结构的更新，如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">               projectName,</span></div><div class="line"><span class="string">               recordId</span></div><div class="line"><span class="string">				];</span></div></pre></td></tr></table></figure></p>
+<h4 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h4><p>使用 <code>select</code> 关键字进行表数据查询，返回 <code>ResultSet</code> ，然后可以根据具体情况进行处理。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeQuery:@"<span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div></pre></td></tr></table></figure></p>
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>使用 <code>delete</code> 关键字来删除表中的记录。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div></pre></td></tr></table></figure></p>
+<h4 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h4><p>当涉及到数据量比较大或者原子性操作时，可能会用到批处理相关操作，例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//假设数据量不是太大，不需要通过分批次提交</div><div class="line">[[GKDatabaseManager sharedInstance].dbQueue inTransaction:^(FMDatabase *dbms, BOOL *rollback) &#123;</div><div class="line">    [dbms executeUpdate:@"<span class="keyword">update</span>  RecordSign <span class="keyword">set</span> visibleState = <span class="number">0</span> <span class="string">"];</span></div><div class="line"><span class="string">    for (NSDictionary* projectModel in projectList) &#123;</span></div><div class="line"><span class="string">        NSString* recordId = [projectModel objectForKey:@"</span>recordId<span class="string">"];</span></div><div class="line"><span class="string">        NSString* projectName = [projectModel objectForKey:@"</span>projectName<span class="string">"];</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">        FMResultSet* retSet = [dbms executeQuery:@"</span><span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div><div class="line"><span class="string">        if ([retSet next]) &#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">                        projectName,</span></div><div class="line"><span class="string">                         recordId</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;else&#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;//end if retSet</span></div><div class="line"><span class="string">        [retSet close];</span></div><div class="line"><span class="string">    &#125;//end for</span></div><div class="line"><span class="string">    [dbms executeUpdate:@"</span><span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div><div class="line"><span class="string">&#125;];</span></div><div class="line"><span class="string">[[GKDatabaseManager sharedInstance].dbQueue close];</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用心结"><a href="#使用心结" class="headerlink" title="使用心结"></a>使用心结</h3><p>我的态度是：数据库能实现的东西，自己就没必要再折腾了。数据库本身是一个很强大的软件，她已经可以帮助我们解决很多的问题。<br>所以在拿到需求后，别急着写代码逻辑，最好先考虑下是否可以利用这些现成的工具。有时候数据库处理数据的能力比自己写程序效率要高很多，且代价也比较小；数据库已经实现的功能，当然没有必要再自行编写程序解决，除非你觉得自己比数据库处理的好。      </p>
 <ul>
-<li><p>Objective-C：</p>
-<ul>
-<li><p>优点：老牌iOS开发语言，很多成熟稳定的开源代码可以使用；可以用来开发各个iOS系统上的应用。</p>
-</li>
-<li><p>缺点：苹果已经开始主推Swift；语言较复杂，比如虽然引入了ARC概念，但是部分内存管理还是需要自己来搞定；</p>
-</li>
+<li>使用SQLite数据库处理缓存的话，需要考虑数据库表结构的更新。<ul>
+<li>建议在建立表结构的时候，添加版本信息，比如 <code>tablename_v1</code>。就像CoreData处理版本升级时的version版本号一样。</li>
+<li>数据迁移。</li>
+<li>表结构受损后的数据恢复。   </li>
 </ul>
 </li>
-<li><p>Swift：苹果在2014年WWDC上发布的语言（函数式编程Monad，最低支持iOS7.0系统)，建议多使用结构体。</p>
-<ul>
-<li><p>优点：苹果主推的取代Objective-C语言，<em>开源</em>、<em>易学易用</em>、<em>借鉴了好多主流开发语言(很多概念比如：泛型，闭包，元组，协议等)，如果熟悉数据库，JavaScript、Objective-C等的话，可以快速入手</em></p>
-</li>
-<li><p>缺点：新语言，对旧系统不支持、多语言混合编译存在一些桥接问题；</p>
-</li>
-</ul>
-</li>
-<li><p>其它：C/C++​</p>
-</li>
-</ul>
-<hr>
-<blockquote>
-<ul>
-<li>如果想快速开发应用，建议使用Objective-C，毕竟有很多现成的东西；</li>
-<li>长远的看的话，建议使用Swift，新东西还是很让人兴奋的；</li>
-<li>Swift语言选择3.0以上的版本，因为XCode8.0及后续工具不兼容3.0之前的语言版本；</li>
-<li>如果项目中必须引入C++混合编译，建议使用Objective-C，Swift调用C代码还好，调用C++目前来说不可行。</li>
-<li>没啥想法，建议前期使用Objective-C和Swift混合开发，最终全面向Swift过渡。</li>
-</ul>
-</blockquote>
-<hr>
-<h3 id="程序框架选择"><a href="#程序框架选择" class="headerlink" title="程序框架选择"></a>程序框架选择</h3><p>​    这里主要介绍两个框架MVC和MVVM，以及最终程序开发中使用的MVMCV</p>
-<h5 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h5><p>​    MVC全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写，用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。<br><img src="http://hi.csdn.net/attachment/201105/19/0_1305768550zP1b.gif" alt=""></p>
-<ul>
-<li><p>View：负责数据展示。</p>
-<ul>
-<li>应用程序中用户可以看见的对象。在iOS应用程序开发中，所有的控件、窗口等都继承自 UIView，UIView及其子类主要负责UI的实现，而UIView所产生的事件都可以采用委托的方式，交给UIViewController实现。</li>
-</ul>
-</li>
-<li><p>Controller：处理输入输出。</p>
-<ul>
-<li>View和Model之间交互的媒介，控制器对象解释在视图对象中进行的用户操作，并将新的或更改过的数据传达给模型对象。模型对象更改时，一个控制器对象会将新的模型数据传达给视图对象，以便视图对象可以显示它。对于不同的UIView，有相应的UIViewController，例如在iOS上常用的UITableView，它所对应的Controller就是UITableViewController。</li>
-</ul>
-</li>
-<li><p>Model：持有数据，比如本地数据库，本地文件。<br>​</p>
-<p>​    iOS应用中，对应UIViewController其实可以理解为ViewContainer（View + Controler）；如果使用MVC框架进行移动App开发的话，ViewController会显得特别臃肿，并且如果更换Controller策略就会显得比较麻烦。对于功能复杂的页面，其ViewController结构将会非常庞大，后期维护代价明显会比较高。</p>
-</li>
-</ul>
-<h5 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h5><p>​        MVVM代表的是Model View View-Model，她的出现可以理解成是给MVC的视图控制器瘦身。<br><img src="http://images.cnitblog.com/i/380707/201403/152139487613221.png" alt=""></p>
-<ul>
-<li><p>View：负责数据展示。</p>
-<ul>
-<li>包含实际 UI 本身(不论是 UIView 代码, storyboard 和 xib), 任何视图特定的逻辑, 和对用户输入的反馈. 在 iOS 中这不仅需要 UIView 代码和那些文件, 还包括很多需由 UIViewController 处理的工作。</li>
-</ul>
-</li>
-<li><p>View-Model ：处理输入输出。</p>
-<ul>
-<li>它的职责之一就是作为一个表现视图显示自身所需数据的静态模型;但它也有收集, 解释和转换那些数据的责任. 这留给了 view (controller) 一个更加清晰明确的任务: 呈现由 view-model 提供的数据。</li>
-</ul>
-</li>
-<li><p>Model：持有数据，比如本地数据库，本地文件。<br>​</p>
-<p>​    说下View-Model：它从必要的资源(数据库, 网络服务调用, 等)中获取原始数据, 运用逻辑, 并处理成 view (controller) 的展示数据. 它(通常通过属性)暴露给视图控制器需要知道的仅关于显示视图工作的信息(理想地你不会暴漏你的 data-model 对象)。 它还负责对上游数据的修改(比如更新模型/数据库, API POST 调用)。</p>
-</li>
-</ul>
-<h5 id="MVC与MVVM的对比"><a href="#MVC与MVVM的对比" class="headerlink" title="MVC与MVVM的对比"></a>MVC与MVVM的对比</h5><p>​        经过上边对MVC和MVVM的介绍，相信大家对两种模式简单的映射关系有了一定的了解。通过对比，我们会发现视图控制器是非常大的。<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542173109354.png" alt=""></p>
-<h5 id="MVMCV的产生"><a href="#MVMCV的产生" class="headerlink" title="MVMCV的产生"></a>MVMCV的产生</h5><p>​        如果将两者结合，会是什么样子呢<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542301497557.gif" alt=""><br>​        结果就说MVMCV产生了。<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542328653234.png" alt=""></p>
-<p>​        view-model会在视图控制器上以一个属性的方式存在. 视图控制器知道 view-model 和它的公有属性, 但是 view-model 对视图控制器一无所知. 你早就该对这个设计感觉好多了因为我们的关注点在这儿进行更好地分离.最后我们用一个应用构建模块层级图来结束这节介绍：<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542362309133.png" alt=""></p>
-<h3 id="第三方应用的使用"><a href="#第三方应用的使用" class="headerlink" title="第三方应用的使用"></a>第三方应用的使用</h3><ul>
-<li>手动将别人的代码拖拽到自己工程中。<ul>
-<li>优点：随时可以修改别人的代码。</li>
-<li>缺点：需要自己维护该代码。</li>
-</ul>
-</li>
-<li>通过pod引用<ul>
-<li>优点：大家一起维护，代码质量高；代码更新只要一句<code>pod update</code>一切都搞定 </li>
-<li>缺点：如果发现问题，修改可能会比较慢</li>
+<li>数据库连接的选择<ul>
+<li>FMDatabase是同步操作，FMDatabaseQueue是异步操作。</li>
+<li>不要单例FMDatabase对象，在多线程处理时各种死锁绝对够你受的。</li>
+<li>不要将FMDatabase和FMDatabaseQueue同时使用，否则等着数据异常或者死锁崩溃吧。</li>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>建议：如果不涉及UI，尽量使用pod来管理；使用GitHub第三方代码的时候需要注意几点：star、watch数量，还有活跃度。别选那种没人用的，不然后期出了问题你就很可能只能靠自己了</p>
-</blockquote>
-<h3 id="发布相关"><a href="#发布相关" class="headerlink" title="发布相关"></a>发布相关</h3><ul>
-<li>签名Code Sign<ul>
-<li>App标识符</li>
-<li>开发证书</li>
-<li>发布证书</li>
-</ul>
-</li>
-<li>APNS<ul>
-<li>开发证书</li>
-<li>发布证书</li>
-</ul>
-</li>
-<li>其他</li>
-</ul>
-<h3 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h3><ul>
-<li>如果有一定的语言基础，不用看「xx从入门到精通」之类的书。因为技术更新很快，书上很多东西都过时或者被弃用了</li>
-<li>多看看苹果开发者文档，接口文档介绍的非常详细。</li>
-<li>多逛逛GitHub，学习GitHub上一些牛人的思想，编码风格。链接 ： <a href="https://github.com/search?l=Objective-C&o=desc&q=stars%3A%3E1&s=stars&type=Repositories" target="_blank" rel="external">Objective-C 排行</a></li>
-</ul>
-<p>&gt;</p>
-<blockquote>
-</blockquote>
 
           
         
@@ -562,7 +473,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/27/algorithm_search_binary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -581,7 +492,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/" itemprop="url">LTxMenu</a></h1>
+                <a class="post-title-link" href="/2017/04/27/algorithm_search_binary/" itemprop="url">二分查找</a></h1>
         
 
         <div class="post-meta">
@@ -593,8 +504,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T15:10:12+08:00">
-                2016-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T10:07:43+08:00">
+                2017-04-27
               </time>
             
 
@@ -616,8 +527,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -634,9 +545,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/#comments" itemprop="discussionUrl">
+                <a href="/2017/04/27/algorithm_search_binary/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/04/27/algorithm_search_binary/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -666,239 +577,17 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p><strong>[ Update v1.0.0 ]</strong> Similar to Facebook News Feed , Alipay Life , QZone and other social applications . click a drop-down button to display more functions</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>​         In Facebook News Feed , Alipay Life , QZone and other social applications , they all contain a function drop-down button which would show a list of more functions when taped . I didn’t find any on GitHub , so I wrote a similar UI controls myself using Objective-C. ：</p>
-<p><img src="https://raw.githubusercontent.com/l900416/LTxMenu/64a7706ae5c6fbde8e7b5f2eb6706b6f56795b05/screenshots/1.gif" alt=""></p>
-<blockquote>
-<blockquote>
-<p>GitHub link : <a href="https://github.com/l900416/LTxMenu" target="_blank" rel="external">LTxMenu</a></p>
-</blockquote>
-</blockquote>
-<h3 id="Get-Start"><a href="#Get-Start" class="headerlink" title="Get Start"></a>Get Start</h3><blockquote>
+            <p>​    二分查找算法也称为折半搜索、二分搜索，是一种在有序数组中查找某一特定元素的搜索算法。算法是建立在有序数组基础上的。时间复杂度： T(n) = Θ(logn)。</p>
+<h3 id="原理及实现"><a href="#原理及实现" class="headerlink" title="原理及实现"></a>原理及实现</h3><p>基本原理：使用递归、分治的思想</p>
 <ul>
-<li>Manually add the files into your Xcode project.</li>
-<li>LTxMenu is available as LTxMenu in Cocoapods.</li>
+<li>① 当数组为空时，说明数组中不存在需查找的元素。</li>
+<li>② 用有序数组的中间位置元素与需查找元素进行大小比较，如果相等，则查找结束。</li>
+<li>③ 如果中间位置元素大于需查找元素，则从数组左侧位置进行递归查找。</li>
+<li>④ 如果中间位置元素小于需查找元素，则从数组右侧位置进行递归查找。</li>
 </ul>
-</blockquote>
-<h3 id="How-To-Use"><a href="#How-To-Use" class="headerlink" title="How To Use"></a>How To Use</h3><p>​    Create a LTxMenuView Object:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong)LTxMenuView* menuView;</div></pre></td></tr></table></figure>
-<p>​    I was too lazy to write a protocol 😄，use callback methods：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">_menuView = [[LTxMenuView alloc] init];//init</div><div class="line">__weak __typeof(self) weakSelf = self;</div><div class="line">_menuView.numberOfRows = ^()&#123;//row numbers</div><div class="line">    return (int)weakSelf.menuItems.count;</div><div class="line">&#125;;</div><div class="line">_menuView.heightForRow = ^(NSInteger row)&#123;//height of a row</div><div class="line">    return 50.f;</div><div class="line">&#125;;</div><div class="line">_menuView.rowAtIndex = ^(NSInteger row)&#123;//the content of a row</div><div class="line">    NSDictionary* menuItem = [weakSelf.menuItems objectAtIndex:row];</div><div class="line">    return [LTxMenuItem menuItemWithImage:[menuItem objectForKey:@&quot;image&quot;]</div><div class="line">                                    title:[menuItem objectForKey:@&quot;title&quot;]</div><div class="line">                            rightBtnItems:[menuItem objectForKey:@&quot;more&quot;]//An array contains subClass of UIView</div><div class="line">                                 tapBlock:^(NSString *identifier) &#123;</div><div class="line">                                     NSLog(@&quot;tap at %@&quot;,identifier);</div><div class="line">                                     __strong __typeof(weakSelf)strongSelf = weakSelf;</div><div class="line">                                     [strongSelf.menuView dismissMenu];</div><div class="line">                                 &#125;];</div><div class="line">&#125;;</div><div class="line">[_menuView showMenuInView:self.view</div><div class="line">                 fromRect:sender.frame];</div></pre></td></tr></table></figure>
-<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><p>​    LTxMenu use <strong>LTxMenuItem</strong> class to config view showed in row. and <strong>LTxMenuView</strong> class with callback methods to calculate the UI performance .  draw arrow and the border use  <strong>UIBezierPath</strong> class . and the show/hide animation use <strong>UIKit</strong>.</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>​    <a href="https://github.com/kolyvan/kxmenu" target="_blank" rel="external">https://github.com/kolyvan/kxmenu</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/19/iOS_ObjC_SearchBar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/19/iOS_ObjC_SearchBar/" itemprop="url">UISearchBar自定义</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-19T17:50:00+08:00">
-                2016-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/19/iOS_ObjC_SearchBar/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/19/iOS_ObjC_SearchBar/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参照一些常用应用对UISearchBar进行UI展示自定义</p>
-<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​        系统默认的搜索栏（UISearchBar）默认样子真心不好看，而平时iOS移动项目中又缺不了搜索功能，参照一些常用应用对UISearchBar进行UI展示自定义，效果图如下：</p>
-<p><img src="/post/iOS/Objective-C/rendering.gif" alt=""></p>
-<h4 id="UISearchBar介绍"><a href="#UISearchBar介绍" class="headerlink" title="UISearchBar介绍"></a>UISearchBar介绍</h4><p>​        如图所示，包括placeholder、textfiled、clearButton、bookmarkButton、leftView等：</p>
-<p><img src="/post/iOS/Objective-C/default_1.png" alt=""></p>
-<blockquote>
-<blockquote>
-<ul>
-<li>① SearchBar的TextField的leftView；</li>
-<li>② SearchBar的TextField的placeholder；</li>
-<li>③ SearchBar的BookmarkIcon，默认不显示；</li>
-</ul>
-</blockquote>
-</blockquote>
-<p><img src="/post/iOS/Objective-C/default_2.png" alt=""></p>
-<blockquote>
-<blockquote>
-<ul>
-<li>④ SearchBar的搜索Text；</li>
-<li>⑤ SearchBar的ClearButton；</li>
-</ul>
-</blockquote>
-</blockquote>
-<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ul>
-<li><strong>1、修改SearchBar背景图</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//修改SearchBar背景（透明）图片，去除默认的黑线</div><div class="line">[self setBackgroundImage:[UIImage new]];</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>2、修改所搜索框背景图片，并切圆角</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//输入框背景图片</div><div class="line">[self setSearchFieldBackgroundImage:[self searchFieldBackgroundImage] forState:UIControlStateNormal];</div><div class="line">//将输入框切圆角</div><div class="line">[self setSearchTextBackgroundCorner];</div></pre></td></tr></table></figure>
-<p><img src="/post/iOS/Objective-C/process_2.png" alt=""></p>
-<ul>
-<li><strong>3、显示BookmarkButton，并设置其显示图标</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//显示BookmarkButton，并设置其图标（照相机）</div><div class="line">self.showsBookmarkButton = YES;</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_camera&quot;] forSearchBarIcon:UISearchBarIconBookmark  state:UIControlStateNormal];</div></pre></td></tr></table></figure>
-<p><img src="/post/iOS/Objective-C/process_3.png" alt=""></p>
-<ul>
-<li><strong>4、设置「清空」图标图标</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//文本发生变更的时候，修改「清空」图标</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateNormal];</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateHighlighted];</div></pre></td></tr></table></figure>
-<p><img src="/post/iOS/Objective-C/process_4.png" alt=""></p>
-<ul>
-<li><strong>5、修改搜索框左侧的图标</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//搜索框左侧的搜索图标修改（默认是灰色）</div><div class="line">UITextField* searchField = [self valueForKey:@&quot;_searchField&quot;];</div><div class="line">UIImageView* searchIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&quot;ic_searchbar_search&quot;]];</div><div class="line">searchField.leftView = searchIV;</div><div class="line">searchField.leftViewMode = UITextFieldViewModeAlways;</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>6、修改输入框文本颜色</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//改变searcher的textcolor</div><div class="line">searchField.textColor = [UIColor whiteColor];</div><div class="line">//改变placeholder的颜色</div><div class="line">[searchField setValue:[UIColor whiteColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</div></pre></td></tr></table></figure>
-<p><img src="/post/iOS/Objective-C/process_6.png" alt=""></p>
-<ul>
-<li><strong>7、附上调用方法</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">//搜索框的背景图片</div><div class="line">- (UIImage*) searchFieldBackgroundImage</div><div class="line">&#123;</div><div class="line">    CGFloat height = 32.f;</div><div class="line">    UIColor* bgColor = [UIColor colorWithRed:47/255.0 green:123/255.0 blue:200/255.0 alpha:0.5];</div><div class="line">    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);</div><div class="line">    UIGraphicsBeginImageContext(r.size);</div><div class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">    CGContextSetFillColorWithColor(context, [bgColor CGColor]);</div><div class="line">    CGContextFillRect(context, r);</div><div class="line">    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    return img;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//切圆角</div><div class="line">-(void)setSearchTextBackgroundCorner&#123;</div><div class="line">    for (UIView *subview in self.subviews) &#123;</div><div class="line">        for(UIView* grandSonView in subview.subviews)&#123;</div><div class="line">            if ([grandSonView isKindOfClass:NSClassFromString(@&quot;UISearchBarBackground&quot;)]) &#123;</div><div class="line">                grandSonView.alpha = 0.0f;</div><div class="line">            &#125;else if([grandSonView isKindOfClass:NSClassFromString(@&quot;UISearchBarTextField&quot;)] )&#123;</div><div class="line">                grandSonView.layer.cornerRadius = 5.0f;</div><div class="line">                grandSonView.layer.masksToBounds = YES;</div><div class="line">            &#125;else&#123;</div><div class="line">                grandSonView.alpha = 0.0f;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h4><p><a href="https://pan.baidu.com/s/1i5JiW3z" target="_blank" rel="external">https://pan.baidu.com/s/1i5JiW3z</a></p>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://developer.apple.com/reference/uikit/uisearchbar" target="_blank" rel="external">https://developer.apple.com/reference/uikit/uisearchbar</a></p>
-<p><a href="http://stackoverflow.com/questions/2139115/uisearchbar-clear-background-color-or-set-background-image-iphone-sdk/5557255#5557255" target="_blank" rel="external">http://stackoverflow.com/questions/2139115/uisearchbar-clear-background-color-or-set-background-image-iphone-sdk/5557255#5557255</a></p>
+<p>使用Swift编写简单的代码实现，如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  二分查找</span></div><div class="line"><span class="comment"> * 使用递归、分治的思想</span></div><div class="line"><span class="comment"> * ① 当数组为空时，说明数组中不存在需查找的元素。</span></div><div class="line"><span class="comment"> * ② 用有序数组的中间位置元素与需查找元素进行大小比较，如果相等，则查找结束。</span></div><div class="line"><span class="comment"> * ③ 如果中间位置元素大于需查找元素，则从数组左侧位置进行递归查找。</span></div><div class="line"><span class="comment"> * ④ 如果中间位置元素小于需查找元素，则从数组右侧位置进行递归查找。</span></div><div class="line"><span class="comment"> **/</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">binarySearch</span>&lt;T:Comparable&gt;<span class="params">(array:Array&lt;T&gt;, start:Int, end:Int, value:T)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">let</span> <span class="built_in">count</span> = end - start + <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">count</span> &lt;= <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//没有查找到</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> midIndex = (start + end) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">let</span> midValue = array[midIndex];</div><div class="line">    <span class="keyword">if</span> midValue &gt; value &#123;<span class="comment">//在左侧查找</span></div><div class="line">        <span class="keyword">return</span> binarySearch(array: array, start: start, end: midIndex - <span class="number">1</span>, value: value);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> midValue &lt; value &#123;<span class="comment">//在右侧查找</span></div><div class="line">        <span class="keyword">return</span> binarySearch(array: array, start: midIndex + <span class="number">1</span>, end: end, value: value);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;<span class="comment">//位置查找到，即当前数组中间位置元素</span></div><div class="line">        <span class="keyword">return</span> midIndex;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">callBinarySearch</span>&lt;T:Comparable&gt;<span class="params">(array: Array&lt;T&gt;, value:T)</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> index = binarySearch(array: array, start: <span class="number">0</span>, end: array.<span class="built_in">count</span> - <span class="number">1</span>, value: value);</div><div class="line">    </div><div class="line">    <span class="built_in">print</span>(<span class="string">"Index Of Value <span class="subst">\(value)</span>  In Array <span class="subst">\(array)</span> is : <span class="subst">\(index)</span>"</span>)</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>];</div><div class="line">callBinarySearch(array: intArray , value: <span class="number">3</span>)</div><div class="line">callBinarySearch(array: intArray , value: <span class="number">16</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>];</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"Assembly"</span>)</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"PHP"</span>)</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"AAA"</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="number">3</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>] <span class="keyword">is</span> : -<span class="number">1</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="number">16</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>] <span class="keyword">is</span> : <span class="number">8</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">Assembly</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : <span class="number">0</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">PHP</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : <span class="number">5</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">AAA</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : -<span class="number">1</span></div></pre></td></tr></table></figure>
 
           
         
@@ -938,7 +627,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -984,7 +673,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

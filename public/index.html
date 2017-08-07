@@ -291,6 +291,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/07/share_github_blog_jekyll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/07/share_github_blog_jekyll/" itemprop="url">Mac下使用Jekyll搭建GitHub博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:25:19+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/07/share_github_blog_jekyll/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/07/share_github_blog_jekyll/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll</a>是一个静态网站和博客模版，本文介绍如何使用Jekyll进行个人GitHub博客的搭建。搭建前提是拥有个人<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，且Mac上有安装 <em>git</em> 工具。</p>
+<h3 id="安装Jekyll"><a href="#安装Jekyll" class="headerlink" title="安装Jekyll"></a>安装Jekyll</h3><p>  参照<a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll官方</a>介绍，打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> gem install jekyll bundler</div></pre></td></tr></table></figure></p>
+<p>注：gem的安装／更新可以自己去查，此处不再进行说明。Jekyll安装成功后，便可以进行个人博客／静态网站的创建了。</p>
+<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll new my_blog</div><div class="line"><span class="meta">$</span> cd my_blog</div><div class="line"><span class="meta">$</span> bundle exec jekyll serve</div></pre></td></tr></table></figure></p>
+<p>参照<a href="https://jekyllrb.com/docs/templates/" target="_blank" rel="external">官方模版配置介绍</a>,修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的<a href="http://jekyllthemes.org/" target="_blank" rel="external">博客模板</a>即可。  </p>
+<h3 id="快速使用博客-1"><a href="#快速使用博客-1" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>  此处选择使用博客模板<a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="external">jekyll-now</a>，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。<br>新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。<br>编写之后，直接在博客路径下，运行即可：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll serve</div></pre></td></tr></table></figure></p>
+<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><p>  使用Jekyll搭建博客也可以添加很多自定制功能，比如统计、评论、标签等；可以根据自己的喜好，选择不同的主题。以下是个人曾经使用过的主题：      </p>
+<ul>
+<li><a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="external">Hux Blog</a> 第一个GitHub博客系统就是从他的博客fork过去的。</li>
+<li><a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll" target="_blank" rel="external">Clean Blog</a> 简单的Jekyll博客模板。</li>
+</ul>
+<h3 id="Jekyll在GitHub上的维护"><a href="#Jekyll在GitHub上的维护" class="headerlink" title="Jekyll在GitHub上的维护"></a>Jekyll在GitHub上的维护</h3><p>直接将博客源码上传到GitHub博客仓库即可。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>通过在GitHub上搭建Jekyll和Hexo博客，个人更倾向于使用Hexo博客。</p>
+<ul>
+<li>Jekyll    <ul>
+<li>配置简单。</li>
+<li>维护简单，只需要一个Branch即可。</li>
+<li>使用简单，运行只需要 <em>jekyll server</em> 即可。</li>
+<li>发布简单，只需要将代码push到对应仓库即可。</li>
+<li>主题切换，比较麻烦。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Hexo<ul>
+<li>配置项相对较多，但是格式比较清晰。</li>
+<li>博客和源码需要分开维护。需要两个Branch对博客系统进行维护。</li>
+<li>使用相对简单。<ul>
+<li>hexo clean  // 清理</li>
+<li>hexo g      // 生成</li>
+<li>hexo s      // 运行</li>
+</ul>
+</li>
+<li>发布简单。<ul>
+<li>hexo d      // 将博客部署(到github)</li>
+<li>将博客源码push到对应仓库单独保存</li>
+</ul>
+</li>
+<li>主题切换简单。<ul>
+<li>下载新主题到themes文件夹下；</li>
+<li>修改站点配置文件_config.yml中对应的主题选项。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/share_github_blog_hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -463,6 +661,7 @@ branch: master
 </ul>
 </li>
 </ul>
+<h3 id="Hexo在GitHub上的维护"><a href="#Hexo在GitHub上的维护" class="headerlink" title="Hexo在GitHub上的维护"></a>Hexo在GitHub上的维护</h3><p>说下本人的做法，创建新的Branch，命名为hexo，用于存放博客源码，master用于个人博客。这样使用一个仓库来维护。</p>
 <h3 id="Hexo与Jekyll不同之处"><a href="#Hexo与Jekyll不同之处" class="headerlink" title="Hexo与Jekyll不同之处"></a>Hexo与Jekyll不同之处</h3><ul>
 <li>Hexo博客文件需要单独维护。对应GitHub仓库中的文件是通过Hexo部署进去的。</li>
 <li>Jekyll博客文件直接上传到GitHub博客仓库中即可。</li>
@@ -502,1567 +701,11 @@ branch: master
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/27/iOS_bluetooth_central/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/27/iOS_bluetooth_central/" itemprop="url">iOS蓝牙开发 - Central模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T19:50:12+08:00">
-                2017-07-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/27/iOS_bluetooth_central/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/27/iOS_bluetooth_central/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Central模式"><a href="#Central模式" class="headerlink" title="Central模式"></a>Central模式</h3><p>中心模式(Central Model)，可以简单理解为设备App作为中心，连接其他蓝牙外设设备。区别于外设模式，官方介绍可自行<a href="https://www.google.com/hk" target="_blank" rel="external">Google</a>。这里主要介绍iOS上蓝牙设备作为中心模式的集成。</p>
-<h3 id="功能集成"><a href="#功能集成" class="headerlink" title="功能集成"></a>功能集成</h3><p>  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;/array&gt;</div><div class="line">&lt;key&gt;NSBluetoothPeripheralUsageDescription&lt;/key&gt;</div><div class="line">&lt;string&gt;蓝牙设备请求描述，比如：程序需要使用蓝牙进行设备发现&lt;/string&gt;</div></pre></td></tr></table></figure></p>
-<p>  项目Targets对应的 <em>BuildPhases</em> 中，引入 <em>CoreBluetooth.framework</em> ，使用的代码中引入头文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="请求蓝牙服务"><a href="#请求蓝牙服务" class="headerlink" title="请求蓝牙服务"></a>请求蓝牙服务</h4><p>  使用CBCentralManager来进行蓝牙服务管理(授权请求)，监听蓝牙状态变化。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) CBCentralManager *cMgr;</div><div class="line"></div><div class="line"><span class="comment">//对象创建成功后，会请求使用蓝牙，CBCentralManagerDelegate协议会回调蓝牙的各个状态</span></div><div class="line">_cMgr = [[CBCentralManager alloc] initWithDelegate:<span class="keyword">self</span> queue:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="meta">#pragma mark - CBCentralManagerDelegate</span></div><div class="line">- (<span class="keyword">void</span>)centralManagerDidUpdateState:(CBCentralManager *)central&#123;</div><div class="line">    <span class="keyword">switch</span> (central.state) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateUnknown"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateResetting"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateUnsupported"</span>);<span class="comment">//不支持蓝牙</span></div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateUnauthorized"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStatePoweredOff"</span>);<span class="comment">//蓝牙未开启</span></div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">5</span>:</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStatePoweredOn"</span>);<span class="comment">//蓝牙已开启</span></div><div class="line">                <span class="comment">// 在中心管理者成功开启后再进行一些操作</span></div><div class="line">                <span class="comment">// 搜索外设， 搜索成功之后,会调用我们找到外设的代理方法</span></div><div class="line">                [<span class="keyword">self</span>.cMgr scanForPeripheralsWithServices:<span class="literal">nil</span> <span class="comment">// 通过某些服务筛选外设</span></div><div class="line">                                                  options:<span class="literal">nil</span>]; <span class="comment">// dict,条件</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="设备-外设-搜索"><a href="#设备-外设-搜索" class="headerlink" title="设备(外设)搜索"></a>设备(外设)搜索</h4><p>  在设备蓝牙开启的情况下，通过 <em>CBCentralManager</em> 的 <em>scanForPeripheralsWithServices:options:</em> 方法来搜索蓝牙外设，搜索成功后通过CBCentralManagerDelegate协议回调将外设返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">    //可以通过服务和选项进行蓝牙外设的过滤</div><div class="line">    [self.cMgr scanForPeripheralsWithServices:nil  options:nil]</div><div class="line"></div><div class="line">#pragma mark - CBCentralManagerDelegate</div><div class="line">//CBCentralManagerDelegate协议对应发现外设，协议回调函数附带外设携带的数据advertisementData和外设的信号强度RSSI</div><div class="line">- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *, id&gt; *)advertisementData RSSI:(NSNumber *)RSSI&#123;</div><div class="line">    //此处我们可以将外设设备组织成列表展示出来，以便用户根据实际情况进行特定外设的连接。</div><div class="line">    if (![self.self.peripheralList containsObject:peripheral]) &#123;</div><div class="line">        [self.peripheralList addObject:item];</div><div class="line">        [[NSNotificationCenter defaultCenter] jk_postNotificationOnMainThreadName:BluetoothPeripheralUpdateKey object:nil userInfo:nil];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //也可以根据信号强度、外设名称或者携带信息，直接过滤并通过CBCentralManager进行连接</div><div class="line">    //[self.cMgr connectPeripheral:self.peripheral options:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="设备连接"><a href="#设备连接" class="headerlink" title="设备连接"></a>设备连接</h4><p>  通过CBCentralManager的 <em>connectPeripheral:options:</em> 方法进行外设的连接，连接成功后通过CBCentralManagerDelegate协议回调将外设返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    //外设的连接</div><div class="line">    [self.cMgr connectPeripheral:self.peripheral options:nil];</div><div class="line"></div><div class="line">    //中心管理者连接外设成功,协议回调返回</div><div class="line">- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral&#123;</div><div class="line">    //设置外设代理</div><div class="line">    peripheral.delegate = self;</div><div class="line">&#125;</div><div class="line">```   </div><div class="line"> 此处需要注意的是，蓝牙连接受环境及设备的影响，经常会遇到连接断开的情况。此时可以通过在断开连接的协议回调中重新连接外设即可，此时连接时间非常快。   </div><div class="line">```Objective-C</div><div class="line">// 丢失连接</div><div class="line">- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error&#123;</div><div class="line">    NSLog(@&quot;%s, line = %d, %@=断开连接&quot;, __FUNCTION__, __LINE__, peripheral.name);</div><div class="line">    if (self.connectedPeripheral) &#123;</div><div class="line">        [self.cMgr connectPeripheral:self.peripheral options:nil];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>  通常情况下，我们在外设连接成功的回调中，设置外设回调相关协议代理CBPeripheralDelegate，以便后续的服务发现等操作。</p>
-<h4 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h4><p>  在蓝牙外设连接成功的情况下，我们通过外设的 <em>discoverServices:</em> 方法进行外设服务的发现，发现成功后，通过外设协议CBPeripheralDelegate回调外设提供的服务信息。   </p>
-<pre><code class="Objective-C">    //外设服务发现
-    [self.peripheral discoverServices:nil];
-
-    //外设服务回调
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error{
-    //    NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);
-    for (CBService *s in peripheral.services) {
-        NSLog(@&quot; -- 发现服务 -- :%@&quot;, s);
-    [self.connectedPeripheral discoverCharacteristics:nil forService:s];
-    }
-}
-</code></pre>
-<p>  通常情况下，我们会对发现的服务进行过滤，查找有用的服务，并查阅其特征值。以上代码读取的所有服务的特征值。</p>
-<h4 id="特征值发现"><a href="#特征值发现" class="headerlink" title="特征值发现"></a>特征值发现</h4><p>   外设服务发现的前提下，通过外设的方法 <em>discoverCharacteristics:forService:</em> 来进行服务特征值的发现。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。     </p>
-<pre><code class="Objective-C">    //特征值发现
-    [self.peripheral discoverCharacteristics:nil forService:s];
-
-    //特征值发现回调
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error{
-    NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);
-    for (CBCharacteristic *characteristics in service.characteristics) {
-        //NSLog(@&quot;%s, line = %d, char = %@&quot;, __FUNCTION__, __LINE__, cha);
-        NSLog(@&quot;characteristic name:%@ value is:%@&quot;,characteristics.UUID,characteristics.value);
-        [self.peripheral readValueForCharacteristic:characteristics];//读取特征值
-        [self.peripheral discoverDescriptorsForCharacteristic:characteristics];//发现特征值所携带的描述信息
-    }
-}
-</code></pre>
-<p>  发现外设特征值后，我们便可以读取特征值及发现特征值所携带的描述信息了</p>
-<h4 id="读取特征值"><a href="#读取特征值" class="headerlink" title="读取特征值"></a>读取特征值</h4><p> 发现特征值后，通过外设的方法 <em>readValueForCharacteristic:</em> 读取特征值。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。     </p>
-<pre><code class="Objective-C">    //特征值读取
-    [self.peripheral readValueForCharacteristic:characteristics];
-
-    //特征值更新回调
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-        NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);
-    //特征值更新
-}
-</code></pre>
-<p>  特征值携带的UUID、value信息可以直接读取，若特征值发生更新，则通过协议回调进行读取。</p>
-<h4 id="读取描述"><a href="#读取描述" class="headerlink" title="读取描述"></a>读取描述</h4><pre><code>发现特征值后，通过外设的方法 *discoverDescriptorsForCharacteristic:* 读取特征值的描述信息。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。     
-</code></pre><pre><code class="Objective-C">    //特征值描述字段读取
-    [self.peripheral discoverDescriptorsForCharacteristic:characteristics];
-
-//特征值描述更新回调
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error{
-    NSLog(@&quot;===characteristic name:%@&quot;,characteristic.service.UUID);
-    for (CBDescriptor *d in characteristic.descriptors) {
-        NSLog(@&quot;CBDescriptor name is :%@&quot;,d.UUID);
-    [self.peripheral readValueForDescriptor:d];
-    }
-}
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(nullable NSError *)error{
-    NSLog(@&quot;Descriptor name:%@ value is:%@&quot;,descriptor.characteristic.UUID, descriptor.value);
-}
-</code></pre>
-<p>  可读取描述的UUID和value等信息。   </p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>​    </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/19/iOS_ObjC_file_preview/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/19/iOS_ObjC_file_preview/" itemprop="url">文件的查看</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-19T21:25:19+08:00">
-                2017-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/19/iOS_ObjC_file_preview/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/19/iOS_ObjC_file_preview/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。</p>
-<h3 id="UIDocumentInteractionController"><a href="#UIDocumentInteractionController" class="headerlink" title="UIDocumentInteractionController"></a>UIDocumentInteractionController</h3><p>界面表现上和AirDrop长得很像，这个也可以进行AirDrop蓝牙分享很强大的功能，与之不同的是，在与文件类型关联的备选APP列表中，会有类似 <strong>[拷贝至 微信]</strong> 应用的选择，如下：<br><img src="/post/iOS/Objective-C/file_preview_1.png" alt="">    </p>
-<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//引用</div><div class="line">@property (nonatomic, strong) UIDocumentInteractionController* docInteractionController;</div><div class="line"></div><div class="line"></div><div class="line">//初始化及动作定义</div><div class="line">NSURL* filePath = xxx;//文件路径</div><div class="line">_docInteractionController = [UIDocumentInteractionController  interactionControllerWithURL:filePath];</div><div class="line">_docInteractionController.delegate = self;</div><div class="line">[_docInteractionController presentOpenInMenuFromRect:CGRectZero</div><div class="line">                                              inView:self.view</div><div class="line">                                            animated:YES];</div></pre></td></tr></table></figure>
-<h4 id="实现常用协议"><a href="#实现常用协议" class="headerlink" title="实现常用协议"></a>实现常用协议</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#pragma mark - UIDocumentInteractionControllerDelegate</div><div class="line">-(void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application &#123;//将要发送的应用</div><div class="line">&#125;</div><div class="line"></div><div class="line">//下面是他的代理方法</div><div class="line"></div><div class="line">-(void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application&#123;//已经发送的应用</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)documentInteractionControllerDidDismissOpenInMenu:(UIDocumentInteractionController *)controller&#123;//dismiss</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="UIActivityViewController"><a href="#UIActivityViewController" class="headerlink" title="UIActivityViewController"></a>UIActivityViewController</h3><p>与UIDocumentInteractionController不同的是，UIActivityViewController无类似 <strong>[拷贝至 微信]</strong> 应用的选择。其界面和备选应用等可自行定制(屏蔽)，如下：    </p>
-<p><img src="/post/iOS/Objective-C/file_preview_2.png" alt="">    </p>
-<pre><code class="Objective-C">NSURL* fileURL = [NSURL URLWithString:@&quot;http://xxx.dwg&quot;];
-
-//注：activityItems可以是包含文字、图片、URL地址的数组，至少包含一项；applicationActivities参数可以对平台进行自定义
-UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:@[_fileURL]
-                                                                       applicationActivities:nil];
-activity.excludedActivityTypes = @[UIActivityTypeAirDrop];//可用于屏蔽掉的应用列表，参照UIActivityType
-
-
-UIPopoverPresentationController *popover = activity.popoverPresentationController;
-if (popover) {
-    popover.sourceView = self.shareBtn;
-    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
-}
-[self presentViewController:activity animated:YES completion:nil];
-</code></pre>
-<p><img src="/post/iOS/Objective-C/file_preview_3.png" alt=""> </p>
-<h3 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h3><p>第三方平台比如微信、新浪微博等平台的分享，集成其提供的SDK即可。此处不再赘述。若需要多分享平台集成，建议使用第三方平台比如友盟、ShareSDK等</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/13/algorithm_sort_radix/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/13/algorithm_sort_radix/" itemprop="url">基数排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T11:25:37+08:00">
-                2017-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/13/algorithm_sort_radix/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/13/algorithm_sort_radix/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    基数排序（radix sort）属于“分配式排序”（distribution sort），基数排序法是属于稳定性的排序，其时间复杂度为O (nlog(r)m)，其中r为所采取的基数，而m为堆数，在某些时候，基数排序法的效率高于其它的稳定性排序法。参照斯坦福大学算法公开课视频</p>
-<h3 id="基本思想及实现"><a href="#基本思想及实现" class="headerlink" title="基本思想及实现"></a>基本思想及实现</h3><p>基本思想： 对于一个整型数组：      </p>
-<ul>
-<li>① 将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。</li>
-<li>② 排序算法使用计数排序思想</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  基数排序</span></div><div class="line"><span class="comment">* 分布式排序算法</span></div><div class="line"><span class="comment">* 将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。</span></div><div class="line"><span class="comment">* 基数排序的方式可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。</span></div><div class="line"><span class="comment">* 排序使用 - 计数排序</span></div><div class="line"><span class="comment">**/</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">*  @brief 基数排序 - LSD</span></div><div class="line"><span class="comment">*  @param  sortArray 待排序整形数组</span></div><div class="line"><span class="comment">*  @param  loop    排序轮次</span></div><div class="line"><span class="comment">*  @param  step    步长</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">radixSort</span><span class="params">(sortArray:<span class="keyword">inout</span> Array&lt;Int&gt;, loop:Int,step:Int)</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> length = sortArray.<span class="built_in">count</span>;<span class="comment">//待排序数组长度</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">    * 根据最高位和最低位，确定每次进行计数排序的中间位数</span></div><div class="line"><span class="comment">    **/</span></div><div class="line">    <span class="keyword">var</span> msb = <span class="number">1</span>;<span class="comment">//最高位</span></div><div class="line">    <span class="keyword">var</span> minimum = <span class="number">1</span>;<span class="comment">//最低位</span></div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; loop * step &#123;</div><div class="line">        msb = msb * <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; step &#123;</div><div class="line">        minimum = minimum * <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">    * 计数排序 - 非基于比较的排序算法 。 可参照上一篇文章</span></div><div class="line"><span class="comment">    */</span></div><div class="line">    <span class="keyword">var</span> countArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();</div><div class="line">    <span class="keyword">var</span> buckets = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ... minimum &#123;</div><div class="line">        countArray.append(<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; length&#123;</div><div class="line">        buckets.append(<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//第一个步骤：统计数量</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; length &#123;<span class="comment">//统计小于位置i的元素个数</span></div><div class="line">        <span class="keyword">let</span> sortValue = sortArray[i] / msb % minimum;</div><div class="line">        countArray[sortValue] = countArray[sortValue] + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> ... minimum &#123;<span class="comment">//统计出小于等于位置i的元素个数</span></div><div class="line">        countArray[i] = countArray[i] + countArray[i - <span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//第二个步骤：逆向扫描数组sortArray，将i位置元素放置到retArray中countArray对应值的位置上，同时修正countArray的值</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> (<span class="number">0</span> ..&lt; length).reversed() &#123;</div><div class="line">        <span class="keyword">let</span> value = sortArray[i] / msb % minimum;</div><div class="line">        <span class="keyword">let</span> countValue = countArray[value];</div><div class="line">        buckets[countValue - <span class="number">1</span>] = sortArray[i];</div><div class="line">        countArray[value] = countArray[value] - <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//对本次基数排序结果进行排序</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; length &#123;</div><div class="line">        sortArray[i] = buckets[i];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> intArray =  [<span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">81</span>, <span class="number">93</span>, <span class="number">100</span>, <span class="number">92</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">95</span>, <span class="number">10563</span>, <span class="number">55</span>, <span class="number">7</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">999</span>, <span class="number">1024</span>, <span class="number">20490</span>, <span class="number">1</span>];</div><div class="line"></div><div class="line">    <span class="keyword">var</span> maxValue = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> maxLength = <span class="number">1</span>;</div><div class="line">    <span class="keyword">var</span> step = <span class="number">2</span>;</div><div class="line">    <span class="keyword">var</span> loopTimes = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; intArray.<span class="built_in">count</span>&#123;</div><div class="line">        <span class="keyword">if</span> intArray[i] &gt; maxValue&#123;</div><div class="line">            maxValue = intArray[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span>(maxValue / <span class="number">10</span> != <span class="number">0</span>)&#123;</div><div class="line">        maxLength = maxLength + <span class="number">1</span>;</div><div class="line">        maxValue = maxValue / <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> maxLength % step &gt; <span class="number">0</span>&#123;</div><div class="line">        loopTimes = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    loopTimes = loopTimes + maxLength / step;</div><div class="line"></div><div class="line">    <span class="built_in">print</span>(<span class="string">"待排序数组<span class="subst">\(intArray)</span>"</span>);</div><div class="line">    <span class="built_in">print</span>(<span class="string">"步长：<span class="subst">\(step)</span>"</span>);</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; loopTimes&#123;</div><div class="line">        radixSort(sortArray: &amp;intArray, loop: i, step: step);</div><div class="line">        <span class="built_in">print</span>(<span class="string">"第<span class="subst">\(i)</span>次基数排序后结果：<span class="subst">\(intArray)</span>"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组[<span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">81</span>, <span class="number">93</span>, <span class="number">100</span>, <span class="number">92</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">95</span>, <span class="number">10563</span>, <span class="number">55</span>, <span class="number">7</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">999</span>, <span class="number">1024</span>, <span class="number">20490</span>, <span class="number">1</span>]</div><div class="line">步长：<span class="number">2</span></div><div class="line">第<span class="number">0</span>次基数排序后结果：[<span class="number">100</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">14</span>, <span class="number">22</span>, <span class="number">1024</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">55</span>, <span class="number">10563</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">81</span>, <span class="number">20490</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">999</span>]</div><div class="line">第<span class="number">1</span>次基数排序后结果：[<span class="number">1</span>, <span class="number">7</span>, <span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">55</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">81</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">20490</span>, <span class="number">10563</span>, <span class="number">999</span>, <span class="number">1024</span>]</div><div class="line">第<span class="number">2</span>次基数排序后结果：[<span class="number">1</span>, <span class="number">7</span>, <span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">55</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">81</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">999</span>, <span class="number">1024</span>, <span class="number">10563</span>, <span class="number">20490</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/" itemprop="url">LTxMenu</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T18:10:12+08:00">
-                2017-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>[ Update v2.0.0 ]</strong> Similar to Facebook News Feed , Alipay Life , QZone and other social applications . click a drop-down button to display more functions</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>​         In Facebook News Feed , Alipay Life , QZone and other social applications , they all contain a function drop-down button which would show a list of more functions when taped . I didn’t find any on GitHub , so I wrote a similar UI controls myself using Objective-C. ：</p>
-<p><img src="https://raw.githubusercontent.com/l900416/LTxMenu/master/screenshots/1.png" alt=""></p>
-<blockquote>
-<blockquote>
-<p>GitHub link : <a href="https://github.com/l900416/LTxMenu" target="_blank" rel="external">LTxMenu</a></p>
-</blockquote>
-</blockquote>
-<h3 id="Get-Start"><a href="#Get-Start" class="headerlink" title="Get Start"></a>Get Start</h3><blockquote>
-<ul>
-<li>Manually add the files into your Xcode project.</li>
-<li>LTxMenu is available as LTxMenu in Cocoapods.</li>
-</ul>
-</blockquote>
-<h3 id="How-To-Use"><a href="#How-To-Use" class="headerlink" title="How To Use"></a>How To Use</h3><p>​    Create a LTxMenuView Object:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* class instance method with dataSource and delegate. you can also create with [[LTxMenuView alloc] init] then set the dataSource and the delegate.</div><div class="line">**/</div><div class="line">+ (instancetype)instanceWithDataSource:(id &lt;LTxMenuViewDataSource&gt;)dataSource delegate:(id &lt;LTxMenuViewDelegate&gt;)delegate;</div><div class="line">/**</div><div class="line">* show menuView in viewController from a special position.</div><div class="line">* @param viewController the menuview &apos;s container</div><div class="line">* @param position the menuview &apos;s arrow direction</div><div class="line">**/</div><div class="line">- (void)showMenu:(UIViewController*)viewController from:(CGRect)position;</div><div class="line">/**</div><div class="line">* hide the menuview. usually you did not need to call this method</div><div class="line">**/</div><div class="line">- (void)dismissMenu;</div></pre></td></tr></table></figure>
-<p>​    DataSource &amp;&amp; Delegate</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#pragma mark LTxMenuViewDelegate</div><div class="line">@protocol LTxMenuViewDelegate&lt;NSObject&gt;</div><div class="line"></div><div class="line">@optional</div><div class="line">/**</div><div class="line">* called when a specified index was selected.</div><div class="line">**/</div><div class="line">-(void)didSelectRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* called when a specified accessoryView was selected.</div><div class="line">**/</div><div class="line">-(void)didSelectAccessoryView:(UIView*)accessoryView</div><div class="line">atIndex:(NSInteger)index;</div><div class="line">@end</div><div class="line"></div><div class="line">#pragma mark LTxMenuViewDataSource</div><div class="line">@protocol LTxMenuViewDataSource&lt;NSObject&gt;</div><div class="line"></div><div class="line">@required</div><div class="line">/**</div><div class="line">* Returns the number of rows</div><div class="line">**/</div><div class="line">- (NSInteger)numberOfRows;</div><div class="line"></div><div class="line">@optional</div><div class="line">/**</div><div class="line">* Returns the height of specified index. default value is 50.</div><div class="line">**/</div><div class="line">- (CGFloat)heightForRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* Returns the attributedTitle of specified index.</div><div class="line">**/</div><div class="line">- (NSAttributedString*)attributedTitleForRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* Returns the image of specified index.</div><div class="line">**/</div><div class="line">- (UIImage*)imageForRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* Returns the accessoryViews placed at the end of specified index.</div><div class="line">**/</div><div class="line">- (NSArray&lt;UIView*&gt;*)accessoryViewsAtIndex:(NSInteger)index;</div><div class="line">@end;</div></pre></td></tr></table></figure>
-<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><p>​    LTxMenu use <strong>LTxMenuItem</strong> class to config view showed in row. and <strong>LTxMenuView</strong> class with callback methods to calculate the UI performance .  draw arrow and the border use  <strong>UIBezierPath</strong> class . and the show/hide animation use <strong>UIKit</strong>.</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>​    <a href="https://github.com/kolyvan/kxmenu" target="_blank" rel="external">https://github.com/kolyvan/kxmenu</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/algorithm_sort_count/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/18/algorithm_sort_count/" itemprop="url">计数排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T21:05:37+08:00">
-                2017-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/05/18/algorithm_sort_count/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/18/algorithm_sort_count/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    计数排序是一个非基于比较的整数排序算法，用空间换时间，优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围）。</p>
-<h3 id="基本思想及实现"><a href="#基本思想及实现" class="headerlink" title="基本思想及实现"></a>基本思想及实现</h3><p>基本思想： 假设输入的线性表L的长度为n，L=L1,L2,..,Ln；线性表的元素属于有限偏序集S，|S|=k且k=O(n)，S={S1,S2,..Sk}；则计数排序可以描述如下：      </p>
-<ul>
-<li>① 扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；</li>
-<li>② 扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  计数排序</span></div><div class="line"><span class="comment">* 计数排序是一个非基于比较的排序算法，优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围），快于任何比较排序算法。当然这是一种牺牲空间换取时间的做法，而且当O(k)&gt;O(n*log(n))的时候其效率反而不如基于比较的排序。</span></div><div class="line"><span class="comment">* ① 扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；</span></div><div class="line"><span class="comment">* ② 扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">countSort</span><span class="params">(sortArray:<span class="keyword">inout</span> Array&lt;Int&gt;, maxValue:Int)</span></span> -&gt; <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;&#123;</div><div class="line"><span class="keyword">let</span> <span class="built_in">count</span> = sortArray.<span class="built_in">count</span>;</div><div class="line"><span class="keyword">var</span> retArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();<span class="comment">//用于存放返回值</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</div><div class="line"><span class="keyword">var</span> countArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();<span class="comment">//用于存放计数器</span></div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ... maxValue &#123;<span class="comment">//初始化计数器</span></div><div class="line">countArray.append(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="built_in">count</span> &#123;</div><div class="line">retArray.append(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//第一个步骤：统计数量</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="built_in">count</span> &#123;<span class="comment">//统计小于位置i的元素个数</span></div><div class="line">countArray[sortArray[i]] = countArray[sortArray[i]] + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> ... maxValue &#123;<span class="comment">//统计出小于等于位置i的元素个数</span></div><div class="line">countArray[i] = countArray[i] + countArray[i-<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//第二个步骤：逆向扫描数组sortArray，将i位置元素放置到retArray中countArray对应值的位置上，同时修正countArray的值</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (<span class="number">0</span> ..&lt; <span class="built_in">count</span>).reversed() &#123;</div><div class="line"><span class="keyword">let</span> value = sortArray[i];</div><div class="line"><span class="keyword">let</span> countValue = countArray[value];</div><div class="line">retArray[countValue - <span class="number">1</span>] = value;</div><div class="line">countArray[value] = countArray[value] - <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> retArray;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">print</span>(countSort(sortArray: &amp;intArray,maxValue:<span class="number">5</span>));</div><div class="line"></div><div class="line">intArray =  [<span class="number">100</span>,<span class="number">93</span>,<span class="number">97</span>,<span class="number">92</span>,<span class="number">96</span>,<span class="number">99</span>,<span class="number">92</span>,<span class="number">89</span>,<span class="number">93</span>,<span class="number">97</span>,<span class="number">90</span>,<span class="number">94</span>,<span class="number">92</span>,<span class="number">95</span>];</div><div class="line"><span class="built_in">print</span>(countSort(sortArray: &amp;intArray,maxValue:<span class="number">100</span>));</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>]</div><div class="line">[<span class="number">89</span>, <span class="number">90</span>, <span class="number">92</span>, <span class="number">92</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">93</span>, <span class="number">94</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">97</span>, <span class="number">97</span>, <span class="number">99</span>, <span class="number">100</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/11/algorithm_sort_quick/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/11/algorithm_sort_quick/" itemprop="url">快速排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T17:25:00+08:00">
-                2017-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/05/11/algorithm_sort_quick/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/11/algorithm_sort_quick/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    快速排序是采用分治法（Divide and Conquer）的应用。和归并排序不同的是，她不需要额外的存储空间，时间复杂度： T(n) = Θ(nlgn)，最坏情况下是：T(n) = Θ(n²)。</p>
-<h3 id="基本原理及实现"><a href="#基本原理及实现" class="headerlink" title="基本原理及实现"></a>基本原理及实现</h3><p>基本原理： 使用递归、分治的思想，每次调用排序方法，随机选取一个key值，结果保证：key值所在数组中的位置，且能保证key左侧位置的数据总小于key值；右侧位置数据总大于key值      </p>
-<ul>
-<li>① 当数组为空时，数组不需要排序，算法结束。</li>
-<li>② 选取一个key值，可以是带排序数组中任意位置的元素，这里选第一个元素。</li>
-<li>③ 遍历数组(角标j)，将所有比key值小的元素移动到数组前边(角标i)。遍历结束时，i即是中间位置。</li>
-<li>④ 将key值与角标i位置元素位置互换。</li>
-<li>⑤ 递归对i位置左侧、右侧数组进行快速排序。</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  快速排序</span></div><div class="line"><span class="comment">* 使用递归、分治的思想，每次调用排序方法，选取一个key值，结果保证：key值所在数组中的位置，且能保证key左侧位置的数据总小于key值；右侧位置数据总大于key值</span></div><div class="line"><span class="comment">* ① 当数组为空时，数组不需要排序，算法结束。</span></div><div class="line"><span class="comment">* ② 选取一个key值，可以是带排序数组中任意位置的元素，这里选第一个元素。</span></div><div class="line"><span class="comment">* ③ 遍历数组(角标j)，将所有比key值小的元素移动到数组前边(角标i)。遍历结束时，i即是中间位置。</span></div><div class="line"><span class="comment">* ④ 将key值与角标i位置元素位置互换。</span></div><div class="line"><span class="comment">* ⑤ 递归对i位置左侧、右侧数组进行快速排序。</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">quickSort</span>&lt;T:Comparable&gt;<span class="params">(array:<span class="keyword">inout</span> Array&lt;T&gt;, start:Int, end:Int)</span></span>&#123;</div><div class="line"><span class="keyword">if</span> end &lt;= start &#123;</div><div class="line"><span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> key = array[start];<span class="comment">//随机选取key值 - 这里我们固定选择第一个元素</span></div><div class="line"><span class="keyword">var</span> i = start;</div><div class="line"><span class="keyword">var</span> j = i + <span class="number">1</span>;</div><div class="line"><span class="keyword">while</span> j &lt;= end &#123;<span class="comment">//从key后开始遍历，查找所有比key小的元素，移动到数组前边</span></div><div class="line"><span class="keyword">let</span> aj = array[j];</div><div class="line"><span class="keyword">if</span> key &gt; aj &#123;</div><div class="line"><span class="comment">//交换元素</span></div><div class="line"><span class="keyword">let</span> tempValue = array[i+<span class="number">1</span>];</div><div class="line">array[i+<span class="number">1</span>] = aj;</div><div class="line">array[j] = tempValue;</div><div class="line"><span class="comment">//重新设置角标</span></div><div class="line">i += <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">j += <span class="number">1</span>;<span class="comment">//数组遍历</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//i位置即是最后一个比key值小的元素位置，然后交换key值和i位置元素</span></div><div class="line"><span class="keyword">let</span> ai = array[i];</div><div class="line">array[i] = key;</div><div class="line">array[start] = ai;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"sorting：key：<span class="subst">\(key)</span>  values: <span class="subst">\(array[start...end])</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//对i位置左侧、右侧的数组进行排序方法调用</span></div><div class="line"><span class="built_in">quickSort</span>(array: &amp;array, start: start, end: i - <span class="number">1</span>)</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;array, start: i+<span class="number">1</span>, end: end);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">6</span>,<span class="number">10</span>,<span class="number">13</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">11</span>];</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;intArray,start:<span class="number">0</span>,end:intArray.<span class="built_in">count</span>-<span class="number">1</span>);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序结束：<span class="subst">\(intArray)</span>"</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">sorting：key：<span class="number">6</span>  values: [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">13</span>, <span class="number">10</span>, <span class="number">11</span>]</div><div class="line">sorting：key：<span class="number">2</span>  values: [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>]</div><div class="line">sorting：key：<span class="number">5</span>  values: [<span class="number">3</span>, <span class="number">5</span>]</div><div class="line">sorting：key：<span class="number">8</span>  values: [<span class="number">8</span>, <span class="number">13</span>, <span class="number">10</span>, <span class="number">11</span>]</div><div class="line">sorting：key：<span class="number">13</span>  values: [<span class="number">11</span>, <span class="number">10</span>, <span class="number">13</span>]</div><div class="line">sorting：key：<span class="number">11</span>  values: [<span class="number">10</span>, <span class="number">11</span>]</div><div class="line">排序结束：[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">13</span>]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Java"</span>,<span class="string">"C#"</span>,<span class="string">"Python"</span>,<span class="string">"Objective-C"</span>,<span class="string">"Swift"</span>,<span class="string">"PHP"</span>,<span class="string">"BASIC"</span>,<span class="string">"Pasical"</span>,<span class="string">"Assembly"</span>];</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;stringArray,start:<span class="number">0</span>,end:stringArray.<span class="built_in">count</span>-<span class="number">1</span>);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序结束：<span class="subst">\(stringArray)</span>"</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">sorting：key：<span class="type">Java</span>  values: [<span class="string">"Assembly"</span>, <span class="string">"C#"</span>, <span class="string">"BASIC"</span>, <span class="string">"Java"</span>, <span class="string">"Swift"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>, <span class="string">"Objective-C"</span>]</div><div class="line">sorting：key：<span class="type">Assembly</span>  values: [<span class="string">"Assembly"</span>, <span class="string">"C#"</span>, <span class="string">"BASIC"</span>]</div><div class="line">sorting：key：<span class="type">C</span>#  values: [<span class="string">"BASIC"</span>, <span class="string">"C#"</span>]</div><div class="line">sorting：key：<span class="type">Swift</span>  values: [<span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>, <span class="string">"Swift"</span>]</div><div class="line">sorting：key：<span class="type">Objective</span>-<span class="type">C</span>  values: [<span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>]</div><div class="line">sorting：key：<span class="type">PHP</span>  values: [<span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>]</div><div class="line">sorting：key：<span class="type">Python</span>  values: [<span class="string">"Pasical"</span>, <span class="string">"Python"</span>]</div><div class="line">排序结束：[<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Pasical"</span>, <span class="string">"Python"</span>, <span class="string">"Swift"</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/27/database_sqlite3_fmdb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/27/database_sqlite3_fmdb/" itemprop="url">FMDB</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T12:07:43+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Database/" itemprop="url" rel="index">
-                    <span itemprop="name">Database</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/27/database_sqlite3_fmdb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/27/database_sqlite3_fmdb/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    SQLite是一款轻型的数据库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它使用B+树存储表，整个SQLite数据库就是这些B+树组成的森林。。它的设计目标是嵌入式的，目前被广泛应用。<a href="https://github.com/ccgus/fmdb/" target="_blank" rel="external"> FMDB </a> 是基于SQLite的实现 。</p>
-<h3 id="数据库（连接）"><a href="#数据库（连接）" class="headerlink" title="数据库（连接）"></a>数据库（连接）</h3><p>数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是一个单一的用来执行SQL语句的数据库连接，使用同步的方式进行，如果需要在多线程执行查询或者更新，则需要使用FMDatabaseQueue</p>
-<h4 id="FMDatabase"><a href="#FMDatabase" class="headerlink" title="FMDatabase"></a>FMDatabase</h4><p>FMDatabase可以用来执行增、删、改、查相关的SQL语句，通常情况下，不会有什么问题。这里需要说明的一点是移动端在涉及到多线程操作时，不要使用单例模式建立一个FMDatabase对象，否则会发生死锁问题。其官方文档中也有给出警告: Do not instantiate a single <code>FMDatabase</code> object and use it across multiple threads.</p>
-<h4 id="FMDatabaseQueue"><a href="#FMDatabaseQueue" class="headerlink" title="FMDatabaseQueue"></a>FMDatabaseQueue</h4><p>FMDatabaseQueue的方法调用时异步的，通常在多线程中使用。即使在不同的闭包中使用，也是在发送在同一个线程中。</p>
-<h3 id="表结构操作"><a href="#表结构操作" class="headerlink" title="表结构操作"></a>表结构操作</h3><p>SQLite对于每个表的元数据(表名、根节点地址、表scheme等)信息均记录在一个叫’sql_master’的表中。常见的表结构变更包括创建、修改、删除，这些信息的变更均会影响’sql_master’表。</p>
-<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>表的创建跟通常sql语句区别不大，通常在表创建时设置主键、默认值等。使用语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> RecordSign(recordId <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>, </div><div class="line">					projectName <span class="built_in">TEXT</span>, </div><div class="line">					visibleState <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> , </div><div class="line">					lastTriggerTime <span class="built_in">text</span> <span class="keyword">DEFAULT</span> <span class="string">'2017-03-13 23:59:59'</span>)</div></pre></td></tr></table></figure></p>
-<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>判断某个表是否存在，语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
-<p>判断某个表中是否存在某列，语法如下（通过判断sql语句中是否包含列名）：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span> <span class="keyword">and</span> <span class="keyword">sql</span> <span class="keyword">like</span> %列表%</div></pre></td></tr></table></figure></p>
-<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>表的删除，使用drop语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
-<h3 id="表内容操作"><a href="#表内容操作" class="headerlink" title="表内容操作"></a>表内容操作</h3><p>多表联合操作使用关键字：<code>join</code>，或者<code>in</code>(如果不需要跨表取字段的话)，比如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString* filterBusinessIDSql = [NSString stringWithFormat:@"select businessID from BeaconRelatedPolicyAndBusiness where isValid = 1 and policyID in ('%@')", [minPriorityPolicyIDArray componentsJoinedByString:@"','"]];  </div><div class="line"></div><div class="line">NSString* retSql = [NSString stringWithFormat:@"select * from BeaconBusinessMsg where businessID in (%@) and isValid = 1 order by priority asc",filterBusinessIDSql];</div></pre></td></tr></table></figure></p>
-<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>支持使用<code>insert</code> 或 <code>insert or replace</code> 或 <code>insert or ignore</code> 等语法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div></pre></td></tr></table></figure></p>
-<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>使用<code>update</code>语句进行表结构的更新，如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">               projectName,</span></div><div class="line"><span class="string">               recordId</span></div><div class="line"><span class="string">				];</span></div></pre></td></tr></table></figure></p>
-<h4 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h4><p>使用 <code>select</code> 关键字进行表数据查询，返回 <code>ResultSet</code> ，然后可以根据具体情况进行处理。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeQuery:@"<span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div></pre></td></tr></table></figure></p>
-<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>使用 <code>delete</code> 关键字来删除表中的记录。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div></pre></td></tr></table></figure></p>
-<h4 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h4><p>当涉及到数据量比较大或者原子性操作时，可能会用到批处理相关操作，例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//假设数据量不是太大，不需要通过分批次提交</div><div class="line">[[GKDatabaseManager sharedInstance].dbQueue inTransaction:^(FMDatabase *dbms, BOOL *rollback) &#123;</div><div class="line">    [dbms executeUpdate:@"<span class="keyword">update</span>  RecordSign <span class="keyword">set</span> visibleState = <span class="number">0</span> <span class="string">"];</span></div><div class="line"><span class="string">    for (NSDictionary* projectModel in projectList) &#123;</span></div><div class="line"><span class="string">        NSString* recordId = [projectModel objectForKey:@"</span>recordId<span class="string">"];</span></div><div class="line"><span class="string">        NSString* projectName = [projectModel objectForKey:@"</span>projectName<span class="string">"];</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">        FMResultSet* retSet = [dbms executeQuery:@"</span><span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div><div class="line"><span class="string">        if ([retSet next]) &#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">                        projectName,</span></div><div class="line"><span class="string">                         recordId</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;else&#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;//end if retSet</span></div><div class="line"><span class="string">        [retSet close];</span></div><div class="line"><span class="string">    &#125;//end for</span></div><div class="line"><span class="string">    [dbms executeUpdate:@"</span><span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div><div class="line"><span class="string">&#125;];</span></div><div class="line"><span class="string">[[GKDatabaseManager sharedInstance].dbQueue close];</span></div></pre></td></tr></table></figure></p>
-<h3 id="使用心结"><a href="#使用心结" class="headerlink" title="使用心结"></a>使用心结</h3><p>我的态度是：数据库能实现的东西，自己就没必要再折腾了。数据库本身是一个很强大的软件，她已经可以帮助我们解决很多的问题。<br>所以在拿到需求后，别急着写代码逻辑，最好先考虑下是否可以利用这些现成的工具。有时候数据库处理数据的能力比自己写程序效率要高很多，且代价也比较小；数据库已经实现的功能，当然没有必要再自行编写程序解决，除非你觉得自己比数据库处理的好。      </p>
-<ul>
-<li>使用SQLite数据库处理缓存的话，需要考虑数据库表结构的更新。<ul>
-<li>建议在建立表结构的时候，添加版本信息，比如 <code>tablename_v1</code>。就像CoreData处理版本升级时的version版本号一样。</li>
-<li>数据迁移。</li>
-<li>表结构受损后的数据恢复。   </li>
-</ul>
-</li>
-<li>数据库连接的选择<ul>
-<li>FMDatabase是同步操作，FMDatabaseQueue是异步操作。</li>
-<li>不要单例FMDatabase对象，在多线程处理时各种死锁绝对够你受的。</li>
-<li>不要将FMDatabase和FMDatabaseQueue同时使用，否则等着数据异常或者死锁崩溃吧。</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/27/algorithm_search_binary/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/27/algorithm_search_binary/" itemprop="url">二分查找</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T10:07:43+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/27/algorithm_search_binary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/27/algorithm_search_binary/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    二分查找算法也称为折半搜索、二分搜索，是一种在有序数组中查找某一特定元素的搜索算法。算法是建立在有序数组基础上的。时间复杂度： T(n) = Θ(logn)。</p>
-<h3 id="原理及实现"><a href="#原理及实现" class="headerlink" title="原理及实现"></a>原理及实现</h3><p>基本原理：使用递归、分治的思想</p>
-<ul>
-<li>① 当数组为空时，说明数组中不存在需查找的元素。</li>
-<li>② 用有序数组的中间位置元素与需查找元素进行大小比较，如果相等，则查找结束。</li>
-<li>③ 如果中间位置元素大于需查找元素，则从数组左侧位置进行递归查找。</li>
-<li>④ 如果中间位置元素小于需查找元素，则从数组右侧位置进行递归查找。</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  二分查找</span></div><div class="line"><span class="comment"> * 使用递归、分治的思想</span></div><div class="line"><span class="comment"> * ① 当数组为空时，说明数组中不存在需查找的元素。</span></div><div class="line"><span class="comment"> * ② 用有序数组的中间位置元素与需查找元素进行大小比较，如果相等，则查找结束。</span></div><div class="line"><span class="comment"> * ③ 如果中间位置元素大于需查找元素，则从数组左侧位置进行递归查找。</span></div><div class="line"><span class="comment"> * ④ 如果中间位置元素小于需查找元素，则从数组右侧位置进行递归查找。</span></div><div class="line"><span class="comment"> **/</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">binarySearch</span>&lt;T:Comparable&gt;<span class="params">(array:Array&lt;T&gt;, start:Int, end:Int, value:T)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">let</span> <span class="built_in">count</span> = end - start + <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">count</span> &lt;= <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//没有查找到</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> midIndex = (start + end) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">let</span> midValue = array[midIndex];</div><div class="line">    <span class="keyword">if</span> midValue &gt; value &#123;<span class="comment">//在左侧查找</span></div><div class="line">        <span class="keyword">return</span> binarySearch(array: array, start: start, end: midIndex - <span class="number">1</span>, value: value);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> midValue &lt; value &#123;<span class="comment">//在右侧查找</span></div><div class="line">        <span class="keyword">return</span> binarySearch(array: array, start: midIndex + <span class="number">1</span>, end: end, value: value);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;<span class="comment">//位置查找到，即当前数组中间位置元素</span></div><div class="line">        <span class="keyword">return</span> midIndex;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">callBinarySearch</span>&lt;T:Comparable&gt;<span class="params">(array: Array&lt;T&gt;, value:T)</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> index = binarySearch(array: array, start: <span class="number">0</span>, end: array.<span class="built_in">count</span> - <span class="number">1</span>, value: value);</div><div class="line">    </div><div class="line">    <span class="built_in">print</span>(<span class="string">"Index Of Value <span class="subst">\(value)</span>  In Array <span class="subst">\(array)</span> is : <span class="subst">\(index)</span>"</span>)</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>];</div><div class="line">callBinarySearch(array: intArray , value: <span class="number">3</span>)</div><div class="line">callBinarySearch(array: intArray , value: <span class="number">16</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>];</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"Assembly"</span>)</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"PHP"</span>)</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"AAA"</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="number">3</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>] <span class="keyword">is</span> : -<span class="number">1</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="number">16</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>] <span class="keyword">is</span> : <span class="number">8</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">Assembly</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : <span class="number">0</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">PHP</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : <span class="number">5</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">AAA</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : -<span class="number">1</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/26/algorithm_sort_merge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/26/algorithm_sort_merge/" itemprop="url">归并排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T14:25:00+08:00">
-                2017-04-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/26/algorithm_sort_merge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/26/algorithm_sort_merge/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    归并排序是建立在归并操作上的一种有效的排序算法，该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。需要额外的存储空间，时间复杂度： T(n) = Θ(nlgn)。</p>
-<h3 id="基本原理及实现"><a href="#基本原理及实现" class="headerlink" title="基本原理及实现"></a>基本原理及实现</h3><p>基本原理：使用递归、分治思想，将待排序数组分割成字数组，将排序后的字数组合并。    </p>
-<ul>
-<li>① 当数组只包含一个元素时，直接返回该元素即可。</li>
-<li>② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</li>
-<li>③ 将左侧和右侧排序后的有序数组进行合并。     </li>
-</ul>
-<p>使用Swift进行功能实现，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 归并排序 - 算法思想</span></div><div class="line"><span class="comment"> * 使用递归、分治的思想。</span></div><div class="line"><span class="comment"> * ① 当数组只包含一个元素时，直接返回该元素即可。</span></div><div class="line"><span class="comment"> * ② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</span></div><div class="line"><span class="comment"> * ③ 将左侧和右侧排序后的有序数组进行合并。</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> **/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeSort</span>&lt;T:Comparable&gt;<span class="params">(array: Array&lt;T&gt;, start:Int , end:Int)</span></span> -&gt; <span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">if</span> start &gt;= end &#123;<span class="comment">//① 只有一个元素，直接返回即可</span></div><div class="line">        <span class="keyword">return</span> [array[start]];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">let</span> middle = (start + end) / <span class="number">2</span>;</div><div class="line">        <span class="comment">//② 递归调用，给左侧数组排序</span></div><div class="line">        <span class="keyword">let</span> leftSortArray = mergeSort(array:array,start:start,end:middle);</div><div class="line">        <span class="comment">//② 递归调用，给右侧数组排序</span></div><div class="line">        <span class="keyword">let</span> rightSortedArray = mergeSort(array: array, start: middle + <span class="number">1</span>, end: end);</div><div class="line">        </div><div class="line">        <span class="comment">//③ 合并有序数组</span></div><div class="line">        <span class="keyword">var</span> leftIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">var</span> rightIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">let</span> leftCount = leftSortArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">let</span> rightCount = rightSortedArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">var</span> retArray:<span class="type">Array</span>&lt;<span class="type">T</span>&gt; = [];</div><div class="line">	<span class="comment">// 两个有序数组均存在值时，依次插入最小值</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &amp;&amp; rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            <span class="keyword">if</span> leftValue &lt; rightValue &#123;</div><div class="line">                retArray.append(leftValue);</div><div class="line">                leftIndex += <span class="number">1</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                retArray.append(rightValue);</div><div class="line">                rightIndex += <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将左侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            retArray.append(leftValue);</div><div class="line">            leftIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将右侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            retArray.append(rightValue);</div><div class="line">            rightIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> retArray;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用方法</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">callMergeSort</span>&lt;T:Comparable&gt;<span class="params">(array:Array&lt;T&gt;)</span></span>-&gt;<span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">let</span> <span class="built_in">count</span> = array.<span class="built_in">count</span>;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> mergeSort(array: array, start: <span class="number">0</span>, end: <span class="built_in">count</span> - <span class="number">1</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">16</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">11</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">24</span>,<span class="number">1</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(intArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedArray = callMergeSort(array: intArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="number">16</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">24</span>, <span class="number">1</span>]</div><div class="line">排序后数组：[<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>]</div></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Java"</span>,<span class="string">"C#"</span>,<span class="string">"Python"</span>,<span class="string">"Objective-C"</span>,<span class="string">"Swift"</span>,<span class="string">"PHP"</span>,<span class="string">"BASIC"</span>,<span class="string">"Pasical"</span>,<span class="string">"Assembly"</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(stringArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedStringArray = callMergeSort(array: stringArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedStringArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="string">"Java"</span>, <span class="string">"C#"</span>, <span class="string">"Python"</span>, <span class="string">"Objective-C"</span>, <span class="string">"Swift"</span>, <span class="string">"PHP"</span>, <span class="string">"BASIC"</span>, <span class="string">"Pasical"</span>, <span class="string">"Assembly"</span>]</div><div class="line">排序后数组：[<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Pasical"</span>, <span class="string">"Python"</span>, <span class="string">"Swift"</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2108,7 +751,7 @@ if (popover) {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
