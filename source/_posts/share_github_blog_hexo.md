@@ -103,6 +103,9 @@ $ hexo g
  + 终端输入命令：
     - > npm install hexo-deployer-git --save 
 
+### Hexo在GitHub上的维护    
+说下本人的做法，创建新的Branch，命名为hexo，用于存放博客源码，master用于个人博客。这样使用一个仓库来维护。
+
 ### Hexo与Jekyll不同之处   
  + Hexo博客文件需要单独维护。对应GitHub仓库中的文件是通过Hexo部署进去的。
  + Jekyll博客文件直接上传到GitHub博客仓库中即可。
