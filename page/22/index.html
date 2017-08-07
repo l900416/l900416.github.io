@@ -95,7 +95,7 @@
 <meta name="description" content="Keep hungry keep foolish！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="liangtong">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/page/22/index.html">
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="Keep hungry keep foolish！">
 <meta property="og:locale" content="zh-Hans">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/page/22/"/>
 
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/07/share_github_blog_jekyll/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -310,7 +310,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/07/share_github_blog_jekyll/" itemprop="url">Mac下使用Jekyll搭建GitHub博客</a></h1>
+                <a class="post-title-link" href="/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/" itemprop="url">LTxMenu</a></h1>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:25:19+08:00">
-                2017-08-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T15:10:12+08:00">
+                2016-10-20
               </time>
             
 
@@ -345,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -363,9 +363,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/07/share_github_blog_jekyll/#comments" itemprop="discussionUrl">
+                <a href="/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/07/share_github_blog_jekyll/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -395,52 +395,29 @@
       
         
           
-            <p><a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll</a>是一个静态网站和博客模版，本文介绍如何使用Jekyll进行个人GitHub博客的搭建。搭建前提是拥有个人<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，且Mac上有安装 <em>git</em> 工具。</p>
-<h3 id="安装Jekyll"><a href="#安装Jekyll" class="headerlink" title="安装Jekyll"></a>安装Jekyll</h3><p>  参照<a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll官方</a>介绍，打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> gem install jekyll bundler</div></pre></td></tr></table></figure></p>
-<p>注：gem的安装／更新可以自己去查，此处不再进行说明。Jekyll安装成功后，便可以进行个人博客／静态网站的创建了。</p>
-<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll new my_blog</div><div class="line"><span class="meta">$</span> cd my_blog</div><div class="line"><span class="meta">$</span> bundle exec jekyll serve</div></pre></td></tr></table></figure></p>
-<p>参照<a href="https://jekyllrb.com/docs/templates/" target="_blank" rel="external">官方模版配置介绍</a>,修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的<a href="http://jekyllthemes.org/" target="_blank" rel="external">博客模板</a>即可。  </p>
-<h3 id="快速使用博客-1"><a href="#快速使用博客-1" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>  此处选择使用博客模板<a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="external">jekyll-now</a>，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。<br>新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。<br>编写之后，直接在博客路径下，运行即可：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll serve</div></pre></td></tr></table></figure></p>
-<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><p>  使用Jekyll搭建博客也可以添加很多自定制功能，比如统计、评论、标签等；可以根据自己的喜好，选择不同的主题。以下是个人曾经使用过的主题：      </p>
+            <ul>
+<li>content<br>{:toc}</li>
+</ul>
+<p><strong>[ Update v1.0.0 ]</strong> Similar to Facebook News Feed , Alipay Life , QZone and other social applications . click a drop-down button to display more functions</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>​         In Facebook News Feed , Alipay Life , QZone and other social applications , they all contain a function drop-down button which would show a list of more functions when taped . I didn’t find any on GitHub , so I wrote a similar UI controls myself using Objective-C. ：</p>
+<p><img src="https://raw.githubusercontent.com/l900416/LTxMenu/64a7706ae5c6fbde8e7b5f2eb6706b6f56795b05/screenshots/1.gif" alt=""></p>
+<blockquote>
+<blockquote>
+<p>GitHub link : <a href="https://github.com/l900416/LTxMenu" target="_blank" rel="external">LTxMenu</a></p>
+</blockquote>
+</blockquote>
+<h3 id="Get-Start"><a href="#Get-Start" class="headerlink" title="Get Start"></a>Get Start</h3><blockquote>
 <ul>
-<li><a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="external">Hux Blog</a> 第一个GitHub博客系统就是从他的博客fork过去的。</li>
-<li><a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll" target="_blank" rel="external">Clean Blog</a> 简单的Jekyll博客模板。</li>
+<li>Manually add the files into your Xcode project.</li>
+<li>LTxMenu is available as LTxMenu in Cocoapods.</li>
 </ul>
-<h3 id="Jekyll在GitHub上的维护"><a href="#Jekyll在GitHub上的维护" class="headerlink" title="Jekyll在GitHub上的维护"></a>Jekyll在GitHub上的维护</h3><p>直接将博客源码上传到GitHub博客仓库即可。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>通过在GitHub上搭建Jekyll和Hexo博客，个人更倾向于使用Hexo博客。</p>
-<ul>
-<li>Jekyll    <ul>
-<li>配置简单。</li>
-<li>维护简单，只需要一个Branch即可。</li>
-<li>使用简单，运行只需要 <em>jekyll server</em> 即可。</li>
-<li>发布简单，只需要将代码push到对应仓库即可。</li>
-<li>主题切换，比较麻烦。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Hexo<ul>
-<li>配置项相对较多，但是格式比较清晰。</li>
-<li>博客和源码需要分开维护。需要两个Branch对博客系统进行维护。</li>
-<li>使用相对简单。<ul>
-<li>hexo clean  // 清理</li>
-<li>hexo g      // 生成</li>
-<li>hexo s      // 运行</li>
-</ul>
-</li>
-<li>发布简单。<ul>
-<li>hexo d      // 将博客部署(到github)</li>
-<li>将博客源码push到对应仓库单独保存</li>
-</ul>
-</li>
-<li>主题切换简单。<ul>
-<li>下载新主题到themes文件夹下；</li>
-<li>修改站点配置文件_config.yml中对应的主题选项。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+</blockquote>
+<h3 id="How-To-Use"><a href="#How-To-Use" class="headerlink" title="How To Use"></a>How To Use</h3><p>​    Create a LTxMenuView Object:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong)LTxMenuView* menuView;</div></pre></td></tr></table></figure>
+<p>​    I was too lazy to write a protocol 😄，use callback methods：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">_menuView = [[LTxMenuView alloc] init];//init</div><div class="line">__weak __typeof(self) weakSelf = self;</div><div class="line">_menuView.numberOfRows = ^()&#123;//row numbers</div><div class="line">    return (int)weakSelf.menuItems.count;</div><div class="line">&#125;;</div><div class="line">_menuView.heightForRow = ^(NSInteger row)&#123;//height of a row</div><div class="line">    return 50.f;</div><div class="line">&#125;;</div><div class="line">_menuView.rowAtIndex = ^(NSInteger row)&#123;//the content of a row</div><div class="line">    NSDictionary* menuItem = [weakSelf.menuItems objectAtIndex:row];</div><div class="line">    return [LTxMenuItem menuItemWithImage:[menuItem objectForKey:@&quot;image&quot;]</div><div class="line">                                    title:[menuItem objectForKey:@&quot;title&quot;]</div><div class="line">                            rightBtnItems:[menuItem objectForKey:@&quot;more&quot;]//An array contains subClass of UIView</div><div class="line">                                 tapBlock:^(NSString *identifier) &#123;</div><div class="line">                                     NSLog(@&quot;tap at %@&quot;,identifier);</div><div class="line">                                     __strong __typeof(weakSelf)strongSelf = weakSelf;</div><div class="line">                                     [strongSelf.menuView dismissMenu];</div><div class="line">                                 &#125;];</div><div class="line">&#125;;</div><div class="line">[_menuView showMenuInView:self.view</div><div class="line">                 fromRect:sender.frame];</div></pre></td></tr></table></figure>
+<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><p>​    LTxMenu use <strong>LTxMenuItem</strong> class to config view showed in row. and <strong>LTxMenuView</strong> class with callback methods to calculate the UI performance .  draw arrow and the border use  <strong>UIBezierPath</strong> class . and the show/hide animation use <strong>UIKit</strong>.</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>​    <a href="https://github.com/kolyvan/kxmenu" target="_blank" rel="external">https://github.com/kolyvan/kxmenu</a></p>
 
           
         
@@ -489,7 +466,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/share_github_blog_hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/19/iOS_ObjC_SearchBar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -508,7 +485,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/04/share_github_blog_hexo/" itemprop="url">Mac下使用Hexo搭建GitHub博客</a></h1>
+                <a class="post-title-link" href="/2016/10/19/iOS_ObjC_SearchBar/" itemprop="url">UISearchBar自定义</a></h1>
         
 
         <div class="post-meta">
@@ -520,8 +497,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T14:25:19+08:00">
-                2017-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-19T17:50:00+08:00">
+                2016-10-19
               </time>
             
 
@@ -543,8 +520,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -561,9 +538,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/04/share_github_blog_hexo/#comments" itemprop="discussionUrl">
+                <a href="/2016/10/19/iOS_ObjC_SearchBar/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/04/share_github_blog_hexo/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/10/19/iOS_ObjC_SearchBar/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -593,79 +570,64 @@
       
         
           
-            <h3 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h3><p>  注册<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，建立个人博客仓库(Repository)，不在赘述。 </p>
-<h3 id="安装Git工具"><a href="#安装Git工具" class="headerlink" title="安装Git工具"></a>安装Git工具</h3><p>  终端直接执行 <em>git</em> 命令，或者通过安装GitHub客户端。</p>
-<h3 id="安装Node和NPM"><a href="#安装Node和NPM" class="headerlink" title="安装Node和NPM"></a>安装Node和NPM</h3><p>  打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> brew install node</div></pre></td></tr></table></figure></p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>  可以参照Hexo在<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Github</a>上的官方介绍，在终端依次执行以下命令进行：   </p>
-<pre><code class="Shell"><span class="meta">$</span> npm install hexo-cli -g
-</code></pre>
-<p>  安装成功后，可以通过以下命令进行查看   </p>
-<pre><code class="Shell"><span class="meta">$</span> hexo
-</code></pre>
-<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo init blog_name
-<span class="meta">$</span> cd blog_name
-</code></pre>
-<p>修改Hexo配置文件_config.yml  </p>
-<pre><code class="Script"># Site
-title: liangtong
-subtitle: 
-description: Keep hungry keep foolish！
-author: liangtong
-language: zh-Hans
-timezone:
-</code></pre>
-<p>通过在终端输入以下命令新建博客文章</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo new "Hello Hexo"
-</code></pre>
-<p>通过在终端输入以下命令生成静态文件</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo generate
-</code></pre>
-<p>通过在终端输入以下命令启动服务</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo server
-</code></pre>
-<h3 id="更换Hexo主题"><a href="#更换Hexo主题" class="headerlink" title="更换Hexo主题"></a>更换Hexo主题</h3><p>这里使用GitHub上排名最靠前的主题<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT</a>，在终端输入以下命令进行主题下载：   </p>
-<pre><code class="Shell"><span class="meta">$</span> cd blog_name
-<span class="meta">$</span> git clone https://github.com/iissnan/hexo-theme-next themes/next
-</code></pre>
-<p>参照<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">NexT官方指导网站</a>，对博客进行个性化配置，常用设置包括：   </p>
+            <p>参照一些常用应用对UISearchBar进行UI展示自定义</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​        系统默认的搜索栏（UISearchBar）默认样子真心不好看，而平时iOS移动项目中又缺不了搜索功能，参照一些常用应用对UISearchBar进行UI展示自定义，效果图如下：</p>
+<p><img src="/post/iOS/Objective-C/rendering.gif" alt=""></p>
+<h4 id="UISearchBar介绍"><a href="#UISearchBar介绍" class="headerlink" title="UISearchBar介绍"></a>UISearchBar介绍</h4><p>​        如图所示，包括placeholder、textfiled、clearButton、bookmarkButton、leftView等：</p>
+<p><img src="/post/iOS/Objective-C/default_1.png" alt=""></p>
+<blockquote>
+<blockquote>
 <ul>
-<li>主题设定   </li>
-<li>标签   </li>
-<li>分类   </li>
-<li>侧边栏   </li>
-<li>打赏   </li>
-<li>友情链接</li>
-<li>动画效果</li>
-<li>评论分享   </li>
+<li>① SearchBar的TextField的leftView；</li>
+<li>② SearchBar的TextField的placeholder；</li>
+<li>③ SearchBar的BookmarkIcon，默认不显示；</li>
 </ul>
-<h3 id="配置Hexo部署"><a href="#配置Hexo部署" class="headerlink" title="配置Hexo部署"></a>配置Hexo部署</h3><p>在Hexo配置文件中完善部署信息，即你的Github个人博客地址信息：   </p>
-<pre><code class="Script"># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-type: git
-repo: https://github.com/l900416/l900416.github.io.git
-branch: master
-</code></pre>
-<h3 id="发布Hexo网站到GitHub"><a href="#发布Hexo网站到GitHub" class="headerlink" title="发布Hexo网站到GitHub"></a>发布Hexo网站到GitHub</h3><p>通过终端输入以下命令将Hexo博客发布到Github上：   </p>
-<pre><code class="Shell"><span class="meta">$</span> hexo g
-</code></pre>
-<p>此步骤如果出现错误 <em> Deployer not found: git </em> ：   </p>
-<ul>
-<li>检查Hexo配置的部署文件    </li>
-<li>终端输入命令：<ul>
-<li><blockquote>
-<p>npm install hexo-deployer-git –save </p>
 </blockquote>
-</li>
+</blockquote>
+<p><img src="/post/iOS/Objective-C/default_2.png" alt=""></p>
+<blockquote>
+<blockquote>
+<ul>
+<li>④ SearchBar的搜索Text；</li>
+<li>⑤ SearchBar的ClearButton；</li>
 </ul>
-</li>
+</blockquote>
+</blockquote>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ul>
+<li><strong>1、修改SearchBar背景图</strong></li>
 </ul>
-<h3 id="Hexo在GitHub上的维护"><a href="#Hexo在GitHub上的维护" class="headerlink" title="Hexo在GitHub上的维护"></a>Hexo在GitHub上的维护</h3><p>说下本人的做法，创建新的Branch，命名为hexo，用于存放博客源码，master用于个人博客。这样使用一个仓库来维护。</p>
-<h3 id="Hexo与Jekyll不同之处"><a href="#Hexo与Jekyll不同之处" class="headerlink" title="Hexo与Jekyll不同之处"></a>Hexo与Jekyll不同之处</h3><ul>
-<li>Hexo博客文件需要单独维护。对应GitHub仓库中的文件是通过Hexo部署进去的。</li>
-<li>Jekyll博客文件直接上传到GitHub博客仓库中即可。</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//修改SearchBar背景（透明）图片，去除默认的黑线</div><div class="line">[self setBackgroundImage:[UIImage new]];</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>2、修改所搜索框背景图片，并切圆角</strong></li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//输入框背景图片</div><div class="line">[self setSearchFieldBackgroundImage:[self searchFieldBackgroundImage] forState:UIControlStateNormal];</div><div class="line">//将输入框切圆角</div><div class="line">[self setSearchTextBackgroundCorner];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_2.png" alt=""></p>
+<ul>
+<li><strong>3、显示BookmarkButton，并设置其显示图标</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//显示BookmarkButton，并设置其图标（照相机）</div><div class="line">self.showsBookmarkButton = YES;</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_camera&quot;] forSearchBarIcon:UISearchBarIconBookmark  state:UIControlStateNormal];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_3.png" alt=""></p>
+<ul>
+<li><strong>4、设置「清空」图标图标</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//文本发生变更的时候，修改「清空」图标</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateNormal];</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateHighlighted];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_4.png" alt=""></p>
+<ul>
+<li><strong>5、修改搜索框左侧的图标</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//搜索框左侧的搜索图标修改（默认是灰色）</div><div class="line">UITextField* searchField = [self valueForKey:@&quot;_searchField&quot;];</div><div class="line">UIImageView* searchIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&quot;ic_searchbar_search&quot;]];</div><div class="line">searchField.leftView = searchIV;</div><div class="line">searchField.leftViewMode = UITextFieldViewModeAlways;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>6、修改输入框文本颜色</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//改变searcher的textcolor</div><div class="line">searchField.textColor = [UIColor whiteColor];</div><div class="line">//改变placeholder的颜色</div><div class="line">[searchField setValue:[UIColor whiteColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_6.png" alt=""></p>
+<ul>
+<li><strong>7、附上调用方法</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">//搜索框的背景图片</div><div class="line">- (UIImage*) searchFieldBackgroundImage</div><div class="line">&#123;</div><div class="line">    CGFloat height = 32.f;</div><div class="line">    UIColor* bgColor = [UIColor colorWithRed:47/255.0 green:123/255.0 blue:200/255.0 alpha:0.5];</div><div class="line">    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);</div><div class="line">    UIGraphicsBeginImageContext(r.size);</div><div class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">    CGContextSetFillColorWithColor(context, [bgColor CGColor]);</div><div class="line">    CGContextFillRect(context, r);</div><div class="line">    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    return img;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//切圆角</div><div class="line">-(void)setSearchTextBackgroundCorner&#123;</div><div class="line">    for (UIView *subview in self.subviews) &#123;</div><div class="line">        for(UIView* grandSonView in subview.subviews)&#123;</div><div class="line">            if ([grandSonView isKindOfClass:NSClassFromString(@&quot;UISearchBarBackground&quot;)]) &#123;</div><div class="line">                grandSonView.alpha = 0.0f;</div><div class="line">            &#125;else if([grandSonView isKindOfClass:NSClassFromString(@&quot;UISearchBarTextField&quot;)] )&#123;</div><div class="line">                grandSonView.layer.cornerRadius = 5.0f;</div><div class="line">                grandSonView.layer.masksToBounds = YES;</div><div class="line">            &#125;else&#123;</div><div class="line">                grandSonView.alpha = 0.0f;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h4><p><a href="https://pan.baidu.com/s/1i5JiW3z" target="_blank" rel="external">https://pan.baidu.com/s/1i5JiW3z</a></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://developer.apple.com/reference/uikit/uisearchbar" target="_blank" rel="external">https://developer.apple.com/reference/uikit/uisearchbar</a></p>
+<p><a href="http://stackoverflow.com/questions/2139115/uisearchbar-clear-background-color-or-set-background-image-iphone-sdk/5557255#5557255" target="_blank" rel="external">http://stackoverflow.com/questions/2139115/uisearchbar-clear-background-color-or-set-background-image-iphone-sdk/5557255#5557255</a></p>
 
           
         
@@ -705,7 +667,7 @@ branch: master
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span>
   </nav>
 
 
