@@ -484,6 +484,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/iOS_Swift_language_note_Error-Handling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Error-Handling/" itemprop="url">Swift Error Handling</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T23:20:11+08:00">
+                2016-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/30/iOS_Swift_language_note_Error-Handling/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/30/iOS_Swift_language_note_Error-Handling/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    错误处理（Error handling）是响应错误以及从错误中恢复的过程。Swift 提供了在运行时对可恢复错误的抛出、捕获、传递和操作的一等公民支持。<br>某些操作无法保证总是执行完所有代码或总是生成有用的结果。可选类型可用来表示值缺失，但是当某个操作失败时，最好能得知失败的原因，从而可以作出相应的应对。<br>举个例子，假如有个从磁盘上的某个文件读取数据并进行处理的任务，该任务会有多种可能失败的情况，包括指定路径下文件并不存在，文件不具有可读权限，或者文件编码格式不兼容。区分这些不同的失败情况可以让程序解决并处理某些错误，然后把它解决不了的错误报告给用户。<br>    Swift 中的错误处理涉及到错误处理模式，这会用到 Cocoa 和 Objective-C 中的NSError。</p>
+<h3 id="表示并抛出错误"><a href="#表示并抛出错误" class="headerlink" title="表示并抛出错误"></a>表示并抛出错误</h3><p>在 Swift 中，错误用符合Error协议的类型的值来表示。这个空协议表明该类型可以用于错误处理。<br>Swift 的枚举类型尤为适合构建一组相关的错误状态，枚举的关联值还可以提供错误状态的额外信息。例如，你可以这样表示在一个游戏中操作自动贩卖机时可能会出现的错误状态：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">VendingMachineError</span>: <span class="title">Error</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> invalidSelection</div><div class="line">    <span class="keyword">case</span> insufficientFunds(coinsNeeded: <span class="type">Int</span>)</div><div class="line">    <span class="keyword">case</span> outOfStock</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>抛出一个错误可以让你表明有意外情况发生，导致正常的执行流程无法继续执行。抛出错误使用throw关键字。例如，下面的代码抛出一个错误，提示贩卖机还需要5个硬币：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="type">VendingMachineError</span>.insufficientFunds(coinsNeeded: <span class="number">5</span>)</div></pre></td></tr></table></figure>
+<h3 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h3><p>某个错误被抛出时，附近的某部分代码必须负责处理这个错误，例如纠正这个问题、尝试另外一种方式、或是向用户报告错误。<br>Swift 中有4种处理错误的方式。你可以把函数抛出的错误传递给调用此函数的代码、用do-catch语句处理错误、将错误作为可选类型处理、或者断言此错误根本不会发生。</p>
+<p>当一个函数抛出一个错误时，你的程序流程会发生改变，所以重要的是你能迅速识别代码中会抛出错误的地方。为了标识出这些地方，在调用一个能抛出错误的函数、方法或者构造器之前，加上 <code>try</code> 关键字，或者 <code>try?</code> 或 <code>try!</code> 这种变体。<br>    Swift 中的错误处理和其他语言中用try，catch和throw进行异常处理很像。和其他语言中（包括 Objective-C ）的异常处理不同的是，Swift 中的错误处理并不涉及解除调用栈，这是一个计算代价高昂的过程。就此而言，throw语句的性能特性是可以和return语句相媲美的。</p>
+<h4 id="用-throwing-函数传递错误"><a href="#用-throwing-函数传递错误" class="headerlink" title="用 throwing 函数传递错误"></a>用 throwing 函数传递错误</h4><p>为了表示一个函数、方法或构造器可以抛出错误，在函数声明的参数列表之后加上throws关键字。一个标有 <code>throws</code> 关键字的函数被称作throwing 函数。如果这个函数指明了返回值类型，throws关键词需要写在箭头（-&gt;）的前面。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">canThrowErrors</span><span class="params">()</span></span> <span class="keyword">throws</span> -&gt; <span class="type">String</span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">cannotThrowErrors</span><span class="params">()</span></span> -&gt; <span class="type">String</span></div></pre></td></tr></table></figure>
+<p>一个 throwing 函数可以在其内部抛出错误，并将错误传递到函数被调用时的作用域。<br>    只有 throwing 函数可以传递错误。任何在某个非 throwing 函数内部抛出的错误只能在函数内部处理。</p>
+<p>下面的例子中，VendingMechine类有一个vend(itemNamed:)方法，如果请求的物品不存在、缺货或者投入金额小于物品价格，该方法就会抛出一个相应的VendingMachineError：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Item</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> price: <span class="type">Int</span></div><div class="line">    <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VendingMachine</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> inventory = [</div><div class="line">        <span class="string">"Candy Bar"</span>: <span class="type">Item</span>(price: <span class="number">12</span>, <span class="built_in">count</span>: <span class="number">7</span>),</div><div class="line">        <span class="string">"Chips"</span>: <span class="type">Item</span>(price: <span class="number">10</span>, <span class="built_in">count</span>: <span class="number">4</span>),</div><div class="line">        <span class="string">"Pretzels"</span>: <span class="type">Item</span>(price: <span class="number">7</span>, <span class="built_in">count</span>: <span class="number">11</span>)</div><div class="line">    ]</div><div class="line">    <span class="keyword">var</span> coinsDeposited = <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">vend</span><span class="params">(itemNamed name: String)</span></span> <span class="keyword">throws</span> &#123;</div><div class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> item = inventory[name] <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="type">VendingMachineError</span>.invalidSelection</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">guard</span> item.<span class="built_in">count</span> &gt; <span class="number">0</span> <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="type">VendingMachineError</span>.outOfStock</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">guard</span> item.price &lt; coinsDeposited <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="type">VendingMachineError</span>.insufficientFunds(coinsNeeded: item.price - coinsDeposited)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        coinsDeposited -= item.price</div><div class="line">        </div><div class="line">        <span class="keyword">var</span> newItem = item</div><div class="line">        newItem.<span class="built_in">count</span> -= <span class="number">1</span></div><div class="line">        inventory[name] = newItem</div><div class="line">        </div><div class="line">        <span class="built_in">print</span>(<span class="string">"Dispensing <span class="subst">\(name)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在vend(itemNamed:)方法的实现中使用了guard语句来提前退出方法，确保在购买某个物品所需的条件中，有任一条件不满足时，能提前退出方法并抛出相应的错误。由于throw语句会立即退出方法，所以物品只有在所有条件都满足时才会被售出。</p>
+<p>因为vend(itemNamed:)方法会传递出它抛出的任何错误，在你的代码中调用此方法的地方，必须要么直接处理这些错误——使用do-catch语句，try?或try!；要么继续将这些错误传递下去。例如下面例子中，buyFavoriteSnack(_:vendingMachine:)同样是一个 throwing 函数，任何由vend(itemNamed:)方法抛出的错误会一直被传递到buyFavoriteSnack(person:vendingMachine:)函数被调用的地方。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> favoriteSnacks = [</div><div class="line">    <span class="string">"Alice"</span>: <span class="string">"Chips"</span>,</div><div class="line">    <span class="string">"Bob"</span>: <span class="string">"Licorice"</span>,</div><div class="line">    <span class="string">"Eve"</span>: <span class="string">"Pretzels"</span>,</div><div class="line">]</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">buyFavoriteSnack</span><span class="params">(person: String, vendingMachine: VendingMachine)</span></span> <span class="keyword">throws</span> &#123;</div><div class="line">    <span class="keyword">let</span> snackName = favoriteSnacks[person] ?? <span class="string">"Candy Bar"</span></div><div class="line">    <span class="keyword">try</span> vendingMachine.vend(itemNamed: snackName)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上例中，buyFavoriteSnack(person:vendingMachine:)函数会查找某人最喜欢的零食，并通过调用vend(itemNamed:)方法来尝试为他们购买。因为vend(itemNamed:)方法能抛出错误，所以在调用的它时候在它前面加了try关键字。<br>throwing构造器能像throwing函数一样传递错误.例如下面代码中的PurchasedSnack构造器在构造过程中调用了throwing函数,并且通过传递到它的调用者来处理这些错误。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PurchasedSnack</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, vendingMachine: <span class="type">VendingMachine</span>) <span class="keyword">throws</span> &#123;</div><div class="line">        <span class="keyword">try</span> vendingMachine.vend(itemNamed: name)</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="用-do-Catch-处理错误"><a href="#用-do-Catch-处理错误" class="headerlink" title="用 do-Catch 处理错误"></a>用 do-Catch 处理错误</h4><p>可以使用一个do-catch语句运行一段闭包代码来处理错误。如果在do子句中的代码抛出了一个错误，这个错误会与catch子句做匹配，从而决定哪条子句能处理它。</p>
+<p>下面是do-catch语句的一般形式：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    <span class="keyword">try</span> expression</div><div class="line">    statements</div><div class="line">&#125; <span class="keyword">catch</span> pattern <span class="number">1</span> &#123;</div><div class="line">    statements</div><div class="line">&#125; <span class="keyword">catch</span> pattern <span class="number">2</span> <span class="keyword">where</span> condition &#123;</div><div class="line">    statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在catch后面写一个匹配模式来表明这个子句能处理什么样的错误。如果一条catch子句没有指定匹配模式，那么这条子句可以匹配任何错误，并且把错误绑定到一个名字为error的局部常量</p>
+<p>catch子句不必将do子句中的代码所抛出的每一个可能的错误都作处理。如果所有catch子句都未处理错误，错误就会传递到周围的作用域。然而，错误还是必须要被某个周围的作用域处理的——要么是一个外围的do-catch错误处理语句，要么是一个 throwing 函数的内部。举例来说，下面的代码处理了VendingMachineError枚举类型的全部枚举值，但是所有其它的错误就必须由它周围的作用域处理：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vendingMachine = <span class="type">VendingMachine</span>()</div><div class="line">vendingMachine.coinsDeposited = <span class="number">8</span></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    <span class="keyword">try</span> buyFavoriteSnack(person: <span class="string">"Alice"</span>, vendingMachine: vendingMachine)</div><div class="line">&#125; <span class="keyword">catch</span> <span class="type">VendingMachineError</span>.invalidSelection &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Invalid Selection."</span>)</div><div class="line">&#125; <span class="keyword">catch</span> <span class="type">VendingMachineError</span>.outOfStock &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Out of Stock."</span>)</div><div class="line">&#125; <span class="keyword">catch</span> <span class="type">VendingMachineError</span>.insufficientFunds(<span class="keyword">let</span> coinsNeeded) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Insufficient funds. Please insert an additional <span class="subst">\(coinsNeeded)</span> coins."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Insufficient funds. Please insert an additional 2 coins."</span></div></pre></td></tr></table></figure>
+<p>上面的例子中，buyFavoriteSnack(person:vendingMachine:)函数在一个try表达式中调用，因为它能抛出错误。如果错误被抛出，相应的执行会马上转移到catch子句中，并判断这个错误是否要被继续传递下去。如果没有错误抛出，do子句中余下的语句就会被执行。</p>
+<h4 id="将错误转换成可选值"><a href="#将错误转换成可选值" class="headerlink" title="将错误转换成可选值"></a>将错误转换成可选值</h4><p>可以使用try?通过将错误转换成一个可选值来处理错误。如果在评估try?表达式时一个错误被抛出，那么表达式的值就是nil。例如,在下面的代码中,x和y有着相同的数值和等价的含义：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someThrowingFunction</span><span class="params">()</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">let</span> x = <span class="keyword">try</span>? someThrowingFunction()</div><div class="line"> </div><div class="line"><span class="keyword">let</span> y: <span class="type">Int</span>?</div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    y = <span class="keyword">try</span> someThrowingFunction()</div><div class="line">&#125; <span class="keyword">catch</span> &#123;</div><div class="line">    y = <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果someThrowingFunction()抛出一个错误，x和y的值是nil。否则x和y的值就是该函数的返回值。注意，无论someThrowingFunction()的返回值类型是什么类型，x和y都是这个类型的可选类型。例子中此函数返回一个整型，所以x和y是可选整型。<br>如果你想对所有的错误都采用同样的方式来处理，用try?就可以让你写出简洁的错误处理代码。例如，下面的代码用几种方式来获取数据，如果所有方式都失败了则返回nil：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetchData</span><span class="params">()</span></span> -&gt; <span class="type">Data</span>? &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> data = <span class="keyword">try</span>? fetchDataFromDisk() &#123; <span class="keyword">return</span> data &#125;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> data = <span class="keyword">try</span>? fetchDataFromServer() &#123; <span class="keyword">return</span> data &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="禁用错误传递"><a href="#禁用错误传递" class="headerlink" title="禁用错误传递"></a>禁用错误传递</h4><p>例如，下面的代码使用了loadImage(atPath:)函数，该函数从给定的路径加载图片资源，如果图片无法载入则抛出一个错误。在这种情况下，因为图片是和应用绑定的，运行时不会有错误抛出，所以适合禁用错误传递：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> photo = <span class="keyword">try</span>! loadImage(atPath: <span class="string">"./Resources/John Appleseed.jpg"</span>)</div></pre></td></tr></table></figure>
+<h3 id="指定清理操作"><a href="#指定清理操作" class="headerlink" title="指定清理操作"></a>指定清理操作</h3><p>可以使用defer语句在即将离开当前代码块时执行一系列语句。该语句让你能执行一些必要的清理工作，不管是以何种方式离开当前代码块的——无论是由于抛出错误而离开，还是由于诸如return或者break的语句。例如，你可以用defer语句来确保文件描述符得以关闭，以及手动分配的内存得以释放。</p>
+<p>defer语句将代码的执行延迟到当前的作用域退出之前。该语句由defer关键字和要被延迟执行的语句组成。延迟执行的语句不能包含任何控制转移语句，例如break或是return语句，或是抛出一个错误。延迟执行的操作会按照它们被指定时的顺序的相反顺序执行——也就是说，第一条defer语句中的代码会在第二条defer语句中的代码被执行之后才执行，以此类推。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">processFile</span><span class="params">(filename: String)</span></span> <span class="keyword">throws</span> &#123;</div><div class="line">    <span class="keyword">if</span> exists(filename) &#123;</div><div class="line">        <span class="keyword">let</span> file = <span class="keyword">open</span>(filename)</div><div class="line">        <span class="keyword">defer</span> &#123;</div><div class="line">            close(file)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span> <span class="keyword">let</span> line = <span class="keyword">try</span> file.readline() &#123;</div><div class="line">            <span class="comment">// Work with the file.</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">// close(file) is called here, at the end of the scope.</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码使用一条defer语句来确保open(<em>:)函数有一个相应的对close(</em>:)函数的调用。<br>    即使没有涉及到错误处理，你也可以使用defer语句。</p>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html/" target="_blank" rel="external"> ErrorHandling </a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/iOS_Swift_language_note_Optional-Chaining/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2253,235 +2448,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/24/iOS_Swift_language_note_Classes and Structures/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="url">Swift Classes and Structures</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-24T00:20:11+08:00">
-                2016-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    类和结构体是人们构建代码所用的一种通用且灵活的构造体。你可以使用几乎完全相同的语法规则给类和结构体定义属性、添加方法。与其他语言不同的是，Swift不需要你为自定义类和结构体去独立创建接口和实现文件。在Swwift中，你只需要使用一个单独的文件来定义类和结构体，系统会自动生成面向其他代码的外部接口。<br>    通常类的实例被称为对象，Swift中类和结构体的关系比在其他语言中要密切</p>
-<h3 id="类和结构体的对比"><a href="#类和结构体的对比" class="headerlink" title="类和结构体的对比"></a>类和结构体的对比</h3><p>类和结构体在Swift中有很多共同点，例如：</p>
-<ul>
-<li>定义属性用于存储值</li>
-<li>定义方法用于提供功能</li>
-<li>定义下标操作涌来通过下标语法来访问实例存储的值</li>
-<li>定义构造函数用于初始化值</li>
-<li>通过扩展来增加其功能的实现</li>
-<li>实现协议以提供某种标准功能</li>
-</ul>
-<p>与结构体相比，类还有如下额外功能：</p>
-<ul>
-<li>继承允许一个类继承另一个类的特征</li>
-<li>类型转换允许在运行时检查和解释一个类实例等类型</li>
-<li>析构器允许一个类释放其所被分配到资源</li>
-<li><p>引用计数允许一个类被多次引用。</p>
-<p>注意：结构体通常是通过值传递，而不使用引用计数</p>
-</li>
-</ul>
-<h4 id="定义语法"><a href="#定义语法" class="headerlink" title="定义语法"></a>定义语法</h4><p>类和结构体有相似的定义语法，通过关键字<code>class</code>定义类，<code>struct</code>定义结构体，在一对大括号中定义它们的具体内容：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</div><div class="line">    <span class="comment">// class definition goes here</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SomeStructure</span> </span>&#123;</div><div class="line">    <span class="comment">// structure definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当你定义了类或者结构体的时候，确切的讲是定义了一个新类型。使用UpperCamelCase这种方式来命名（如SomeClass和SomeStructure等），相反的，请使用lowerCamelCase这种方式为属性和方法命名（如framerate和incrementCount），以便和类型名区分。</p>
-<p>以下是定义结构体和类的示例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Resolution</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> width = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> height = <span class="number">0</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VideoMode</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> resolution = <span class="type">Resolution</span>()</div><div class="line">    <span class="keyword">var</span> interlaced = <span class="literal">false</span></div><div class="line">    <span class="keyword">var</span> frameRate = <span class="number">0.0</span></div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span>?</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="类和结构体实例"><a href="#类和结构体实例" class="headerlink" title="类和结构体实例"></a>类和结构体实例</h4><p>生成类和结构体实例等语法很相似，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someResolution = <span class="type">Resolution</span>()</div><div class="line"><span class="keyword">let</span> someVideoMode = <span class="type">VideoMode</span>()</div></pre></td></tr></table></figure>
-<p>结构体和类都使用构造器语法来生成新的实例。构造器语法的最简单形式是在结构体或者类的类型名称后跟随一对空括号，如Resolution()或VideoMode()。通过这种方式所创建的类或者结构体实例，其属性均会被初始化为默认值。</p>
-<h4 id="属性访问"><a href="#属性访问" class="headerlink" title="属性访问"></a>属性访问</h4><p>通过使用点语法，你可以访问实例的属性。其语法规则是，实例名后面紧跟属性名，两者通过点号(.)连接，不能有空格：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someResolution is <span class="subst">\(someResolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someResolution is 0"</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someVideoMode is <span class="subst">\(someVideoMode.resolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someVideoMode is 0"</span></div></pre></td></tr></table></figure>
-<p>也可以使用点语法为变量属性赋值，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">someVideoMode.resolution.width = <span class="number">1280</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someVideoMode is now <span class="subst">\(someVideoMode.resolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someVideoMode is now 1280"</span></div></pre></td></tr></table></figure>
-<pre><code>与 Objective-C 语言不同的是，Swift 允许直接设置结构体属性的子属性。上面的最后一个例子，就是直接设置了someVideoMode中resolution属性的width这个子属性，以上操作并不需要重新为整个resolution属性设置新值。
-</code></pre><h4 id="结构体成员逐一构造函数"><a href="#结构体成员逐一构造函数" class="headerlink" title="结构体成员逐一构造函数"></a>结构体成员逐一构造函数</h4><p>所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vga = <span class="type">Resolution</span>(width: <span class="number">640</span>, height: <span class="number">480</span>)</div></pre></td></tr></table></figure>
-<pre><code>与结构体不同的是，类实例没有默认的成员逐一构造器
-</code></pre><h3 id="结构体和枚举是值类型"><a href="#结构体和枚举是值类型" class="headerlink" title="结构体和枚举是值类型"></a>结构体和枚举是值类型</h3><p>值类型被赋予给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝。<br>在Swift中，所有的基本类型：整数（Integer）、浮点数（floating-point）、布尔值（Boolean）、字符串（string)、数组（array）和字典（dictionary），都是值类型，并且在底层都是以结构体的形式所实现。<br>在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属性，在代码中传递的时候都会被复制。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> hd = <span class="type">Resolution</span>(width: <span class="number">1920</span>, height: <span class="number">1080</span>)</div><div class="line"><span class="keyword">var</span> cinema = hd</div></pre></td></tr></table></figure>
-<p>声明一个名为hd的常量，初始值宽高分别为1920和1080，然后声明一个名为cinema的变量，并将hd赋值给它。由于Resolution是结构体类型，所以cinema的值其实是hd的一个拷贝副本，而不是hd本身。尽管它们两个的值相同，但是是两个不同的实例。例如以下修改后，hd的值不变：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cinema.width = <span class="number">2048</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"cinema is now <span class="subst">\(cinema.width)</span> pixels wide"</span>)</div><div class="line"><span class="comment">// Prints "cinema is now 2048 pixels wide"</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"hd is still <span class="subst">\(hd.width)</span> pixels wide"</span>)</div><div class="line"><span class="comment">// Prints "hd is still 1920 pixels wide"</span></div></pre></td></tr></table></figure>
-<p>枚举也遵循相同的行为标准</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">CompassPoint</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> north, south, east, west</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> currentDirection = <span class="type">CompassPoint</span>.west</div><div class="line"><span class="keyword">let</span> rememberedDirection = currentDirection</div><div class="line">currentDirection = .east</div><div class="line"><span class="keyword">if</span> rememberedDirection == .west &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The remembered direction is still .west"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "The remembered direction is still .west"</span></div></pre></td></tr></table></figure>
-<h3 id="类是引用类型"><a href="#类是引用类型" class="headerlink" title="类是引用类型"></a>类是引用类型</h3><p>与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。<br>例如，实例化一个类VideoMode的对象，并为其属性赋值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> tenEighty = <span class="type">VideoMode</span>()</div><div class="line">tenEighty.resolution = hd</div><div class="line">tenEighty.interlaced = <span class="literal">true</span></div><div class="line">tenEighty.name = <span class="string">"1080i"</span></div><div class="line">tenEighty.frameRate = <span class="number">25.0</span></div></pre></td></tr></table></figure>
-<p>然后将其赋值给一个新变量，同时对新变量进行修改</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> alsoTenEighty = tenEighty</div><div class="line">alsoTenEighty.frameRate = <span class="number">30.0</span></div></pre></td></tr></table></figure>
-<p>因为类是引用类型，所以tenEight和alsoTenEight实际上引用的是相同的VideoMode实例。换句话说，它们是同一个实例的两种叫法。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"The frameRate property of tenEighty is now <span class="subst">\(tenEighty.frameRate)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The frameRate property of tenEighty is now 30.0"</span></div></pre></td></tr></table></figure>
-<pre><code>需要注意的是tenEighty和alsoTenEighty被声明为常量而不是变量。然而你依然可以改变tenEighty.frameRate和alsoTenEighty.frameRate，因为tenEighty和alsoTenEighty这两个常量的值并未改变。它们并不“存储”这个VideoMode实例，而仅仅是对VideoMode实例的引用。所以，改变的是被引用的VideoMode的frameRate属性，而不是引用VideoMode的常量的值。
-</code></pre><h4 id="恒等运算符"><a href="#恒等运算符" class="headerlink" title="恒等运算符"></a>恒等运算符</h4><p>因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。（对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。）<br>如果能够判定两个常量或者变量是否引用同一个类实例将会很有帮助。为了达到这个目的，Swift 内建了两个恒等运算符：</p>
-<ul>
-<li>=== 等价于</li>
-<li>!== 不等价于</li>
-</ul>
-<p>运用这两个运算符可以检查两个变量或者常量是否引用同一个实例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> tenEighty === alsoTenEighty &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"tenEighty and alsoTenEighty refer to the same VideoMode instance."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "tenEighty and alsoTenEighty refer to the same VideoMode instance."</span></div></pre></td></tr></table></figure>
-<pre><code>注意`=== 等价于`和`== 等于`的区别：一个是判断引用相同的类实例，一个是判断值相等
-</code></pre><h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><p>在C、C++、ObjC中，使用指针类引用内存中的地址，Swift中某个引用类型的常量或者变量和其他语言中的指针类似，但不是直接指向内存地址，也不要求你使用星号（*）来表明你在创建一个引用。Swift 中的这些引用与其它的常量或变量的定义方式相同。</p>
-<h3 id="类和结构体的选择"><a href="#类和结构体的选择" class="headerlink" title="类和结构体的选择"></a>类和结构体的选择</h3><p>你可以使用类或结构体来定义你自己的数据类型。但是结构体总是通过值传递，类是引用传递。这意味着两者适用不同的任务。当你在考虑一个工程项目的数据结构和功能的时候，你需要决定每个数据结构是定义成类还是结构体。</p>
-<p>按照通用的准则，如果符合以下一条或者多条时，可以使用结构体：</p>
-<ul>
-<li>该数据结构的主要目的是用来封装少量相关简单数据值。</li>
-<li>有理由预计该数据结构的实例在被赋值或传递时，封装的数据将会被拷贝而不是被引用。</li>
-<li>该数据结构中储存的值类型属性，也应该被拷贝，而不是被引用。</li>
-<li>该数据结构不需要去继承另一个既有类型的属性或者行为。</li>
-</ul>
-<h3 id="字符串、数组、和字典类型的赋值与复制行为"><a href="#字符串、数组、和字典类型的赋值与复制行为" class="headerlink" title="字符串、数组、和字典类型的赋值与复制行为"></a>字符串、数组、和字典类型的赋值与复制行为</h3><p>Swift 中，许多基本类型，诸如String，Array和Dictionary类型均以结构体的形式实现。这意味着被赋值给新的常量或变量，或者被传入函数或方法中时，它们的值会被拷贝。</p>
-<p>Objective-C 中NSString，NSArray和NSDictionary类型均以类的形式实现，而并非结构体。它们在被赋值或者被传入函数或方法时，不会发生值拷贝，而是传递现有实例的引用。</p>
-<p>以上是对字符串、数组、字典的“拷贝”行为的描述。在你的代码中，拷贝行为看起来似乎总会发生。<br>然而，Swift 在幕后只在绝对必要时才执行实际的拷贝。Swift 管理所有的值拷贝以确保性能最优化，所以你没必要去回避赋值来保证性能最优化。    </p>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html/" target="_blank" rel="external">ClassesAndStructures</a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2532,7 +2498,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

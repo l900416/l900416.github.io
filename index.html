@@ -291,6 +291,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/07/share_github_blog_jekyll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/07/share_github_blog_jekyll/" itemprop="url">Mac下使用Jekyll搭建GitHub博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:25:19+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/07/share_github_blog_jekyll/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/07/share_github_blog_jekyll/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll</a>是一个静态网站和博客模版，本文介绍如何使用Jekyll进行个人GitHub博客的搭建。搭建前提是拥有个人<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，且Mac上有安装 <em>git</em> 工具。</p>
+<h3 id="安装Jekyll"><a href="#安装Jekyll" class="headerlink" title="安装Jekyll"></a>安装Jekyll</h3><p>  参照<a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll官方</a>介绍，打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> gem install jekyll bundler</div></pre></td></tr></table></figure></p>
+<p>注：gem的安装／更新可以自己去查，此处不再进行说明。Jekyll安装成功后，便可以进行个人博客／静态网站的创建了。</p>
+<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll new my_blog</div><div class="line"><span class="meta">$</span> cd my_blog</div><div class="line"><span class="meta">$</span> bundle exec jekyll serve</div></pre></td></tr></table></figure></p>
+<p>参照<a href="https://jekyllrb.com/docs/templates/" target="_blank" rel="external">官方模版配置介绍</a>,修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的<a href="http://jekyllthemes.org/" target="_blank" rel="external">博客模板</a>即可。  </p>
+<h3 id="快速使用博客-1"><a href="#快速使用博客-1" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>  此处选择使用博客模板<a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="external">jekyll-now</a>，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。<br>新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。<br>编写之后，直接在博客路径下，运行即可：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll serve</div></pre></td></tr></table></figure></p>
+<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><p>  使用Jekyll搭建博客也可以添加很多自定制功能，比如统计、评论、标签等；可以根据自己的喜好，选择不同的主题。以下是个人曾经使用过的主题：      </p>
+<ul>
+<li><a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="external">Hux Blog</a> 第一个GitHub博客系统就是从他的博客fork过去的。</li>
+<li><a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll" target="_blank" rel="external">Clean Blog</a> 简单的Jekyll博客模板。</li>
+</ul>
+<h3 id="Jekyll在GitHub上的维护"><a href="#Jekyll在GitHub上的维护" class="headerlink" title="Jekyll在GitHub上的维护"></a>Jekyll在GitHub上的维护</h3><p>直接将博客源码上传到GitHub博客仓库即可。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>通过在GitHub上搭建Jekyll和Hexo博客，个人更倾向于使用Hexo博客。</p>
+<ul>
+<li>Jekyll    <ul>
+<li>配置简单。</li>
+<li>维护简单，只需要一个Branch即可。</li>
+<li>使用简单，运行只需要 <em>jekyll server</em> 即可。</li>
+<li>发布简单，只需要将代码push到对应仓库即可。</li>
+<li>主题切换，比较麻烦。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Hexo<ul>
+<li>配置项相对较多，但是格式比较清晰。</li>
+<li>博客和源码需要分开维护。需要两个Branch对博客系统进行维护。</li>
+<li>使用相对简单。<ul>
+<li>hexo clean  // 清理</li>
+<li>hexo g      // 生成</li>
+<li>hexo s      // 运行</li>
+</ul>
+</li>
+<li>发布简单。<ul>
+<li>hexo d      // 将博客部署(到github)</li>
+<li>将博客源码push到对应仓库单独保存</li>
+</ul>
+</li>
+<li>主题切换简单。<ul>
+<li>下载新主题到themes文件夹下；</li>
+<li>修改站点配置文件_config.yml中对应的主题选项。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/share_github_blog_hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1896,169 +2094,6 @@ if (popover) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/26/algorithm_sort_merge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/26/algorithm_sort_merge/" itemprop="url">归并排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T14:25:00+08:00">
-                2017-04-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/26/algorithm_sort_merge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/26/algorithm_sort_merge/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    归并排序是建立在归并操作上的一种有效的排序算法，该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。需要额外的存储空间，时间复杂度： T(n) = Θ(nlgn)。</p>
-<h3 id="基本原理及实现"><a href="#基本原理及实现" class="headerlink" title="基本原理及实现"></a>基本原理及实现</h3><p>基本原理：使用递归、分治思想，将待排序数组分割成字数组，将排序后的字数组合并。    </p>
-<ul>
-<li>① 当数组只包含一个元素时，直接返回该元素即可。</li>
-<li>② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</li>
-<li>③ 将左侧和右侧排序后的有序数组进行合并。     </li>
-</ul>
-<p>使用Swift进行功能实现，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 归并排序 - 算法思想</span></div><div class="line"><span class="comment"> * 使用递归、分治的思想。</span></div><div class="line"><span class="comment"> * ① 当数组只包含一个元素时，直接返回该元素即可。</span></div><div class="line"><span class="comment"> * ② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</span></div><div class="line"><span class="comment"> * ③ 将左侧和右侧排序后的有序数组进行合并。</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> **/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeSort</span>&lt;T:Comparable&gt;<span class="params">(array: Array&lt;T&gt;, start:Int , end:Int)</span></span> -&gt; <span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">if</span> start &gt;= end &#123;<span class="comment">//① 只有一个元素，直接返回即可</span></div><div class="line">        <span class="keyword">return</span> [array[start]];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">let</span> middle = (start + end) / <span class="number">2</span>;</div><div class="line">        <span class="comment">//② 递归调用，给左侧数组排序</span></div><div class="line">        <span class="keyword">let</span> leftSortArray = mergeSort(array:array,start:start,end:middle);</div><div class="line">        <span class="comment">//② 递归调用，给右侧数组排序</span></div><div class="line">        <span class="keyword">let</span> rightSortedArray = mergeSort(array: array, start: middle + <span class="number">1</span>, end: end);</div><div class="line">        </div><div class="line">        <span class="comment">//③ 合并有序数组</span></div><div class="line">        <span class="keyword">var</span> leftIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">var</span> rightIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">let</span> leftCount = leftSortArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">let</span> rightCount = rightSortedArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">var</span> retArray:<span class="type">Array</span>&lt;<span class="type">T</span>&gt; = [];</div><div class="line">	<span class="comment">// 两个有序数组均存在值时，依次插入最小值</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &amp;&amp; rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            <span class="keyword">if</span> leftValue &lt; rightValue &#123;</div><div class="line">                retArray.append(leftValue);</div><div class="line">                leftIndex += <span class="number">1</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                retArray.append(rightValue);</div><div class="line">                rightIndex += <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将左侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            retArray.append(leftValue);</div><div class="line">            leftIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将右侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            retArray.append(rightValue);</div><div class="line">            rightIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> retArray;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用方法</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">callMergeSort</span>&lt;T:Comparable&gt;<span class="params">(array:Array&lt;T&gt;)</span></span>-&gt;<span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">let</span> <span class="built_in">count</span> = array.<span class="built_in">count</span>;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> mergeSort(array: array, start: <span class="number">0</span>, end: <span class="built_in">count</span> - <span class="number">1</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">16</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">11</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">24</span>,<span class="number">1</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(intArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedArray = callMergeSort(array: intArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="number">16</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">24</span>, <span class="number">1</span>]</div><div class="line">排序后数组：[<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>]</div></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Java"</span>,<span class="string">"C#"</span>,<span class="string">"Python"</span>,<span class="string">"Objective-C"</span>,<span class="string">"Swift"</span>,<span class="string">"PHP"</span>,<span class="string">"BASIC"</span>,<span class="string">"Pasical"</span>,<span class="string">"Assembly"</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(stringArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedStringArray = callMergeSort(array: stringArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedStringArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="string">"Java"</span>, <span class="string">"C#"</span>, <span class="string">"Python"</span>, <span class="string">"Objective-C"</span>, <span class="string">"Swift"</span>, <span class="string">"PHP"</span>, <span class="string">"BASIC"</span>, <span class="string">"Pasical"</span>, <span class="string">"Assembly"</span>]</div><div class="line">排序后数组：[<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Pasical"</span>, <span class="string">"Python"</span>, <span class="string">"Swift"</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2109,7 +2144,7 @@ if (popover) {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

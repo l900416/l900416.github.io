@@ -291,6 +291,235 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/24/iOS_Swift_language_note_Classes and Structures/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="url">Swift Classes and Structures</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-24T00:20:11+08:00">
+                2016-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    类和结构体是人们构建代码所用的一种通用且灵活的构造体。你可以使用几乎完全相同的语法规则给类和结构体定义属性、添加方法。与其他语言不同的是，Swift不需要你为自定义类和结构体去独立创建接口和实现文件。在Swwift中，你只需要使用一个单独的文件来定义类和结构体，系统会自动生成面向其他代码的外部接口。<br>    通常类的实例被称为对象，Swift中类和结构体的关系比在其他语言中要密切</p>
+<h3 id="类和结构体的对比"><a href="#类和结构体的对比" class="headerlink" title="类和结构体的对比"></a>类和结构体的对比</h3><p>类和结构体在Swift中有很多共同点，例如：</p>
+<ul>
+<li>定义属性用于存储值</li>
+<li>定义方法用于提供功能</li>
+<li>定义下标操作涌来通过下标语法来访问实例存储的值</li>
+<li>定义构造函数用于初始化值</li>
+<li>通过扩展来增加其功能的实现</li>
+<li>实现协议以提供某种标准功能</li>
+</ul>
+<p>与结构体相比，类还有如下额外功能：</p>
+<ul>
+<li>继承允许一个类继承另一个类的特征</li>
+<li>类型转换允许在运行时检查和解释一个类实例等类型</li>
+<li>析构器允许一个类释放其所被分配到资源</li>
+<li><p>引用计数允许一个类被多次引用。</p>
+<p>注意：结构体通常是通过值传递，而不使用引用计数</p>
+</li>
+</ul>
+<h4 id="定义语法"><a href="#定义语法" class="headerlink" title="定义语法"></a>定义语法</h4><p>类和结构体有相似的定义语法，通过关键字<code>class</code>定义类，<code>struct</code>定义结构体，在一对大括号中定义它们的具体内容：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</div><div class="line">    <span class="comment">// class definition goes here</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SomeStructure</span> </span>&#123;</div><div class="line">    <span class="comment">// structure definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当你定义了类或者结构体的时候，确切的讲是定义了一个新类型。使用UpperCamelCase这种方式来命名（如SomeClass和SomeStructure等），相反的，请使用lowerCamelCase这种方式为属性和方法命名（如framerate和incrementCount），以便和类型名区分。</p>
+<p>以下是定义结构体和类的示例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Resolution</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> width = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> height = <span class="number">0</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VideoMode</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> resolution = <span class="type">Resolution</span>()</div><div class="line">    <span class="keyword">var</span> interlaced = <span class="literal">false</span></div><div class="line">    <span class="keyword">var</span> frameRate = <span class="number">0.0</span></div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span>?</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="类和结构体实例"><a href="#类和结构体实例" class="headerlink" title="类和结构体实例"></a>类和结构体实例</h4><p>生成类和结构体实例等语法很相似，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someResolution = <span class="type">Resolution</span>()</div><div class="line"><span class="keyword">let</span> someVideoMode = <span class="type">VideoMode</span>()</div></pre></td></tr></table></figure>
+<p>结构体和类都使用构造器语法来生成新的实例。构造器语法的最简单形式是在结构体或者类的类型名称后跟随一对空括号，如Resolution()或VideoMode()。通过这种方式所创建的类或者结构体实例，其属性均会被初始化为默认值。</p>
+<h4 id="属性访问"><a href="#属性访问" class="headerlink" title="属性访问"></a>属性访问</h4><p>通过使用点语法，你可以访问实例的属性。其语法规则是，实例名后面紧跟属性名，两者通过点号(.)连接，不能有空格：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someResolution is <span class="subst">\(someResolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someResolution is 0"</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someVideoMode is <span class="subst">\(someVideoMode.resolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someVideoMode is 0"</span></div></pre></td></tr></table></figure>
+<p>也可以使用点语法为变量属性赋值，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">someVideoMode.resolution.width = <span class="number">1280</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someVideoMode is now <span class="subst">\(someVideoMode.resolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someVideoMode is now 1280"</span></div></pre></td></tr></table></figure>
+<pre><code>与 Objective-C 语言不同的是，Swift 允许直接设置结构体属性的子属性。上面的最后一个例子，就是直接设置了someVideoMode中resolution属性的width这个子属性，以上操作并不需要重新为整个resolution属性设置新值。
+</code></pre><h4 id="结构体成员逐一构造函数"><a href="#结构体成员逐一构造函数" class="headerlink" title="结构体成员逐一构造函数"></a>结构体成员逐一构造函数</h4><p>所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vga = <span class="type">Resolution</span>(width: <span class="number">640</span>, height: <span class="number">480</span>)</div></pre></td></tr></table></figure>
+<pre><code>与结构体不同的是，类实例没有默认的成员逐一构造器
+</code></pre><h3 id="结构体和枚举是值类型"><a href="#结构体和枚举是值类型" class="headerlink" title="结构体和枚举是值类型"></a>结构体和枚举是值类型</h3><p>值类型被赋予给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝。<br>在Swift中，所有的基本类型：整数（Integer）、浮点数（floating-point）、布尔值（Boolean）、字符串（string)、数组（array）和字典（dictionary），都是值类型，并且在底层都是以结构体的形式所实现。<br>在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属性，在代码中传递的时候都会被复制。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> hd = <span class="type">Resolution</span>(width: <span class="number">1920</span>, height: <span class="number">1080</span>)</div><div class="line"><span class="keyword">var</span> cinema = hd</div></pre></td></tr></table></figure>
+<p>声明一个名为hd的常量，初始值宽高分别为1920和1080，然后声明一个名为cinema的变量，并将hd赋值给它。由于Resolution是结构体类型，所以cinema的值其实是hd的一个拷贝副本，而不是hd本身。尽管它们两个的值相同，但是是两个不同的实例。例如以下修改后，hd的值不变：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cinema.width = <span class="number">2048</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"cinema is now <span class="subst">\(cinema.width)</span> pixels wide"</span>)</div><div class="line"><span class="comment">// Prints "cinema is now 2048 pixels wide"</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"hd is still <span class="subst">\(hd.width)</span> pixels wide"</span>)</div><div class="line"><span class="comment">// Prints "hd is still 1920 pixels wide"</span></div></pre></td></tr></table></figure>
+<p>枚举也遵循相同的行为标准</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">CompassPoint</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> north, south, east, west</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> currentDirection = <span class="type">CompassPoint</span>.west</div><div class="line"><span class="keyword">let</span> rememberedDirection = currentDirection</div><div class="line">currentDirection = .east</div><div class="line"><span class="keyword">if</span> rememberedDirection == .west &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The remembered direction is still .west"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "The remembered direction is still .west"</span></div></pre></td></tr></table></figure>
+<h3 id="类是引用类型"><a href="#类是引用类型" class="headerlink" title="类是引用类型"></a>类是引用类型</h3><p>与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。<br>例如，实例化一个类VideoMode的对象，并为其属性赋值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> tenEighty = <span class="type">VideoMode</span>()</div><div class="line">tenEighty.resolution = hd</div><div class="line">tenEighty.interlaced = <span class="literal">true</span></div><div class="line">tenEighty.name = <span class="string">"1080i"</span></div><div class="line">tenEighty.frameRate = <span class="number">25.0</span></div></pre></td></tr></table></figure>
+<p>然后将其赋值给一个新变量，同时对新变量进行修改</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> alsoTenEighty = tenEighty</div><div class="line">alsoTenEighty.frameRate = <span class="number">30.0</span></div></pre></td></tr></table></figure>
+<p>因为类是引用类型，所以tenEight和alsoTenEight实际上引用的是相同的VideoMode实例。换句话说，它们是同一个实例的两种叫法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"The frameRate property of tenEighty is now <span class="subst">\(tenEighty.frameRate)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The frameRate property of tenEighty is now 30.0"</span></div></pre></td></tr></table></figure>
+<pre><code>需要注意的是tenEighty和alsoTenEighty被声明为常量而不是变量。然而你依然可以改变tenEighty.frameRate和alsoTenEighty.frameRate，因为tenEighty和alsoTenEighty这两个常量的值并未改变。它们并不“存储”这个VideoMode实例，而仅仅是对VideoMode实例的引用。所以，改变的是被引用的VideoMode的frameRate属性，而不是引用VideoMode的常量的值。
+</code></pre><h4 id="恒等运算符"><a href="#恒等运算符" class="headerlink" title="恒等运算符"></a>恒等运算符</h4><p>因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。（对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。）<br>如果能够判定两个常量或者变量是否引用同一个类实例将会很有帮助。为了达到这个目的，Swift 内建了两个恒等运算符：</p>
+<ul>
+<li>=== 等价于</li>
+<li>!== 不等价于</li>
+</ul>
+<p>运用这两个运算符可以检查两个变量或者常量是否引用同一个实例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> tenEighty === alsoTenEighty &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"tenEighty and alsoTenEighty refer to the same VideoMode instance."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "tenEighty and alsoTenEighty refer to the same VideoMode instance."</span></div></pre></td></tr></table></figure>
+<pre><code>注意`=== 等价于`和`== 等于`的区别：一个是判断引用相同的类实例，一个是判断值相等
+</code></pre><h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><p>在C、C++、ObjC中，使用指针类引用内存中的地址，Swift中某个引用类型的常量或者变量和其他语言中的指针类似，但不是直接指向内存地址，也不要求你使用星号（*）来表明你在创建一个引用。Swift 中的这些引用与其它的常量或变量的定义方式相同。</p>
+<h3 id="类和结构体的选择"><a href="#类和结构体的选择" class="headerlink" title="类和结构体的选择"></a>类和结构体的选择</h3><p>你可以使用类或结构体来定义你自己的数据类型。但是结构体总是通过值传递，类是引用传递。这意味着两者适用不同的任务。当你在考虑一个工程项目的数据结构和功能的时候，你需要决定每个数据结构是定义成类还是结构体。</p>
+<p>按照通用的准则，如果符合以下一条或者多条时，可以使用结构体：</p>
+<ul>
+<li>该数据结构的主要目的是用来封装少量相关简单数据值。</li>
+<li>有理由预计该数据结构的实例在被赋值或传递时，封装的数据将会被拷贝而不是被引用。</li>
+<li>该数据结构中储存的值类型属性，也应该被拷贝，而不是被引用。</li>
+<li>该数据结构不需要去继承另一个既有类型的属性或者行为。</li>
+</ul>
+<h3 id="字符串、数组、和字典类型的赋值与复制行为"><a href="#字符串、数组、和字典类型的赋值与复制行为" class="headerlink" title="字符串、数组、和字典类型的赋值与复制行为"></a>字符串、数组、和字典类型的赋值与复制行为</h3><p>Swift 中，许多基本类型，诸如String，Array和Dictionary类型均以结构体的形式实现。这意味着被赋值给新的常量或变量，或者被传入函数或方法中时，它们的值会被拷贝。</p>
+<p>Objective-C 中NSString，NSArray和NSDictionary类型均以类的形式实现，而并非结构体。它们在被赋值或者被传入函数或方法时，不会发生值拷贝，而是传递现有实例的引用。</p>
+<p>以上是对字符串、数组、字典的“拷贝”行为的描述。在你的代码中，拷贝行为看起来似乎总会发生。<br>然而，Swift 在幕后只在绝对必要时才执行实际的拷贝。Swift 管理所有的值拷贝以确保性能最优化，所以你没必要去回避赋值来保证性能最优化。    </p>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html/" target="_blank" rel="external">ClassesAndStructures</a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS_Swift_language_note_Enumerations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2164,234 +2393,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/25/iOS_develop_viewController_life_circle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/25/iOS_develop_viewController_life_circle/" itemprop="url">ViewController Life-Circle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-25T22:16:32+08:00">
-                2016-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/25/iOS_develop_viewController_life_circle/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/25/iOS_develop_viewController_life_circle/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>对ViewController生命周期进行介绍，同时会说一些曾经遇到过的坑及注意事项</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    这部分其实没啥好说的，苹果UIViewController接口文档对各个接口的描述写的很详细。<br>​    在视图的生命周期中，我曾经出问题的地方包括是UI表现异常；通知监听与释放没有成对出现；异步闭包回调引起的循环引用的资源无法释放；<code>__weak</code>和<code>__strong</code>问题导致的程序闪退等。这里就是把这些坑给记下来，（如果你碰巧）遇到这类问题后不会感到莫名其妙。</p>
-<h3 id="UIViewController的生命周期"><a href="#UIViewController的生命周期" class="headerlink" title="UIViewController的生命周期"></a>UIViewController的生命周期</h3><blockquote>
-<p>视图出现的时候调用顺序</p>
-</blockquote>
-<pre><code>- (void)viewDidLoad; // Called after the view has been loaded.just once
-
-- (void)viewWillAppear:(BOOL)animated;    // Called when the view is about to made visible. Default does nothing
-
-// Called just before the view controller&apos;s view&apos;s layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
-- (void)viewWillLayoutSubviews NS_AVAILABLE_IOS(5_0);
-
-// Called just after the view controller&apos;s view&apos;s layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
-- (void)viewDidLayoutSubviews NS_AVAILABLE_IOS(5_0);
-
-- (void)viewDidAppear:(BOOL)animated;     // Called when the view has been fully transitioned onto the screen. Default does nothing
-</code></pre><hr>
-<blockquote>
-<p>视图离开屏幕的时候调用顺序</p>
-</blockquote>
-<pre><code>- (void)viewWillDisappear:(BOOL)animated; // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
-
-- (void)viewDidDisappear:(BOOL)animated;  // Called after the view was dismissed, covered or otherwise hidden. Default does nothing
-</code></pre><h3 id="说明及最佳实践"><a href="#说明及最佳实践" class="headerlink" title="说明及最佳实践"></a>说明及最佳实践</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>很常用、很重要的方法，只是在APP页面加载的时候调用一次，以后不会再调用了。<br>通常做一些<code>初始化设置</code>，但是UI相关的设置不要放在这里<br>当然，iOS6之前早期系统上，没有AutoLayout，使用绝对布局在这里更新UI问题不大</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图即将出现在屏幕上，会调用该方法。<br>重写该方法，可以做一些<code>UI相关设置</code>，以及KVO监听之类操作<br>当APP视图间进行切换的时候，也会调用该方法</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillLayoutSubviews；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在viewWillAppare后调用，将要对子视图进行布局</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void) viewDidLayoutSubviews；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>已经布局完成子视图</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidAppear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图出现在屏幕上，会调用该方法。<br>重写该方法，可以做一些<em>UI更新设置</em></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillDisappear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图变换，即将离开屏幕时，会调用该方法。<br>重写该方法，做一些善后的处理工作，比如持久化处理、移除KVO监听之类的</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidDisappear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图变换，离开屏幕时，会调用该方法。<br>重写该方法，对已消失的视图做一些操作，比如释放资源</p>
-</blockquote>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
-<li><p>UI表示异常的话，多半是在不正确的时机调用了UI相关设置。</p>
-</li>
-<li><p>资源释放，尤其涉及视频、监听相关内容。</p>
-</li>
-<li><p>异步操作，涉及闭包，协议等操作时，要谨慎。</p>
-<ul>
-<li>例如：使用<code>__weakSelf</code>和<code>__strongSelf</code>打破循环引用</li>
-<li>例如：使用@selector前要判断</li>
-</ul>
-</li>
-<li><p>其他</p>
-<p>​</p>
-</li>
-</ul>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>​    在这里遇到问题的话，一定要静下心。举个例子，比如你在viewDidLoad方法内有关于某个对象的回调处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_obj.testBlock = ^()&#123;</div><div class="line">    //your test block process</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>但是实际开发中没有触发。可以从以下几个方向去调查：</p>
-<ul>
-<li>_obj对应类/结构体中是否会调用（绑定）该闭包；</li>
-<li>_obj的作用域：是全局的还是堆栈的；</li>
-<li>该闭包是否在其他地方进行了设置；</li>
-<li>其他。</li>
-</ul>
-<p>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2442,7 +2443,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
