@@ -76,7 +76,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Bluetooth," />
 
 
 
@@ -92,16 +92,18 @@
 
 
 
-<meta name="description" content="Keep hungry keep foolish！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="liangtong">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeriphe">
+<meta name="keywords" content="Bluetooth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS蓝牙开发 - Peripheral模式">
+<meta property="og:url" content="http://yoursite.com/2017/08/08/iOS_bluetooth_peripheral/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="Keep hungry keep foolish！">
+<meta property="og:description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeriphe">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-08T06:15:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liangtong">
-<meta name="twitter:description" content="Keep hungry keep foolish！">
+<meta name="twitter:title" content="iOS蓝牙开发 - Peripheral模式">
+<meta name="twitter:description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeriphe">
 
 
 
@@ -130,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/08/iOS_bluetooth_peripheral/"/>
 
 
 
 
 
-  <title>liangtong</title>
+  <title>iOS蓝牙开发 - Peripheral模式 | liangtong</title>
   
 
 
@@ -171,9 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -276,9 +276,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -308,9 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/08/iOS_bluetooth_peripheral/" itemprop="url">iOS蓝牙开发 - Peripheral模式</a></h1>
+          <h1 class="post-title" itemprop="name headline">iOS蓝牙开发 - Peripheral模式</h1>
         
 
         <div class="post-meta">
@@ -393,9 +391,7 @@
       
 
       
-        
-          
-            <h3 id="Peripheral模式"><a href="#Peripheral模式" class="headerlink" title="Peripheral模式"></a>Peripheral模式</h3><p>周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。<br>蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。</p>
+        <h3 id="Peripheral模式"><a href="#Peripheral模式" class="headerlink" title="Peripheral模式"></a>Peripheral模式</h3><p>周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。<br>蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。</p>
 <h3 id="功能集成"><a href="#功能集成" class="headerlink" title="功能集成"></a>功能集成</h3><p>  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;/array&gt;</div><div class="line">&lt;key&gt;NSBluetoothPeripheralUsageDescription&lt;/key&gt;</div><div class="line">&lt;string&gt;蓝牙设备请求描述，比如：程序需要使用蓝牙进行设备发现&lt;/string&gt;</div></pre></td></tr></table></figure></p>
 <p>  项目Targets对应的 <em>Build Phases</em> 中，引入 <em>CoreBluetooth.framework</em> ，使用的代码中引入头文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</div></pre></td></tr></table></figure></p>
 <h4 id="请求蓝牙服务"><a href="#请求蓝牙服务" class="headerlink" title="请求蓝牙服务"></a>请求蓝牙服务</h4><p>  使用CBPeripheralManagerDelegate来进行蓝牙服务管理(授权请求)，监听蓝牙状态变化。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) CBPeripheralManagerDelegate *perManager;</div><div class="line"></div><div class="line"><span class="comment">//对象创建成功后，会请求使用蓝牙，CBPeripheralManagerDelegate协议会回调蓝牙的各个状态</span></div><div class="line">_perManager = [[CBPeripheralManager alloc] initWithDelegate:<span class="keyword">self</span> queue:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="meta">#pragma mark - CBPeripheralManagerDelegate</span></div><div class="line">- (<span class="keyword">void</span>)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral&#123;</div><div class="line">    <span class="keyword">if</span> (peripheral.state == CBManagerStatePoweredOn) &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -409,8 +405,6 @@
 <h4 id="特征值订阅"><a href="#特征值订阅" class="headerlink" title="特征值订阅"></a>特征值订阅</h4><p>当蓝牙中心设备在进行蓝牙设备服务的特征发现时，若将特征值配置包含被通知 <em>CBCharacteristicPropertyNotify</em> ， 则协议中的以下回调会被调用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//订阅characteristics</div><div class="line">-(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic&#123;</div><div class="line">    NSLog(@&quot;订阅了 %@的数据&quot;,characteristic.UUID);</div><div class="line">    </div><div class="line">    //每秒执行一次给主设备发送一个当前时间的秒数</div><div class="line">    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:characteristic  repeats:YES];</div><div class="line">&#125;</div><div class="line">//如果不设置订阅的设备，则代表全部。</div><div class="line">-(void)sendData:(NSTimer *)t &#123;</div><div class="line">    CBMutableCharacteristic *characteristic = t.userInfo;</div><div class="line">    [_perManager updateValue:[@&quot;Subscribe To Characteristic Value Send &quot; dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic onSubscribedCentrals:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//取消订阅characteristics</div><div class="line">-(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic&#123;</div><div class="line">    NSLog(@&quot;取消订阅 %@的数据&quot;,characteristic.UUID);</div><div class="line">    </div><div class="line">    //取消回应</div><div class="line">    [_timer invalidate];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -420,217 +414,70 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="liangtong WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="liangtong Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/07/share_github_blog_jekyll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/07/share_github_blog_jekyll/" itemprop="url">Mac下使用Jekyll搭建GitHub博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:25:19+08:00">
-                2017-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Bluetooth/" rel="tag"># Bluetooth</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/07/share_github_blog_jekyll/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/07/share_github_blog_jekyll/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll</a>是一个静态网站和博客模版，本文介绍如何使用Jekyll进行个人GitHub博客的搭建。搭建前提是拥有个人<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，且Mac上有安装 <em>git</em> 工具。</p>
-<h3 id="安装Jekyll"><a href="#安装Jekyll" class="headerlink" title="安装Jekyll"></a>安装Jekyll</h3><p>  参照<a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll官方</a>介绍，打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> gem install jekyll bundler</div></pre></td></tr></table></figure></p>
-<p>注：gem的安装／更新可以自己去查，此处不再进行说明。Jekyll安装成功后，便可以进行个人博客／静态网站的创建了。</p>
-<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll new my_blog</div><div class="line"><span class="meta">$</span> cd my_blog</div><div class="line"><span class="meta">$</span> bundle exec jekyll serve</div></pre></td></tr></table></figure></p>
-<p>参照<a href="https://jekyllrb.com/docs/templates/" target="_blank" rel="external">官方模版配置介绍</a>,修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的<a href="http://jekyllthemes.org/" target="_blank" rel="external">博客模板</a>即可。  </p>
-<h3 id="快速使用博客-1"><a href="#快速使用博客-1" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>  此处选择使用博客模板<a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="external">jekyll-now</a>，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。<br>新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。<br>编写之后，直接在博客路径下，运行即可：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> jekyll serve</div></pre></td></tr></table></figure></p>
-<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><p>  使用Jekyll搭建博客也可以添加很多自定制功能，比如统计、评论、标签等；可以根据自己的喜好，选择不同的主题。以下是个人曾经使用过的主题：      </p>
-<ul>
-<li><a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="external">Hux Blog</a> 第一个GitHub博客系统就是从他的博客fork过去的。</li>
-<li><a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll" target="_blank" rel="external">Clean Blog</a> 简单的Jekyll博客模板。</li>
-</ul>
-<h3 id="Jekyll在GitHub上的维护"><a href="#Jekyll在GitHub上的维护" class="headerlink" title="Jekyll在GitHub上的维护"></a>Jekyll在GitHub上的维护</h3><p>直接将博客源码上传到GitHub博客仓库即可。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>通过在GitHub上搭建Jekyll和Hexo博客，个人更倾向于使用Hexo博客。</p>
-<ul>
-<li>Jekyll    <ul>
-<li>配置简单。</li>
-<li>维护简单，只需要一个Branch即可。</li>
-<li>使用简单，运行只需要 <em>jekyll server</em> 即可。</li>
-<li>发布简单，只需要将代码push到对应仓库即可。</li>
-<li>主题切换，比较麻烦。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Hexo<ul>
-<li>配置项相对较多，但是格式比较清晰。</li>
-<li>博客和源码需要分开维护。需要两个Branch对博客系统进行维护。</li>
-<li>使用相对简单。<ul>
-<li>hexo clean  // 清理</li>
-<li>hexo g      // 生成</li>
-<li>hexo s      // 运行</li>
-</ul>
-</li>
-<li>发布简单。<ul>
-<li>hexo d      // 将博客部署(到github)</li>
-<li>将博客源码push到对应仓库单独保存</li>
-</ul>
-</li>
-<li>主题切换简单。<ul>
-<li>下载新主题到themes文件夹下；</li>
-<li>修改站点配置文件_config.yml中对应的主题选项。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/07/share_github_blog_jekyll/" rel="next" title="Mac下使用Jekyll搭建GitHub博客">
+                <i class="fa fa-chevron-left"></i> Mac下使用Jekyll搭建GitHub博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -640,14 +487,34 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
+      
+    </div>
+  </div>
 
 
           </div>
@@ -655,6 +522,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -675,8 +553,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -798,6 +685,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Peripheral模式"><span class="nav-number">1.</span> <span class="nav-text">Peripheral模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能集成"><span class="nav-number">2.</span> <span class="nav-text">功能集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求蓝牙服务"><span class="nav-number">2.1.</span> <span class="nav-text">请求蓝牙服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带特质值的服务创建"><span class="nav-number">2.2.</span> <span class="nav-text">带特质值的服务创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启广播"><span class="nav-number">2.3.</span> <span class="nav-text">开启广播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据读写"><span class="nav-number">2.4.</span> <span class="nav-text">数据读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征值订阅"><span class="nav-number">2.5.</span> <span class="nav-text">特征值订阅</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -923,10 +826,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -944,6 +847,18 @@
       <script id="dsq-count-scr" src="https://liangtongdev.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/08/08/iOS_bluetooth_peripheral/';
+          this.page.identifier = '2017/08/08/iOS_bluetooth_peripheral/';
+          this.page.title = 'iOS蓝牙开发 - Peripheral模式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://liangtongdev.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
