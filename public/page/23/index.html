@@ -76,7 +76,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Bluetooth," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -92,20 +92,16 @@
 
 
 
-<meta name="description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
-<meta name="keywords" content="Bluetooth">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iBeacon基础">
-<meta property="og:url" content="http://yoursite.com/2017/02/11/iOS_bluetooth_iBeacon1/index.html">
+<meta name="description" content="Keep hungry keep foolish！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="liangtong">
+<meta property="og:url" content="http://yoursite.com/page/23/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
+<meta property="og:description" content="Keep hungry keep foolish！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/post/iOS/iBeacon/uuid_major_minor.png">
-<meta property="og:updated_time" content="2017-08-07T14:03:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iBeacon基础">
-<meta name="twitter:description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
-<meta name="twitter:image" content="http://yoursite.com/post/iOS/iBeacon/uuid_major_minor.png">
+<meta name="twitter:title" content="liangtong">
+<meta name="twitter:description" content="Keep hungry keep foolish！">
 
 
 
@@ -134,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/11/iOS_bluetooth_iBeacon1/"/>
+  <link rel="canonical" href="http://yoursite.com/page/23/"/>
 
 
 
 
 
-  <title>iBeacon基础 | liangtong</title>
+  <title>liangtong</title>
   
 
 
@@ -175,7 +171,9 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,9 +276,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -293,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/11/iOS_bluetooth_iBeacon1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/19/iOS_ObjC_SearchBar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -310,7 +308,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iBeacon基础</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/19/iOS_ObjC_SearchBar/" itemprop="url">UISearchBar自定义</a></h1>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-11T22:50:12+08:00">
-                2017-02-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-19T17:50:00+08:00">
+                2016-10-19
               </time>
             
 
@@ -363,9 +363,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/11/iOS_bluetooth_iBeacon1/#comments" itemprop="discussionUrl">
+                <a href="/2016/10/19/iOS_ObjC_SearchBar/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/02/11/iOS_bluetooth_iBeacon1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/10/19/iOS_ObjC_SearchBar/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -393,48 +393,69 @@
       
 
       
-        <p>​    <a href="https://developer.apple.com/ibeacon/" target="_blank" rel="external"> iBeacon </a> 标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。</p>
-<h3 id="位置服务"><a href="#位置服务" class="headerlink" title="位置服务"></a>位置服务</h3><p>​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在屏幕左下角显示该应用的图标。<a href="http://lbs.amap.com/" target="_blank" rel="external"> 高德地图 </a>中的地理围栏就是一个实际应用场景。位置服务有以下缺点：   </p>
+        
+          
+            <p>参照一些常用应用对UISearchBar进行UI展示自定义</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​        系统默认的搜索栏（UISearchBar）默认样子真心不好看，而平时iOS移动项目中又缺不了搜索功能，参照一些常用应用对UISearchBar进行UI展示自定义，效果图如下：</p>
+<p><img src="/post/iOS/Objective-C/rendering.gif" alt=""></p>
+<h4 id="UISearchBar介绍"><a href="#UISearchBar介绍" class="headerlink" title="UISearchBar介绍"></a>UISearchBar介绍</h4><p>​        如图所示，包括placeholder、textfiled、clearButton、bookmarkButton、leftView等：</p>
+<p><img src="/post/iOS/Objective-C/default_1.png" alt=""></p>
+<blockquote>
+<blockquote>
 <ul>
-<li>GPS本身定位精度能力有限，位置服务不可能提供精确的位置服务；</li>
-<li>室内环境下GPS信号普遍不好，或者信号不可达；</li>
+<li>① SearchBar的TextField的leftView；</li>
+<li>② SearchBar的TextField的placeholder；</li>
+<li>③ SearchBar的BookmarkIcon，默认不显示；</li>
 </ul>
-<h3 id="iBeacon"><a href="#iBeacon" class="headerlink" title="iBeacon"></a>iBeacon</h3><p>​    iBeacon技术是基于基站的形式。一个iBeacon可以被认为是一个区域（物体所在位置+覆盖半径），由于使用低功耗蓝牙技术，实验环境下其精度可以达到10cm范围内（虽然有些吹嘘，但亲测是相当精确的）。关于iBeacon的软件部分，需要了解以下几个概念：</p>
+</blockquote>
+</blockquote>
+<p><img src="/post/iOS/Objective-C/default_2.png" alt=""></p>
+<blockquote>
+<blockquote>
 <ul>
-<li>Region : ProximityUUID &amp; Major &amp; Minor</li>
-<li>Advertise Interval</li>
-<li>Measured Power</li>
-<li>RSSI    </li>
+<li>④ SearchBar的搜索Text；</li>
+<li>⑤ SearchBar的ClearButton；</li>
 </ul>
-<p>关于iBeacon区域的定义，由3个值来唯一确定一个区域，举例如下图：<br><img src="/post/iOS/iBeacon/uuid_major_minor.png" alt=""><br>图描述的很清楚了，我们可以通过ProximityUUID、Major和Minor三个值来定义不同的有关联的区域（事物），并通过不同的值组合来做很多有意思的事情。</p>
-<h3 id="iBeacon基础场景"><a href="#iBeacon基础场景" class="headerlink" title="iBeacon基础场景"></a>iBeacon基础场景</h3><h4 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h4><p>​    区域监听(Region Monitoring)即当设备进入／离开某个／某类区域的时候，可以触发后续联动，其监听的区域可能是ProximityUUID代表的某个大的类别区域比如一个公司在全国的所有子公司、或者由ProximityUUID和Major组合的相对小的区域比如某个城市中的子公司。至于什么区域就比较灵活了。<br>​    一般情况下，iOS程序退出或者后台挂起后，程序是不能执行的(其他Background-Mode除外)。但是这里所说的区域监听是托管给iOS系统，也就是说程序设置完监听区域后，iOS系统会托管，当设备进入／离开监听区域时，系统会触发相应的操作，并唤醒程序。</p>
-<h4 id="测距"><a href="#测距" class="headerlink" title="测距"></a>测距</h4><p>测距（Ranging）即设备与Beacon区域中心点的接近距离（接近状态），包括：   </p>
+</blockquote>
+</blockquote>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ul>
+<li><strong>1、修改SearchBar背景图</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//修改SearchBar背景（透明）图片，去除默认的黑线</div><div class="line">[self setBackgroundImage:[UIImage new]];</div></pre></td></tr></table></figure>
 <ul>
-<li>Immediate 非常近</li>
-<li>Near 1～3米</li>
-<li>Far 3米以外</li>
-<li>Unknown 距离不可测量</li>
+<li><strong>2、修改所搜索框背景图片，并切圆角</strong></li>
 </ul>
-<p>测距是在iOS程序处于前台激活状态下使用的，程序推到后台时，该功能便不可用。</p>
-<h4 id="应用场景举例"><a href="#应用场景举例" class="headerlink" title="应用场景举例"></a>应用场景举例</h4><p>监听：由iOS系统接管，所以该功能需慎用，搞不好会让用户厌烦。   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//输入框背景图片</div><div class="line">[self setSearchFieldBackgroundImage:[self searchFieldBackgroundImage] forState:UIControlStateNormal];</div><div class="line">//将输入框切圆角</div><div class="line">[self setSearchTextBackgroundCorner];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_2.png" alt=""></p>
 <ul>
-<li>欢迎语：比如商店入口／出口放置，用来给顾客相关提示。</li>
-<li>物品介绍：比如在博物馆某些区域，导游和网络信号不好的情况下，可以通过给文物贴上标签(iBeacon)，让每个设备都当导游。</li>
-<li>业务确认：比如在某些病房中放置，在特定时刻向病人确定吃药情况。</li>
-<li>预警：比如钥匙坠，当不在身边时及时提醒。</li>
-<li>其他：比如门禁、宠物饰品等</li>
+<li><strong>3、显示BookmarkButton，并设置其显示图标</strong></li>
 </ul>
-<p>测距：需要程序处于前台激活状态下使用，这里主要用在区域相关和用户互动的场景。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//显示BookmarkButton，并设置其图标（照相机）</div><div class="line">self.showsBookmarkButton = YES;</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_camera&quot;] forSearchBarIcon:UISearchBarIconBookmark  state:UIControlStateNormal];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_3.png" alt=""></p>
 <ul>
-<li>商场活动：比如现场抽奖、现场摇一摇</li>
-<li>自动售货机：付款</li>
-<li>活动签到：上课／开会等</li>
-<li>商场导购：在某个商品前停留，自动推该商品信息、折扣信息等</li>
-<li>微信摇一摇周边</li>
-<li>其他：室内导航等</li>
+<li><strong>4、设置「清空」图标图标</strong></li>
 </ul>
-<h3 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h3><p>​    经过这么多年的发展，iBeacon技术并没有达到前几年预想的效果。可能是受成本及运维的影响，也可能是关于位置感知的场景化需求太少，一直没有流行起来。目前国内主要的厂商包括：智石科技、四月兄弟、DropBeacon等，提供了Beacon的基础能力，但在设备美观及精确度方面个人不敢恭维。<br>国外Beacon技术相对先进不少，应该是受苹果的影响。比较突出的一个是<a href="http://estimote.com/" target="_blank" rel="external"> Estiomte </a>，他家的产品及配套SDK是真心不错，就是略贵。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//文本发生变更的时候，修改「清空」图标</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateNormal];</div><div class="line">[self setImage:[UIImage imageNamed:@&quot;ic_searchbar_clear&quot;] forSearchBarIcon:UISearchBarIconClear  state:UIControlStateHighlighted];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_4.png" alt=""></p>
+<ul>
+<li><strong>5、修改搜索框左侧的图标</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//搜索框左侧的搜索图标修改（默认是灰色）</div><div class="line">UITextField* searchField = [self valueForKey:@&quot;_searchField&quot;];</div><div class="line">UIImageView* searchIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&quot;ic_searchbar_search&quot;]];</div><div class="line">searchField.leftView = searchIV;</div><div class="line">searchField.leftViewMode = UITextFieldViewModeAlways;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>6、修改输入框文本颜色</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//改变searcher的textcolor</div><div class="line">searchField.textColor = [UIColor whiteColor];</div><div class="line">//改变placeholder的颜色</div><div class="line">[searchField setValue:[UIColor whiteColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</div></pre></td></tr></table></figure>
+<p><img src="/post/iOS/Objective-C/process_6.png" alt=""></p>
+<ul>
+<li><strong>7、附上调用方法</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">//搜索框的背景图片</div><div class="line">- (UIImage*) searchFieldBackgroundImage</div><div class="line">&#123;</div><div class="line">    CGFloat height = 32.f;</div><div class="line">    UIColor* bgColor = [UIColor colorWithRed:47/255.0 green:123/255.0 blue:200/255.0 alpha:0.5];</div><div class="line">    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);</div><div class="line">    UIGraphicsBeginImageContext(r.size);</div><div class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">    CGContextSetFillColorWithColor(context, [bgColor CGColor]);</div><div class="line">    CGContextFillRect(context, r);</div><div class="line">    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    return img;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//切圆角</div><div class="line">-(void)setSearchTextBackgroundCorner&#123;</div><div class="line">    for (UIView *subview in self.subviews) &#123;</div><div class="line">        for(UIView* grandSonView in subview.subviews)&#123;</div><div class="line">            if ([grandSonView isKindOfClass:NSClassFromString(@&quot;UISearchBarBackground&quot;)]) &#123;</div><div class="line">                grandSonView.alpha = 0.0f;</div><div class="line">            &#125;else if([grandSonView isKindOfClass:NSClassFromString(@&quot;UISearchBarTextField&quot;)] )&#123;</div><div class="line">                grandSonView.layer.cornerRadius = 5.0f;</div><div class="line">                grandSonView.layer.masksToBounds = YES;</div><div class="line">            &#125;else&#123;</div><div class="line">                grandSonView.alpha = 0.0f;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h4><p><a href="https://pan.baidu.com/s/1i5JiW3z" target="_blank" rel="external">https://pan.baidu.com/s/1i5JiW3z</a></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://developer.apple.com/reference/uikit/uisearchbar" target="_blank" rel="external">https://developer.apple.com/reference/uikit/uisearchbar</a></p>
+<p><a href="http://stackoverflow.com/questions/2139115/uisearchbar-clear-background-color-or-set-background-image-iphone-sdk/5557255#5557255" target="_blank" rel="external">http://stackoverflow.com/questions/2139115/uisearchbar-clear-background-color-or-set-background-image-iphone-sdk/5557255#5557255</a></p>
 
+          
+        
       
     </div>
     
@@ -444,74 +465,19 @@
     
 
     
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.png" alt="liangtong WeChat Pay"/>
-        <p>WeChat Pay</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.png" alt="liangtong Alipay"/>
-        <p>Alipay</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
 
     
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Bluetooth/" rel="tag"># Bluetooth</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/12/21/iOS_develop_overview_framework_2/" rel="next" title="浅谈iOS框架">
-                <i class="fa fa-chevron-left"></i> 浅谈iOS框架
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/13/iOS_bluetooth_iBeacon2/" rel="prev" title="iBeacon应用">
-                iBeacon应用 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -521,34 +487,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span>
+  </nav>
 
-      
-    </div>
-  </div>
 
 
           </div>
@@ -556,17 +502,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -587,17 +522,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -719,22 +645,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#位置服务"><span class="nav-number">1.</span> <span class="nav-text">位置服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iBeacon"><span class="nav-number">2.</span> <span class="nav-text">iBeacon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iBeacon基础场景"><span class="nav-number">3.</span> <span class="nav-text">iBeacon基础场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#监听"><span class="nav-number">3.1.</span> <span class="nav-text">监听</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测距"><span class="nav-number">3.2.</span> <span class="nav-text">测距</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景举例"><span class="nav-number">3.3.</span> <span class="nav-text">应用场景举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现状"><span class="nav-number">4.</span> <span class="nav-text">现状</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -860,10 +770,10 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-
+  
 
   
 
@@ -881,18 +791,6 @@
       <script id="dsq-count-scr" src="https://liangtongdev.disqus.com/count.js" async></script>
     
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/02/11/iOS_bluetooth_iBeacon1/';
-          this.page.identifier = '2017/02/11/iOS_bluetooth_iBeacon1/';
-          this.page.title = 'iBeacon基础';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://liangtongdev.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
     
 
   

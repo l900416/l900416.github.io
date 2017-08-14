@@ -291,6 +291,237 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/20/iOS_Swift_language_note_Functions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/20/iOS_Swift_language_note_Functions/" itemprop="url">Swift Functions</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-20T00:20:11+08:00">
+                2016-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/20/iOS_Swift_language_note_Functions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/20/iOS_Swift_language_note_Functions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    函数是执行特定功能的独立代码块，可以通过函数名字调用函数执行其功能。Swift的函数统一语法可以很灵活地表达任何东西，无论是没有参数的C风格函数还是拥有多个名字和参数的ObjC风格函数。参数可以提供默认值以简化函数调用、当参数变量需要改变的时候，参数也可以作为输入输出(<code>in-out</code>)参数.<br>在Swift中，每个函数都有一个类型，包括参数类型和返回值类型。你可以像Swift中其他任何一个类型一样使用函数，这使得将函数作为函数参数、作为函数返回值变得非常简单。函数也可以写在其他函数内部以限制其作用域（内部函数）。</p>
+<h3 id="函数的声明和调用"><a href="#函数的声明和调用" class="headerlink" title="函数的声明和调用"></a>函数的声明和调用</h3><p>当定义函数的时候，可以选择性的定义一个或多个名字，定义一些输入类型值作为参数，也可以选择性的定义一类值作为输出类型。每一个函数都有一个名字，用来表明函数的功能，可以通过调用该函数的名字来使用函数，并且通过传递输入值（参数）来匹配函数的参数，调用函数时，输入参数类型必须和函数声明时类型的参数类型顺序一致。</p>
+<p>函数以关键字<code>func</code>开头，返回值类型紧跟符号<code>-&gt;</code>。说了这么多，还是直接看例子，函数名字为：<code>greet(person:)</code>参数和返回值是String类型，定义及调用如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(person: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">let</span> greeting = <span class="string">"Hello, "</span> + person + <span class="string">"!"</span></div><div class="line">    <span class="keyword">return</span> greeting</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(greet(person: <span class="string">"Anna"</span>))</div><div class="line"><span class="comment">// Prints "Hello, Anna!"</span></div><div class="line"><span class="built_in">print</span>(greet(person: <span class="string">"Brian"</span>))</div><div class="line"><span class="comment">// Prints "Hello, Brian!"</span></div></pre></td></tr></table></figure>
+<h3 id="函数的参数和返回值"><a href="#函数的参数和返回值" class="headerlink" title="函数的参数和返回值"></a>函数的参数和返回值</h3><p>Swift中函数的参数和返回值比较灵活，无论是一个只有一个未命名参数的简单函数，还是包含不同类型参数的复杂函数，你可以随意定义。</p>
+<h4 id="无参函数"><a href="#无参函数" class="headerlink" title="无参函数"></a>无参函数</h4><p>函数参数是非必需的，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sayHelloWorld</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"hello, world"</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(sayHelloWorld())</div><div class="line"><span class="comment">// Prints "hello, world"</span></div></pre></td></tr></table></figure>
+<h4 id="多参函数"><a href="#多参函数" class="headerlink" title="多参函数"></a>多参函数</h4><p>函数可以有多个输入参数，这些参数写在函数的括号内，用逗号隔开。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(person: String, alreadyGreeted: Bool)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">if</span> alreadyGreeted &#123;</div><div class="line">        <span class="keyword">return</span> greetAgain(person: person)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> greet(person: person)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(greet(person: <span class="string">"Tim"</span>, alreadyGreeted: <span class="literal">true</span>))</div><div class="line"><span class="comment">// Prints "Hello again, Tim!"</span></div></pre></td></tr></table></figure>
+<h4 id="无返回值函数"><a href="#无返回值函数" class="headerlink" title="无返回值函数"></a>无返回值函数</h4><p>函数也不需要定义返回值类型，当没有返回值的时候，返回箭头（ - &gt;）和返回类型可以省略。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(person: String)</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Hello, <span class="subst">\(person)</span>!"</span>)</div><div class="line">&#125;</div><div class="line">greet(person: <span class="string">"Dave"</span>)</div><div class="line"><span class="comment">// Prints "Hello, Dave!"</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>严格的说，即使没有定义返回值，函数仍然会返回一个void类型的特殊值，他是一个简单的空的元组，可以写为()。</li>
+</ul>
+</blockquote>
+<p>再调用函数时，其返回值可以被忽略，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printAndCount</span><span class="params">(string: String)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="built_in">print</span>(string)</div><div class="line">    <span class="keyword">return</span> string.characters.<span class="built_in">count</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printWithoutCounting</span><span class="params">(string: String)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> <span class="number">_</span> = printAndCount(string: string)</div><div class="line">&#125;</div><div class="line">printAndCount(string: <span class="string">"hello, world"</span>)</div><div class="line"><span class="comment">// prints "hello, world" and returns a value of 12</span></div><div class="line">printWithoutCounting(string: <span class="string">"hello, world"</span>)</div><div class="line"><span class="comment">// prints "hello, world" but does not return a value</span></div></pre></td></tr></table></figure>
+<h4 id="多返回值函数"><a href="#多返回值函数" class="headerlink" title="多返回值函数"></a>多返回值函数</h4><p>可以使用元组作为函数的返回值来一次返回多个值。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">minMax</span><span class="params">(array: [Int])</span></span> -&gt; (<span class="built_in">min</span>: <span class="type">Int</span>, <span class="built_in">max</span>: <span class="type">Int</span>) &#123;</div><div class="line">    <span class="keyword">var</span> currentMin = array[<span class="number">0</span>]</div><div class="line">    <span class="keyword">var</span> currentMax = array[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> array[<span class="number">1</span>..&lt;array.<span class="built_in">count</span>] &#123;</div><div class="line">        <span class="keyword">if</span> value &lt; currentMin &#123;</div><div class="line">            currentMin = value</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> value &gt; currentMax &#123;</div><div class="line">            currentMax = value</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (currentMin, currentMax)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于元组成员的类型是函数的返回值，可以通过如下方式使用，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bounds = minMax(array: [<span class="number">8</span>, -<span class="number">6</span>, <span class="number">2</span>, <span class="number">109</span>, <span class="number">3</span>, <span class="number">71</span>])</div><div class="line"><span class="built_in">print</span>(<span class="string">"min is <span class="subst">\(bounds.<span class="built_in">min</span>)</span> and max is <span class="subst">\(bounds.<span class="built_in">max</span>)</span>"</span>)</div><div class="line"><span class="comment">// Prints "min is -6 and max is 109"</span></div></pre></td></tr></table></figure>
+<h3 id="可选的元组返回类型"><a href="#可选的元组返回类型" class="headerlink" title="可选的元组返回类型"></a>可选的元组返回类型</h3><p>如果一个函数的返回的元组是可选的，就可以使用一个可选的元组返回类型，例如：<code>(Int, Int)?</code>。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">minMax</span><span class="params">(array: [Int])</span></span> -&gt; (<span class="built_in">min</span>: <span class="type">Int</span>, <span class="built_in">max</span>: <span class="type">Int</span>)? &#123;</div><div class="line">    <span class="keyword">if</span> array.isEmpty &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</div><div class="line">    <span class="keyword">var</span> currentMin = array[<span class="number">0</span>]</div><div class="line">    <span class="keyword">var</span> currentMax = array[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> array[<span class="number">1</span>..&lt;array.<span class="built_in">count</span>] &#123;</div><div class="line">        <span class="keyword">if</span> value &lt; currentMin &#123;</div><div class="line">            currentMin = value</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> value &gt; currentMax &#123;</div><div class="line">            currentMax = value</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (currentMin, currentMax)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> bounds = minMax(array: [<span class="number">8</span>, -<span class="number">6</span>, <span class="number">2</span>, <span class="number">109</span>, <span class="number">3</span>, <span class="number">71</span>]) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"min is <span class="subst">\(bounds.<span class="built_in">min</span>)</span> and max is <span class="subst">\(bounds.<span class="built_in">max</span>)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "min is -6 and max is 109"</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>注：可选元组类型(Int, Int)? 和包含可选值的元组(Int?, Int?)不同，对于可选的元组类型，这个元组是可选的，而不是元组中的某个组成元素可选。</li>
+</ul>
+</blockquote>
+<h3 id="函数的参数标签和参数名"><a href="#函数的参数标签和参数名" class="headerlink" title="函数的参数标签和参数名"></a>函数的参数标签和参数名</h3><p>每个函数参数都包含一个标签名和一个参数名称，标签名在函数被调用的时候使用；函数中的每一个参数前都有一个标签名，参数名在函数体内使用，默认情况下，函数参数使用它们的参数名作为标签名。所有的参数名必须唯一，尽管参数的标签名可以不唯一，但唯一的标签名可以提高代码的易读性。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span><span class="params">(firstParameterName: Int, secondParameterName: Int)</span></span> &#123;</div><div class="line">    <span class="comment">// In the function body, firstParameterName and secondParameterName</span></div><div class="line">    <span class="comment">// refer to the argument values for the first and second parameters.</span></div><div class="line">&#125;</div><div class="line">someFunction(firstParameterName: <span class="number">1</span>, secondParameterName: <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<h4 id="明确的参数标签"><a href="#明确的参数标签" class="headerlink" title="明确的参数标签"></a>明确的参数标签</h4><p>在参数名前写一个参数标签，用空格隔开，来明确参数标签，格式如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span><span class="params">(argumentLabel parameterName: Int)</span></span> &#123;</div><div class="line">    <span class="comment">// In the function body, parameterName refers to the argument value</span></div><div class="line">    <span class="comment">// for that parameter.</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以下是一个使用明确标签名的例子：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(person: String, from hometown: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello <span class="subst">\(person)</span>!  Glad you could visit from <span class="subst">\(hometown)</span>."</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(greet(person: <span class="string">"Bill"</span>, from: <span class="string">"Cupertino"</span>))</div><div class="line"><span class="comment">// Prints "Hello Bill!  Glad you could visit from Cupertino."</span></div></pre></td></tr></table></figure>
+<h4 id="省略的参数标签"><a href="#省略的参数标签" class="headerlink" title="省略的参数标签"></a>省略的参数标签</h4><p>如果不需要参数标签，可以使用下划线(_)来代替参数标签。如果参数前有标签的话，函数调用的时候就必须使用标签。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span><span class="params">(parameterWithoutDefault: Int, parameterWithDefault: Int = <span class="number">12</span>)</span></span> &#123;</div><div class="line">    <span class="comment">// If you omit the second argument when calling this function, then</span></div><div class="line">    <span class="comment">// the value of parameterWithDefault is 12 inside the function body.</span></div><div class="line">&#125;</div><div class="line">someFunction(parameterWithoutDefault: <span class="number">3</span>, parameterWithDefault: <span class="number">6</span>) <span class="comment">// parameterWithDefault is 6</span></div><div class="line">someFunction(parameterWithoutDefault: <span class="number">4</span>) <span class="comment">// parameterWithDefault is 12</span></div></pre></td></tr></table></figure>
+<h4 id="默认的参数值"><a href="#默认的参数值" class="headerlink" title="默认的参数值"></a>默认的参数值</h4><p>可以为任何参数设定默认值来作为函数的定义的一部分。如果默认值已经定义，调用函数时就可以省略该参数的传值。将使用默认值的参数放在函数列表的末尾，在函数中，没有默认值的参数通常有重要的意义。例如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span><span class="params">(<span class="number">_</span> firstParameterName: Int, secondParameterName: Int)</span></span> &#123;</div><div class="line">    <span class="comment">// In the function body, firstParameterName and secondParameterName</span></div><div class="line">    <span class="comment">// refer to the argument values for the first and second parameters.</span></div><div class="line">&#125;</div><div class="line">someFunction(<span class="number">1</span>, secondParameterName: <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><p>一个可变参数的参数接受零个或多个指定类型的值。当函数被调用时，您可以使用一个可变参数的参数来指定该参数可以传递不同数量的输入值。写可变参数的参数时，需要参数的类型名称后加上点字符（…）。传递一个可变参数的参数的值时，函数体中是以提供适当类型的数组的形式存在。例如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">arithmeticMean</span><span class="params">(<span class="number">_</span> numbers: Double...)</span></span> -&gt; <span class="type">Double</span> &#123;</div><div class="line">    <span class="keyword">var</span> total: <span class="type">Double</span> = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">        total += number</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> total / <span class="type">Double</span>(numbers.<span class="built_in">count</span>)</div><div class="line">&#125;</div><div class="line">arithmeticMean(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line"><span class="comment">// returns 3.0, which is the arithmetic mean of these five numbers</span></div><div class="line">arithmeticMean(<span class="number">3</span>, <span class="number">8.25</span>, <span class="number">18.75</span>)</div><div class="line"><span class="comment">// returns 10.0, which is the arithmetic mean of these three numbers</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>一个函数最多只有一个可变参数。</li>
+</ul>
+</blockquote>
+<h4 id="输入-输出参数"><a href="#输入-输出参数" class="headerlink" title="输入-输出参数"></a>输入-输出参数</h4><p>默认情况下，函数的参数是常量（只读）形式，在函数方法体内修改参数会导致编译错误。如果想在函数体内修改参数，则需要将参数类型设置为<code>in-out</code>来代替。通过在参数类型前添加关键字<code>inout</code>来表明输入-输出参数。一个在输入-输出参数都有一个传递给函数的值，由函数修改后，并从函数返回来替换原来的值。</p>
+<blockquote>
+<ul>
+<li>输入输出参数类型必须是变量，不能有默认值。不能说常量，不能是可变参数。当你把一个变量传给输入输出参数时，在变量前添加一个连接符&amp;，表明它在函数体内可以修改</li>
+</ul>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Int, <span class="number">_</span> b: <span class="keyword">inout</span> Int)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> temporaryA = a</div><div class="line">    a = b</div><div class="line">    b = temporaryA</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>调用的时候，注意添加前缀符号&amp;，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> someInt = <span class="number">3</span></div><div class="line"><span class="keyword">var</span> anotherInt = <span class="number">107</span></div><div class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)</div><div class="line"><span class="built_in">print</span>(<span class="string">"someInt is now <span class="subst">\(someInt)</span>, and anotherInt is now <span class="subst">\(anotherInt)</span>"</span>)</div><div class="line"><span class="comment">// Prints "someInt is now 107, and anotherInt is now 3"</span></div></pre></td></tr></table></figure>
+<h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><p>每一个函数都有一个特定的函数类型，由参数类型和返回值类型。例如，以下例子中的函数类型是：(Int, Int)-&gt;Int</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoInts</span><span class="params">(<span class="number">_</span> a: Int, <span class="number">_</span> b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">multiplyTwoInts</span><span class="params">(<span class="number">_</span> a: Int, <span class="number">_</span> b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a * b</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="使用函数类型"><a href="#使用函数类型" class="headerlink" title="使用函数类型"></a>使用函数类型</h4><p>在Swift中可以像其他类型一样使用函数类型，例如可以定义一个函数类型的常量或者变量和调用该变量：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mathFunction: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">Int</span> = addTwoInts</div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"Result: <span class="subst">\(mathFunction(<span class="number">2</span>, <span class="number">3</span>)</span>)"</span>)</div><div class="line"><span class="comment">// Prints "Result: 5"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="函数类型的参数"><a href="#函数类型的参数" class="headerlink" title="函数类型的参数"></a>函数类型的参数</h4><p>可以使用函数类型（例如：(Int, Int)-&gt;Int）作为另一个函数的参数类型，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printMathResult</span><span class="params">(<span class="number">_</span> mathFunction: <span class="params">(Int, Int)</span></span></span> -&gt; <span class="type">Int</span>, <span class="number">_</span> a: <span class="type">Int</span>, <span class="number">_</span> b: <span class="type">Int</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Result: <span class="subst">\(mathFunction(a, b)</span>)"</span>)</div><div class="line">&#125;</div><div class="line">printMathResult(addTwoInts, <span class="number">3</span>, <span class="number">5</span>)</div><div class="line"><span class="comment">// Prints "Result: 8"</span></div></pre></td></tr></table></figure>
+<h4 id="函数类型的返回值"><a href="#函数类型的返回值" class="headerlink" title="函数类型的返回值"></a>函数类型的返回值</h4><p>可以使用函数类型作为一个函数的返回值。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">stepForward</span><span class="params">(<span class="number">_</span> input: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> input + <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">stepBackward</span><span class="params">(<span class="number">_</span> input: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> input - <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数类型的返回值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">chooseStepFunction</span><span class="params">(backward: Bool)</span></span> -&gt; (<span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> backward ? stepBackward : stepForward</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentValue = <span class="number">3</span></div><div class="line"><span class="keyword">let</span> moveNearerToZero = chooseStepFunction(backward: currentValue &gt; <span class="number">0</span>)</div><div class="line"><span class="comment">// moveNearerToZero now refers to the stepBackward() function</span></div></pre></td></tr></table></figure>
+<h3 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h3><p>嵌套函数是定义在函数内的函数，对外是隐藏的，但是可以调用和使用其内部的函数。例如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">chooseStepFunction</span><span class="params">(backward: Bool)</span></span> -&gt; (<span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">stepForward</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span> &#123; <span class="keyword">return</span> input + <span class="number">1</span> &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">stepBackward</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span> &#123; <span class="keyword">return</span> input - <span class="number">1</span> &#125;</div><div class="line">    <span class="keyword">return</span> backward ? stepBackward : stepForward</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> currentValue = -<span class="number">4</span></div><div class="line"><span class="keyword">let</span> moveNearerToZero = chooseStepFunction(backward: currentValue &gt; <span class="number">0</span>)</div><div class="line"><span class="comment">// moveNearerToZero now refers to the nested stepForward() function</span></div><div class="line"><span class="keyword">while</span> currentValue != <span class="number">0</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(currentValue)</span>... "</span>)</div><div class="line">    currentValue = moveNearerToZero(currentValue)</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="string">"zero!"</span>)</div><div class="line"><span class="comment">// -4...</span></div><div class="line"><span class="comment">// -3...</span></div><div class="line"><span class="comment">// -2...</span></div><div class="line"><span class="comment">// -1...</span></div><div class="line"><span class="comment">// zero!</span></div></pre></td></tr></table></figure>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html/" target="_blank" rel="external">Functions</a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/17/iOS_Swift_language_note_Control-Flow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -477,211 +708,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/06/iOS_Swift_language_note_Collection-Types/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/06/iOS_Swift_language_note_Collection-Types/" itemprop="url">Swift Collection Types</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-06T00:20:11+08:00">
-                2016-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/06/iOS_Swift_language_note_Collection-Types/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/06/iOS_Swift_language_note_Collection-Types/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    同其他语言类型类似，Swift提供了3个集合类型<code>Array</code>、<code>Set</code>和<code>Dictionary</code>来存储集合值。与ObjC不同的是，Swift中的集合属于范型，不能不同类型的数据添加的同一个集合类型中，且Swift中的集合类型变量都支持修改。<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt=""></p>
-<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>数组类型是存储相同类型数据的有序列表，其中数组不同位置存储的数可以相同。Swift中的<code>Array</code>类型是Foundation框架中的<code>NSArray</code>类型的桥接.Swift中Array属于范型类，具体的写法是<code>Array&lt;Element&gt;</code>或者<code>[Element]</code>，两种写法相同。</p>
-<h4 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h4><p>可以通过<code>[Element](), []</code>的形式创建空数组，可以通过Array提供方法进行创建，当然也可以通过字面值<code>[value 1, value 2, value 3]</code>的形式创建并初始化一个数组</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> someInts = [<span class="type">Int</span>]()<span class="comment">//创建一个空的Int数组</span></div><div class="line">someInts.append(<span class="number">3</span>)<span class="comment">//数组中添加一个元素</span></div><div class="line">someInts = []<span class="comment">//数组被清空</span></div><div class="line"></div><div class="line"><span class="comment">// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]</span></div><div class="line"><span class="keyword">var</span> threeDoubles = <span class="type">Array</span>(repeating: <span class="number">0.0</span>, <span class="built_in">count</span>: <span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> shoppingList: [<span class="type">String</span>] = [<span class="string">"Eggs"</span>, <span class="string">"Milk”]</span></div></pre></td></tr></table></figure>
-<h4 id="数组的组合"><a href="#数组的组合" class="headerlink" title="数组的组合"></a>数组的组合</h4><p>可以通过操作符<code>+</code>将两个形同类型元素的数组合并到一起。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> anotherThreeDoubles = <span class="type">Array</span>(repeating: <span class="number">2.5</span>, <span class="built_in">count</span>: <span class="number">3</span>)</div><div class="line"><span class="comment">// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]</span></div><div class="line"> </div><div class="line"><span class="keyword">var</span> sixDoubles = threeDoubles + anotherThreeDoubles</div><div class="line"><span class="comment">// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span></div></pre></td></tr></table></figure>
-<h4 id="数组元素的访问和修改"><a href="#数组元素的访问和修改" class="headerlink" title="数组元素的访问和修改"></a>数组元素的访问和修改</h4><p>可以通过调用数组的方法和属性来访问和修改数组元素，或者通过下标语法，比如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过数组的count属性来确定数组的元素</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The shopping list contains <span class="subst">\(shoppingList.<span class="built_in">count</span>)</span> items."</span>)</div><div class="line"></div><div class="line"><span class="comment">//通过数组的Bool属性isEmpty来判断数组是否为空</span></div><div class="line"><span class="keyword">if</span> shoppingList.isEmpty &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The shopping list is empty."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The shopping list is not empty."</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//通过调用数组的append方法来给数组添加元素</span></div><div class="line">shoppingList.append(<span class="string">"Flour"</span>)</div><div class="line"></div><div class="line"><span class="comment">//当然也可以通过操作符+=给数组添加元素（合并数组）</span></div><div class="line">shoppingList += [<span class="string">"Baking Powder"</span>]</div><div class="line">shoppingList += [<span class="string">"Chocolate Spread"</span>, <span class="string">"Cheese"</span>, <span class="string">"Butter"</span>]</div><div class="line"></div><div class="line"><span class="comment">//通过下标访问和修改数组元素：如果越界会导致运行时错误</span></div><div class="line"><span class="keyword">var</span> firstItem = shoppingList[<span class="number">0</span>]</div><div class="line">shoppingList[<span class="number">0</span>] = <span class="string">"Six eggs"</span></div><div class="line"></div><div class="line"><span class="comment">//当然也可以通过下标来同时修改一个范围元素，长度不相同也无所谓</span></div><div class="line">shoppingList[<span class="number">4</span>...<span class="number">6</span>] = [<span class="string">"Bananas"</span>, <span class="string">"Apples"</span>]</div><div class="line"></div><div class="line"><span class="comment">//可以通过insert方法向数组中插入元素</span></div><div class="line">shoppingList.insert(<span class="string">"Maple Syrup"</span>, at: <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment">//可以通过remove方法向移除数组特定位置的元素</span></div><div class="line"><span class="keyword">let</span> mapleSyrup = shoppingList.remove(at: <span class="number">0</span>)</div></pre></td></tr></table></figure>
-<h4 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h4><p>通过使用<code>for-in</code>循环来遍历数组，当然如果需要数组对应下标值的话，可以通过<code>enumerated()</code>方法（对于数组的<code>enumerated()</code>方法，会返回一个包含整形索引和具体值的元组）。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> shoppingList &#123;</div><div class="line">    <span class="built_in">print</span>(item)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (index, value) <span class="keyword">in</span> shoppingList.enumerated() &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Item <span class="subst">\(index + <span class="number">1</span>)</span>: <span class="subst">\(value)</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>Set是用来存储不重复的相同类型元素<code>无序</code>列表；Swift中的<code>Set</code>类型是Foundation框架中的<code>NSSet</code>类型的桥接。</p>
-<h4 id="Set类型的哈希值"><a href="#Set类型的哈希值" class="headerlink" title="Set类型的哈希值"></a>Set类型的哈希值</h4><p>存储在Set类型中的元素必须是<code>hashable</code>的（用来保证存储在Set中的元素唯一）。Swift中Set类型的创建语法格式为<code>Set[Element]</code>。与其他语言一样，不再赘述</p>
-<blockquote>
-<p>注：可以通过实现Swfit中的<code>Hashable</code>协议来自定义存储在Set集合中的元素</p>
-</blockquote>
-<h4 id="Set类型的创建"><a href="#Set类型的创建" class="headerlink" title="Set类型的创建"></a>Set类型的创建</h4><p>可以通过<code>Set&lt;Element&gt;(), []</code>语法创建一个Set类型对象，当然也可以通过字面值<code>[value 1, value 2, value 3]</code>的形式创建并初始化一个Set对象，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个空的Character类型的Set对象</span></div><div class="line"><span class="keyword">var</span> letters = <span class="type">Set</span>&lt;<span class="type">Character</span>&gt;()</div><div class="line"></div><div class="line"><span class="comment">//通过调用inset方法，向Set中添加元素</span></div><div class="line">letters.insert(<span class="string">"a"</span>)</div><div class="line"></div><div class="line"><span class="comment">//Set被清空</span></div><div class="line">letters = []</div><div class="line"></div><div class="line"><span class="comment">//通过字面值创建并初始化Set集合</span></div><div class="line"><span class="keyword">var</span> favoriteGenres: <span class="type">Set</span>&lt;<span class="type">String</span>&gt; = [<span class="string">"Rock"</span>, <span class="string">"Classical"</span>, <span class="string">"Hip hop"</span>]</div><div class="line"><span class="comment">//也可以这样写，Swift存在类型推断</span></div><div class="line"><span class="keyword">var</span> favoriteGenres: <span class="type">Set</span> = [<span class="string">"Rock"</span>, <span class="string">"Classical"</span>, <span class="string">"Hip hop"</span>]</div></pre></td></tr></table></figure>
-<h4 id="Set对象的访问和修改"><a href="#Set对象的访问和修改" class="headerlink" title="Set对象的访问和修改"></a>Set对象的访问和修改</h4><p>可以通过调用Set的方法和属性来访问和修改Set元素，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过Set的count属性来确定Set的元素</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"I have <span class="subst">\(favoriteGenres.<span class="built_in">count</span>)</span> favorite music genres."</span>)</div><div class="line"></div><div class="line"><span class="comment">//通过Set的Bool属性isEmpty来判断Set是否为空</span></div><div class="line"><span class="keyword">if</span> favoriteGenres.isEmpty &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"As far as music goes, I'm not picky."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"I have particular music preferences."</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//通过调用Set的insert方法来给Set添加元素</span></div><div class="line">favoriteGenres.insert(<span class="string">"Jazz"</span>)</div><div class="line"></div><div class="line"><span class="comment">//可以通过remove方法向移除Set中的特定元素</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> removedGenre = favoriteGenres.remove(<span class="string">"Rock"</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(removedGenre)</span>? I'm over it."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"I never much cared for that."</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//通过调用Set的contains方法来判断Set是否包含某个元素</span></div><div class="line"><span class="keyword">if</span> favoriteGenres.<span class="built_in">contains</span>(<span class="string">"Funk"</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"I get up on the good foot."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"It's too funky in here."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "It's too funky in here."</span></div></pre></td></tr></table></figure>
-<h4 id="Set的遍历"><a href="#Set的遍历" class="headerlink" title="Set的遍历"></a>Set的遍历</h4><p>通过使用<code>for-in</code>循环来遍历Set，Set对象是无序列表，如果想要顺序访问具体对象值，可以调用Set的<code>sorted()</code>方法。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> genre <span class="keyword">in</span> favoriteGenres &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(genre)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Jazz</span></div><div class="line"><span class="comment">// Hip hop</span></div><div class="line"><span class="comment">// Classical</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> genre <span class="keyword">in</span> favoriteGenres.sorted() &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(genre)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Classical</span></div><div class="line"><span class="comment">// Hip hop</span></div><div class="line"><span class="comment">// Jazz</span></div></pre></td></tr></table></figure>
-<h4 id="Set常用运算"><a href="#Set常用运算" class="headerlink" title="Set常用运算"></a>Set常用运算</h4><p>常用操作如下：</p>
-<blockquote>
-<ul>
-<li>operator (==) 判断是非相等</li>
-<li>isSubset(of:) 判断Set是否子集</li>
-<li>isSuperset(of:) 判断是否超级</li>
-<li>isStrictSubset(of:) 或 isStrictSuperset(of:) 判断是否是子集或者超集，但不相等</li>
-<li>isDisjoint(with:) 判断两个Set是否有相同元素</li>
-</ul>
-</blockquote>
-<p>再放一张图吧<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png" alt=""></p>
-<h3 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h3><p>Dictionary存储<key,value>键值对，其中键key值必须唯一，Swift中的<code>Dictionary</code>类型是Foundation框架中的<code>NSDictionary</code>类型的桥接。</key,value></p>
-<h4 id="Dictionary的创建"><a href="#Dictionary的创建" class="headerlink" title="Dictionary的创建"></a>Dictionary的创建</h4><p>可以通过<code>[Key:Value](), []</code>的形式创建空Dictionary，也可以通过字面值<code>[key 1: value 1, key 2: value 2, key 3: value 3]</code>的形式创建。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个空字典</span></div><div class="line"><span class="keyword">var</span> namesOfIntegers = [<span class="type">Int</span>: <span class="type">String</span>]()</div><div class="line"></div><div class="line"><span class="comment">//字典的赋值</span></div><div class="line">namesOfIntegers[<span class="number">16</span>] = <span class="string">"sixteen"</span></div><div class="line"></div><div class="line"><span class="comment">//字典的清空</span></div><div class="line">namesOfIntegers = [:]</div><div class="line"></div><div class="line"><span class="comment">//通过字面值创建</span></div><div class="line"><span class="keyword">var</span> airports: [<span class="type">String</span>: <span class="type">String</span>] = [<span class="string">"YYZ"</span>: <span class="string">"Toronto Pearson"</span>, <span class="string">"DUB"</span>: <span class="string">"Dublin"</span>]</div><div class="line"><span class="comment">//类型推断</span></div><div class="line"><span class="keyword">var</span> airports = [<span class="string">"YYZ"</span>: <span class="string">"Toronto Pearson"</span>, <span class="string">"DUB"</span>: <span class="string">"Dublin"</span>]</div></pre></td></tr></table></figure>
-<h4 id="Dictionary对象的访问和修改"><a href="#Dictionary对象的访问和修改" class="headerlink" title="Dictionary对象的访问和修改"></a>Dictionary对象的访问和修改</h4><p>可以通过调用Dictionary的方法和属性来访问和修改Dictionary元素，或者通过下标语法，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过Dictionary的count属性来确定Dictionary的元素个数</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The airports dictionary contains <span class="subst">\(airports.<span class="built_in">count</span>)</span> items."</span>)</div><div class="line"></div><div class="line"><span class="comment">//通过Dictionary的Bool属性isEmpty来判断Dictionary是否为空</span></div><div class="line"><span class="keyword">if</span> airports.isEmpty &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The airports dictionary is empty."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The airports dictionary is not empty."</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//通过下标语法添加或者修改Dictionary中的元素</span></div><div class="line">airports[<span class="string">"LHR"</span>] = <span class="string">"London"</span></div><div class="line"></div><div class="line"><span class="comment">//可以通过updateValue(_:forKey:) 方法添加或者修改Dictionary中的元素。</span></div><div class="line"><span class="comment">//需要注意的是如果执行更新操作，该方法会返回旧的Value值</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> oldValue = airports.updateValue(<span class="string">"Dublin Airport"</span>, forKey: <span class="string">"DUB"</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The old value for DUB was <span class="subst">\(oldValue)</span>."</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//可以通过下标语法来访问某个key对应的value</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> airportName = airports[<span class="string">"DUB"</span>] &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The name of the airport is <span class="subst">\(airportName)</span>."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"That airport is not in the airports dictionary."</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//可以通过下标语法来移除某个&lt;key,value&gt;元素</span></div><div class="line">airports[<span class="string">"APL"</span>] = <span class="string">"Apple International"</span></div><div class="line">airports[<span class="string">"APL"</span>] = <span class="literal">nil</span></div><div class="line"></div><div class="line"><span class="comment">//可以通过removeValue(forKey:) 方法移除某个&lt;key,value&gt;元素</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> removedValue = airports.removeValue(forKey: <span class="string">"DUB"</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The removed airport's name is <span class="subst">\(removedValue)</span>."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The airports dictionary does not contain a value for DUB."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="Dictionary的遍历"><a href="#Dictionary的遍历" class="headerlink" title="Dictionary的遍历"></a>Dictionary的遍历</h4><p>通过使用<code>for-in</code>循环来遍历Dictionary，每个Dictionary元素是以(key,value)元组的形式，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (airportCode, airportName) <span class="keyword">in</span> airports &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(airportCode)</span>: <span class="subst">\(airportName)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// YYZ: Toronto Pearson</span></div><div class="line"><span class="comment">// LHR: London Heathrow</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> airportCode <span class="keyword">in</span> airports.keys &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Airport code: <span class="subst">\(airportCode)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Airport code: YYZ</span></div><div class="line"><span class="comment">// Airport code: LHR</span></div><div class="line"> </div><div class="line"><span class="keyword">for</span> airportName <span class="keyword">in</span> airports.values &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Airport name: <span class="subst">\(airportName)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Airport name: Toronto Pearson</span></div><div class="line"><span class="comment">// Airport name: London Heathrow</span></div></pre></td></tr></table></figure>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html/" target="_blank" rel="external">CollectionTypes</a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
-<blockquote>
-<p>​Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -727,7 +758,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
