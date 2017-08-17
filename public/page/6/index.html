@@ -291,6 +291,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/27/database_sqlite3_fmdb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/27/database_sqlite3_fmdb/" itemprop="url">FMDB</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T12:07:43+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/27/database_sqlite3_fmdb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/27/database_sqlite3_fmdb/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    SQLite是一款轻型的数据库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它使用B+树存储表，整个SQLite数据库就是这些B+树组成的森林。。它的设计目标是嵌入式的，目前被广泛应用。<a href="https://github.com/ccgus/fmdb/" target="_blank" rel="external"> FMDB </a> 是基于SQLite的实现 。</p>
+<h3 id="数据库（连接）"><a href="#数据库（连接）" class="headerlink" title="数据库（连接）"></a>数据库（连接）</h3><p>数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是一个单一的用来执行SQL语句的数据库连接，使用同步的方式进行，如果需要在多线程执行查询或者更新，则需要使用FMDatabaseQueue</p>
+<h4 id="FMDatabase"><a href="#FMDatabase" class="headerlink" title="FMDatabase"></a>FMDatabase</h4><p>FMDatabase可以用来执行增、删、改、查相关的SQL语句，通常情况下，不会有什么问题。这里需要说明的一点是移动端在涉及到多线程操作时，不要使用单例模式建立一个FMDatabase对象，否则会发生死锁问题。其官方文档中也有给出警告: Do not instantiate a single <code>FMDatabase</code> object and use it across multiple threads.</p>
+<h4 id="FMDatabaseQueue"><a href="#FMDatabaseQueue" class="headerlink" title="FMDatabaseQueue"></a>FMDatabaseQueue</h4><p>FMDatabaseQueue的方法调用时异步的，通常在多线程中使用。即使在不同的闭包中使用，也是在发送在同一个线程中。</p>
+<h3 id="表结构操作"><a href="#表结构操作" class="headerlink" title="表结构操作"></a>表结构操作</h3><p>SQLite对于每个表的元数据(表名、根节点地址、表scheme等)信息均记录在一个叫’sql_master’的表中。常见的表结构变更包括创建、修改、删除，这些信息的变更均会影响’sql_master’表。</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>表的创建跟通常sql语句区别不大，通常在表创建时设置主键、默认值等。使用语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> RecordSign(recordId <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>, </div><div class="line">					projectName <span class="built_in">TEXT</span>, </div><div class="line">					visibleState <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> , </div><div class="line">					lastTriggerTime <span class="built_in">text</span> <span class="keyword">DEFAULT</span> <span class="string">'2017-03-13 23:59:59'</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>判断某个表是否存在，语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
+<p>判断某个表中是否存在某列，语法如下（通过判断sql语句中是否包含列名）：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span> <span class="keyword">and</span> <span class="keyword">sql</span> <span class="keyword">like</span> %列表%</div></pre></td></tr></table></figure></p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>表的删除，使用drop语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
+<h3 id="表内容操作"><a href="#表内容操作" class="headerlink" title="表内容操作"></a>表内容操作</h3><p>多表联合操作使用关键字：<code>join</code>，或者<code>in</code>(如果不需要跨表取字段的话)，比如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString* filterBusinessIDSql = [NSString stringWithFormat:@"select businessID from BeaconRelatedPolicyAndBusiness where isValid = 1 and policyID in ('%@')", [minPriorityPolicyIDArray componentsJoinedByString:@"','"]];  </div><div class="line"></div><div class="line">NSString* retSql = [NSString stringWithFormat:@"select * from BeaconBusinessMsg where businessID in (%@) and isValid = 1 order by priority asc",filterBusinessIDSql];</div></pre></td></tr></table></figure></p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>支持使用<code>insert</code> 或 <code>insert or replace</code> 或 <code>insert or ignore</code> 等语法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div></pre></td></tr></table></figure></p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>使用<code>update</code>语句进行表结构的更新，如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">               projectName,</span></div><div class="line"><span class="string">               recordId</span></div><div class="line"><span class="string">				];</span></div></pre></td></tr></table></figure></p>
+<h4 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h4><p>使用 <code>select</code> 关键字进行表数据查询，返回 <code>ResultSet</code> ，然后可以根据具体情况进行处理。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeQuery:@"<span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div></pre></td></tr></table></figure></p>
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>使用 <code>delete</code> 关键字来删除表中的记录。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div></pre></td></tr></table></figure></p>
+<h4 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h4><p>当涉及到数据量比较大或者原子性操作时，可能会用到批处理相关操作，例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//假设数据量不是太大，不需要通过分批次提交</div><div class="line">[[GKDatabaseManager sharedInstance].dbQueue inTransaction:^(FMDatabase *dbms, BOOL *rollback) &#123;</div><div class="line">    [dbms executeUpdate:@"<span class="keyword">update</span>  RecordSign <span class="keyword">set</span> visibleState = <span class="number">0</span> <span class="string">"];</span></div><div class="line"><span class="string">    for (NSDictionary* projectModel in projectList) &#123;</span></div><div class="line"><span class="string">        NSString* recordId = [projectModel objectForKey:@"</span>recordId<span class="string">"];</span></div><div class="line"><span class="string">        NSString* projectName = [projectModel objectForKey:@"</span>projectName<span class="string">"];</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">        FMResultSet* retSet = [dbms executeQuery:@"</span><span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div><div class="line"><span class="string">        if ([retSet next]) &#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">                        projectName,</span></div><div class="line"><span class="string">                         recordId</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;else&#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;//end if retSet</span></div><div class="line"><span class="string">        [retSet close];</span></div><div class="line"><span class="string">    &#125;//end for</span></div><div class="line"><span class="string">    [dbms executeUpdate:@"</span><span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div><div class="line"><span class="string">&#125;];</span></div><div class="line"><span class="string">[[GKDatabaseManager sharedInstance].dbQueue close];</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用心结"><a href="#使用心结" class="headerlink" title="使用心结"></a>使用心结</h3><p>我的态度是：数据库能实现的东西，自己就没必要再折腾了。数据库本身是一个很强大的软件，她已经可以帮助我们解决很多的问题。<br>所以在拿到需求后，别急着写代码逻辑，最好先考虑下是否可以利用这些现成的工具。有时候数据库处理数据的能力比自己写程序效率要高很多，且代价也比较小；数据库已经实现的功能，当然没有必要再自行编写程序解决，除非你觉得自己比数据库处理的好。      </p>
+<ul>
+<li>使用SQLite数据库处理缓存的话，需要考虑数据库表结构的更新。<ul>
+<li>建议在建立表结构的时候，添加版本信息，比如 <code>tablename_v1</code>。就像CoreData处理版本升级时的version版本号一样。</li>
+<li>数据迁移。</li>
+<li>表结构受损后的数据恢复。   </li>
+</ul>
+</li>
+<li>数据库连接的选择<ul>
+<li>FMDatabase是同步操作，FMDatabaseQueue是异步操作。</li>
+<li>不要单例FMDatabase对象，在多线程处理时各种死锁绝对够你受的。</li>
+<li>不要将FMDatabase和FMDatabaseQueue同时使用，否则等着数据异常或者死锁崩溃吧。</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/27/algorithm_search_binary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -441,169 +623,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/26/algorithm_sort_merge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/26/algorithm_sort_merge/" itemprop="url">归并排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T14:25:00+08:00">
-                2017-04-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/26/algorithm_sort_merge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/26/algorithm_sort_merge/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    归并排序是建立在归并操作上的一种有效的排序算法，该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。需要额外的存储空间，时间复杂度： T(n) = Θ(nlgn)。</p>
-<h3 id="基本原理及实现"><a href="#基本原理及实现" class="headerlink" title="基本原理及实现"></a>基本原理及实现</h3><p>基本原理：使用递归、分治思想，将待排序数组分割成字数组，将排序后的字数组合并。    </p>
-<ul>
-<li>① 当数组只包含一个元素时，直接返回该元素即可。</li>
-<li>② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</li>
-<li>③ 将左侧和右侧排序后的有序数组进行合并。     </li>
-</ul>
-<p>使用Swift进行功能实现，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 归并排序 - 算法思想</span></div><div class="line"><span class="comment"> * 使用递归、分治的思想。</span></div><div class="line"><span class="comment"> * ① 当数组只包含一个元素时，直接返回该元素即可。</span></div><div class="line"><span class="comment"> * ② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</span></div><div class="line"><span class="comment"> * ③ 将左侧和右侧排序后的有序数组进行合并。</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> **/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeSort</span>&lt;T:Comparable&gt;<span class="params">(array: Array&lt;T&gt;, start:Int , end:Int)</span></span> -&gt; <span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">if</span> start &gt;= end &#123;<span class="comment">//① 只有一个元素，直接返回即可</span></div><div class="line">        <span class="keyword">return</span> [array[start]];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">let</span> middle = (start + end) / <span class="number">2</span>;</div><div class="line">        <span class="comment">//② 递归调用，给左侧数组排序</span></div><div class="line">        <span class="keyword">let</span> leftSortArray = mergeSort(array:array,start:start,end:middle);</div><div class="line">        <span class="comment">//② 递归调用，给右侧数组排序</span></div><div class="line">        <span class="keyword">let</span> rightSortedArray = mergeSort(array: array, start: middle + <span class="number">1</span>, end: end);</div><div class="line">        </div><div class="line">        <span class="comment">//③ 合并有序数组</span></div><div class="line">        <span class="keyword">var</span> leftIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">var</span> rightIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">let</span> leftCount = leftSortArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">let</span> rightCount = rightSortedArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">var</span> retArray:<span class="type">Array</span>&lt;<span class="type">T</span>&gt; = [];</div><div class="line">	<span class="comment">// 两个有序数组均存在值时，依次插入最小值</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &amp;&amp; rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            <span class="keyword">if</span> leftValue &lt; rightValue &#123;</div><div class="line">                retArray.append(leftValue);</div><div class="line">                leftIndex += <span class="number">1</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                retArray.append(rightValue);</div><div class="line">                rightIndex += <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将左侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            retArray.append(leftValue);</div><div class="line">            leftIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将右侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            retArray.append(rightValue);</div><div class="line">            rightIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> retArray;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用方法</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">callMergeSort</span>&lt;T:Comparable&gt;<span class="params">(array:Array&lt;T&gt;)</span></span>-&gt;<span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">let</span> <span class="built_in">count</span> = array.<span class="built_in">count</span>;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> mergeSort(array: array, start: <span class="number">0</span>, end: <span class="built_in">count</span> - <span class="number">1</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">16</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">11</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">24</span>,<span class="number">1</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(intArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedArray = callMergeSort(array: intArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="number">16</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">24</span>, <span class="number">1</span>]</div><div class="line">排序后数组：[<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>]</div></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Java"</span>,<span class="string">"C#"</span>,<span class="string">"Python"</span>,<span class="string">"Objective-C"</span>,<span class="string">"Swift"</span>,<span class="string">"PHP"</span>,<span class="string">"BASIC"</span>,<span class="string">"Pasical"</span>,<span class="string">"Assembly"</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(stringArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedStringArray = callMergeSort(array: stringArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedStringArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="string">"Java"</span>, <span class="string">"C#"</span>, <span class="string">"Python"</span>, <span class="string">"Objective-C"</span>, <span class="string">"Swift"</span>, <span class="string">"PHP"</span>, <span class="string">"BASIC"</span>, <span class="string">"Pasical"</span>, <span class="string">"Assembly"</span>]</div><div class="line">排序后数组：[<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Pasical"</span>, <span class="string">"Python"</span>, <span class="string">"Swift"</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -654,7 +673,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -665,7 +684,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -676,7 +695,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

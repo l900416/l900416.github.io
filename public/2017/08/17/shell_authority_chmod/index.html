@@ -76,7 +76,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift," />
+  <meta name="keywords" content="权限," />
 
 
 
@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。 赋值运算符​    用来初始化或">
-<meta name="keywords" content="Swift">
+<meta name="description" content="Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每">
+<meta name="keywords" content="权限">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift Basic Operators">
-<meta property="og:url" content="http://yoursite.com/2016/11/04/iOS_Swift_language_note_Basic-Operators/index.html">
+<meta property="og:title" content="chmod修改权限">
+<meta property="og:url" content="http://yoursite.com/2017/08/17/shell_authority_chmod/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。 赋值运算符​    用来初始化或">
+<meta property="og:description" content="Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-07T09:20:21.000Z">
+<meta property="og:updated_time" content="2017-08-17T05:58:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift Basic Operators">
-<meta name="twitter:description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。 赋值运算符​    用来初始化或">
+<meta name="twitter:title" content="chmod修改权限">
+<meta name="twitter:description" content="Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/04/iOS_Swift_language_note_Basic-Operators/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/17/shell_authority_chmod/"/>
 
 
 
 
 
-  <title>Swift Basic Operators | liangtong</title>
+  <title>chmod修改权限 | liangtong</title>
   
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/04/iOS_Swift_language_note_Basic-Operators/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/shell_authority_chmod/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -308,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Swift Basic Operators</h1>
+          <h1 class="post-title" itemprop="name headline">chmod修改权限</h1>
         
 
         <div class="post-meta">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-04T00:00:00+08:00">
-                2016-11-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T13:51:43+08:00">
+                2017-08-17
               </time>
             
 
@@ -343,8 +343,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
                   </a>
                 </span>
 
@@ -361,9 +361,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/04/iOS_Swift_language_note_Basic-Operators/#comments" itemprop="discussionUrl">
+                <a href="/2017/08/17/shell_authority_chmod/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/04/iOS_Swift_language_note_Basic-Operators/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/08/17/shell_authority_chmod/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -391,35 +391,258 @@
       
 
       
-        <p>​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(<code>=</code>)不再拥有返回值来阻止被错误的使用在比较运算符(<code>==</code>)的场合；算术运算符(<code>+, -, *, /, % 等</code>)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(<code>a..&lt;b</code>和<code>a...b</code>)，用来快捷表达一个区域范围值。</p>
-<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>​    用来初始化或者更新左值<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">5</span> </div><div class="line"><span class="keyword">let</span> (x, y) = (<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// x is equal to 1, and y is equal to 2</span></div><div class="line"><span class="keyword">if</span> x = y &#123;</div><div class="line">    <span class="comment">// 存在语法错误，因为赋值运算符没有返回值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>​    Swift支持四个标准的算术运算符<code>+, -, *, /</code>；与其他语言不同的是，这些运算符默认情况下不允许被重写。另外<code>+</code>运算符也支持字符串连接。</p>
-<h5 id="取模运算符"><a href="#取模运算符" class="headerlink" title="取模运算符"></a>取模运算符</h5><p>​    与其他语言一样，注意一点：<code>a % b</code>的符号与<code>a</code>相同</p>
-<h5 id="单目运算符"><a href="#单目运算符" class="headerlink" title="单目运算符"></a>单目运算符</h5><p>​    包括单目<code>+</code>运算符和单目<code>-</code>运算符</p>
-<h5 id="复合赋值运算符"><a href="#复合赋值运算符" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h5><p>​    和C相同，Swift允许使用一个运算符和赋值运算符(<code>=</code>)来快捷组合，比如<code>+=, -=</code>。复合运算符也没有返回值。</p>
-<h5 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h5><p>​    Swift支持所有标准C语言的比较运算符：<code>a == b, a != b, a &gt; b, a &lt; b, a &gt;= b, a &lt;= b</code>。另外，Swift还提供了’=== 和 !==’运算符来判断两个对象是否引用了同一个对象。比较运算符会返回布尔Bool类型值。<br>也可以对元组类型使用比较运算符，元组的比较从左向右，每次比较一个元素。</p>
-<blockquote>
-<p>注：Bool类型不能比较，Swift标准库中比较运算符元组为少于7个元素的元组，如果元素个数不符合条件，则需要自己实现比较运算符。</p>
-</blockquote>
-<h5 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h5><p>​    同其它语言一样，格式为<code>question ? answer1 : answer2</code>。</p>
-<h5 id="Nil-Coalescing运算符"><a href="#Nil-Coalescing运算符" class="headerlink" title="Nil-Coalescing运算符"></a>Nil-Coalescing运算符</h5><p>​    格式为：(<code>a ?? b</code>)，解包’可选类型’a如果a包含一个值，则返回改值；否则返回默认值b。该运算符可以更加形象地用三目运算符表示：<code>a != nil ? a! : b</code>。且该运算符也有短路运算的特点。使用时需要注意有两点：</p>
-<blockquote>
+        <p>  Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。<br>    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每个用户的uid是不同的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:~ liangtong$ id</div><div class="line">uid=501(liangtong) gid=20(staff) groups=20(staff),701(com.apple.sharepoint.group.1),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),98(_lpadmin),33(_appstore),100(_lpoperator),204(_developer),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh)</div><div class="line">liangtongdeiMac:~ liangtong$</div></pre></td></tr></table></figure></p>
+<h3 id="文件的读写与执行"><a href="#文件的读写与执行" class="headerlink" title="文件的读写与执行"></a>文件的读写与执行</h3><p>对于文件的读写与执行，首先通过一下命令查看输出的结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ mkdir test_authority</div><div class="line">liangtongdeiMac:playground liangtong$ cd test_authority/</div><div class="line">liangtongdeiMac:test_authority liangtong$ &gt; authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$ ls -l authority_test.txt </div><div class="line">-rw-r--r--  1 liangtong  staff  0  8 16 18:43 authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$</div></pre></td></tr></table></figure></p>
+<p>这里创建了一个目录test_authority，并在目录中创建了一个文件authority_test.txt。之后查看文件线索。这里我们主要说前十个字符 <em>-rw-r–r–</em>。</p>
 <ul>
-<li>a必须是可选类型 </li>
-<li>b的类型必须和a解包后的类型匹配</li>
+<li>第一个代表的是文件类型。<ul>
+<li><em>-</em> 表示普通文件</li>
+<li><em>d</em> 表示目录</li>
+<li>其他，比如 <em>l</em> 符号链接、 <em>c</em> 字符设备文件，比如终端机或者调制解调器、 <em>b</em> 块设备文件比如硬盘，CD-ROM盘</li>
 </ul>
-</blockquote>
-<h3 id="范围运算符"><a href="#范围运算符" class="headerlink" title="范围运算符"></a>范围运算符</h3><p>​    封闭范围运算符 <code>(a…b)</code> 包含边界<code>a</code>和<code>b</code>，其中必须满足<code>a &lt;= b</code>；半封闭范围运算符<code>(a..&lt;b)</code>包含<code>a</code>，但不包含<code>b</code>。其中必须满足<code>a &lt; b</code>。</p>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>​    三个C标准的逻辑运算符<code>!a , a &amp;&amp; b , a || b</code>，从左至右，有短路运算的特点。为了方便阅读，多逻辑运算符组合出现的时候建议多加括号<code>(</code>，<code>)</code>。</p>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+</li>
+<li>剩下的九个字符叫做文件模式，代表文件所有者，文件组所有者，其他人的读、写、执行权限  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Owner</th>
+<th style="text-align:center">Group</th>
+<th style="text-align:center">World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">rwx</td>
+<td style="text-align:center">rwx</td>
+<td style="text-align:center">rwx</td>
+</tr>
+</tbody>
+</table>
+<p>当设置文件模式后，r、w、x模式属性对文件和目录产生以下影响：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:left">文件</th>
+<th style="text-align:left">目录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:left">读取文件的内容</td>
+<td style="text-align:left">允许列出目录内容，前提是目录必须可执行</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:left">写入文件内容，但不允许重命名或删除</td>
+<td style="text-align:left">可以在目录下新增、修改、重命名，前提是目录必须可执行</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:left">允许文件作为程序来执行，前提必须置为可读</td>
+<td style="text-align:left">允许进入目录，例如 cd xx</td>
+</tr>
+</tbody>
+</table>
+<p>以下举几个例子：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件属性</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-rwx——</td>
+<td style="text-align:left">普通文件，文件所有者可读可写可执行，其他人无任何权限</td>
+</tr>
+<tr>
+<td style="text-align:center">-rw——-</td>
+<td style="text-align:left">普通文件，文件所有者可读可写，其他人无任何权限</td>
+</tr>
+<tr>
+<td style="text-align:center">-rw-r–r–</td>
+<td style="text-align:left">普通文件，文件所有者可读可写，文件所有者所在组可读，其他人可读</td>
+</tr>
+<tr>
+<td style="text-align:center">-rwxr-xr-x</td>
+<td style="text-align:left">普通文件，文件所有者可读可写可执行，文件所有者所在组可读可执行，其他人可读可执行</td>
+</tr>
+<tr>
+<td style="text-align:center">drwxrwx—</td>
+<td style="text-align:left">目录，目录所有者及所有者所在的分组可以访问目录，在目录中新建、修改、删除文件，其他人无权限</td>
+</tr>
+<tr>
+<td style="text-align:center">drwxr-x—</td>
+<td style="text-align:left">目录，目录所有者可以访问目录，在目录中新建、修改、删除文件；文件所有者所在分组可以访问目录，其他人无权限</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chmod-修改文件模式"><a href="#chmod-修改文件模式" class="headerlink" title="chmod 修改文件模式"></a>chmod 修改文件模式</h3><p>文件／目录的所有者或者超级管理员可以用 <em>chmod</em> 命令来更改文件或者目录的权限。<br>chmod命令支持两种不同的方式来更改文件模式：   </p>
 <ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/BasicOperators.html/" target="_blank" rel="external">BasicOperators</a> </li>
+<li>八进制数字表示法<ul>
+<li>每个八进制数字代表了3个二进制数字。</li>
+<li>可以使用命令 <em>chmod 600 authority_test.txt</em> 将文件模式修改为可读可写</li>
 </ul>
-</blockquote>
-<p>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
-<blockquote>
-<p>​Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">十进制</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">文件模式</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">000</td>
+<td style="text-align:center">—</td>
+<td style="text-align:left">无权限</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">001</td>
+<td style="text-align:center">–x</td>
+<td style="text-align:left">执行</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">010</td>
+<td style="text-align:center">-w-</td>
+<td style="text-align:left">写</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">011</td>
+<td style="text-align:center">-wx</td>
+<td style="text-align:left">写、执行</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">r–</td>
+<td style="text-align:left">读</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">101</td>
+<td style="text-align:center">r-x</td>
+<td style="text-align:left">读、执行</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">rw-</td>
+<td style="text-align:left">读、写</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">111</td>
+<td style="text-align:center">rwx</td>
+<td style="text-align:left">读、写、执行</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>符号表示法<ul>
+<li>由3部分组成。<ul>
+<li>会影响谁，包括 <em>u</em> 、  <em>g</em> 、  <em>o</em> 、  <em>a</em> </li>
+<li>具体操作，包括 <em>+</em> 、  <em>-</em>  、  <em>=</em> </li>
+<li>设置的权限，由 r 、 w 、 x 进行组合，例如 <em>x</em> 、  <em>rw</em>  、 <em>rwx</em> 等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">影响谁</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:left">“user”的简写，意思是文件或目录的所有者。</td>
+</tr>
+<tr>
+<td style="text-align:center">g</td>
+<td style="text-align:left">用户组</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:left">“others”的简写，意思是其他所有的人</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">“all”的简写，是”u”, “g”和“o”三者的联合</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:left">如果没有指定字符，则假定使用”all”</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">具体操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:left">加上一个权限</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:left">删掉一个权限</td>
+</tr>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:left">只有指定的权限可用，其它所有的权限被删除</td>
+</tr>
+</tbody>
+</table>
+<p>​<br>以下举几个例子：   </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号表示</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u+x</td>
+<td style="text-align:left">为文件所有者添加可执行权限</td>
+</tr>
+<tr>
+<td style="text-align:center">+x</td>
+<td style="text-align:left">为文件所有者，用户组，和其他所有人添加可执行权限。 等价于 a+x。</td>
+</tr>
+<tr>
+<td style="text-align:center">o-rw</td>
+<td style="text-align:left">除了文件所有者和用户组，删除其他人的读权限和写权限</td>
+</tr>
+<tr>
+<td style="text-align:center">go=rw</td>
+<td style="text-align:left">给群组的主人和任意文件拥有者的人读写权限。如果群组的主人或全局之前已经有了执行的权限，他们将被移除。</td>
+</tr>
+<tr>
+<td style="text-align:center">u+x,go=rw</td>
+<td style="text-align:left">给文件拥有者执行权限并给组和其他人限定读和执行的权限。多种设定可以用逗号分开。</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -466,7 +689,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/tags/权限/" rel="tag"># 权限</a>
           
         </div>
       
@@ -479,8 +702,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/02/iOS_Swift_language_note_The-Basics/" rel="next" title="Swift The Basics">
-                <i class="fa fa-chevron-left"></i> Swift The Basics
+              <a href="/2017/08/08/iOS_bluetooth_peripheral/" rel="next" title="iOS蓝牙开发 - Peripheral模式">
+                <i class="fa fa-chevron-left"></i> iOS蓝牙开发 - Peripheral模式
               </a>
             
           </div>
@@ -488,10 +711,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/05/iOS_Swift_language_note_String-and-Characters/" rel="prev" title="Swift String and Characters">
-                Swift String and Characters <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -715,7 +934,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算符"><span class="nav-number">1.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">2.</span> <span class="nav-text">算术运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#取模运算符"><span class="nav-number">2.0.1.</span> <span class="nav-text">取模运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单目运算符"><span class="nav-number">2.0.2.</span> <span class="nav-text">单目运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#复合赋值运算符"><span class="nav-number">2.0.3.</span> <span class="nav-text">复合赋值运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#比较运算符"><span class="nav-number">2.0.4.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三目运算符"><span class="nav-number">2.0.5.</span> <span class="nav-text">三目运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nil-Coalescing运算符"><span class="nav-number">2.0.6.</span> <span class="nav-text">Nil-Coalescing运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范围运算符"><span class="nav-number">3.</span> <span class="nav-text">范围运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">4.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参照文档"><span class="nav-number">5.</span> <span class="nav-text">参照文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的读写与执行"><span class="nav-number">1.</span> <span class="nav-text">文件的读写与执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod-修改文件模式"><span class="nav-number">2.</span> <span class="nav-text">chmod 修改文件模式</span></a></li></ol></div>
             
 
           </div>
@@ -870,9 +1089,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2016/11/04/iOS_Swift_language_note_Basic-Operators/';
-          this.page.identifier = '2016/11/04/iOS_Swift_language_note_Basic-Operators/';
-          this.page.title = 'Swift Basic Operators';
+          this.page.url = 'http://yoursite.com/2017/08/17/shell_authority_chmod/';
+          this.page.identifier = '2017/08/17/shell_authority_chmod/';
+          this.page.title = 'chmod修改权限';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://liangtongdev.disqus.com/embed.js';

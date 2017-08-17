@@ -291,6 +291,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/26/algorithm_sort_merge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/26/algorithm_sort_merge/" itemprop="url">归并排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T14:25:00+08:00">
+                2017-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/26/algorithm_sort_merge/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/26/algorithm_sort_merge/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    归并排序是建立在归并操作上的一种有效的排序算法，该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。需要额外的存储空间，时间复杂度： T(n) = Θ(nlgn)。</p>
+<h3 id="基本原理及实现"><a href="#基本原理及实现" class="headerlink" title="基本原理及实现"></a>基本原理及实现</h3><p>基本原理：使用递归、分治思想，将待排序数组分割成字数组，将排序后的字数组合并。    </p>
+<ul>
+<li>① 当数组只包含一个元素时，直接返回该元素即可。</li>
+<li>② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</li>
+<li>③ 将左侧和右侧排序后的有序数组进行合并。     </li>
+</ul>
+<p>使用Swift进行功能实现，如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 归并排序 - 算法思想</span></div><div class="line"><span class="comment"> * 使用递归、分治的思想。</span></div><div class="line"><span class="comment"> * ① 当数组只包含一个元素时，直接返回该元素即可。</span></div><div class="line"><span class="comment"> * ② 取数组中间位置元素，递归调用左侧和右侧数组，进行归并排序。</span></div><div class="line"><span class="comment"> * ③ 将左侧和右侧排序后的有序数组进行合并。</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> **/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeSort</span>&lt;T:Comparable&gt;<span class="params">(array: Array&lt;T&gt;, start:Int , end:Int)</span></span> -&gt; <span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">if</span> start &gt;= end &#123;<span class="comment">//① 只有一个元素，直接返回即可</span></div><div class="line">        <span class="keyword">return</span> [array[start]];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">let</span> middle = (start + end) / <span class="number">2</span>;</div><div class="line">        <span class="comment">//② 递归调用，给左侧数组排序</span></div><div class="line">        <span class="keyword">let</span> leftSortArray = mergeSort(array:array,start:start,end:middle);</div><div class="line">        <span class="comment">//② 递归调用，给右侧数组排序</span></div><div class="line">        <span class="keyword">let</span> rightSortedArray = mergeSort(array: array, start: middle + <span class="number">1</span>, end: end);</div><div class="line">        </div><div class="line">        <span class="comment">//③ 合并有序数组</span></div><div class="line">        <span class="keyword">var</span> leftIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">var</span> rightIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">let</span> leftCount = leftSortArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">let</span> rightCount = rightSortedArray.<span class="built_in">count</span>;</div><div class="line">        <span class="keyword">var</span> retArray:<span class="type">Array</span>&lt;<span class="type">T</span>&gt; = [];</div><div class="line">	<span class="comment">// 两个有序数组均存在值时，依次插入最小值</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &amp;&amp; rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            <span class="keyword">if</span> leftValue &lt; rightValue &#123;</div><div class="line">                retArray.append(leftValue);</div><div class="line">                leftIndex += <span class="number">1</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                retArray.append(rightValue);</div><div class="line">                rightIndex += <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将左侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> leftIndex &lt; leftCount &#123;</div><div class="line">            <span class="keyword">let</span> leftValue = leftSortArray[leftIndex];</div><div class="line">            retArray.append(leftValue);</div><div class="line">            leftIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将右侧有序数组剩余部分依次插入到排序结果中</span></div><div class="line">        <span class="keyword">while</span> rightIndex &lt; rightCount &#123;</div><div class="line">            <span class="keyword">let</span> rightValue = rightSortedArray[rightIndex];</div><div class="line">            retArray.append(rightValue);</div><div class="line">            rightIndex += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> retArray;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用方法</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">callMergeSort</span>&lt;T:Comparable&gt;<span class="params">(array:Array&lt;T&gt;)</span></span>-&gt;<span class="type">Array</span>&lt;<span class="type">T</span>&gt;&#123;</div><div class="line">    <span class="keyword">let</span> <span class="built_in">count</span> = array.<span class="built_in">count</span>;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> mergeSort(array: array, start: <span class="number">0</span>, end: <span class="built_in">count</span> - <span class="number">1</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">16</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">11</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">24</span>,<span class="number">1</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(intArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedArray = callMergeSort(array: intArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="number">16</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">24</span>, <span class="number">1</span>]</div><div class="line">排序后数组：[<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试用例</span></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Java"</span>,<span class="string">"C#"</span>,<span class="string">"Python"</span>,<span class="string">"Objective-C"</span>,<span class="string">"Swift"</span>,<span class="string">"PHP"</span>,<span class="string">"BASIC"</span>,<span class="string">"Pasical"</span>,<span class="string">"Assembly"</span>];</div><div class="line"><span class="built_in">print</span>(<span class="string">"待排序数组：<span class="subst">\(stringArray)</span>"</span>);</div><div class="line"><span class="keyword">let</span> sortedStringArray = callMergeSort(array: stringArray);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序后数组：<span class="subst">\(sortedStringArray)</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组：[<span class="string">"Java"</span>, <span class="string">"C#"</span>, <span class="string">"Python"</span>, <span class="string">"Objective-C"</span>, <span class="string">"Swift"</span>, <span class="string">"PHP"</span>, <span class="string">"BASIC"</span>, <span class="string">"Pasical"</span>, <span class="string">"Assembly"</span>]</div><div class="line">排序后数组：[<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Pasical"</span>, <span class="string">"Python"</span>, <span class="string">"Swift"</span>]</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/algorithm_sort_insert/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -442,229 +605,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/iOS_bluetooth_iBeacon2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/13/iOS_bluetooth_iBeacon2/" itemprop="url">iBeacon应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T21:25:19+08:00">
-                2017-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/13/iOS_bluetooth_iBeacon2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/13/iOS_bluetooth_iBeacon2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。</p>
-<h3 id="方案设想"><a href="#方案设想" class="headerlink" title="方案设想"></a>方案设想</h3><p>在上一篇文章中有提到iBeacon应用场景举例。这里从3各方面进行描述：   </p>
-<ul>
-<li><p>测距</p>
-<p>  主要是在程序前台激活状态下，可能会用到的场景：</p>
-<ul>
-<li>周边摇、现场摇、签到等</li>
-<li>产品介绍，商场导购，博物馆导游等 </li>
-<li>位置修正，iBeacon的精度可以辅助一些其他功能</li>
-<li>精确区域预警、地理围栏</li>
-<li>室内导航等</li>
-</ul>
-</li>
-<li><p>监听</p>
-<p>  托管给iOS系统，程序本身不需要打开即可触发功能，可能会用到以下场景：   </p>
-<ul>
-<li>欢迎语：比如当用户手持设备进入任意场景区域内时，进行交互提醒。</li>
-<li>业务联动：比如当用户进入某个控制区后，告知概况，同周边设备联动。</li>
-<li>区域预警：比如设置特定的围栏区域。</li>
-<li>其他：比如与门禁系统联动等</li>
-</ul>
-</li>
-<li><p>角色交换</p>
-<p>  通常情况下，iBeacon设备作为基站，移动设备比如iPhone和iPad来接收信号，从而进行机遇位置的场景交互。我们也可以讲iPhone和iPad作为基站，给其设定特定的区域值进行广播。而接收设备位置固定等。可以设想以下场景：</p>
-<ul>
-<li>演示大屏上展示周边设备。</li>
-<li>教师要求输入动态口令进行签到。</li>
-</ul>
-</li>
-</ul>
-<h3 id="基础方案"><a href="#基础方案" class="headerlink" title="基础方案"></a>基础方案</h3><p>​    理想情况下，以下数据需要预缓存，保证在无网络或者网络环境差的情况下，交互动作可以顺利进行。因此，各类信息的版本控制需要在前期考虑。</p>
-<h4 id="iBeacon策略"><a href="#iBeacon策略" class="headerlink" title="iBeacon策略"></a>iBeacon策略</h4><p>​    iBeacon策略，或者说应用场景。如上一篇文章中所说，这里主要在iBeacon对应的区域Region（ProximityUUID &amp; Major &amp; Minor）上的三个值上做文章。 比如：  </p>
-<ul>
-<li>ProximityUUID ： 公司编码</li>
-<li>Major ： 建筑编码</li>
-<li>Minor ： 某类区域（物品）编码</li>
-</ul>
-<p>策略相关信息确定后，就可以给不同的策略配置个性化信息了，比如进入／离开策略对应的区域时，定制以下信息：   </p>
-<ul>
-<li>通知声音：个性化提示音</li>
-<li>通知内容：跟具体业务相关</li>
-<li>通知优先级：当多个策略同时触发时，可根据优先级来动态显示</li>
-<li>通知频次：用来确保特定时间段内，不重复通知</li>
-</ul>
-<h4 id="iBeacon业务"><a href="#iBeacon业务" class="headerlink" title="iBeacon业务"></a>iBeacon业务</h4><p>​    单纯的触发iBeacon对应区域的策略，仅仅是对用户的消息提醒，我们比较关注的是策略的后续动作。比如当用户到达某个iBeacon区域（或者在某个区域驻足时间较长）后，收到了个性化的策略通知。很自然的点击查看感兴趣的消息，那么后续的动作就是这里所说的iBeacon业务。通常情况下，后续动作包括以下几种：   </p>
-<ul>
-<li>打开某个本地模块</li>
-<li>打开某个Web网页</li>
-<li>打开某个本地网页</li>
-<li>无后续动作</li>
-</ul>
-<p>需要注意的是，后续动作可能不止一种。</p>
-<h4 id="策略业务关联"><a href="#策略业务关联" class="headerlink" title="策略业务关联"></a>策略业务关联</h4><p>​    为了保证数据的灵活，策略与业务的对应关系为1:N（N &gt;= 0），当策略对应多个业务的时候，需要考虑各业务的优先级等。</p>
-<h4 id="用户策略"><a href="#用户策略" class="headerlink" title="用户策略"></a>用户策略</h4><p>​    除了一些共通的策略外，用户也可以拥有独特权限的策略，比如同一个区域，不同角色进入时，看到的数据根据其权限表现出差异。</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="设备选择"><a href="#设备选择" class="headerlink" title="设备选择"></a>设备选择</h4><p>iBeacon设备选取可能会考虑的几个因素包括：   </p>
-<ul>
-<li>电池及续航</li>
-<li>设备运维</li>
-<li>设备部署</li>
-<li>设备美感</li>
-<li>设备软件能力</li>
-<li>设备使用</li>
-</ul>
-<p>通常情况下，电池、部署、软件能力需要着重考虑。</p>
-<h4 id="设备部署"><a href="#设备部署" class="headerlink" title="设备部署"></a>设备部署</h4><p>部署时可能需要考虑以下几个因素：   </p>
-<ul>
-<li>环境干扰</li>
-<li>工厂校正电压</li>
-<li>放置位置（高度／间距）</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    iBeacon技术在旅游景点、博物馆、商场、酒店、会议室等场景中可以给人很好的用户体验，但在成本、运维部署方面一直存在着问题。目前情况下小范围内玩iBeacon，还是很有搞头的。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -715,7 +655,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -726,7 +666,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -737,7 +677,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
