@@ -1,11 +1,11 @@
 ---
 layout:     post
-title:      chmod修改权限
+title:      shell中的chmod修改权限
 date:       2017-08-17 13:51:43
 author:     liangtong
 catalog: true
-categories: shell
-tags: 权限
+categories: 操作系统
+tags: shell
 
 ---
 

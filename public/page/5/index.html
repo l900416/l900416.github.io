@@ -291,6 +291,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/" itemprop="url">LTxMenu</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T18:10:12+08:00">
+                2017-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>[ Update v2.0.0 ]</strong> Similar to Facebook News Feed , Alipay Life , QZone and other social applications . click a drop-down button to display more functions</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>​         In Facebook News Feed , Alipay Life , QZone and other social applications , they all contain a function drop-down button which would show a list of more functions when taped . I didn’t find any on GitHub , so I wrote a similar UI controls myself using Objective-C. ：</p>
+<p><img src="https://raw.githubusercontent.com/l900416/LTxMenu/master/screenshots/1.png" alt=""></p>
+<blockquote>
+<blockquote>
+<p>GitHub link : <a href="https://github.com/l900416/LTxMenu" target="_blank" rel="external">LTxMenu</a></p>
+</blockquote>
+</blockquote>
+<h3 id="Get-Start"><a href="#Get-Start" class="headerlink" title="Get Start"></a>Get Start</h3><blockquote>
+<ul>
+<li>Manually add the files into your Xcode project.</li>
+<li>LTxMenu is available as LTxMenu in Cocoapods.</li>
+</ul>
+</blockquote>
+<h3 id="How-To-Use"><a href="#How-To-Use" class="headerlink" title="How To Use"></a>How To Use</h3><p>​    Create a LTxMenuView Object:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* class instance method with dataSource and delegate. you can also create with [[LTxMenuView alloc] init] then set the dataSource and the delegate.</div><div class="line">**/</div><div class="line">+ (instancetype)instanceWithDataSource:(id &lt;LTxMenuViewDataSource&gt;)dataSource delegate:(id &lt;LTxMenuViewDelegate&gt;)delegate;</div><div class="line">/**</div><div class="line">* show menuView in viewController from a special position.</div><div class="line">* @param viewController the menuview &apos;s container</div><div class="line">* @param position the menuview &apos;s arrow direction</div><div class="line">**/</div><div class="line">- (void)showMenu:(UIViewController*)viewController from:(CGRect)position;</div><div class="line">/**</div><div class="line">* hide the menuview. usually you did not need to call this method</div><div class="line">**/</div><div class="line">- (void)dismissMenu;</div></pre></td></tr></table></figure>
+<p>​    DataSource &amp;&amp; Delegate</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#pragma mark LTxMenuViewDelegate</div><div class="line">@protocol LTxMenuViewDelegate&lt;NSObject&gt;</div><div class="line"></div><div class="line">@optional</div><div class="line">/**</div><div class="line">* called when a specified index was selected.</div><div class="line">**/</div><div class="line">-(void)didSelectRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* called when a specified accessoryView was selected.</div><div class="line">**/</div><div class="line">-(void)didSelectAccessoryView:(UIView*)accessoryView</div><div class="line">atIndex:(NSInteger)index;</div><div class="line">@end</div><div class="line"></div><div class="line">#pragma mark LTxMenuViewDataSource</div><div class="line">@protocol LTxMenuViewDataSource&lt;NSObject&gt;</div><div class="line"></div><div class="line">@required</div><div class="line">/**</div><div class="line">* Returns the number of rows</div><div class="line">**/</div><div class="line">- (NSInteger)numberOfRows;</div><div class="line"></div><div class="line">@optional</div><div class="line">/**</div><div class="line">* Returns the height of specified index. default value is 50.</div><div class="line">**/</div><div class="line">- (CGFloat)heightForRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* Returns the attributedTitle of specified index.</div><div class="line">**/</div><div class="line">- (NSAttributedString*)attributedTitleForRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* Returns the image of specified index.</div><div class="line">**/</div><div class="line">- (UIImage*)imageForRowAtIndex:(NSInteger)index;</div><div class="line"></div><div class="line">/**</div><div class="line">* Returns the accessoryViews placed at the end of specified index.</div><div class="line">**/</div><div class="line">- (NSArray&lt;UIView*&gt;*)accessoryViewsAtIndex:(NSInteger)index;</div><div class="line">@end;</div></pre></td></tr></table></figure>
+<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><p>​    LTxMenu use <strong>LTxMenuItem</strong> class to config view showed in row. and <strong>LTxMenuView</strong> class with callback methods to calculate the UI performance .  draw arrow and the border use  <strong>UIBezierPath</strong> class . and the show/hide animation use <strong>UIKit</strong>.</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>​    <a href="https://github.com/kolyvan/kxmenu" target="_blank" rel="external">https://github.com/kolyvan/kxmenu</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/algorithm_sort_count/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -438,174 +610,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/11/algorithm_sort_quick/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/11/algorithm_sort_quick/" itemprop="url">快速排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T17:25:00+08:00">
-                2017-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/05/11/algorithm_sort_quick/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/11/algorithm_sort_quick/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    快速排序是采用分治法（Divide and Conquer）的应用。和归并排序不同的是，她不需要额外的存储空间，时间复杂度： T(n) = Θ(nlgn)，最坏情况下是：T(n) = Θ(n²)。</p>
-<h3 id="基本原理及实现"><a href="#基本原理及实现" class="headerlink" title="基本原理及实现"></a>基本原理及实现</h3><p>基本原理： 使用递归、分治的思想，每次调用排序方法，随机选取一个key值，结果保证：key值所在数组中的位置，且能保证key左侧位置的数据总小于key值；右侧位置数据总大于key值      </p>
-<ul>
-<li>① 当数组为空时，数组不需要排序，算法结束。</li>
-<li>② 选取一个key值，可以是带排序数组中任意位置的元素，这里选第一个元素。</li>
-<li>③ 遍历数组(角标j)，将所有比key值小的元素移动到数组前边(角标i)。遍历结束时，i即是中间位置。</li>
-<li>④ 将key值与角标i位置元素位置互换。</li>
-<li>⑤ 递归对i位置左侧、右侧数组进行快速排序。</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  快速排序</span></div><div class="line"><span class="comment">* 使用递归、分治的思想，每次调用排序方法，选取一个key值，结果保证：key值所在数组中的位置，且能保证key左侧位置的数据总小于key值；右侧位置数据总大于key值</span></div><div class="line"><span class="comment">* ① 当数组为空时，数组不需要排序，算法结束。</span></div><div class="line"><span class="comment">* ② 选取一个key值，可以是带排序数组中任意位置的元素，这里选第一个元素。</span></div><div class="line"><span class="comment">* ③ 遍历数组(角标j)，将所有比key值小的元素移动到数组前边(角标i)。遍历结束时，i即是中间位置。</span></div><div class="line"><span class="comment">* ④ 将key值与角标i位置元素位置互换。</span></div><div class="line"><span class="comment">* ⑤ 递归对i位置左侧、右侧数组进行快速排序。</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">quickSort</span>&lt;T:Comparable&gt;<span class="params">(array:<span class="keyword">inout</span> Array&lt;T&gt;, start:Int, end:Int)</span></span>&#123;</div><div class="line"><span class="keyword">if</span> end &lt;= start &#123;</div><div class="line"><span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> key = array[start];<span class="comment">//随机选取key值 - 这里我们固定选择第一个元素</span></div><div class="line"><span class="keyword">var</span> i = start;</div><div class="line"><span class="keyword">var</span> j = i + <span class="number">1</span>;</div><div class="line"><span class="keyword">while</span> j &lt;= end &#123;<span class="comment">//从key后开始遍历，查找所有比key小的元素，移动到数组前边</span></div><div class="line"><span class="keyword">let</span> aj = array[j];</div><div class="line"><span class="keyword">if</span> key &gt; aj &#123;</div><div class="line"><span class="comment">//交换元素</span></div><div class="line"><span class="keyword">let</span> tempValue = array[i+<span class="number">1</span>];</div><div class="line">array[i+<span class="number">1</span>] = aj;</div><div class="line">array[j] = tempValue;</div><div class="line"><span class="comment">//重新设置角标</span></div><div class="line">i += <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">j += <span class="number">1</span>;<span class="comment">//数组遍历</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//i位置即是最后一个比key值小的元素位置，然后交换key值和i位置元素</span></div><div class="line"><span class="keyword">let</span> ai = array[i];</div><div class="line">array[i] = key;</div><div class="line">array[start] = ai;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"sorting：key：<span class="subst">\(key)</span>  values: <span class="subst">\(array[start...end])</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//对i位置左侧、右侧的数组进行排序方法调用</span></div><div class="line"><span class="built_in">quickSort</span>(array: &amp;array, start: start, end: i - <span class="number">1</span>)</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;array, start: i+<span class="number">1</span>, end: end);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">6</span>,<span class="number">10</span>,<span class="number">13</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">11</span>];</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;intArray,start:<span class="number">0</span>,end:intArray.<span class="built_in">count</span>-<span class="number">1</span>);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序结束：<span class="subst">\(intArray)</span>"</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">sorting：key：<span class="number">6</span>  values: [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">13</span>, <span class="number">10</span>, <span class="number">11</span>]</div><div class="line">sorting：key：<span class="number">2</span>  values: [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>]</div><div class="line">sorting：key：<span class="number">5</span>  values: [<span class="number">3</span>, <span class="number">5</span>]</div><div class="line">sorting：key：<span class="number">8</span>  values: [<span class="number">8</span>, <span class="number">13</span>, <span class="number">10</span>, <span class="number">11</span>]</div><div class="line">sorting：key：<span class="number">13</span>  values: [<span class="number">11</span>, <span class="number">10</span>, <span class="number">13</span>]</div><div class="line">sorting：key：<span class="number">11</span>  values: [<span class="number">10</span>, <span class="number">11</span>]</div><div class="line">排序结束：[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">13</span>]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Java"</span>,<span class="string">"C#"</span>,<span class="string">"Python"</span>,<span class="string">"Objective-C"</span>,<span class="string">"Swift"</span>,<span class="string">"PHP"</span>,<span class="string">"BASIC"</span>,<span class="string">"Pasical"</span>,<span class="string">"Assembly"</span>];</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;stringArray,start:<span class="number">0</span>,end:stringArray.<span class="built_in">count</span>-<span class="number">1</span>);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序结束：<span class="subst">\(stringArray)</span>"</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">sorting：key：<span class="type">Java</span>  values: [<span class="string">"Assembly"</span>, <span class="string">"C#"</span>, <span class="string">"BASIC"</span>, <span class="string">"Java"</span>, <span class="string">"Swift"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>, <span class="string">"Objective-C"</span>]</div><div class="line">sorting：key：<span class="type">Assembly</span>  values: [<span class="string">"Assembly"</span>, <span class="string">"C#"</span>, <span class="string">"BASIC"</span>]</div><div class="line">sorting：key：<span class="type">C</span>#  values: [<span class="string">"BASIC"</span>, <span class="string">"C#"</span>]</div><div class="line">sorting：key：<span class="type">Swift</span>  values: [<span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>, <span class="string">"Swift"</span>]</div><div class="line">sorting：key：<span class="type">Objective</span>-<span class="type">C</span>  values: [<span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>]</div><div class="line">sorting：key：<span class="type">PHP</span>  values: [<span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>]</div><div class="line">sorting：key：<span class="type">Python</span>  values: [<span class="string">"Pasical"</span>, <span class="string">"Python"</span>]</div><div class="line">排序结束：[<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Pasical"</span>, <span class="string">"Python"</span>, <span class="string">"Swift"</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -651,7 +660,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -673,7 +682,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
