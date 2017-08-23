@@ -4,7 +4,7 @@ title:      iOS蓝牙开发 - Peripheral模式
 date:       2017-08-08 18:50:12
 author:     liangtong
 catalog: true
-categories: iOS
+categories: 蓝牙
 tags: Bluetooth
 
 ---

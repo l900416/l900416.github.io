@@ -4,8 +4,8 @@ title:      iBeacon基础
 date:       2017-02-11 22:50:12
 author:     liangtong
 catalog: true
-categories: iOS
-tags: Bluetooth
+categories: 蓝牙
+tags: iBeacon
 
 ---
 

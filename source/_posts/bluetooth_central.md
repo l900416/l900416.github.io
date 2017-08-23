@@ -4,7 +4,7 @@ title:      iOS蓝牙开发 - Central模式
 date:       2017-07-27 19:50:12
 author:     liangtong
 catalog: true
-categories: iOS
+categories: 蓝牙
 tags: Bluetooth
 
 ---

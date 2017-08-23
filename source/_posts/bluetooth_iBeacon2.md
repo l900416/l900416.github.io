@@ -4,8 +4,8 @@ title:      iBeacon应用
 date:       2017-03-13 21:25:19
 author:     liangtong
 catalog: true
-categories: iOS
-tags: Bluetooth
+categories: 蓝牙
+tags: iBeacon
 
 ---
 
