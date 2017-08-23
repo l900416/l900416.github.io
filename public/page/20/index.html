@@ -291,6 +291,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/17/iOS_Swift_language_note_Control-Flow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/17/iOS_Swift_language_note_Control-Flow/" itemprop="url">Swift Control Flow</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-17T00:20:11+08:00">
+                2016-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/17/iOS_Swift_language_note_Control-Flow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/17/iOS_Swift_language_note_Control-Flow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    Swift提供了很多流程控制语法，包括可以通过使用<code>while</code>循环来重复执行一个任务，可以通过<code>if</code>、<code>guard</code>和<code>switch</code>来进行条件判断从而执行不同代码分支，可以通过<code>break</code>和<code>continue</code>来跳转到特定代码位置。<br>​    Swift也提供了诸如可以通过<code>for-in</code>循环来遍历数组，字典，区间(range)，字符串和其他一些序列(sequences)。<br>​    Swift的<code>switch</code>语句相对比C语言的<code>强大</code>(该关键字与其他多数语言不同，至于算不算优点，意见保留)。在Swift中，该语句中的<code>case</code>语法不会自动流转到下一个<code>case</code>，这避免了像C语言中因为缺失<code>break</code>语句导致的错误。而Swift中的Case语句也相对比较强大，可以匹配多种包括整型、元组、转换的特殊类型等形式。在Case语句中匹配的值可以被绑定到一个临时的常量或者变量中，从而在<code>case</code>语句对一个的代码块(body)中使用，一些复杂的匹配可以通过使用<code>where</code>表达式进行。</p>
+<h3 id="for-in-循环"><a href="#for-in-循环" class="headerlink" title="for-in 循环"></a>for-in 循环</h3><p>可以使用<code>for-in</code>循环来遍历一个序列，比如一个区间(range)中的数字、数组中的元素、字符串的字符，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用index变量来访问range中的具体值。注意操作符`...`的用法</span></div><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span>...<span class="number">5</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(index)</span> times 5 is <span class="subst">\(index * <span class="number">5</span>)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//不关心range中的具体值，可以使用下划线’_’</span></div><div class="line"><span class="keyword">let</span> base = <span class="number">3</span></div><div class="line"><span class="keyword">let</span> power = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> answer = <span class="number">1</span></div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">1</span>...power &#123;</div><div class="line">    answer *= base</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(base)</span> to the power of <span class="subst">\(power)</span> is <span class="subst">\(answer)</span>"</span>)</div><div class="line"><span class="comment">//遍历数组</span></div><div class="line"><span class="keyword">let</span> names = [<span class="string">"Anna"</span>, <span class="string">"Alex"</span>, <span class="string">"Brian"</span>, <span class="string">"Jack"</span>]</div><div class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Hello, <span class="subst">\(name)</span>!"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//字典，是以元组的形式来匹配的，当然也可以使用下划线’_’</span></div><div class="line"><span class="keyword">let</span> numberOfLegs = [<span class="string">"spider"</span>: <span class="number">8</span>, <span class="string">"ant"</span>: <span class="number">6</span>, <span class="string">"cat"</span>: <span class="number">4</span>]</div><div class="line"><span class="keyword">for</span> (animalName, legCount) <span class="keyword">in</span> numberOfLegs &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(animalName)</span>s have <span class="subst">\(legCount)</span> legs"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>while的代码块会一直被执行，知道条件变为flase。这类循环主要用在不确定遍历次数的情况下，Swift提供了两种while循环语法：<code>while</code>和<code>repeat-while</code></p>
+<h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><p>while循环是以一个简单的bool条件式开始，当该条件为true的时，循环体会一直被执行。知道条件变为false。语法如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> condition &#123;</div><div class="line">    statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="repeat-while"><a href="#repeat-while" class="headerlink" title="repeat-while"></a>repeat-while</h4><p>与<code>while</code>不同的是，<code>repeat-while</code>循环会首先执行以下循环体，然后判断条件是否为true。和其他语言中的<code>do-while</code>循环类似。语法如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">repeat</span> &#123;</div><div class="line">    statements</div><div class="line">&#125; <span class="keyword">while</span> condition</div></pre></td></tr></table></figure>
+<h3 id="分支判断"><a href="#分支判断" class="headerlink" title="分支判断"></a>分支判断</h3><p>根据特定的条件执行对应的处理代码是很常用的，Swift提供了两种分支判断语法：<code>if</code>和<code>switch</code>，通常情况下<code>if</code>用在简单的分支判断，<code>switch</code>用在比较复杂的场合。</p>
+<h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><p>if语句包含一个条件，如果条件为true，则执行紧接着的语句集合。否则执行else (if) 对应的语句集合（如果不关心else (if) 的情况，该部分可以不写）。</p>
+<h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><p>switch语句将一个值和多种匹配的模式进行比较，然后根据第<code>一</code>个合适的配结果执行对应的代码块，语法格式如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> some value to consider &#123;</div><div class="line"><span class="keyword">case</span> value <span class="number">1</span>:</div><div class="line">    respond to value <span class="number">1</span></div><div class="line"><span class="keyword">case</span> value <span class="number">2</span>,</div><div class="line">     value <span class="number">3</span>:</div><div class="line">    respond to value <span class="number">2</span> or <span class="number">3</span></div><div class="line"><span class="keyword">default</span>:</div><div class="line">    otherwise, <span class="keyword">do</span> something <span class="keyword">else</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>switch语句包含多个情况，每个case语句都代表一个分支。switch语句必须列举出所有情况，也就是说case分支必须能够匹配所有可能的情况，如果case不能完全匹配，则需要通过关键字<code>default</code>在最后位置定义一个默认的分支，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someCharacter: <span class="type">Character</span> = <span class="string">"z"</span></div><div class="line"><span class="keyword">switch</span> someCharacter &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"a"</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The first letter of the alphabet"</span>)</div><div class="line"><span class="keyword">case</span> <span class="string">"z"</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The last letter of the alphabet"</span>)</div><div class="line"><span class="keyword">default</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Some other character"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="不存在隐式穿透-No-Implicit-Fallthrough"><a href="#不存在隐式穿透-No-Implicit-Fallthrough" class="headerlink" title="不存在隐式穿透(No Implicit Fallthrough)"></a>不存在隐式穿透(No Implicit Fallthrough)</h5><p>和C与ObjC语言中的Switch语法不同的是，Swift中的switch语法默认情况下在case语句执行完成后不会自动匹配下一个case语句，而是当第一个匹配case分支执行之后马上结束，你不需要像其他语言那样为每个case写上一个break关键字。（尽管break在swift中switch中是非必需的，但你可以使用它来中断一些代码的执行）。如果想自动匹配下一个，则需要使用关键字<code>fallthrough</code>。<br>每一条case分支必须包含至少一个可执行语句，比如以下代码会引起编译时错误</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> anotherCharacter: <span class="type">Character</span> = <span class="string">"a"</span></div><div class="line"><span class="keyword">switch</span> anotherCharacter &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"a"</span>: <span class="comment">// Invalid, the case has an empty body</span></div><div class="line"><span class="keyword">case</span> <span class="string">"A"</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The letter A"</span>)</div><div class="line"><span class="keyword">default</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Not the letter A"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// This will report a compile-time error.</span></div></pre></td></tr></table></figure>
+<p>一条case分支可以匹配多个值，用逗号<code>,</code>隔开，比如上述代码会引起编译时错误可以通过以下写法来解决</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> anotherCharacter: <span class="type">Character</span> = <span class="string">"a"</span></div><div class="line"><span class="keyword">switch</span> anotherCharacter &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"a"</span>, <span class="string">"A"</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The letter A"</span>)</div><div class="line"><span class="keyword">default</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Not the letter A"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "The letter A"</span></div></pre></td></tr></table></figure>
+<h5 id="区间匹配"><a href="#区间匹配" class="headerlink" title="区间匹配"></a>区间匹配</h5><p>switch中的值可以进行区间匹配，比如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> approximateCount = <span class="number">62</span></div><div class="line"><span class="keyword">let</span> countedThings = <span class="string">"moons orbiting Saturn"</span></div><div class="line"><span class="keyword">var</span> naturalCount: <span class="type">String</span></div><div class="line"><span class="keyword">switch</span> approximateCount &#123;</div><div class="line"><span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">    naturalCount = <span class="string">"no"</span></div><div class="line"><span class="keyword">case</span> <span class="number">1</span>..&lt;<span class="number">5</span>:</div><div class="line">    naturalCount = <span class="string">"a few"</span></div><div class="line"><span class="keyword">case</span> <span class="number">5</span>..&lt;<span class="number">12</span>:</div><div class="line">    naturalCount = <span class="string">"several"</span></div><div class="line"><span class="keyword">case</span> <span class="number">12</span>..&lt;<span class="number">100</span>:</div><div class="line">    naturalCount = <span class="string">"dozens of"</span></div><div class="line"><span class="keyword">case</span> <span class="number">100</span>..&lt;<span class="number">1000</span>:</div><div class="line">    naturalCount = <span class="string">"hundreds of"</span></div><div class="line"><span class="keyword">default</span>:</div><div class="line">    naturalCount = <span class="string">"many"</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="string">"There are <span class="subst">\(naturalCount)</span> <span class="subst">\(countedThings)</span>."</span>)</div><div class="line"><span class="comment">// Prints "There are dozens of moons orbiting Saturn."</span></div></pre></td></tr></table></figure>
+<h5 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h5><p>可以通过使用下划线<code>_</code>来匹配任意一个元素，如果存在多个匹配，默认情况下执行第一个匹配的case，其他case会被忽略。代码比较清楚：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> somePoint = (<span class="number">1</span>, <span class="number">1</span>)</div><div class="line"><span class="keyword">switch</span> somePoint &#123;</div><div class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="number">0</span>):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(0, 0) is at the origin"</span>)</div><div class="line"><span class="keyword">case</span> (<span class="number">_</span>, <span class="number">0</span>):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(<span class="subst">\(somePoint.<span class="number">0</span>)</span>, 0) is on the x-axis"</span>)</div><div class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="number">_</span>):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(0, <span class="subst">\(somePoint.<span class="number">1</span>)</span>) is on the y-axis"</span>)</div><div class="line"><span class="keyword">case</span> (-<span class="number">2</span>...<span class="number">2</span>, -<span class="number">2</span>...<span class="number">2</span>):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(<span class="subst">\(somePoint.<span class="number">0</span>)</span>, <span class="subst">\(somePoint.<span class="number">1</span>)</span>) is inside the box"</span>)</div><div class="line"><span class="keyword">default</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(<span class="subst">\(somePoint.<span class="number">0</span>)</span>, <span class="subst">\(somePoint.<span class="number">1</span>)</span>) is outside of the box"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "(1, 1) is inside the box"</span></div></pre></td></tr></table></figure>
+<h5 id="值绑定"><a href="#值绑定" class="headerlink" title="值绑定"></a>值绑定</h5><p>在switch的case语句中，可以将匹配的值绑定给一个临时的常量或者变量，在case的body中使用。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> anotherPoint = (<span class="number">2</span>, <span class="number">0</span>)</div><div class="line"><span class="keyword">switch</span> anotherPoint &#123;</div><div class="line"><span class="keyword">case</span> (<span class="keyword">let</span> x, <span class="number">0</span>):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"on the x-axis with an x value of <span class="subst">\(x)</span>"</span>)</div><div class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="keyword">let</span> y):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"on the y-axis with a y value of <span class="subst">\(y)</span>"</span>)</div><div class="line"><span class="keyword">case</span> <span class="keyword">let</span> (x, y):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"somewhere else at (<span class="subst">\(x)</span>, <span class="subst">\(y)</span>)"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "on the x-axis with an x value of 2"</span></div></pre></td></tr></table></figure>
+<h5 id="where"><a href="#where" class="headerlink" title="where"></a>where</h5><p>一个case语句中可以使用where语法进行额外的匹配检查，比如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> yetAnotherPoint = (<span class="number">1</span>, -<span class="number">1</span>)</div><div class="line"><span class="keyword">switch</span> yetAnotherPoint &#123;</div><div class="line"><span class="keyword">case</span> <span class="keyword">let</span> (x, y) <span class="keyword">where</span> x == y:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(<span class="subst">\(x)</span>, <span class="subst">\(y)</span>) is on the line x == y"</span>)</div><div class="line"><span class="keyword">case</span> <span class="keyword">let</span> (x, y) <span class="keyword">where</span> x == -y:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(<span class="subst">\(x)</span>, <span class="subst">\(y)</span>) is on the line x == -y"</span>)</div><div class="line"><span class="keyword">case</span> <span class="keyword">let</span> (x, y):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"(<span class="subst">\(x)</span>, <span class="subst">\(y)</span>) is just some arbitrary point"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "(1, -1) is on the line x == -y"</span></div></pre></td></tr></table></figure>
+<h5 id="复合匹配"><a href="#复合匹配" class="headerlink" title="复合匹配"></a>复合匹配</h5><p>在case中通过逗号<code>,</code>隔开匹配内容。复合匹配也可以包含值绑定，在复合匹配中，无论哪个部分匹配上，case的body都会被执行。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> stillAnotherPoint = (<span class="number">9</span>, <span class="number">0</span>)</div><div class="line"><span class="keyword">switch</span> stillAnotherPoint &#123;</div><div class="line"><span class="keyword">case</span> (<span class="keyword">let</span> <span class="built_in">distance</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="keyword">let</span> <span class="built_in">distance</span>):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"On an axis, <span class="subst">\(<span class="built_in">distance</span>)</span> from the origin"</span>)</div><div class="line"><span class="keyword">default</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Not on an axis"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "On an axis, 9 from the origin"</span></div></pre></td></tr></table></figure>
+<h3 id="控制转移语句"><a href="#控制转移语句" class="headerlink" title="控制转移语句"></a>控制转移语句</h3><p>swift提供了5个流程控制转移语句：<code>continue</code>、<code>break</code>、<code>fallthrough</code>、<code>return</code>、<code>throw</code>。<br>除了<code>fallthrough</code>，其他四个关键字与C等语言中的基本相同，swift中的switch语句默认情况下不存在隐式穿透，如果想要支持，则需要在case语句后添加<code>fallthrough</code>，（注：该关键字不检查即将进入的case条件）例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> integerToDescribe = <span class="number">5</span></div><div class="line"><span class="keyword">var</span> description = <span class="string">"The number <span class="subst">\(integerToDescribe)</span> is"</span></div><div class="line"><span class="keyword">switch</span> integerToDescribe &#123;</div><div class="line"><span class="keyword">case</span> <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">19</span>:</div><div class="line">    description += <span class="string">" a prime number, and also"</span></div><div class="line">    <span class="keyword">fallthrough</span></div><div class="line"><span class="keyword">default</span>:</div><div class="line">    description += <span class="string">" an integer."</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(description)</div><div class="line"><span class="comment">// Prints "The number 5 is a prime number, and also an integer."</span></div></pre></td></tr></table></figure>
+<h3 id="标签语法"><a href="#标签语法" class="headerlink" title="标签语法"></a>标签语法</h3><p>循环或条件语句可以嵌套，可以通过break语法结束当前代码块的执行，如果有多个嵌套的循环，明确哪个循环是非常有用的，为了实现这个目标，你可以使用标签语法。标签语法是由名字和冒号<code>:</code>组成。例如一个while循环的标签如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">label name: <span class="keyword">while</span> condition &#123;</div><div class="line">    statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="提前退出"><a href="#提前退出" class="headerlink" title="提前退出"></a>提前退出</h3><p>和<code>if</code>语法类似，<code>guard</code>语法语句的执行取决于一个bool表达式。可以使用<code>guard</code>语法来确保在特定条件成立的情况下执行某些代码。和<code>if</code>不同的是，<code>guard</code>语法在条件表达式为false时会执行<code>else</code>块中的内容。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">guard</span> <span class="keyword">let</span> name = person[<span class="string">"name"</span>] <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">print</span>(<span class="string">"Hello <span class="subst">\(name)</span>!"</span>)</div></pre></td></tr></table></figure>
+<h3 id="API有效性检查"><a href="#API有效性检查" class="headerlink" title="API有效性检查"></a>API有效性检查</h3><p>可以在<code>if</code>或<code>guard</code>语句中使用<code>availability</code>条件。其中平台比如：<code>iOS</code>, <code>macOS</code>, <code>watchOS</code>, 和 <code>tvOS</code>，语法格式如下</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> #available(platform name version, ..., *) &#123;</div><div class="line">    statements to execute <span class="keyword">if</span> the <span class="type">APIs</span> are available</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    fallback statements to execute <span class="keyword">if</span> the <span class="type">APIs</span> are unavailable</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体写法例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> #available(iOS <span class="number">10</span>, macOS <span class="number">10.12</span>, *) &#123;</div><div class="line">    <span class="comment">// Use iOS 10 APIs on iOS, and use macOS 10.12 APIs on macOS</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// Fall back to earlier iOS and macOS APIs</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html/" target="_blank" rel="external">Control Flow</a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/06/iOS_Swift_language_note_Collection-Types/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -478,203 +677,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/05/iOS_Swift_language_note_String-and-Characters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/05/iOS_Swift_language_note_String-and-Characters/" itemprop="url">Swift String and Characters</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-05T00:20:11+08:00">
-                2016-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/05/iOS_Swift_language_note_String-and-Characters/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/05/iOS_Swift_language_note_String-and-Characters/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    字符串<code>String</code>是一系列字符集合，Swift提供了一种快速、Unicode的方式的字符串和字符类型。和C语言的字符串字面值语法类似，Swift的字符串的创建和操作是轻量级、可读性的。可以通过<code>+</code>操作符连接两个字符串。Swift的字符串中的每个字符都是由<code>Unicode</code>编码的字符组成，并支持以各种方式访问这些字符。<br>    注：Swift中的String类型通过Foundation框架的NSString类型桥接，Foundation也对String类型对应扩展了NSString中定义的方法。这就意味着如果引用了Foundation，就可以不用转换直接使用NSString中的方法。</p>
-<h3 id="字符串的字面值"><a href="#字符串的字面值" class="headerlink" title="字符串的字面值"></a>字符串的字面值</h3><p>​    可以通过双引号<code>&quot;</code>来定义字符串字面值，Swift会根据字符串字面值将对应类型推断为字符串类型。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someString = <span class="string">"Some string literal value"</span></div></pre></td></tr></table></figure>
-<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><h4 id="空字符串"><a href="#空字符串" class="headerlink" title="空字符串"></a>空字符串</h4><p>​    初始化，检查字符串是否为空。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> emptyString = <span class="string">""</span>               <span class="comment">// empty string literal</span></div><div class="line"><span class="keyword">var</span> anotherEmptyString = <span class="type">String</span>()  <span class="comment">// initializer syntax</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> emptyString.isEmpty &#123;</div><div class="line"><span class="built_in">print</span>(<span class="string">"Nothing to see here"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h4><p>​    字符串是值类型，创建一个字符串后，如果在函数或者方法中使用，或者该字符串会被赋值给常量或者变量，字符串值会被复制，源字符串数据不会变化。</p>
-<h4 id="字符串与字符"><a href="#字符串与字符" class="headerlink" title="字符串与字符"></a>字符串与字符</h4><p>​    可以使用<code>for-in</code>循环，通过使用字符串的<code>characters</code>属性来访问字符值，例如</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> character <span class="keyword">in</span> <span class="string">"Dog!�"</span>.characters &#123;</div><div class="line"><span class="built_in">print</span>(character)</div><div class="line">&#125;</div><div class="line"><span class="comment">// D</span></div><div class="line"><span class="comment">// o</span></div><div class="line"><span class="comment">// g</span></div><div class="line"><span class="comment">// !</span></div><div class="line"><span class="comment">// �</span></div></pre></td></tr></table></figure>
-<p>​    可以通过字符来创建字符串，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> exclamationMark: <span class="type">Character</span> = <span class="string">"!"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> catCharacters: [<span class="type">Character</span>] = [<span class="string">"C"</span>, <span class="string">"a"</span>, <span class="string">"t"</span>, <span class="string">"!"</span>, <span class="string">"�"</span>]</div><div class="line"><span class="keyword">let</span> catString = <span class="type">String</span>(catCharacters)</div></pre></td></tr></table></figure>
-<h4 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h4><p>​    可以通过操作符<code>+</code>、<code>+=</code>连接两个字符串，也可以通过使用String的append()方法给字符串追加一个字符值，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> welcome = <span class="string">"hello"</span> + <span class="string">" there"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> instruction = <span class="string">"look over"</span></div><div class="line">instruction += string2</div><div class="line"></div><div class="line"><span class="keyword">let</span> exclamationMark: <span class="type">Character</span> = <span class="string">"!"</span></div><div class="line">welcome.append(exclamationMark)</div></pre></td></tr></table></figure>
-<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>​    用的不多，不详细介绍</p>
-<h3 id="字符串访问和修改"><a href="#字符串访问和修改" class="headerlink" title="字符串访问和修改"></a>字符串访问和修改</h3><p>​    不同的字符需要不同的空间来存储，所以为了确定哪个字符的特定位置，需要遍历字符串。正是这个原因，Swift字符串不能通过整型的索引来访问。<br>可以通过<code>startIndex</code>属性来访问字符串的第一个字符位置，<code>endIndex</code>属性对应最后一个字符位置。如果一个字符串的两个属性相同，则说明是一个空字符串。另外String还提供来几个方法来确认位置：<code>index(before:)</code>、<code>index(after:)</code>、<code>index(_:offsetBy:)</code>。如果访问越界，则会出现运行时错误：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">greeting[greeting.endIndex] <span class="comment">// Error</span></div></pre></td></tr></table></figure>
-<p>字符的插入和移除可以通过方法<code>insert(_:at:)</code>和<code>remove(at:)</code>进行</p>
-<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><p>​    Swift提供了3中方式比较文字值：字符串和字符等式、前缀等式、后缀等式</p>
-<h4 id="字符串和字符等式"><a href="#字符串和字符等式" class="headerlink" title="字符串和字符等式"></a>字符串和字符等式</h4><p>​    可以通过操作符：<code>==</code>和<code>!=</code>，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> quotation = <span class="string">"We're a lot alike, you and I."</span></div><div class="line"><span class="keyword">let</span> sameQuotation = <span class="string">"We're a lot alike, you and I."</span></div><div class="line"><span class="keyword">if</span> quotation == sameQuotation &#123;</div><div class="line"><span class="built_in">print</span>(<span class="string">"These two strings are considered equal"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "These two strings are considered equal"</span></div></pre></td></tr></table></figure>
-<h4 id="前缀、后缀等式"><a href="#前缀、后缀等式" class="headerlink" title="前缀、后缀等式"></a>前缀、后缀等式</h4><p>​    Swift提供了方法：<code>hasPrefix(_:)</code>和<code>hasSuffix(_:)</code></p>
-<h3 id="字符串的Unicode表示"><a href="#字符串的Unicode表示" class="headerlink" title="字符串的Unicode表示"></a>字符串的Unicode表示</h3><p>​    Swift提供了不同方式来访问不同版本的Unicode字符，你可以遍历字符串通过<code>for-in</code>语句，然后通过访问每个字符的Unicode编码。</p>
-<blockquote>
-<ul>
-<li>通过访问字符串的utf8属性，对于UTF-8格式</li>
-<li>通过访问字符串的utf16属性，对于UTF-16格式</li>
-<li>通过访问字符串的unicodeScalars属性，对于UTF-32格式</li>
-</ul>
-</blockquote>
-<p>举个例子，对于一个字符串，需要访问不同格式的编码：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> dogString = <span class="string">"Dog‼🐶"</span></div></pre></td></tr></table></figure>
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF8_2x.png" alt=""><br>对于UTF-8格式表示，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> codeUnit <span class="keyword">in</span> dogString.utf8 &#123;</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(codeUnit)</span> "</span>, terminator: <span class="string">""</span>)</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="string">""</span>)</div><div class="line"><span class="comment">// 68 111 103 226 128 188 240 159 144 182</span></div></pre></td></tr></table></figure>
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF16_2x.png" alt=""><br>对于UTF-16格式表示，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> codeUnit <span class="keyword">in</span> dogString.utf16 &#123;</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(codeUnit)</span> "</span>, terminator: <span class="string">""</span>)</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="string">""</span>)</div><div class="line"><span class="comment">// Prints "68 111 103 8252 55357 56374 "</span></div></pre></td></tr></table></figure>
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UnicodeScalar_2x.png" alt=""><br>对于Unicode Scalar格式表示，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> codeUnit <span class="keyword">in</span> dogString.utf16 &#123;</div><div class="line"><span class="keyword">for</span> scalar <span class="keyword">in</span> dogString.unicodeScalars &#123;</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(scalar.value)</span> "</span>, terminator: <span class="string">""</span>)</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="string">""</span>)</div><div class="line"><span class="comment">// Prints "68 111 103 8252 128054 "</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> scalar <span class="keyword">in</span> dogString.unicodeScalars &#123;</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(scalar)</span> "</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// D</span></div><div class="line"><span class="comment">// o</span></div><div class="line"><span class="comment">// g</span></div><div class="line"><span class="comment">// ‼</span></div><div class="line"><span class="comment">// 🐶</span></div></pre></td></tr></table></figure>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html/" target="_blank" rel="external">Strings and Characters</a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
-<blockquote>
-<p>​Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -725,7 +727,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

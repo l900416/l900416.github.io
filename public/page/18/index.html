@@ -291,6 +291,235 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/24/iOS_Swift_language_note_Classes and Structures/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="url">Swift Classes and Structures</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-24T00:20:11+08:00">
+                2016-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/24/iOS_Swift_language_note_Classes and Structures/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    类和结构体是人们构建代码所用的一种通用且灵活的构造体。你可以使用几乎完全相同的语法规则给类和结构体定义属性、添加方法。与其他语言不同的是，Swift不需要你为自定义类和结构体去独立创建接口和实现文件。在Swwift中，你只需要使用一个单独的文件来定义类和结构体，系统会自动生成面向其他代码的外部接口。<br>    通常类的实例被称为对象，Swift中类和结构体的关系比在其他语言中要密切</p>
+<h3 id="类和结构体的对比"><a href="#类和结构体的对比" class="headerlink" title="类和结构体的对比"></a>类和结构体的对比</h3><p>类和结构体在Swift中有很多共同点，例如：</p>
+<ul>
+<li>定义属性用于存储值</li>
+<li>定义方法用于提供功能</li>
+<li>定义下标操作涌来通过下标语法来访问实例存储的值</li>
+<li>定义构造函数用于初始化值</li>
+<li>通过扩展来增加其功能的实现</li>
+<li>实现协议以提供某种标准功能</li>
+</ul>
+<p>与结构体相比，类还有如下额外功能：</p>
+<ul>
+<li>继承允许一个类继承另一个类的特征</li>
+<li>类型转换允许在运行时检查和解释一个类实例等类型</li>
+<li>析构器允许一个类释放其所被分配到资源</li>
+<li><p>引用计数允许一个类被多次引用。</p>
+<p>注意：结构体通常是通过值传递，而不使用引用计数</p>
+</li>
+</ul>
+<h4 id="定义语法"><a href="#定义语法" class="headerlink" title="定义语法"></a>定义语法</h4><p>类和结构体有相似的定义语法，通过关键字<code>class</code>定义类，<code>struct</code>定义结构体，在一对大括号中定义它们的具体内容：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</div><div class="line">    <span class="comment">// class definition goes here</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SomeStructure</span> </span>&#123;</div><div class="line">    <span class="comment">// structure definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当你定义了类或者结构体的时候，确切的讲是定义了一个新类型。使用UpperCamelCase这种方式来命名（如SomeClass和SomeStructure等），相反的，请使用lowerCamelCase这种方式为属性和方法命名（如framerate和incrementCount），以便和类型名区分。</p>
+<p>以下是定义结构体和类的示例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Resolution</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> width = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> height = <span class="number">0</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VideoMode</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> resolution = <span class="type">Resolution</span>()</div><div class="line">    <span class="keyword">var</span> interlaced = <span class="literal">false</span></div><div class="line">    <span class="keyword">var</span> frameRate = <span class="number">0.0</span></div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span>?</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="类和结构体实例"><a href="#类和结构体实例" class="headerlink" title="类和结构体实例"></a>类和结构体实例</h4><p>生成类和结构体实例等语法很相似，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someResolution = <span class="type">Resolution</span>()</div><div class="line"><span class="keyword">let</span> someVideoMode = <span class="type">VideoMode</span>()</div></pre></td></tr></table></figure>
+<p>结构体和类都使用构造器语法来生成新的实例。构造器语法的最简单形式是在结构体或者类的类型名称后跟随一对空括号，如Resolution()或VideoMode()。通过这种方式所创建的类或者结构体实例，其属性均会被初始化为默认值。</p>
+<h4 id="属性访问"><a href="#属性访问" class="headerlink" title="属性访问"></a>属性访问</h4><p>通过使用点语法，你可以访问实例的属性。其语法规则是，实例名后面紧跟属性名，两者通过点号(.)连接，不能有空格：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someResolution is <span class="subst">\(someResolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someResolution is 0"</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someVideoMode is <span class="subst">\(someVideoMode.resolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someVideoMode is 0"</span></div></pre></td></tr></table></figure>
+<p>也可以使用点语法为变量属性赋值，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">someVideoMode.resolution.width = <span class="number">1280</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The width of someVideoMode is now <span class="subst">\(someVideoMode.resolution.width)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The width of someVideoMode is now 1280"</span></div></pre></td></tr></table></figure>
+<pre><code>与 Objective-C 语言不同的是，Swift 允许直接设置结构体属性的子属性。上面的最后一个例子，就是直接设置了someVideoMode中resolution属性的width这个子属性，以上操作并不需要重新为整个resolution属性设置新值。
+</code></pre><h4 id="结构体成员逐一构造函数"><a href="#结构体成员逐一构造函数" class="headerlink" title="结构体成员逐一构造函数"></a>结构体成员逐一构造函数</h4><p>所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vga = <span class="type">Resolution</span>(width: <span class="number">640</span>, height: <span class="number">480</span>)</div></pre></td></tr></table></figure>
+<pre><code>与结构体不同的是，类实例没有默认的成员逐一构造器
+</code></pre><h3 id="结构体和枚举是值类型"><a href="#结构体和枚举是值类型" class="headerlink" title="结构体和枚举是值类型"></a>结构体和枚举是值类型</h3><p>值类型被赋予给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝。<br>在Swift中，所有的基本类型：整数（Integer）、浮点数（floating-point）、布尔值（Boolean）、字符串（string)、数组（array）和字典（dictionary），都是值类型，并且在底层都是以结构体的形式所实现。<br>在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属性，在代码中传递的时候都会被复制。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> hd = <span class="type">Resolution</span>(width: <span class="number">1920</span>, height: <span class="number">1080</span>)</div><div class="line"><span class="keyword">var</span> cinema = hd</div></pre></td></tr></table></figure>
+<p>声明一个名为hd的常量，初始值宽高分别为1920和1080，然后声明一个名为cinema的变量，并将hd赋值给它。由于Resolution是结构体类型，所以cinema的值其实是hd的一个拷贝副本，而不是hd本身。尽管它们两个的值相同，但是是两个不同的实例。例如以下修改后，hd的值不变：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cinema.width = <span class="number">2048</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"cinema is now <span class="subst">\(cinema.width)</span> pixels wide"</span>)</div><div class="line"><span class="comment">// Prints "cinema is now 2048 pixels wide"</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"hd is still <span class="subst">\(hd.width)</span> pixels wide"</span>)</div><div class="line"><span class="comment">// Prints "hd is still 1920 pixels wide"</span></div></pre></td></tr></table></figure>
+<p>枚举也遵循相同的行为标准</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">CompassPoint</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> north, south, east, west</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> currentDirection = <span class="type">CompassPoint</span>.west</div><div class="line"><span class="keyword">let</span> rememberedDirection = currentDirection</div><div class="line">currentDirection = .east</div><div class="line"><span class="keyword">if</span> rememberedDirection == .west &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The remembered direction is still .west"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "The remembered direction is still .west"</span></div></pre></td></tr></table></figure>
+<h3 id="类是引用类型"><a href="#类是引用类型" class="headerlink" title="类是引用类型"></a>类是引用类型</h3><p>与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝。<br>例如，实例化一个类VideoMode的对象，并为其属性赋值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> tenEighty = <span class="type">VideoMode</span>()</div><div class="line">tenEighty.resolution = hd</div><div class="line">tenEighty.interlaced = <span class="literal">true</span></div><div class="line">tenEighty.name = <span class="string">"1080i"</span></div><div class="line">tenEighty.frameRate = <span class="number">25.0</span></div></pre></td></tr></table></figure>
+<p>然后将其赋值给一个新变量，同时对新变量进行修改</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> alsoTenEighty = tenEighty</div><div class="line">alsoTenEighty.frameRate = <span class="number">30.0</span></div></pre></td></tr></table></figure>
+<p>因为类是引用类型，所以tenEight和alsoTenEight实际上引用的是相同的VideoMode实例。换句话说，它们是同一个实例的两种叫法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"The frameRate property of tenEighty is now <span class="subst">\(tenEighty.frameRate)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The frameRate property of tenEighty is now 30.0"</span></div></pre></td></tr></table></figure>
+<pre><code>需要注意的是tenEighty和alsoTenEighty被声明为常量而不是变量。然而你依然可以改变tenEighty.frameRate和alsoTenEighty.frameRate，因为tenEighty和alsoTenEighty这两个常量的值并未改变。它们并不“存储”这个VideoMode实例，而仅仅是对VideoMode实例的引用。所以，改变的是被引用的VideoMode的frameRate属性，而不是引用VideoMode的常量的值。
+</code></pre><h4 id="恒等运算符"><a href="#恒等运算符" class="headerlink" title="恒等运算符"></a>恒等运算符</h4><p>因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。（对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。）<br>如果能够判定两个常量或者变量是否引用同一个类实例将会很有帮助。为了达到这个目的，Swift 内建了两个恒等运算符：</p>
+<ul>
+<li>=== 等价于</li>
+<li>!== 不等价于</li>
+</ul>
+<p>运用这两个运算符可以检查两个变量或者常量是否引用同一个实例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> tenEighty === alsoTenEighty &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"tenEighty and alsoTenEighty refer to the same VideoMode instance."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "tenEighty and alsoTenEighty refer to the same VideoMode instance."</span></div></pre></td></tr></table></figure>
+<pre><code>注意`=== 等价于`和`== 等于`的区别：一个是判断引用相同的类实例，一个是判断值相等
+</code></pre><h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><p>在C、C++、ObjC中，使用指针类引用内存中的地址，Swift中某个引用类型的常量或者变量和其他语言中的指针类似，但不是直接指向内存地址，也不要求你使用星号（*）来表明你在创建一个引用。Swift 中的这些引用与其它的常量或变量的定义方式相同。</p>
+<h3 id="类和结构体的选择"><a href="#类和结构体的选择" class="headerlink" title="类和结构体的选择"></a>类和结构体的选择</h3><p>你可以使用类或结构体来定义你自己的数据类型。但是结构体总是通过值传递，类是引用传递。这意味着两者适用不同的任务。当你在考虑一个工程项目的数据结构和功能的时候，你需要决定每个数据结构是定义成类还是结构体。</p>
+<p>按照通用的准则，如果符合以下一条或者多条时，可以使用结构体：</p>
+<ul>
+<li>该数据结构的主要目的是用来封装少量相关简单数据值。</li>
+<li>有理由预计该数据结构的实例在被赋值或传递时，封装的数据将会被拷贝而不是被引用。</li>
+<li>该数据结构中储存的值类型属性，也应该被拷贝，而不是被引用。</li>
+<li>该数据结构不需要去继承另一个既有类型的属性或者行为。</li>
+</ul>
+<h3 id="字符串、数组、和字典类型的赋值与复制行为"><a href="#字符串、数组、和字典类型的赋值与复制行为" class="headerlink" title="字符串、数组、和字典类型的赋值与复制行为"></a>字符串、数组、和字典类型的赋值与复制行为</h3><p>Swift 中，许多基本类型，诸如String，Array和Dictionary类型均以结构体的形式实现。这意味着被赋值给新的常量或变量，或者被传入函数或方法中时，它们的值会被拷贝。</p>
+<p>Objective-C 中NSString，NSArray和NSDictionary类型均以类的形式实现，而并非结构体。它们在被赋值或者被传入函数或方法时，不会发生值拷贝，而是传递现有实例的引用。</p>
+<p>以上是对字符串、数组、字典的“拷贝”行为的描述。在你的代码中，拷贝行为看起来似乎总会发生。<br>然而，Swift 在幕后只在绝对必要时才执行实际的拷贝。Swift 管理所有的值拷贝以确保性能最优化，所以你没必要去回避赋值来保证性能最优化。    </p>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html/" target="_blank" rel="external">ClassesAndStructures</a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS_Swift_language_note_Enumerations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -490,235 +719,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/22/iOS_Swift_language_note_Closures/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/22/iOS_Swift_language_note_Closures/" itemprop="url">Swift Closures</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-22T00:20:11+08:00">
-                2016-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/22/iOS_Swift_language_note_Closures/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/22/iOS_Swift_language_note_Closures/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    闭包是一种可以在代码中传递和使用的自包含代码块。Swift中的闭包盒C／ObjC中的闭包与其它语言中的lambdas表达式类似。闭包可用捕获其被定义的上下文中的变量或常量。Swift会为你处理所有的通过捕获的内存管理。函数章节介绍的全局／嵌套函数，是闭包的特殊形式，闭包采取以下三种形式之一</p>
-<blockquote>
-<ul>
-<li>全局函数是一个有名字且不捕获任何值的闭包</li>
-<li>嵌套函数是一个有名字且可用捕获其封闭函数作用域内值的闭包</li>
-<li>闭包表达式是一个利用轻量级语法所写的可用捕获所在上下文中值（变量／常量）的没有名字的闭包</li>
-</ul>
-</blockquote>
-<p>Swift中的闭包表达式拥有清晰、简洁的风格，在以下常见的场景中实现闭包优化：</p>
-<blockquote>
-<ul>
-<li>根据上下文怼参数和返回值进行类型推断</li>
-<li>单表达式闭包可用省略return关键字</li>
-<li>参数名称可用缩写</li>
-<li>Trailing闭包语法</li>
-</ul>
-</blockquote>
-<h3 id="闭包表达式"><a href="#闭包表达式" class="headerlink" title="闭包表达式"></a>闭包表达式</h3><p>嵌套函数是一种在较复杂函数中方便进行命名和定义自包含代码模块的方式，但是有时候编写一个不需要名字和参数的简洁版本更有用，尤其是在将函数作为参数传递给另一个函数的时候。<br>闭包表达式是一种利用简洁语法构建内联闭包的方式。闭包表达式提供了一些语法优化，使得撰写闭包变得简单明了。下面闭包表达式的例子通过使用几次迭代展示了 sort 函数定义和语法优化的方式。 每一次迭代都用更简洁的方式描述了相同的功能。</p>
-<h4 id="排序方法"><a href="#排序方法" class="headerlink" title="排序方法"></a>排序方法</h4><p>Swift标准库提供的一个排序方法<code>sorted(by:)</code>会根据你提供的排序闭包对已知类型的数组的值进行排序，排序完成后会返回一个同源数组大小相同的排序后的数组。例如一个原始数组如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> names = [<span class="string">"Chris"</span>, <span class="string">"Alex"</span>, <span class="string">"Ewa"</span>, <span class="string">"Barry"</span>, <span class="string">"Daniella"</span>]</div></pre></td></tr></table></figure>
-<p>排序方法<code>sorted(by:)</code>接受一个包含两个数组内值相同类型参数并返回一个Bool值来表明顺序的闭包，闭包回返回true如果要求第一个值在排序的结果中靠前，否则返回false。例子中闭包表达式类型为：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="type">String</span>, <span class="type">String</span>) -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure>
-<p>可以通过普通函数，作为参数传递，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">backward</span><span class="params">(<span class="number">_</span> s1: String, <span class="number">_</span> s2: String)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">return</span> s1 &gt; s2</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> reversedNames = names.sorted(by: backward)</div><div class="line"><span class="comment">// reversedNames is equal to ["Ewa", "Daniella", "Chris", "Barry", "Alex"]</span></div></pre></td></tr></table></figure>
-<h4 id="闭包表达式语法"><a href="#闭包表达式语法" class="headerlink" title="闭包表达式语法"></a>闭包表达式语法</h4><p>闭包表达式一般语法如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123; (parameters) -&gt; <span class="keyword">return</span> type <span class="keyword">in</span></div><div class="line">    statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>闭包表达式的参数可以是<code>in-out</code>类型，但是不能有默认值，也可以是可变参数，也支持元组类型参数或者返回值，例如上述操作可以简化为：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">reversedNames = names.sorted(by: &#123; (s1: <span class="type">String</span>, s2: <span class="type">String</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> s1 &gt; s2</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h4 id="根据上下文推断类型"><a href="#根据上下文推断类型" class="headerlink" title="根据上下文推断类型"></a>根据上下文推断类型</h4><p>因为排序闭包是作为参数传递的，Swift可以推断出闭包的参数类型和返回值类型。因为所有的类型都可以被推断，所以这里具体类型没有必要提供。返回值和参数周围的括号也可以被省略，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedNames = names.sorted(by: &#123; s1, s2 <span class="keyword">in</span> <span class="keyword">return</span> s1 &gt; s2 &#125; )</div></pre></td></tr></table></figure>
-<p>实际上，在内连闭包表达式构造的闭包作为参数传递给函数时，都可以推断出参数和返回值类型，这意味着你几乎不需要写完整的闭包格式。然而，你仍然可以使用明确的类型来消除阅读的歧义，并且这是被建议使用的方式。</p>
-<h4 id="单行闭包表达式可以省略return"><a href="#单行闭包表达式可以省略return" class="headerlink" title="单行闭包表达式可以省略return"></a>单行闭包表达式可以省略return</h4><p>单行表达式闭包可以通过隐藏 return 关键字来隐式返回单行表达式的结果，如上版本的例子可以改写为：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversed = <span class="built_in">sort</span>(names, &#123; s1, s2 <span class="keyword">in</span> s1 &gt; s2 &#125; )</div></pre></td></tr></table></figure>
-<h4 id="参数名缩写"><a href="#参数名缩写" class="headerlink" title="参数名缩写"></a>参数名缩写</h4><p>Swift自动提供了参数名称缩写功能，可以直接使用<code>$0, $1, $2,</code>等来引用闭包中的参数。数量和类型可以被推断，当时用参数名称缩写的时候，参数列表定义部分可以省略，in关键字也可以省略。此事闭包表达式完全由闭包函数体构成：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversed = <span class="built_in">sort</span>(names, &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125; )</div></pre></td></tr></table></figure>
-<h4 id="运算符方法"><a href="#运算符方法" class="headerlink" title="运算符方法"></a>运算符方法</h4><p>有一种更简洁的方法来写上述例子中的闭包表达式。Swift中的String类型定义了操作符<code>&gt;</code>的实现。因此可以简单的传递一个符号。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversed = <span class="built_in">sort</span>(names, &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125; )</div></pre></td></tr></table></figure>
-<h3 id="Trailing闭包"><a href="#Trailing闭包" class="headerlink" title="Trailing闭包"></a>Trailing闭包</h3><p>当闭包作为一个拥有很多参数函数的最后一个参数时，可以使用Trailing闭包来增强函数的可读性。Trailing闭包是一个书写在函数括号之外的闭包表达式（尽管闭包仍然是函数的参数）。当使用Trailing闭包语法时，不写闭包对应的函数参数标签。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunctionThatTakesAClosure</span><span class="params">(closure: <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">    <span class="comment">// function body goes here</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// Here's how you call this function without using a trailing closure:</span></div><div class="line"> </div><div class="line">someFunctionThatTakesAClosure(closure: &#123;</div><div class="line">    <span class="comment">// closure's body goes here</span></div><div class="line">&#125;)</div><div class="line"> </div><div class="line"><span class="comment">// Here's how you call this function with a trailing closure instead:</span></div><div class="line"> </div><div class="line">someFunctionThatTakesAClosure() &#123;</div><div class="line">    <span class="comment">// trailing closure's body goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述排序例子可以简写为：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedNames = names.sorted() &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</div></pre></td></tr></table></figure>
-<p>除了闭包外无其他参数，小括号也可以省略，例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedNames = names.sorted &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</div></pre></td></tr></table></figure>
-<p>当闭包非常长的时候，Trailing 闭包就变得非常有用。例如Swift的Array类型有一个map方法<code>map(_:)</code>，其接收一个闭包表达式作为唯一的参数，对于数组中的每一个元素会调用该闭包一次，并返回该元素映射的值，具体映射方式和返回值类型由闭包来指定，当提供给数组该闭包函数后，map方法将返回一个新的包含了与原数组一一对应映射关系的数组。例如以下例子讲述如何使用该闭包：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> digitNames = [</div><div class="line">    <span class="number">0</span>: <span class="string">"Zero"</span>, <span class="number">1</span>: <span class="string">"One"</span>, <span class="number">2</span>: <span class="string">"Two"</span>,   <span class="number">3</span>: <span class="string">"Three"</span>, <span class="number">4</span>: <span class="string">"Four"</span>,</div><div class="line">    <span class="number">5</span>: <span class="string">"Five"</span>, <span class="number">6</span>: <span class="string">"Six"</span>, <span class="number">7</span>: <span class="string">"Seven"</span>, <span class="number">8</span>: <span class="string">"Eight"</span>, <span class="number">9</span>: <span class="string">"Nine"</span></div><div class="line">]</div><div class="line"><span class="keyword">let</span> numbers = [<span class="number">16</span>, <span class="number">58</span>, <span class="number">510</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> strings = numbers.<span class="built_in">map</span> &#123;</div><div class="line">    (number) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">var</span> number = number</div><div class="line">    <span class="keyword">var</span> output = <span class="string">""</span></div><div class="line">    <span class="keyword">repeat</span> &#123;</div><div class="line">        output = digitNames[number % <span class="number">10</span>]! + output</div><div class="line">        number /= <span class="number">10</span></div><div class="line">    &#125; <span class="keyword">while</span> number &gt; <span class="number">0</span></div><div class="line">    <span class="keyword">return</span> output</div><div class="line">&#125;</div><div class="line"><span class="comment">// strings is inferred to be of type [String]</span></div><div class="line"><span class="comment">// its value is ["OneSix", "FiveEight", "FiveOneZero"]</span></div></pre></td></tr></table></figure>
-<h3 id="捕获值"><a href="#捕获值" class="headerlink" title="捕获值"></a>捕获值</h3><p>闭包可以捕获其定义的上下文中的常量或变量，即使定义这些变量或者常量的作用域已经不存在，闭包仍然可以在闭包体内引用(和修改)这些值。在Swift中，最简单的闭包形式是嵌套函数，也就是定义在函数体内的函数。嵌套函数可以捕获外部函数的参数以及所有定义在外部函数体内的变量和常量。<br>下边是一个嵌套函数的例子：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeIncrementer</span><span class="params">(forIncrement amount: Int)</span></span> -&gt; () -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">var</span> runningTotal = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">incrementer</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        runningTotal += amount</div><div class="line">        <span class="keyword">return</span> runningTotal</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> incrementer</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意：Swift会<code>自动持有被截获的变量的引用</code>，这样就可以在block内部直接修改变量。Swift会自动判断你是否在闭包中或闭包外改变了变量。如果没有改变，闭包会直接持有变量，即使你没有显式的把它卸载捕获列表中。以下摘自苹果官方文档：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">As</span> an optimization, <span class="type">Swift</span> may instead capture and store a copy of a value <span class="keyword">if</span> that value <span class="keyword">is</span> not mutated by a closure, and <span class="keyword">if</span> the value <span class="keyword">is</span> not mutated after the closure <span class="keyword">is</span> created.</div></pre></td></tr></table></figure>
-<h3 id="闭包是引用类型"><a href="#闭包是引用类型" class="headerlink" title="闭包是引用类型"></a>闭包是引用类型</h3><p>如果将闭包赋值给一个变量和常量，那么赋值后的变量和常量会引用同一个闭包，例如</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> alsoIncrementByTen = incrementByTen</div><div class="line">alsoIncrementByTen()</div></pre></td></tr></table></figure>
-<h3 id="逃避闭包-Escaping-Closures"><a href="#逃避闭包-Escaping-Closures" class="headerlink" title="逃避闭包(Escaping Closures)"></a>逃避闭包(Escaping Closures)</h3><p>当闭包作为函数的参数传入时，很有可能这个闭包在函数返回之后才会被执行，这就是逃逸闭包。在Swift中可以在参数名前标注 @noescape 来指明这个闭包是不允许逃逸出这个函数的。因为非逃逸闭包只能在函数体中被执行，不能脱离函数体执行，所以这使得编译器可以明确的知道运行时的上下文环境，进而做出优化。<br>一般情况下，一些异步函数会使用逃逸闭包。这类函数会在异步操作开始之后立刻返回，但是闭包直到异步操作结束后才会被调用。比如网络请求中处理服务器返回请求的闭包。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> completionHandlers: [() -&gt; <span class="type">Void</span>] = []</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunctionWithEscapingClosure</span><span class="params">(completionHandler: @escaping <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">    completionHandlers.append(completionHandler)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果需要引用自身self，因为编译器知晓非逃逸闭包的上下文环境，所以非逃逸闭包中可以不写 self (隐式的存在)。但是逃逸闭包必须明确写self。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="number">10</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">doSomething</span><span class="params">()</span></span> &#123;</div><div class="line">        someFunctionWithEscapingClosure &#123; <span class="keyword">self</span>.x = <span class="number">100</span> &#125;</div><div class="line">        someFunctionWithNonescapingClosure &#123; x = <span class="number">200</span> &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="自动闭包-Autoclosures"><a href="#自动闭包-Autoclosures" class="headerlink" title="自动闭包(Autoclosures)"></a>自动闭包(Autoclosures)</h3><p>自动闭包是自动创建的包含一个语句的闭包，作为参数传递给函数。自动闭包不接受任何参数，被调用时会返回被包装在其中的表达式的值。<br>自动闭包是延迟求值，因为闭包中的代码直到你调用闭包的时候才会执行。延迟求值对一些可能存在副作用的代码来说很有用，通过延迟求值你可以控制代码的执行时机。例如：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> customersInLine = [<span class="string">"Chris"</span>, <span class="string">"Alex"</span>, <span class="string">"Ewa"</span>, <span class="string">"Barry"</span>, <span class="string">"Daniella"</span>]</div><div class="line"><span class="built_in">print</span>(customersInLine.<span class="built_in">count</span>)</div><div class="line"><span class="comment">// Prints "5"</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> customerProvider = &#123; customersInLine.remove(at: <span class="number">0</span>) &#125;</div><div class="line"><span class="built_in">print</span>(customersInLine.<span class="built_in">count</span>)</div><div class="line"><span class="comment">// Prints "5"</span></div><div class="line"> </div><div class="line"><span class="built_in">print</span>(<span class="string">"Now serving <span class="subst">\(customerProvider()</span>)!"</span>)</div><div class="line"><span class="comment">// Prints "Now serving Chris!"</span></div><div class="line"><span class="built_in">print</span>(customersInLine.<span class="built_in">count</span>)</div><div class="line"><span class="comment">// Prints "4"</span></div></pre></td></tr></table></figure>
-<p>即使闭包代码中将数组中的第一个元素移除了，但是闭包代码不会执行直到闭包被调用。如果闭包不被调用，那么闭包内的移除代码就不会调用。当你做微函数参数传递的时候你也是同样的道理</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// customersInLine is ["Alex", "Ewa", "Barry", "Daniella"]</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">serve</span><span class="params">(customer customerProvider: <span class="params">()</span></span></span> -&gt; <span class="type">String</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Now serving <span class="subst">\(customerProvider()</span>)!"</span>)</div><div class="line">&#125;</div><div class="line">serve(customer: &#123; customersInLine.remove(at: <span class="number">0</span>) &#125; )</div><div class="line"><span class="comment">// Prints "Now serving Alex!"</span></div></pre></td></tr></table></figure>
-<p>以上例子中的serve函数接受一个明确的闭包（返回一个顾客的名字），下边这个例子和上边效果一样，不过是接收一个自动闭包。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// customersInLine is ["Ewa", "Barry", "Daniella"]</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">serve</span><span class="params">(customer customerProvider: @autoclosure <span class="params">()</span></span></span> -&gt; <span class="type">String</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Now serving <span class="subst">\(customerProvider()</span>)!"</span>)</div><div class="line">&#125;</div><div class="line">serve(customer: customersInLine.remove(at: <span class="number">0</span>))</div><div class="line"><span class="comment">// Prints "Now serving Ewa!"</span></div></pre></td></tr></table></figure>
-<p>如果一个自动闭包需要逃逸，使用两个修饰符<code>@autoclosure</code>和<code>@escaping</code>：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// customersInLine is ["Barry", "Daniella"]</span></div><div class="line"><span class="keyword">var</span> customerProviders: [() -&gt; <span class="type">String</span>] = []</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">collectCustomerProviders</span><span class="params">(<span class="number">_</span> customerProvider: @autoclosure @escaping <span class="params">()</span></span></span> -&gt; <span class="type">String</span>) &#123;</div><div class="line">    customerProviders.append(customerProvider)</div><div class="line">&#125;</div><div class="line">collectCustomerProviders(customersInLine.remove(at: <span class="number">0</span>))</div><div class="line">collectCustomerProviders(customersInLine.remove(at: <span class="number">0</span>))</div><div class="line"> </div><div class="line"><span class="built_in">print</span>(<span class="string">"Collected <span class="subst">\(customerProviders.<span class="built_in">count</span>)</span> closures."</span>)</div><div class="line"><span class="comment">// Prints "Collected 2 closures."</span></div><div class="line"><span class="keyword">for</span> customerProvider <span class="keyword">in</span> customerProviders &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Now serving <span class="subst">\(customerProvider()</span>)!"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Now serving Barry!"</span></div><div class="line"><span class="comment">// Prints "Now serving Daniella!"</span></div></pre></td></tr></table></figure>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><p><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html/" target="_blank" rel="external">Control Flow</a> </p>
-</li>
-<li><p><a href="http://www.jianshu.com/p/d0d7b519fec1/" target="_blank" rel="external">OC与Swift闭包对比总结</a> </p>
-</li>
-<li><p><a href="http://www.tuicool.com/articles/MRJ3me7/" target="_blank" rel="external">浅谈iOS中的闭包</a> </p>
-</li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -769,7 +769,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

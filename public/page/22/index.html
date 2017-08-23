@@ -291,6 +291,256 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/02/iOS_Swift_language_note_The-Basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/02/iOS_Swift_language_note_The-Basics/" itemprop="url">Swift The Basics</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-02T22:06:31+08:00">
+                2016-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/02/iOS_Swift_language_note_The-Basics/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/02/iOS_Swift_language_note_The-Basics/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    Swift的很多地方类似C和Objective-C语言。在Swift中，用<code>Int</code>表示整型，用<code>Double</code>和<code>Float</code>表示浮点类型，用<code>Bool</code>表示布尔类型，用<code>String</code>表示文本类型。另外还提供有一些集合类型，比如<code>Array</code>，<code>Set</code>和<code>Dictionary</code>。是一种类型安全的语言。<br>​    Swift拥有和C语言类似变量和常量。还有一些高级的类型例如元组<code>tuples</code>（同PL/SQL中的类似）、不仅仅用在Class上的可选类型<code>optional types</code>(<code>Optionals say either “there is a value, and it equals x” or “there isn’t a value at all”.</code>)</p>
+<h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><p>​    常量和变量在使用前必须声明，使用<code>var</code>来声明变量，使用<code>let</code>来声明常量，例如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> maximumNumberOfLoginAttempts = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> currentLoginAttempt = <span class="number">0</span></div><div class="line"><span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span>, z = <span class="number">0.0</span></div></pre></td></tr></table></figure>
+<p>​    可以通过<code>let(var) name: type</code>来明确常量或变量的类型，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> welcomeMessage: <span class="type">String</span></div><div class="line"><span class="keyword">var</span> red, green, blue: <span class="type">Double</span></div></pre></td></tr></table></figure>
+<p>​    变量和常量的名称可以包括绝大多数字符（包括Unicode），但不能包含空格、数学符号、箭头以及一些无效的Unicode，且不能以数字开头。变量或者常量一旦被定义，其名称不能就不能被重复使用，或者改变其类型，也不能将变量改变为常量（反之也不可以）。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> friendlyWelcome = <span class="string">"Hello!"</span></div><div class="line"><span class="keyword">let</span> 你好 = <span class="string">"你好世界"</span></div></pre></td></tr></table></figure>
+<p>​    通过print函数来输出查看结果：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"The current value of friendlyWelcome is <span class="subst">\(friendlyWelcome)</span>"</span>)</div></pre></td></tr></table></figure>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>​    和C语言类似，可以通过<code>//</code>进行单行注释；使用<code>/*</code>和<code>*/</code>进行多行注释，与C语言不同的是，多行注释在Swift中可以嵌套。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// This is a comment.</span></div><div class="line"></div><div class="line"><span class="comment">/* This is also a comment</span></div><div class="line"><span class="comment">but is written over multiple lines. */</span></div><div class="line"></div><div class="line"><span class="comment">/* This is the start of the first multiline comment.</span></div><div class="line"><span class="comment"><span class="comment">/* This is the second, nested multiline comment. */</span></span></div><div class="line"><span class="comment">This is the end of the first multiline comment. */</span></div></pre></td></tr></table></figure>
+<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>​    和其他大部分语言不同的是，Swift不需要你在每个代码语句后边添加分号(;)，尽管写上也没问题</p>
+<h3 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h3><p>​    包括无符号整型<code>signed</code>和有符号整型<code>unsigned</code>,Swift提供的整型是以8、16、32、64位格式的，例如：<code>UInt8</code>、<code>Int32</code>。<br>​    可以通过<code>min</code>和<code>max</code>两个属性值来查看边界值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> minValue = <span class="type">UInt8</span>.<span class="built_in">min</span>  <span class="comment">// minValue is equal to 0, and is of type UInt8</span></div><div class="line"><span class="keyword">let</span> maxValue = <span class="type">UInt8</span>.<span class="built_in">max</span>  <span class="comment">// maxValue is equal to 255, and is of type UInt8</span></div></pre></td></tr></table></figure>
+<p>​    默认情况下，不需要在代码中指明特定的整数，对于<code>Int</code>，在32位系统中，默认为<code>Int32</code>，64位系统中，默认为<code>Int64</code>；对于<code>UInt</code>，在32位系统中，默认为<code>UInt32</code>，64位系统中，默认为<code>UInt64</code></p>
+<h3 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h3><p>​    Swift中提供两种有符号的浮点类型：用’Double’表示64位浮点类型数据，’Float’表示32位浮点类型。根据所需精度进行选择。</p>
+<h3 id="类型安全和类型推断"><a href="#类型安全和类型推断" class="headerlink" title="类型安全和类型推断"></a>类型安全和类型推断</h3><p>​    Swift是一个类型安全的语言，意味着对类型区分很清晰，类型检查在编译的时候能确保在你的代码中不会出现因失误导致的类型赋值错误。当你没有明确你需要的类型时，Swfit使用类型推断帮助你选择合适的类型，这样Swift会帮你减少很大的代码量。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> meaningOfLife = <span class="number">42</span><span class="comment">// meaningOfLife is inferred to be of type Int</span></div><div class="line"></div><div class="line"><span class="comment">//对于浮点类型，类型推断会将其定义为Double</span></div><div class="line"><span class="keyword">let</span> pi = <span class="number">3.14159</span><span class="comment">// pi is inferred to be of type Double</span></div></pre></td></tr></table></figure>
+<h3 id="数值常量"><a href="#数值常量" class="headerlink" title="数值常量"></a>数值常量</h3><p>​    对于整型数值常量来说：十进制没有前缀，二进制以<code>0b</code>开头，八进制以<code>0o</code>开头，十六进制以<code>0x</code>开头</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> decimalInteger = <span class="number">17</span></div><div class="line"><span class="keyword">let</span> binaryInteger = <span class="number">0b10001</span>       <span class="comment">// 17 in binary notation</span></div><div class="line"><span class="keyword">let</span> octalInteger = <span class="number">0o21</span>           <span class="comment">// 17 in octal notation</span></div><div class="line"><span class="keyword">let</span> hexadecimalInteger = <span class="number">0x11</span>     <span class="comment">// 17 in hexadecimal notation</span></div></pre></td></tr></table></figure>
+<p>​    浮点数值常量可以是十进制或者十六进制。其中十进制的浮点数值常量中使用字符<code>e</code>，代表的是10的exp幂；十六进制数值常量中使用字符<code>p</code>，，代表的是2的exp幂</p>
+<blockquote>
+<ul>
+<li>1.25e2 means 1.25 x 10^2, or 125.0.</li>
+<li>1.25e-2 means 1.25 x 10^-2, or 0.0125.</li>
+<li>0xFp2 means 15 x 2^2, or 60.0.</li>
+<li>0xFp-2 means 15 x 2^-2, or 3.75.</li>
+</ul>
+</blockquote>
+<p>​    </p>
+<p>​    附小常识：数值常量可以通过添加额外的0或者下划线<code>_</code>来帮助阅读。不会影响具体值，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> oneMillion = <span class="number">1_000_000</span></div><div class="line"><span class="keyword">let</span> justOverOneMillion = <span class="number">1_000_000.000_000_1</span></div><div class="line"><span class="keyword">let</span> paddedDouble = <span class="number">000123.456</span></div></pre></td></tr></table></figure>
+<h3 id="数值类型转换"><a href="#数值类型转换" class="headerlink" title="数值类型转换"></a>数值类型转换</h3><p>​    这部分需要注意值域问题，如果转换导致越界，会出现错误。别的没啥好说的，编译器会告诉你的。如果需要的话，转换过程举例如下（显示调用类型方法，比如Double(6) ）：</p>
+<blockquote>
+<blockquote>
+<p>Int8 -&gt; Int16 -&gt; Int -&gt; Double</p>
+</blockquote>
+</blockquote>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>​    使用关键字<code>typealias</code>起别名，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typealias</span> <span class="type">AudioSample</span> = <span class="type">UInt16</span><span class="comment">//起别名</span></div><div class="line"><span class="keyword">var</span> maxAmplitudeFound = <span class="type">AudioSample</span>.<span class="built_in">min</span><span class="comment">//使用</span></div></pre></td></tr></table></figure>
+<h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><p>​    Swift中的布尔类型为<code>Bool</code>，两个值<code>true</code>和<code>false</code>。布尔值在<code>if</code>语句中很常用。与其他语言不同的是，<code>if</code>语句中必须为<code>Bool</code>值，否则会出现编译错误。</p>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>​    将多个（不同类型的）数据组合成一个数据类型，可以使用任何你喜欢类型创建元组<code>(Int, Int, Int)</code>,或者<code>(String, Bool)</code>，没有任何限制，一个元组的创建例子如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> http404Error = (<span class="number">404</span>, <span class="string">"Not Found"</span>)</div><div class="line"><span class="comment">// http404Error is of type (Int, String), and equals (404, "Not Found")</span></div></pre></td></tr></table></figure>
+<p>​    可以将元组的内容分解成独立的常量或变量来单独访问；当你只需要元组中的部分值时，其它部分可以通过下划线(<code>_</code>)忽略；当然也可以通过下标的形式来访问(<code>下标从0开始</code>)。例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> (statusCode, statusMessage) = http404Error</div><div class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(statusCode)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The status code is 404"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The status message is <span class="subst">\(statusMessage)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The status message is Not Found"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> (justTheStatusCode, <span class="number">_</span>) = http404Error</div><div class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(justTheStatusCode)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The status code is 404"</span></div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(http404Error.<span class="number">0</span>)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The status code is 404"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The status message is <span class="subst">\(http404Error.<span class="number">1</span>)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The status message is Not Found"</span></div></pre></td></tr></table></figure>
+<p>​    定义元组的时候可以给单独的元素起名字，然后可以通过元素名字来访问具体的值，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> http200Status = (statusCode: <span class="number">200</span>, description: <span class="string">"OK"</span>)</div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(http200Status.statusCode)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The status code is 200"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The status message is <span class="subst">\(http200Status.description)</span>"</span>)</div><div class="line"><span class="comment">// Prints "The status message is OK"</span></div></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p>当函数有多个返回值时，元组显得非常适用；但元组不适合于复杂的数据结构创建。</p>
+</blockquote>
+</blockquote>
+<h3 id="可选类型"><a href="#可选类型" class="headerlink" title="可选类型"></a>可选类型</h3><p>​    当一个值可能不存在时，使用可选类型(<code>optionals</code>)，可选表示两种可能：要么存在一个值，你可以解包并访问其值；要么不存在。</p>
+<blockquote>
+<blockquote>
+<p>​    注：可选的概念在C或者Objective-C中是不存在的，ObjC中一个相似点是一个方法要么返回一个对象，要么返回nil，但是在ObjC中仅适用于对象，不适用于结构体、基本C类型或者枚举类型。但是Swift中的可选适用于所有类型。</p>
+</blockquote>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> possibleNumber = <span class="string">"123"</span></div><div class="line"><span class="keyword">let</span> convertedNumber = <span class="type">Int</span>(possibleNumber)</div><div class="line"><span class="comment">// convertedNumber is inferred to be of type "Int?", or "optional Int"</span></div></pre></td></tr></table></figure>
+<h4 id="nil"><a href="#nil" class="headerlink" title="nil"></a>nil</h4><p>​    可以将nil赋值给一个可选类型变量。对于可选类型变量，如果声明的时候没有提供初始值，则默认被设置为nil。</p>
+<blockquote>
+<blockquote>
+<p>​    注：nil不能被可选类型以外的变量或者常量适用，如果代码中一个变量需要处理不存在的情况，通常将其定义为可选类型。Swift中的nil和ObjC中的nil不同：ObjC中的nil是一个指向不存在的对象的指针；Swift中的nil不是指针，它是一个特定类型不存在的值，适用于所有Swift类型</p>
+</blockquote>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> serverResponseCode: <span class="type">Int</span>? = <span class="number">404</span></div><div class="line"><span class="comment">// serverResponseCode contains an actual Int value of 404</span></div><div class="line">serverResponseCode = <span class="literal">nil</span></div><div class="line"><span class="comment">// serverResponseCode now contains no value</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> surveyAnswer: <span class="type">String</span>?</div><div class="line"><span class="comment">// surveyAnswer is automatically set to nil</span></div></pre></td></tr></table></figure>
+<h4 id="if语句和强制解包"><a href="#if语句和强制解包" class="headerlink" title="if语句和强制解包"></a>if语句和强制解包</h4><p>​    可以通过使用If语句来确定一个可选类型是一个值或者是nil(使用操作符<code>==</code>或<code>!=</code>)。如果一个可选类型存在一个值，就可以通过在参数名后边添加<code>!</code>来强制解包该可选类型值。</p>
+<blockquote>
+<blockquote>
+<p>注：[重要] 使用<code>!</code>的时候一定要确保可选类型的值是存在的，否则会出现运行时错误，导致程序闪退。</p>
+</blockquote>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> convertedNumber != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"convertedNumber has an integer value of <span class="subst">\(convertedNumber!)</span>."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="可选绑定"><a href="#可选绑定" class="headerlink" title="可选绑定"></a>可选绑定</h4><p>​    在if和while语句中，可以通过使用可选绑定来检查可选值。if语句中使用可选绑定格式如下</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> constantName = someOptional &#123;<span class="comment">//if var constantName</span></div><div class="line">    non-<span class="literal">nil</span>-statements</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="literal">nil</span>-statement</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="可选类型的隐式解包"><a href="#可选类型的隐式解包" class="headerlink" title="可选类型的隐式解包"></a>可选类型的隐式解包</h4><p>​    通常情况下，对于一个可选类型，如果在设置初始值后能够<code>确定包含一个值</code>，就没有必要每次通过可选绑定来进行检查、解包。这时可以通过在可选类型名后边添加<code>!</code>来隐式解包</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> possibleString: <span class="type">String</span>? = <span class="string">"An optional string."</span></div><div class="line"><span class="keyword">let</span> forcedString: <span class="type">String</span> = possibleString! <span class="comment">// requires an exclamation mark</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> assumedString: <span class="type">String</span>! = <span class="string">"An implicitly unwrapped optional string."</span></div><div class="line"><span class="keyword">let</span> implicitString: <span class="type">String</span> = assumedString <span class="comment">// no need for an exclamation mark</span></div></pre></td></tr></table></figure>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>在程序执行过程中，可以通过错误处理来响应程序运行期间遇到的错误。当一个函数遇到错误的时候，可以抛出，函数调用者捕捉该错误并做相应的相应处理。函数通过关键字<code>throws</code>来表明会抛出错误。当调用该类型的函数时，使用<code>try</code>关键字</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">canThrowAnError</span><span class="params">()</span></span> <span class="keyword">throws</span> &#123;</div><div class="line">    <span class="comment">// this function may or may not throw an error</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    <span class="keyword">try</span> canThrowAnError()</div><div class="line">    <span class="comment">// no error was thrown</span></div><div class="line">&#125; <span class="keyword">catch</span> &#123;<span class="comment">//默认error，当然你也可以使用多个catch，并明确具体的错误类型 比如：catch SandwichError.outOfCleanDishes</span></div><div class="line">    <span class="comment">// an error was thrown</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>​    在一些特定的情况下，代码没有必要继续执行。这时候可以通过触发断言来终止代码的执行，并告知原因。</p>
+<p>​    通常情况下，断言的使用时机：</p>
+<blockquote>
+<ul>
+<li><p>在Debug的时候使用；</p>
+</li>
+<li><p>使用下标访问数据时；</p>
+</li>
+<li><p>函数入口参数检查时；</p>
+</li>
+<li><p>可选类型要求非nil时；</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><p><code>https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html</code></p>
+<p>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
+<blockquote>
+<p>​Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/30/iOS_develop_ObjC_basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,234 +715,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/25/iOS_develop_viewController_life_circle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/25/iOS_develop_viewController_life_circle/" itemprop="url">ViewController Life-Circle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-25T22:16:32+08:00">
-                2016-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/25/iOS_develop_viewController_life_circle/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/25/iOS_develop_viewController_life_circle/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>对ViewController生命周期进行介绍，同时会说一些曾经遇到过的坑及注意事项</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    这部分其实没啥好说的，苹果UIViewController接口文档对各个接口的描述写的很详细。<br>​    在视图的生命周期中，我曾经出问题的地方包括是UI表现异常；通知监听与释放没有成对出现；异步闭包回调引起的循环引用的资源无法释放；<code>__weak</code>和<code>__strong</code>问题导致的程序闪退等。这里就是把这些坑给记下来，（如果你碰巧）遇到这类问题后不会感到莫名其妙。</p>
-<h3 id="UIViewController的生命周期"><a href="#UIViewController的生命周期" class="headerlink" title="UIViewController的生命周期"></a>UIViewController的生命周期</h3><blockquote>
-<p>视图出现的时候调用顺序</p>
-</blockquote>
-<pre><code>- (void)viewDidLoad; // Called after the view has been loaded.just once
-
-- (void)viewWillAppear:(BOOL)animated;    // Called when the view is about to made visible. Default does nothing
-
-// Called just before the view controller&apos;s view&apos;s layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
-- (void)viewWillLayoutSubviews NS_AVAILABLE_IOS(5_0);
-
-// Called just after the view controller&apos;s view&apos;s layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
-- (void)viewDidLayoutSubviews NS_AVAILABLE_IOS(5_0);
-
-- (void)viewDidAppear:(BOOL)animated;     // Called when the view has been fully transitioned onto the screen. Default does nothing
-</code></pre><hr>
-<blockquote>
-<p>视图离开屏幕的时候调用顺序</p>
-</blockquote>
-<pre><code>- (void)viewWillDisappear:(BOOL)animated; // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
-
-- (void)viewDidDisappear:(BOOL)animated;  // Called after the view was dismissed, covered or otherwise hidden. Default does nothing
-</code></pre><h3 id="说明及最佳实践"><a href="#说明及最佳实践" class="headerlink" title="说明及最佳实践"></a>说明及最佳实践</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>很常用、很重要的方法，只是在APP页面加载的时候调用一次，以后不会再调用了。<br>通常做一些<code>初始化设置</code>，但是UI相关的设置不要放在这里<br>当然，iOS6之前早期系统上，没有AutoLayout，使用绝对布局在这里更新UI问题不大</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图即将出现在屏幕上，会调用该方法。<br>重写该方法，可以做一些<code>UI相关设置</code>，以及KVO监听之类操作<br>当APP视图间进行切换的时候，也会调用该方法</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillLayoutSubviews；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在viewWillAppare后调用，将要对子视图进行布局</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void) viewDidLayoutSubviews；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>已经布局完成子视图</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidAppear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图出现在屏幕上，会调用该方法。<br>重写该方法，可以做一些<em>UI更新设置</em></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillDisappear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图变换，即将离开屏幕时，会调用该方法。<br>重写该方法，做一些善后的处理工作，比如持久化处理、移除KVO监听之类的</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidDisappear:(BOOL)animated；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>视图变换，离开屏幕时，会调用该方法。<br>重写该方法，对已消失的视图做一些操作，比如释放资源</p>
-</blockquote>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
-<li><p>UI表示异常的话，多半是在不正确的时机调用了UI相关设置。</p>
-</li>
-<li><p>资源释放，尤其涉及视频、监听相关内容。</p>
-</li>
-<li><p>异步操作，涉及闭包，协议等操作时，要谨慎。</p>
-<ul>
-<li>例如：使用<code>__weakSelf</code>和<code>__strongSelf</code>打破循环引用</li>
-<li>例如：使用@selector前要判断</li>
-</ul>
-</li>
-<li><p>其他</p>
-<p>​</p>
-</li>
-</ul>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>​    在这里遇到问题的话，一定要静下心。举个例子，比如你在viewDidLoad方法内有关于某个对象的回调处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_obj.testBlock = ^()&#123;</div><div class="line">    //your test block process</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>但是实际开发中没有触发。可以从以下几个方向去调查：</p>
-<ul>
-<li>_obj对应类/结构体中是否会调用（绑定）该闭包；</li>
-<li>_obj的作用域：是全局的还是堆栈的；</li>
-<li>该闭包是否在其他地方进行了设置；</li>
-<li>其他。</li>
-</ul>
-<p>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -743,7 +765,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
