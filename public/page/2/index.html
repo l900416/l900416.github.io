@@ -291,6 +291,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/23/algorithm_location_maximum_likelihood/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/23/algorithm_location_maximum_likelihood/" itemprop="url">基于二维空间的极大似然估计算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T16:41:27+08:00">
+                2017-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/23/algorithm_location_maximum_likelihood/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/23/algorithm_location_maximum_likelihood/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>  基于距离的极大似然估计法利用多个已知节点的位置及节点与目标点位置的距离来计算出目标点的位置。</p>
+<h4 id="极大似然估算法"><a href="#极大似然估算法" class="headerlink" title="极大似然估算法"></a>极大似然估算法</h4><p>极大似然估算法定位原理：假设定位区域目标点，n个已知位置和距离目标点距离的节点，可得到目标点与n个节点之间的距离方程。<br>设节点的坐标为(x<sub>1</sub>,y<sub>1</sub>) , (x<sub>2</sub>,y<sub>2</sub>) , … , (x<sub>n</sub>,y<sub>n</sub>)，目标点坐标 (x,y)，各节点到目标点的距离d<sub>1</sub> , d<sub>2</sub>,…, d<sub>n</sub>，则可的方程组 ( x<sub>i</sub> - x )²  + (y<sub>i</sub> -y)² = d<sub>i</sub>² , 其中I∈[1,n]。<br>对方程组进行求解，可得x，y坐标</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>用于运算的节点简单二维空间节点对象，主要包含坐标及距离，用于极大似然算法估算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * 节点对象，包含坐标点和距离属性</div><div class="line"> **/</div><div class="line">@interface LikelihoodNode : NSObject</div><div class="line">@property (nonatomic , assign) CGPoint point;</div><div class="line">@property (nonatomic , assign) float distance</div><div class="line">-(id)initWithX:(float)x Y:(CGFloat)y distance:(float)distance;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation LikelihoodNode</div><div class="line">-(id)initWithX:(float)x Y:(CGFloat)y distance:(float)distance&#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self != nil) &#123;</div><div class="line">        self.point = CGPointMake(x, y);</div><div class="line">        self.distance = distance;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>极大似然算法，对已知节点进行计算，得到目标节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line">  * 极大似然估算，输入多个点数组，计算出目标点坐标</div><div class="line"> **/</div><div class="line">@interface MaximumLikelihood : NSObject</div><div class="line">+ (CGPoint) maximumLikelihoodPointFromArray:(NSArray*)array;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation MaximumLikelihood</div><div class="line"></div><div class="line">+ (CGPoint) maximumLikelihoodPointFromArray:(NSArray*)array&#123;</div><div class="line">    CGPoint retPoint = CGPointZero;</div><div class="line">    if (array.count &gt; 2) &#123;//至少3个点来计算极大似然数</div><div class="line">        long double segmaDeletaX = 0.0;</div><div class="line">        long double segmaDeletaY = 0.0;</div><div class="line">        long double segmaDeletaX_Y = 0.0;</div><div class="line">        </div><div class="line">        LikelihoodNode* lastNode = [array lastObject];</div><div class="line">        </div><div class="line">        /**</div><div class="line">         * segma deleta x 2</div><div class="line">         * segma deleta y 2</div><div class="line">         * segma deleta x * delta y</div><div class="line">         **/</div><div class="line">        for (int i = 0; i &lt; array.count - 1; ++i) &#123;</div><div class="line">            LikelihoodNode* node = [array objectAtIndex:i];</div><div class="line">            long double deltaX = [MaximumLikelihood deltaXiWithNode:node and:lastNode];</div><div class="line">            long double deltaY = [MaximumLikelihood deltaYiWithNode:node and:lastNode];</div><div class="line">            segmaDeletaX += pow(deltaX,2);</div><div class="line">            segmaDeletaY += pow(deltaY,2);</div><div class="line">            segmaDeletaX_Y += deltaX * deltaY;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        long double preNumber = 0.0;</div><div class="line">        long double temp = segmaDeletaX * segmaDeletaY - pow(segmaDeletaX_Y, 2);</div><div class="line">        </div><div class="line">        if (temp != 0) &#123;</div><div class="line">            preNumber = (2 / temp) / 4;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        long double maximumLikehoodX = 0.0;</div><div class="line">        long double maximumLikehoodY = 0.0;</div><div class="line">        for (int i = 0; i &lt; array.count - 1; ++i) &#123;</div><div class="line">            LikelihoodNode* node = [array objectAtIndex:i];</div><div class="line">            long double deltaX = [MaximumLikelihood deltaXiWithNode:node and:lastNode];</div><div class="line">            long double deltaY = [MaximumLikelihood deltaYiWithNode:node and:lastNode];</div><div class="line">            long double fDi = [MaximumLikelihood getFr_xFrom:node and:lastNode];</div><div class="line">            maximumLikehoodX += (segmaDeletaY * deltaX - segmaDeletaX_Y * deltaY) * fDi;</div><div class="line">            maximumLikehoodY += (segmaDeletaX * deltaY - segmaDeletaX_Y * deltaX) * fDi;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        retPoint.x = maximumLikehoodX * preNumber;</div><div class="line">        retPoint.y = maximumLikehoodY * preNumber;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return retPoint;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//deltaX</div><div class="line">+(long double)deltaXiWithNode:(LikelihoodNode*)node and:(LikelihoodNode*)lastNode&#123;</div><div class="line">    long double ans = 0.0;</div><div class="line">    ans = node.point.x - lastNode.point.x;</div><div class="line">    return ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//deltaY</div><div class="line">+(long double)deltaYiWithNode:(LikelihoodNode*)node and:(LikelihoodNode*)lastNode&#123;</div><div class="line">    long double ans = 0.0;</div><div class="line">    ans = node.point.y - lastNode.point.y;</div><div class="line">    return ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//f(di)</div><div class="line">+(float)getFr_xFrom:(LikelihoodNode*)node and:(LikelihoodNode*)lastNode&#123;</div><div class="line">    double ans = 0.0;</div><div class="line">    ans = (node.point.x * node.point.x) - (lastNode.point.x * lastNode.point.x) + (node.point.y * node.point.y) - (lastNode.point.y * lastNode.point.y) - (node.distance * node.distance) + (lastNode.distance * lastNode.distance);</div><div class="line">    </div><div class="line">    return ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>考虑到实际情况下，节点与目标点会随距离的增大导致误差变大，故可以通过节点吸附对目标点坐标进行校正。<br>在参与节点与目标点满足情况的前提下，校正步骤如下：</p>
+<ul>
+<li>判断目标点距离最近节点nNode的距离distance</li>
+<li>若disatance小于吸附临界值(比如：1m)<ul>
+<li>根据像素与实际地理米转换关系计算出极大似然估算法节点mNode与nNode的距离distancePointToNearest</li>
+<li>若distancePointToNearest不大于distance，则不需要进行校正</li>
+<li>否则计算出mNode与nNode位置之间连线与distnace处交点的坐标，即为校正后的坐标</li>
+</ul>
+</li>
+<li>否则不进行吸附校正</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * 校正、吸附算法。</div><div class="line"> * 假设参与计算的节点按照距目标点距离递增的顺序排列</div><div class="line"> * 此处仅在计算结果与最近节点距离小于1米的情况下进行校正。</div><div class="line"> **/</div><div class="line">+ (CGPoint) maximumLikelihoodPointFromArray:(NSArray*)array mToPxScale:(CGFloat)mToPxScale&#123;</div><div class="line">    CGPoint retPoint = [MaximumLikelihood maximumLikelihoodPointFromArray:array];</div><div class="line">    //根据像素与米的转换关系，判断若最近的小于1米，且计算坐标在最近区域外时，取交点坐标为最终结果坐标</div><div class="line">    if (array.count &gt; 2) &#123;</div><div class="line">        LikelihoodNode* nearest = [array firstObject];</div><div class="line">        if (nearest.distance &lt;= 1.0) &#123;</div><div class="line">            CGFloat xDist = (retPoint.x - nearest.point.x) * mToPxScale;</div><div class="line">            CGFloat yDist = (retPoint.y - nearest.point.y) * mToPxScale;</div><div class="line">            CGFloat distancePointToNearest = sqrt((xDist * xDist) + (yDist * yDist));</div><div class="line">            if (distancePointToNearest &gt; nearest.distance) &#123;</div><div class="line">                CGFloat λ = nearest.distance / (distancePointToNearest - nearest.distance);</div><div class="line">                CGFloat x =  (nearest.point.x + λ * retPoint.x) / (1 + λ);</div><div class="line">                CGFloat y =  (nearest.point.y + λ * retPoint.y) / (1 + λ);</div><div class="line">                retPoint = CGPointMake(x, y);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return retPoint;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p><a href="https://wenku.baidu.com/view/1db9c08a71fe910ef12df8df.html" target="_blank" rel="external">https://wenku.baidu.com/view/1db9c08a71fe910ef12df8df.html</a><br><a href="https://wenku.baidu.com/view/3dba1baef524ccbff12184af.html?re=view" target="_blank" rel="external">https://wenku.baidu.com/view/3dba1baef524ccbff12184af.html?re=view</a><br><a href="http://www.doc88.com/p-6037723035623.html" target="_blank" rel="external">http://www.doc88.com/p-6037723035623.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/os_shell_authority_chmod/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -682,176 +853,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/08/bluetooth_peripheral/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/08/bluetooth_peripheral/" itemprop="url">iOS蓝牙开发 - Peripheral模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T18:50:12+08:00">
-                2017-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/蓝牙/" itemprop="url" rel="index">
-                    <span itemprop="name">蓝牙</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/08/bluetooth_peripheral/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/08/bluetooth_peripheral/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Peripheral模式"><a href="#Peripheral模式" class="headerlink" title="Peripheral模式"></a>Peripheral模式</h3><p>周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。<br>蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。</p>
-<h3 id="功能集成"><a href="#功能集成" class="headerlink" title="功能集成"></a>功能集成</h3><p>  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;/array&gt;</div><div class="line">&lt;key&gt;NSBluetoothPeripheralUsageDescription&lt;/key&gt;</div><div class="line">&lt;string&gt;蓝牙设备请求描述，比如：程序需要使用蓝牙进行设备发现&lt;/string&gt;</div></pre></td></tr></table></figure></p>
-<p>  项目Targets对应的 <em>Build Phases</em> 中，引入 <em>CoreBluetooth.framework</em> ，使用的代码中引入头文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="请求蓝牙服务"><a href="#请求蓝牙服务" class="headerlink" title="请求蓝牙服务"></a>请求蓝牙服务</h4><p>  使用CBPeripheralManagerDelegate来进行蓝牙服务管理(授权请求)，监听蓝牙状态变化。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) CBPeripheralManagerDelegate *perManager;</div><div class="line"></div><div class="line"><span class="comment">//对象创建成功后，会请求使用蓝牙，CBPeripheralManagerDelegate协议会回调蓝牙的各个状态</span></div><div class="line">_perManager = [[CBPeripheralManager alloc] initWithDelegate:<span class="keyword">self</span> queue:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="meta">#pragma mark - CBPeripheralManagerDelegate</span></div><div class="line">- (<span class="keyword">void</span>)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral&#123;</div><div class="line">    <span class="keyword">if</span> (peripheral.state == CBManagerStatePoweredOn) &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在蓝牙开启的情况下，可以创建服务、创建特质值等。</p>
-<h4 id="带特质值的服务创建"><a href="#带特质值的服务创建" class="headerlink" title="带特质值的服务创建"></a>带特质值的服务创建</h4><p>  在设备蓝牙开启的情况下，可以建立服务 <em>CBMutableService</em> 和特征值 <em>CBCharacteristic</em> 并通过 <em> CBPeripheralManagerDelegate</em> 的 <em>addService:</em> 方法将带有特征值的服务注册给蓝牙设备。注册成功后，通过 <em> CBPeripheralManagerDelegate</em> 协议将服务返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">    //创建服务，其中服务关键字UUID换成自己的</div><div class="line">    CBMutableService * service = [[CBMutableService alloc] initWithType:</div><div class="line">                                  [CBUUID UUIDWithString:@&quot;service UUID&quot;] primary:YES];</div><div class="line">    //创建特征值，其中特征值的UUID换成自己的，特征值可以携带value信息（nsdata）</div><div class="line">    CBCharacteristic * characteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:@&quot;characteristic UUID&quot;]</div><div class="line">                                                                           properties:(CBCharacteristicPropertyRead |</div><div class="line">                                                                                        CBCharacteristicPropertyWrite |</div><div class="line">                                                                                        CBCharacteristicPropertyNotify) </div><div class="line">                                                                                value:[@&quot;characteristic value&quot;</div><div class="line">                                                                    dataUsingEncoding:NSUTF8StringEncoding]  </div><div class="line">                                                                          permissions:CBAttributePermissionsReadable];</div><div class="line"></div><div class="line">    //将特征值加入到服务中</div><div class="line">    service.characteristics = @[characteristic];</div><div class="line"></div><div class="line">    //给设备添加服务，注册服务</div><div class="line">    [_perManager addService:service];</div><div class="line"></div><div class="line">#pragma mark - CBPeripheralManagerDelegate</div><div class="line">//服务注册成功后，会通过以下回调将信息返回</div><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral </div><div class="line">  			didAddService:(CBService *)service</div><div class="line">              		error:(NSError *)error&#123;</div><div class="line">    //对于注册成功的服务，蓝牙设备可以直接进行广播</div><div class="line">    //开启广播，此处我们广播刚才注册的服务，UUID是：service uuid</div><div class="line">    [_perManager startAdvertising:</div><div class="line">     @&#123;CBAdvertisementDataServiceUUIDsKey:[CBUUID UUIDWithString:@&quot;service UUID&quot;]&#125;];	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>注：一个服务可以携带多个特征值，一个蓝牙周边设备可以注册多个服务。</p>
-<h4 id="开启广播"><a href="#开启广播" class="headerlink" title="开启广播"></a>开启广播</h4><p>  通过CBPeripheralManager的 <em>startAdvertising:</em> 方法开启广播，成功后通过CBPeripheralManagerDelegate协议回调。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    //开启广播</div><div class="line">    [_perManager startAdvertising:@&#123;CBAdvertisementDataServiceUUIDsKey:[CBUUID UUIDWithString:@&quot;service UUID&quot;]&#125;];</div><div class="line"></div><div class="line">    //开启广播的回调</div><div class="line">- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral </div><div class="line">  										error:(NSError *)error &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="数据读写"><a href="#数据读写" class="headerlink" title="数据读写"></a>数据读写</h4><p>当外设蓝牙设备收到ATT特征值请求时，协议 <em> CBPeripheralManagerDelegate</em> 的方法会被触发。参照协议描述，在处理数据读／写操作的协议回调方法中，必须执行方法 <em>respondToRequest:withResult:</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 读数据请求</div><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request &#123;</div><div class="line">    //请求的响应</div><div class="line">    NSData *data = request.characteristic.value; //蓝牙中心设备想读取的数据</div><div class="line">    [request setValue:data];// 读取的值</div><div class="line">    [_perManager respondToRequest:request withResult:CBATTErrorSuccess];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//写数据请求</div><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray&lt;CBATTRequest *&gt; *)requests &#123;</div><div class="line">    //请求的响应</div><div class="line">    //需要转换成CBMutableCharacteristic对象才能进行写值</div><div class="line">    for (CBATTRequest* request in requests) &#123;</div><div class="line">        CBMutableCharacteristic *c =(CBMutableCharacteristic *)request.characteristic;</div><div class="line">        c.value = request.value;</div><div class="line">        [_perManager respondToRequest:[requests firstObject] withResult:CBATTErrorSuccess];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>​</p>
-<h4 id="特征值订阅"><a href="#特征值订阅" class="headerlink" title="特征值订阅"></a>特征值订阅</h4><p>当蓝牙中心设备在进行蓝牙设备服务的特征发现时，若将特征值配置包含被通知 <em>CBCharacteristicPropertyNotify</em> ， 则协议中的以下回调会被调用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//订阅characteristics</div><div class="line">-(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic&#123;</div><div class="line">    NSLog(@&quot;订阅了 %@的数据&quot;,characteristic.UUID);</div><div class="line">    </div><div class="line">    //每秒执行一次给主设备发送一个当前时间的秒数</div><div class="line">    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:characteristic  repeats:YES];</div><div class="line">&#125;</div><div class="line">//如果不设置订阅的设备，则代表全部。</div><div class="line">-(void)sendData:(NSTimer *)t &#123;</div><div class="line">    CBMutableCharacteristic *characteristic = t.userInfo;</div><div class="line">    [_perManager updateValue:[@&quot;Subscribe To Characteristic Value Send &quot; dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic onSubscribedCentrals:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//取消订阅characteristics</div><div class="line">-(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic&#123;</div><div class="line">    NSLog(@&quot;取消订阅 %@的数据&quot;,characteristic.UUID);</div><div class="line">    </div><div class="line">    //取消回应</div><div class="line">    [_timer invalidate];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -897,7 +903,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

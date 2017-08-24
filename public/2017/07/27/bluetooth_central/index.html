@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="Central模式中心模式(Central Model)，可以简单理解为设备App作为中心，连接其他蓝牙外设设备。区别于外设模式，官方介绍可自行Google。这里主要介绍iOS上蓝牙设备作为中心模式的集成。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeripher">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-23T09:11:35.000Z">
+<meta property="og:updated_time" content="2017-08-24T01:28:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS蓝牙开发 - Central模式">
 <meta name="twitter:description" content="Central模式中心模式(Central Model)，可以简单理解为设备App作为中心，连接其他蓝牙外设设备。区别于外设模式，官方介绍可自行Google。这里主要介绍iOS上蓝牙设备作为中心模式的集成。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeripher">
@@ -439,9 +439,13 @@
 }
 </code></pre>
 <p>  特征值携带的UUID、value信息可以直接读取，若特征值发生更新，则通过协议回调进行读取。</p>
-<h4 id="读取描述"><a href="#读取描述" class="headerlink" title="读取描述"></a>读取描述</h4><pre><code>发现特征值后，通过外设的方法 *discoverDescriptorsForCharacteristic:* 读取特征值的描述信息。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。     
+<h4 id="读取描述"><a href="#读取描述" class="headerlink" title="读取描述"></a>读取描述</h4><pre><code>发现特征值后，通过外设的方法 *discoverDescriptorsForCharacteristic:* 读取特征值的描述信息。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。 
+
+当特征值发生变更的时候，若想要监听，则需要调用蓝牙外设的方法 *- (void)setNotifyValue:(BOOL)enabled forCharacteristic:(CBCharacteristic *)characteristic*
 </code></pre><pre><code class="Objective-C">    //特征值描述字段读取
     [self.peripheral discoverDescriptorsForCharacteristic:characteristics];
+    //特征值变更通知
+    [self.peripheral setNotifyValue:YES forCharacteristic:characteristics];//接受通知
 
 //特征值描述更新回调
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error{
@@ -635,7 +639,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

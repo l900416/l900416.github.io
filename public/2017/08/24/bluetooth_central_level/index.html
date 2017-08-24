@@ -76,7 +76,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iBeacon," />
+  <meta name="keywords" content="Bluetooth," />
 
 
 
@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。 方案设想在上一篇文章中有提到iBeacon应用场景举例。这里从3各方面进行描述：     测距   主要是在程序前台激活状态下，可能会用到的场景：  周边摇、现场摇、签到等 产品介绍，商场导购，博物馆导游等  位置修正，iBeacon的精度可以辅助一些其他功能 精确">
-<meta name="keywords" content="iBeacon">
+<meta name="description" content="​    工程测量中，Trimble电子水准仪(DiNi Level)在测量完成后，通过蓝牙模块与外设进行数据交互，本文介绍外设如何作为中心模式与水准仪进行数据交互。 前期准备前期准备工作包括以下几个方面：     蓝牙外设扫描 蓝牙外设连接 外设服务发现 特征值发现 订阅    可以参照iOS蓝牙开发 - Central模式，此处不再赘述，参照以下摘要信息： 123456789101112131">
+<meta name="keywords" content="Bluetooth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iBeacon应用">
-<meta property="og:url" content="http://yoursite.com/2017/03/13/bluetooth_iBeacon2/index.html">
+<meta property="og:title" content="蓝牙Central模式 - 水准仪蓝牙交互">
+<meta property="og:url" content="http://yoursite.com/2017/08/24/bluetooth_central_level/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。 方案设想在上一篇文章中有提到iBeacon应用场景举例。这里从3各方面进行描述：     测距   主要是在程序前台激活状态下，可能会用到的场景：  周边摇、现场摇、签到等 产品介绍，商场导购，博物馆导游等  位置修正，iBeacon的精度可以辅助一些其他功能 精确">
+<meta property="og:description" content="​    工程测量中，Trimble电子水准仪(DiNi Level)在测量完成后，通过蓝牙模块与外设进行数据交互，本文介绍外设如何作为中心模式与水准仪进行数据交互。 前期准备前期准备工作包括以下几个方面：     蓝牙外设扫描 蓝牙外设连接 外设服务发现 特征值发现 订阅    可以参照iOS蓝牙开发 - Central模式，此处不再赘述，参照以下摘要信息： 123456789101112131">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-23T09:12:30.000Z">
+<meta property="og:updated_time" content="2017-08-24T09:14:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iBeacon应用">
-<meta name="twitter:description" content="​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。 方案设想在上一篇文章中有提到iBeacon应用场景举例。这里从3各方面进行描述：     测距   主要是在程序前台激活状态下，可能会用到的场景：  周边摇、现场摇、签到等 产品介绍，商场导购，博物馆导游等  位置修正，iBeacon的精度可以辅助一些其他功能 精确">
+<meta name="twitter:title" content="蓝牙Central模式 - 水准仪蓝牙交互">
+<meta name="twitter:description" content="​    工程测量中，Trimble电子水准仪(DiNi Level)在测量完成后，通过蓝牙模块与外设进行数据交互，本文介绍外设如何作为中心模式与水准仪进行数据交互。 前期准备前期准备工作包括以下几个方面：     蓝牙外设扫描 蓝牙外设连接 外设服务发现 特征值发现 订阅    可以参照iOS蓝牙开发 - Central模式，此处不再赘述，参照以下摘要信息： 123456789101112131">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/13/bluetooth_iBeacon2/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/24/bluetooth_central_level/"/>
 
 
 
 
 
-  <title>iBeacon应用 | liangtong</title>
+  <title>蓝牙Central模式 - 水准仪蓝牙交互 | liangtong</title>
   
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/bluetooth_iBeacon2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/24/bluetooth_central_level/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -308,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iBeacon应用</h1>
+          <h1 class="post-title" itemprop="name headline">蓝牙Central模式 - 水准仪蓝牙交互</h1>
         
 
         <div class="post-meta">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T21:25:19+08:00">
-                2017-03-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T18:50:12+08:00">
+                2017-08-24
               </time>
             
 
@@ -361,9 +361,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/13/bluetooth_iBeacon2/#comments" itemprop="discussionUrl">
+                <a href="/2017/08/24/bluetooth_central_level/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/13/bluetooth_iBeacon2/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/08/24/bluetooth_central_level/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -391,77 +391,28 @@
       
 
       
-        <p>​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。</p>
-<h3 id="方案设想"><a href="#方案设想" class="headerlink" title="方案设想"></a>方案设想</h3><p>在上一篇文章中有提到iBeacon应用场景举例。这里从3各方面进行描述：   </p>
+        <p>​    工程测量中，<a href="http://www.trimble.com/" target="_blank" rel="external">Trimble</a>电子水准仪(DiNi Level)在测量完成后，通过蓝牙模块与外设进行数据交互，本文介绍外设如何作为中心模式与水准仪进行数据交互。</p>
+<h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p>前期准备工作包括以下几个方面：   </p>
 <ul>
-<li><p>测距</p>
-<p>  主要是在程序前台激活状态下，可能会用到的场景：</p>
-<ul>
-<li>周边摇、现场摇、签到等</li>
-<li>产品介绍，商场导购，博物馆导游等 </li>
-<li>位置修正，iBeacon的精度可以辅助一些其他功能</li>
-<li>精确区域预警、地理围栏</li>
-<li>室内导航等</li>
-</ul>
-</li>
-<li><p>监听</p>
-<p>  托管给iOS系统，程序本身不需要打开即可触发功能，可能会用到以下场景：   </p>
-<ul>
-<li>欢迎语：比如当用户手持设备进入任意场景区域内时，进行交互提醒。</li>
-<li>业务联动：比如当用户进入某个控制区后，告知概况，同周边设备联动。</li>
-<li>区域预警：比如设置特定的围栏区域。</li>
-<li>其他：比如与门禁系统联动等</li>
-</ul>
-</li>
-<li><p>角色交换</p>
-<p>  通常情况下，iBeacon设备作为基站，移动设备比如iPhone和iPad来接收信号，从而进行机遇位置的场景交互。我们也可以讲iPhone和iPad作为基站，给其设定特定的区域值进行广播。而接收设备位置固定等。可以设想以下场景：</p>
-<ul>
-<li>演示大屏上展示周边设备。</li>
-<li>教师要求输入动态口令进行签到。</li>
+<li>蓝牙外设扫描</li>
+<li>蓝牙外设连接</li>
+<li>外设服务发现</li>
+<li>特征值发现<ul>
+<li>订阅</li>
 </ul>
 </li>
 </ul>
-<h3 id="基础方案"><a href="#基础方案" class="headerlink" title="基础方案"></a>基础方案</h3><p>​    理想情况下，以下数据需要预缓存，保证在无网络或者网络环境差的情况下，交互动作可以顺利进行。因此，各类信息的版本控制需要在前期考虑。</p>
-<h4 id="iBeacon策略"><a href="#iBeacon策略" class="headerlink" title="iBeacon策略"></a>iBeacon策略</h4><p>​    iBeacon策略，或者说应用场景。如上一篇文章中所说，这里主要在iBeacon对应的区域Region（ProximityUUID &amp; Major &amp; Minor）上的三个值上做文章。 比如：  </p>
-<ul>
-<li>ProximityUUID ： 公司编码</li>
-<li>Major ： 建筑编码</li>
-<li>Minor ： 某类区域（物品）编码</li>
-</ul>
-<p>策略相关信息确定后，就可以给不同的策略配置个性化信息了，比如进入／离开策略对应的区域时，定制以下信息：   </p>
-<ul>
-<li>通知声音：个性化提示音</li>
-<li>通知内容：跟具体业务相关</li>
-<li>通知优先级：当多个策略同时触发时，可根据优先级来动态显示</li>
-<li>通知频次：用来确保特定时间段内，不重复通知</li>
-</ul>
-<h4 id="iBeacon业务"><a href="#iBeacon业务" class="headerlink" title="iBeacon业务"></a>iBeacon业务</h4><p>​    单纯的触发iBeacon对应区域的策略，仅仅是对用户的消息提醒，我们比较关注的是策略的后续动作。比如当用户到达某个iBeacon区域（或者在某个区域驻足时间较长）后，收到了个性化的策略通知。很自然的点击查看感兴趣的消息，那么后续的动作就是这里所说的iBeacon业务。通常情况下，后续动作包括以下几种：   </p>
-<ul>
-<li>打开某个本地模块</li>
-<li>打开某个Web网页</li>
-<li>打开某个本地网页</li>
-<li>无后续动作</li>
-</ul>
-<p>需要注意的是，后续动作可能不止一种。</p>
-<h4 id="策略业务关联"><a href="#策略业务关联" class="headerlink" title="策略业务关联"></a>策略业务关联</h4><p>​    为了保证数据的灵活，策略与业务的对应关系为1:N（N &gt;= 0），当策略对应多个业务的时候，需要考虑各业务的优先级等。</p>
-<h4 id="用户策略"><a href="#用户策略" class="headerlink" title="用户策略"></a>用户策略</h4><p>​    除了一些共通的策略外，用户也可以拥有独特权限的策略，比如同一个区域，不同角色进入时，看到的数据根据其权限表现出差异。</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="设备选择"><a href="#设备选择" class="headerlink" title="设备选择"></a>设备选择</h4><p>iBeacon设备选取可能会考虑的几个因素包括：   </p>
-<ul>
-<li>电池及续航</li>
-<li>设备运维</li>
-<li>设备部署</li>
-<li>设备美感</li>
-<li>设备软件能力</li>
-<li>设备使用</li>
-</ul>
-<p>通常情况下，电池、部署、软件能力需要着重考虑。</p>
-<h4 id="设备部署"><a href="#设备部署" class="headerlink" title="设备部署"></a>设备部署</h4><p>部署时可能需要考虑以下几个因素：   </p>
-<ul>
-<li>环境干扰</li>
-<li>工厂校正电压</li>
-<li>放置位置（高度／间距）</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    iBeacon技术在旅游景点、博物馆、商场、酒店、会议室等场景中可以给人很好的用户体验，但在成本、运维部署方面一直存在着问题。目前情况下小范围内玩iBeacon，还是很有搞头的。</p>
+<p>可以参照<a href="https://l900416.github.io/2017/07/27/bluetooth_central/" target="_blank" rel="external">iOS蓝牙开发 - Central模式</a>，此处不再赘述，参照以下摘要信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">2017-08-24 16:15:39.860 RoadBridgeOnline[1067:189910] CBCentralManagerStatePoweredOn</div><div class="line">2017-08-24 16:15:50.121 RoadBridgeOnline[1067:189910] -[BluetoothViewModel centralManager:didConnectPeripheral:], line = 198, CRTB_BT_MODULE=连接成功</div><div class="line">2017-08-24 16:15:50.188 RoadBridgeOnline[1067:189910]  -- 发现服务 -- :&lt;CBService: 0x15e6301c0, isPrimary = YES, UUID = 1101&gt;</div><div class="line">2017-08-24 16:15:50.189 RoadBridgeOnline[1067:189910]  -- 发现服务 -- :&lt;CBService: 0x15e6a6590, isPrimary = YES, UUID = 00001016-D102-11E1-9B23-00025B00A5A5&gt;</div><div class="line">2017-08-24 16:15:50.191 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didDiscoverCharacteristicsForService:error:], line = 236</div><div class="line">2017-08-24 16:15:50.191 RoadBridgeOnline[1067:189910] characteristic name:1102 value is: </div><div class="line"></div><div class="line">2017-08-24 16:15:50.193 RoadBridgeOnline[1067:189910] characteristic name:1103 value is:</div><div class="line">2017-08-24 16:15:50.194 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didDiscoverCharacteristicsForService:error:], line = 236</div><div class="line">2017-08-24 16:15:50.195 RoadBridgeOnline[1067:189910] characteristic name:00001013-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.197 RoadBridgeOnline[1067:189910] characteristic name:00001018-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.198 RoadBridgeOnline[1067:189910] characteristic name:00001014-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.199 RoadBridgeOnline[1067:189910] characteristic name:00001011-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.248 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:15:50.248 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:</div></pre></td></tr></table></figure>
+<h4 id="特征值订阅／监听"><a href="#特征值订阅／监听" class="headerlink" title="特征值订阅／监听"></a>特征值订阅／监听</h4><p>水准仪与蓝牙外设的通讯，主要是通过特征值来实现，故此处进行单独介绍。在特征值发现之后，我们可以根据特征值进行过滤，监听特定的特征值，这样，当特征值发生变更的时候，会通过CBPeripheralDelegate协议回调特征值数据。使用蓝牙外设对象 <em>CBPeripheral</em> 的方法 <em>setNotifyValue:forCharacteristic:</em> 来进行监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//订阅 - 接受通知</div><div class="line">   [self.connectedPeripheral setNotifyValue:YES forCharacteristic:characteristics];</div></pre></td></tr></table></figure>
+<p>通过协议回调处理特征值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * CBPeripheralDelegate协议，当特征值发生变更的时候，回调</div><div class="line"> **/</div><div class="line">- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error&#123;</div><div class="line">        NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);</div><div class="line">    NSString* valueString = [[NSString alloc] initWithData:characteristic.value  encoding:NSUTF8StringEncoding];</div><div class="line">    [self.readValueArray addObject:valueString];</div><div class="line">    [self postRecievedCharacteristicValue];</div><div class="line">    </div><div class="line">    NSLog(@&quot;characteristic name:%@ value is:%@&quot;,characteristic.UUID,valueString);</div><div class="line">//    NSLog(@&quot;接收到的数组：\n%@&quot;,self.readValueArray);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">  * 将水准仪返回的数据进行处理，获取关键字段，数据处理成功后，直接发全局Event通知。</div><div class="line">  * 单点测量</div><div class="line">  * 水准线路测量 - 后视</div><div class="line">  * 水准线路测量 - 前视</div><div class="line">  **/</div><div class="line">-(void)postRecievedCharacteristicValue&#123;</div><div class="line">    if ([self.readValueArray count] &gt; 0) &#123;</div><div class="line">        NSString * fullString = [self.readValueArray componentsJoinedByString:@&quot;&quot;];</div><div class="line">        NSLog(@&quot;待处理的特质值为：\n %@ \n&quot;,fullString);</div><div class="line">        </div><div class="line">        NSArray* sepArray = [fullString componentsSeparatedByString:@&quot;|&quot;];</div><div class="line">        NSMutableDictionary* postDic = [[NSMutableDictionary alloc] init];</div><div class="line">        </div><div class="line">	    //处理字符串数据，将不同数据进行封装，代码略</div><div class="line">        </div><div class="line">        if ([[postDic allKeys] count] &gt; 0) &#123;//直接全局通知</div><div class="line">            [[NSNotificationCenter defaultCenter] jk_postNotificationOnMainThreadName:RBBluetoothMeasureUpdateKey object:postDic];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要注意的是水准仪蓝牙数据的回传时将字符串进行了分隔。我们需要首先进行数据拼接，之后才能进行数据提取操作，以下是拼接后的字符串及原始字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//以下是拼接后的字符串（水准线路测量 - 前视）</div><div class="line">For M5|Adr    32|KD1      5-a    g 15:49:151  L1|Rf        1.49585 m   |HD          9.988 m   |                      | </div><div class="line">For M5|Adr    33|KD1      5-a    g 15:49:15   L1|                      |                      |Z        -0.43374 m   | </div><div class="line"></div><div class="line">//以下是回调log信息：</div><div class="line">For M5|Adr      |K</div><div class="line">2017-08-24 16:18:42.299 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.300 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:D1       16    2 16:</div><div class="line">2017-08-24 16:18:42.327 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.328 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:17:37  L41|         </div><div class="line">2017-08-24 16:18:42.329 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.330 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:             |      </div><div class="line">2017-08-24 16:18:42.357 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.358 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:                |Z  </div><div class="line">2017-08-24 16:18:42.387 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.398 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:      44.98000 m   |</div><div class="line">2017-08-24 16:18:42.477 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div></pre></td></tr></table></figure>
+<h4 id="测量数据处理"><a href="#测量数据处理" class="headerlink" title="测量数据处理"></a>测量数据处理</h4><p>在前台界面相关的 <em>界面控制器</em> 中，使用 <em>NSNotificationCenter</em> 进行监听，对监听到的数据进行相应的业务逻辑处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">-(void)viewWillAppear:(BOOL)animated&#123;</div><div class="line">    [super viewWillAppear:animated];</div><div class="line">    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveLocalNotification:) name:BluetoothPeripheralUpdateKey object:nil];</div><div class="line">    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveLocalNotification:) name:RBBluetoothMeasureUpdateKey object:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)recieveLocalNotification:(NSNotification*)notification&#123;</div><div class="line">    NSString* notificationKeyName = [notification name];</div><div class="line">    //蓝牙连接状态发生变更</div><div class="line">    //蓝牙单点测量数据变更通知</div><div class="line">    if ([notificationKeyName isEqualToString:BluetoothPeripheralUpdateKey]) &#123;</div><div class="line">        [self updateBluetoothConnectionImage];</div><div class="line">    &#125;else if ([notificationKeyName isEqualToString:RBBluetoothMeasureUpdateKey]) &#123;</div><div class="line">        NSDictionary* measuredDic = notification.object;</div><div class="line">        [self uploadBluetoothMeasureData:measuredDic];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">-(void)viewWillDisappear:(BOOL)animated&#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​    </p>
 
       
     </div>
@@ -508,7 +459,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iBeacon/" rel="tag"># iBeacon</a>
+            <a href="/tags/Bluetooth/" rel="tag"># Bluetooth</a>
           
         </div>
       
@@ -521,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/11/bluetooth_iBeacon1/" rel="next" title="iBeacon基础">
-                <i class="fa fa-chevron-left"></i> iBeacon基础
+              <a href="/2017/08/23/bluetooth_location_maximum_likelihood/" rel="next" title="基于蓝牙的室内定位">
+                <i class="fa fa-chevron-left"></i> 基于蓝牙的室内定位
               </a>
             
           </div>
@@ -530,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/25/algorithm_sort_insert/" rel="prev" title="插入排序">
-                插入排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -757,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案设想"><span class="nav-number">1.</span> <span class="nav-text">方案设想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础方案"><span class="nav-number">2.</span> <span class="nav-text">基础方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iBeacon策略"><span class="nav-number">2.1.</span> <span class="nav-text">iBeacon策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iBeacon业务"><span class="nav-number">2.2.</span> <span class="nav-text">iBeacon业务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#策略业务关联"><span class="nav-number">2.3.</span> <span class="nav-text">策略业务关联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户策略"><span class="nav-number">2.4.</span> <span class="nav-text">用户策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设备选择"><span class="nav-number">3.1.</span> <span class="nav-text">设备选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设备部署"><span class="nav-number">3.2.</span> <span class="nav-text">设备部署</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征值订阅／监听"><span class="nav-number">2.</span> <span class="nav-text">特征值订阅／监听</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测量数据处理"><span class="nav-number">3.</span> <span class="nav-text">测量数据处理</span></a></li></ol></div>
             
 
           </div>
@@ -912,9 +859,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/03/13/bluetooth_iBeacon2/';
-          this.page.identifier = '2017/03/13/bluetooth_iBeacon2/';
-          this.page.title = 'iBeacon应用';
+          this.page.url = 'http://yoursite.com/2017/08/24/bluetooth_central_level/';
+          this.page.identifier = '2017/08/24/bluetooth_central_level/';
+          this.page.title = '蓝牙Central模式 - 水准仪蓝牙交互';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://liangtongdev.disqus.com/embed.js';

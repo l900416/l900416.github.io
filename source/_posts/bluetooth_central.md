@@ -165,10 +165,14 @@ _cMgr = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 ```    
   特征值携带的UUID、value信息可以直接读取，若特征值发生更新，则通过协议回调进行读取。
 #### 读取描述
-    发现特征值后，通过外设的方法 *discoverDescriptorsForCharacteristic:* 读取特征值的描述信息。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。     
+    发现特征值后，通过外设的方法 *discoverDescriptorsForCharacteristic:* 读取特征值的描述信息。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。 
+
+    当特征值发生变更的时候，若想要监听，则需要调用蓝牙外设的方法 *- (void)setNotifyValue:(BOOL)enabled forCharacteristic:(CBCharacteristic *)characteristic*
 ```Objective-C
     //特征值描述字段读取
     [self.peripheral discoverDescriptorsForCharacteristic:characteristics];
+    //特征值变更通知
+    [self.peripheral setNotifyValue:YES forCharacteristic:characteristics];//接受通知
 
 //特征值描述更新回调
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error{

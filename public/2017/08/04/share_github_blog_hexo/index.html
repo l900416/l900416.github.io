@@ -393,16 +393,16 @@
       
         <h3 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h3><p>  注册<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，建立个人博客仓库(Repository)，不在赘述。 </p>
 <h3 id="安装Git工具"><a href="#安装Git工具" class="headerlink" title="安装Git工具"></a>安装Git工具</h3><p>  终端直接执行 <em>git</em> 命令，或者通过安装GitHub客户端。</p>
-<h3 id="安装Node和NPM"><a href="#安装Node和NPM" class="headerlink" title="安装Node和NPM"></a>安装Node和NPM</h3><p>  打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> brew install node</div></pre></td></tr></table></figure></p>
+<h3 id="安装Node和NPM"><a href="#安装Node和NPM" class="headerlink" title="安装Node和NPM"></a>安装Node和NPM</h3><p>  打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> brew install node</span></div></pre></td></tr></table></figure></p>
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>  可以参照Hexo在<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Github</a>上的官方介绍，在终端依次执行以下命令进行：   </p>
-<pre><code class="Shell"><span class="meta">$</span> npm install hexo-cli -g
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> npm install hexo-cli -g</span>
 </code></pre>
 <p>  安装成功后，可以通过以下命令进行查看   </p>
-<pre><code class="Shell"><span class="meta">$</span> hexo
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo</span>
 </code></pre>
 <h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo init blog_name
-<span class="meta">$</span> cd blog_name
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo init blog_name</span>
+<span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog_name</span>
 </code></pre>
 <p>修改Hexo配置文件_config.yml  </p>
 <pre><code class="Script"># Site
@@ -414,17 +414,17 @@ language: zh-Hans
 timezone:
 </code></pre>
 <p>通过在终端输入以下命令新建博客文章</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo new "Hello Hexo"
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo new <span class="string">"Hello Hexo"</span></span>
 </code></pre>
 <p>通过在终端输入以下命令生成静态文件</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo generate
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo generate</span>
 </code></pre>
 <p>通过在终端输入以下命令启动服务</p>
-<pre><code class="Shell"><span class="meta">$</span> hexo server
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo server</span>
 </code></pre>
 <h3 id="更换Hexo主题"><a href="#更换Hexo主题" class="headerlink" title="更换Hexo主题"></a>更换Hexo主题</h3><p>这里使用GitHub上排名最靠前的主题<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT</a>，在终端输入以下命令进行主题下载：   </p>
-<pre><code class="Shell"><span class="meta">$</span> cd blog_name
-<span class="meta">$</span> git clone https://github.com/iissnan/hexo-theme-next themes/next
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog_name</span>
+<span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span>
 </code></pre>
 <p>参照<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">NexT官方指导网站</a>，对博客进行个性化配置，常用设置包括：   </p>
 <ul>
@@ -446,7 +446,7 @@ repo: https://github.com/l900416/l900416.github.io.git
 branch: master
 </code></pre>
 <h3 id="发布Hexo网站到GitHub"><a href="#发布Hexo网站到GitHub" class="headerlink" title="发布Hexo网站到GitHub"></a>发布Hexo网站到GitHub</h3><p>通过终端输入以下命令将Hexo博客发布到Github上：   </p>
-<pre><code class="Shell"><span class="meta">$</span> hexo g
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo g</span>
 </code></pre>
 <p>此步骤如果出现错误 <em> Deployer not found: git </em> ：   </p>
 <ul>
@@ -642,7 +642,7 @@ branch: master
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

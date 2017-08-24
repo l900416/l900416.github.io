@@ -291,6 +291,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/04/iOS_Swift_language_note_Basic-Operators/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/04/iOS_Swift_language_note_Basic-Operators/" itemprop="url">Swift Basic Operators</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-04T00:00:00+08:00">
+                2016-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/04/iOS_Swift_language_note_Basic-Operators/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/04/iOS_Swift_language_note_Basic-Operators/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(<code>=</code>)不再拥有返回值来阻止被错误的使用在比较运算符(<code>==</code>)的场合；算术运算符(<code>+, -, *, /, % 等</code>)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(<code>a..&lt;b</code>和<code>a...b</code>)，用来快捷表达一个区域范围值。</p>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>​    用来初始化或者更新左值<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">5</span> </div><div class="line"><span class="keyword">let</span> (x, y) = (<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// x is equal to 1, and y is equal to 2</span></div><div class="line"><span class="keyword">if</span> x = y &#123;</div><div class="line">    <span class="comment">// 存在语法错误，因为赋值运算符没有返回值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>​    Swift支持四个标准的算术运算符<code>+, -, *, /</code>；与其他语言不同的是，这些运算符默认情况下不允许被重写。另外<code>+</code>运算符也支持字符串连接。</p>
+<h5 id="取模运算符"><a href="#取模运算符" class="headerlink" title="取模运算符"></a>取模运算符</h5><p>​    与其他语言一样，注意一点：<code>a % b</code>的符号与<code>a</code>相同</p>
+<h5 id="单目运算符"><a href="#单目运算符" class="headerlink" title="单目运算符"></a>单目运算符</h5><p>​    包括单目<code>+</code>运算符和单目<code>-</code>运算符</p>
+<h5 id="复合赋值运算符"><a href="#复合赋值运算符" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h5><p>​    和C相同，Swift允许使用一个运算符和赋值运算符(<code>=</code>)来快捷组合，比如<code>+=, -=</code>。复合运算符也没有返回值。</p>
+<h5 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h5><p>​    Swift支持所有标准C语言的比较运算符：<code>a == b, a != b, a &gt; b, a &lt; b, a &gt;= b, a &lt;= b</code>。另外，Swift还提供了’=== 和 !==’运算符来判断两个对象是否引用了同一个对象。比较运算符会返回布尔Bool类型值。<br>也可以对元组类型使用比较运算符，元组的比较从左向右，每次比较一个元素。</p>
+<blockquote>
+<p>注：Bool类型不能比较，Swift标准库中比较运算符元组为少于7个元素的元组，如果元素个数不符合条件，则需要自己实现比较运算符。</p>
+</blockquote>
+<h5 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h5><p>​    同其它语言一样，格式为<code>question ? answer1 : answer2</code>。</p>
+<h5 id="Nil-Coalescing运算符"><a href="#Nil-Coalescing运算符" class="headerlink" title="Nil-Coalescing运算符"></a>Nil-Coalescing运算符</h5><p>​    格式为：(<code>a ?? b</code>)，解包’可选类型’a如果a包含一个值，则返回改值；否则返回默认值b。该运算符可以更加形象地用三目运算符表示：<code>a != nil ? a! : b</code>。且该运算符也有短路运算的特点。使用时需要注意有两点：</p>
+<blockquote>
+<ul>
+<li>a必须是可选类型 </li>
+<li>b的类型必须和a解包后的类型匹配</li>
+</ul>
+</blockquote>
+<h3 id="范围运算符"><a href="#范围运算符" class="headerlink" title="范围运算符"></a>范围运算符</h3><p>​    封闭范围运算符 <code>(a…b)</code> 包含边界<code>a</code>和<code>b</code>，其中必须满足<code>a &lt;= b</code>；半封闭范围运算符<code>(a..&lt;b)</code>包含<code>a</code>，但不包含<code>b</code>。其中必须满足<code>a &lt; b</code>。</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>​    三个C标准的逻辑运算符<code>!a , a &amp;&amp; b , a || b</code>，从左至右，有短路运算的特点。为了方便阅读，多逻辑运算符组合出现的时候建议多加括号<code>(</code>，<code>)</code>。</p>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/BasicOperators.html/" target="_blank" rel="external">BasicOperators</a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
+<blockquote>
+<p>​Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/02/iOS_Swift_language_note_The-Basics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -528,198 +709,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/30/iOS_develop_ObjC_basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/30/iOS_develop_ObjC_basic/" itemprop="url">Objective-C 知识普及</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-30T18:00:00+08:00">
-                2016-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/30/iOS_develop_ObjC_basic/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/30/iOS_develop_ObjC_basic/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行</p>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>​    一种带有局部变量的匿名函数。语法结构：<code>^</code> <code>返回值类型</code> <code>参数列表</code> <code>表达式</code></p>
-<p>比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^int(int count)&#123;return count+1;&#125;</div></pre></td></tr></table></figure>
-<p>block的声明及使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//声明</div><div class="line">int(^blk) (int) = ^(int count)&#123;return count+1;&#125;;</div><div class="line"></div><div class="line">//使用 - 作为参数</div><div class="line">void function(int(^blk)(int))</div><div class="line"></div><div class="line">//使用 - 作为返回值</div><div class="line">int (^func())(int) &#123;</div><div class="line">return ^(int count)&#123;return count+1;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用 <code>typedef</code> 简化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">typedef int (^blk_t) (int);</div><div class="line"></div><div class="line">//原来的写法</div><div class="line">void func(int (^blk)(int))</div><div class="line">//新的写法</div><div class="line">void func(blk_t blk)</div><div class="line"></div><div class="line">//原来的写法</div><div class="line">int (^func()(int))</div><div class="line">//新的写法</div><div class="line">blk_t func()</div></pre></td></tr></table></figure>
-<p>Objective-C代码中常用的写法举例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//点击课程更多按钮菜单的回调</div><div class="line">@property (nonatomic,copy) void(^courseMoreActionBlock)(EMoocCourseMoreActionType actionType, NSString* courseId);</div><div class="line"></div><div class="line">///#begin</div><div class="line">/**</div><div class="line"> *	@brief	用户提交登录请求</div><div class="line"> *</div><div class="line"> *	@param 	userName 	登录名字</div><div class="line"> *  @param  password    登录密码</div><div class="line"> *	@param 	complete 	回调函数</div><div class="line"> */</div><div class="line">///#end</div><div class="line">+(void)loginWithName:(NSString*)userName</div><div class="line">            password:(NSString*)password</div><div class="line">            progress:(void (^)(NSProgress *progress))progress</div><div class="line">            complete:(void (^)(id data,NSInteger stateCode))complete;</div></pre></td></tr></table></figure>
-<h5 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h5><p>block 只读block外的属性，不可修改。<br>__block可破坏闭包，其修饰的属性可以在block内修改。<br>使用block的时候，特别要注意循环引用的问题</p>
-<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p>​    类似Java中的interface。在ObjC中使用@protocol定义一组方法规范，实现此协议的类必须实现对应的方法。<br>例如常用的UITableViewDelegate协议格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@protocol UITableViewDelegate&lt;NSObject, UIScrollViewDelegate&gt;//可以扩展多个协议</div><div class="line"></div><div class="line">@required //必须实现的方法</div><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;</div><div class="line"></div><div class="line">@optional //可选实现的方法</div><div class="line">- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<h5 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h5><ul>
-<li>协议方法的实现。<ul>
-<li>@required //必须实现的方法(或者属性)</li>
-<li>@optional //可选实现的方法(或者属性)</li>
-</ul>
-</li>
-<li>调用delegate（实现协议的委托对象）方法时，如果是可选方法，一定要通过@selector进行判断</li>
-</ul>
-<h3 id="常用传值方式"><a href="#常用传值方式" class="headerlink" title="常用传值方式"></a>常用传值方式</h3><p>​        这里说的传值方式，不包括View&lt;-&gt;ViewController之间的Outlet、Target、Action等</p>
-<h5 id="闭包-1"><a href="#闭包-1" class="headerlink" title="闭包"></a>闭包</h5><p>一言不合就上代码：注意<code>__weak</code>和<code>__strong</code>的使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//闭包作为属性的例子</div><div class="line">@property (nonatomic,copy) void(^didTapCallBack)(id tapedItem);</div><div class="line">//使用</div><div class="line">__weak __typeof(self) weakSelf = self;</div><div class="line">obj1.didTapCallBack = ^(NSDictionary* tapedItem)&#123;</div><div class="line">	__strong __typeof(weakSelf)strongSelf = weakSelf;</div><div class="line">   	[strongSelf performSegueWithIdentifier:@&quot;showNextSegue” sender: tapedItem];</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">//闭包作为参数使用的例子：</div><div class="line">-(void)functionNameWithParamName1:(id)paramName1</div><div class="line">                    completeBlock:(NSDictionary* (^)(NSString* blockParam))completeBlock</div><div class="line">//使用</div><div class="line">[obj2 functionNameWithParamName1:@“” completeBlock:^NSDictionary*(NSString* blockParam) &#123;</div><div class="line">   	if (blockParam)&#123;</div><div class="line">		return @[];</div><div class="line">   	&#125;else&#123;</div><div class="line">		return nil;</div><div class="line">	&#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<h5 id="协议-1"><a href="#协议-1" class="headerlink" title="协议"></a>协议</h5><p>​    很常用的形式，比如UITableView、UIScrollView等UIKit框架中都是使用Protocol。</p>
-<ul>
-<li><p>代码写起来清晰易懂</p>
-</li>
-<li><p>相对闭包来说代码量变大，第三者不容易理解</p>
-<p>​</p>
-</li>
-</ul>
-<h5 id="共有方法-属性"><a href="#共有方法-属性" class="headerlink" title="共有方法(属性)"></a>共有方法(属性)</h5><p>​    这块没啥说的，就是直接在<code>.h</code>文件中写属性，方法，对象直接调用（设置）即可</p>
-<h5 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h5><p>​    比较常用，一般Model、ViewModel层通过发广播的形式进行消息发送(数据传输)。</p>
-<p>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -765,7 +759,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
