@@ -337,6 +337,257 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/29/iOS_Swift_language_note_ARC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/29/iOS_Swift_language_note_ARC/" itemprop="url">Swift ARC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-29T03:20:11+08:00">
+                2016-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/29/iOS_Swift_language_note_ARC/" class="leancloud_visitors" data-flag-title="Swift ARC">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    Swift 使用自动引用计数（ARC）机制来跟踪和管理你的应用程序的内存。通常情况下，Swift 内存管理机制会一直起作用，你无须自己来考虑内存的管理。ARC 会在类的实例不再被使用时，自动释放其占用的内存。然而在少数情况下，为了能帮助你管理内存，ARC 需要更多的，代码之间关系的信息。在 Swift 使用 ARC 与在 Obejctive-C 中使用 ARC 非常类似<br>    引用计数仅仅应用于类的实例。结构体和枚举类型是值类型，不是引用类型，也不是通过引用的方式存储和传递。</p>
+<h3 id="ARC工作机制"><a href="#ARC工作机制" class="headerlink" title="ARC工作机制"></a>ARC工作机制</h3><p>当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信息，以及这个实例所有相关的存储型属性的值。<br>当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的实例，不会一直占用内存空间。</p>
+<p>然而，当 ARC 收回和释放了正在被使用中的实例，该实例的属性和方法将不能再被访问和调用。实际上，如果你试图访问这个实例，你的应用程序很可能会崩溃。<br>为了确保使用中的实例不会被销毁，ARC 会跟踪和计算每一个实例正在被多少属性，常量和变量所引用。哪怕实例的引用数为1，ARC都不会销毁这个实例。</p>
+<p>为了使上述成为可能，无论你将实例赋值给属性、常量或变量，它们都会创建此实例的强引用。之所以称之为“强”引用，是因为它会将实例牢牢地保持住，只要强引用还在，实例是不允许被销毁的。</p>
+<h3 id="ARC实践"><a href="#ARC实践" class="headerlink" title="ARC实践"></a>ARC实践</h3><p>下面的例子展示了自动引用计数的工作机制。例子以一个简单的Person类开始，并定义了一个叫name的常量属性：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being initialized"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being deinitialized"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Person类有一个构造函数，此构造函数为实例的name属性赋值，并打印一条消息以表明初始化过程生效。Person类也拥有一个析构函数，这个析构函数会在实例被销毁时打印一条消息。</p>
+<p>接下来的代码片段定义了三个类型为Person?的变量，用来按照代码片段中的顺序，为新的Person实例建立多个引用。由于这些变量是被定义为可选类型（Person?，而不是Person），它们的值会被自动初始化为nil，目前还不会引用到Person类的实例。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reference1: <span class="type">Person</span>?</div><div class="line"><span class="keyword">var</span> reference2: <span class="type">Person</span>?</div><div class="line"><span class="keyword">var</span> reference3: <span class="type">Person</span>?</div><div class="line"></div><div class="line">reference1 = <span class="type">Person</span>(name: <span class="string">"John Appleseed"</span>)</div><div class="line"><span class="comment">// Prints "John Appleseed is being initialized"</span></div></pre></td></tr></table></figure>
+<p>由于Person类的新实例被赋值给了reference1变量，所以reference1到Person类的新实例之间建立了一个强引用。正是因为这一个强引用，ARC 会保证Person实例被保持在内存中不被销毁。如果你将同一个Person实例也赋值给其他两个变量，该实例又会多出两个强引用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">reference2 = reference1</div><div class="line">reference3 = reference1</div></pre></td></tr></table></figure>
+<p>现在这一个Person实例已经有三个强引用了。如果你通过给其中两个变量赋值nil的方式断开两个强引用（包括最先的那个强引用），只留下一个强引用，Person实例不会被销毁：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">reference1 = <span class="literal">nil</span></div><div class="line">reference2 = <span class="literal">nil</span></div></pre></td></tr></table></figure>
+<p>在你清楚地表明不再使用这个Person实例时，即第三个也就是最后一个强引用被断开时，ARC 会销毁它：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">reference3 = <span class="literal">nil</span></div><div class="line"><span class="comment">// Prints "John Appleseed is being deinitialized"</span></div></pre></td></tr></table></figure>
+<h3 id="类实例之间的循环强引用"><a href="#类实例之间的循环强引用" class="headerlink" title="类实例之间的循环强引用"></a>类实例之间的循环强引用</h3><p>在上面的例子中，ARC 会跟踪你所新创建的Person实例的引用数量，并且会在Person实例不再被需要时销毁它。<br>然而，我们可能会写出一个类实例的强引用数永远不能变成0的代码。如果两个类实例互相持有对方的强引用，因而每个实例都让对方一直存在，就是这种情况。这就是所谓的循环强引用。<br>你可以通过定义类之间的关系为弱 <code>weak</code> 引用或无主 <code>unowned</code> 引用，以替代强引用，从而解决循环强引用的问题。</p>
+<p>下面展示了一个不经意产生循环强引用的例子。例子定义了两个类：Person和Apartment，用来建模公寓和它其中的居民：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123; <span class="keyword">self</span>.name = name &#125;</div><div class="line">    <span class="keyword">var</span> apartment: <span class="type">Apartment</span>?</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apartment</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> unit: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(unit: <span class="type">String</span>) &#123; <span class="keyword">self</span>.unit = unit &#125;</div><div class="line">    <span class="keyword">var</span> tenant: <span class="type">Person</span>?</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"Apartment <span class="subst">\(unit)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每一个Person实例有一个类型为String，名字为name的属性，并有一个可选的初始化为nil的apartment属性。apartment属性是可选的，因为一个人并不总是拥有公寓。<br>类似的，每个Apartment实例有一个叫unit，类型为String的属性，并有一个可选的初始化为nil的tenant属性。tenant属性是可选的，因为一栋公寓并不总是有居民。<br>这两个类都定义了析构函数，用以在类实例被析构的时候输出信息。这让你能够知晓Person和Apartment的实例是否像预期的那样被销毁。</p>
+<p>接下来的代码片段定义了两个可选类型的变量john和unit4A，并分别被设定为下面的Apartment和Person的实例。这两个变量都被初始化为nil，这正是可选类型的优点：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> john: <span class="type">Person</span>?</div><div class="line"><span class="keyword">var</span> unit4A: <span class="type">Apartment</span>?</div><div class="line"></div><div class="line">john = <span class="type">Person</span>(name: <span class="string">"John Appleseed"</span>)</div><div class="line">unit4A = <span class="type">Apartment</span>(unit: <span class="string">"4A"</span>)</div></pre></td></tr></table></figure>
+<p>在两个实例被创建和赋值后，下图表现了强引用的关系。变量john现在有一个指向Person实例的强引用，而变量unit4A有一个指向Apartment实例的强引用：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle01_2x.png" alt=""><br>现在你能够将这两个实例关联在一起，这样人就能有公寓住了，而公寓也有了房客。注意感叹号(<code>!</code>)是用来展开(解包)和访问可选变量john和unit4A中的实例，这样实例的属性才能被赋值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">john!.apartment = unit4A</div><div class="line">unit4A!.tenant = john</div></pre></td></tr></table></figure>
+<p>在将两个实例联系在一起之后，强引用的关系如图所示：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle02_2x.png" alt=""><br>不幸的是，这两个实例关联后会产生一个循环强引用。Person实例现在有了一个指向Apartment实例的强引用，而Apartment实例也有了一个指向Person实例的强引用。因此，当你断开john和unit4A变量所持有的强引用时，引用计数并不会降为0，实例也不会被 ARC 销毁：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">john = <span class="literal">nil</span></div><div class="line">unit4A = <span class="literal">nil</span></div></pre></td></tr></table></figure>
+<p>注意，当你把这两个变量设为nil时，没有任何一个析构函数被调用。循环强引用会一直阻止Person和Apartment类实例的销毁，这就在你的应用程序中造成了内存泄漏。在你将john和unit4A赋值为nil后，强引用关系如下图：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle03_2x.png" alt=""><br>Person和Apartment实例之间的强引用关系保留了下来并且不会被断开。</p>
+<h3 id="解决实例的循环强引用问题"><a href="#解决实例的循环强引用问题" class="headerlink" title="解决实例的循环强引用问题"></a>解决实例的循环强引用问题</h3><p>Swift 提供了两种办法用来解决你在使用类的属性时所遇到的循环强引用问题：弱引用（<code>weak reference</code>）和无主引用（<code>unowned reference</code>）。<br>弱引用和无主引用允许循环引用中的一个实例引用而另外一个实例不保持强引用。这样实例能够互相引用而不产生循环强引用。</p>
+<p>当其他的实例有更短的生命周期时，使用弱引用，也就是说，当其他实例析构在先时。在上面公寓的例子中，很显然一个公寓在它的生命周期内会在某个时间段没有它的主人，所以一个弱引用就加在公寓类里面，避免循环引用。相比之下，当其他实例有相同的或者更长生命周期时，请使用无主引用。</p>
+<h4 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h4><p>弱引用不会对其引用的实例保持强引用，因而不会阻止 ARC 销毁被引用的实例。这个特性阻止了引用变为循环强引用。声明属性或者变量时，在前面加上 <code>weak</code> 关键字表明这是一个弱引用。</p>
+<p>因为弱引用不会保持所引用的实例，即使引用存在，实例也有可能被销毁。因此，ARC 会在引用的实例被销毁后自动将其赋值为nil。并且因为弱引用可以允许它们的值在运行时被赋值为nil，所以它们会被定义为可选类型变量，而不是常量。<br>你可以像其他可选值一样，检查弱引用的值是否存在，你将永远不会访问已销毁的实例的引用。<br>    当 ARC 设置弱引用为nil时，属性观察不会被触发。</p>
+<p>下面的例子跟上面Person和Apartment的例子一致，但是有一个重要的区别。这一次，Apartment的tenant属性被声明为弱引用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123; <span class="keyword">self</span>.name = name &#125;</div><div class="line">    <span class="keyword">var</span> apartment: <span class="type">Apartment</span>?</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apartment</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> unit: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(unit: <span class="type">String</span>) &#123; <span class="keyword">self</span>.unit = unit &#125;</div><div class="line">    <span class="keyword">weak</span> <span class="keyword">var</span> tenant: <span class="type">Person</span>?</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"Apartment <span class="subst">\(unit)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后跟之前一样，建立两个变量（john和unit4A）之间的强引用，并关联两个实例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> john: <span class="type">Person</span>?</div><div class="line"><span class="keyword">var</span> unit4A: <span class="type">Apartment</span>?</div><div class="line"> </div><div class="line">john = <span class="type">Person</span>(name: <span class="string">"John Appleseed"</span>)</div><div class="line">unit4A = <span class="type">Apartment</span>(unit: <span class="string">"4A"</span>)</div><div class="line"> </div><div class="line">john!.apartment = unit4A</div><div class="line">unit4A!.tenant = john</div></pre></td></tr></table></figure>
+<p>现在，两个关联在一起的实例的引用关系如下图所示：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference01_2x.png" alt=""><br>Person实例依然保持对Apartment实例的强引用，但是Apartment实例只持有对Person实例的弱引用。这意味着当你断开john变量所保持的强引用时，再也没有指向Person实例的强引用了：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference02_2x.png" alt=""><br>由于再也没有指向Person实例的强引用，该实例会被销毁：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">john = <span class="literal">nil</span></div><div class="line"><span class="comment">// Prints "John Appleseed is being deinitialized"</span></div></pre></td></tr></table></figure>
+<p>唯一剩下的指向Apartment实例的强引用来自于变量unit4A。如果你断开这个强引用，再也没有指向Apartment实例的强引用了：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">unit4A = <span class="literal">nil</span></div><div class="line"><span class="comment">// Prints "Apartment 4A is being deinitialized"</span></div></pre></td></tr></table></figure>
+<p>由于再也没有指向Apartment实例的强引用，该实例也会被销毁：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference03_2x.png" alt=""><br>    在使用垃圾收集的系统里，弱指针有时用来实现简单的缓冲机制，因为没有强引用的对象只会在内存压力触发垃圾收集时才被销毁。但是在 ARC 中，一旦值的最后一个强引用被移除，就会被立即销毁，这导致弱引用并不适合上面的用途。</p>
+<h4 id="无主引用"><a href="#无主引用" class="headerlink" title="无主引用"></a>无主引用</h4><p>和弱引用类似，无主引用不会牢牢保持住引用的实例。和弱引用不同的是，无主引用在其他实例有相同或者更长的生命周期时使用。你可以在声明属性或者变量时，在前面加上关键字unowned表示这是一个无主引用。<br>无主引用通常都被期望拥有值。不过 ARC 无法在实例被销毁后将无主引用设为nil，这意味着无主引用明确使用非可选类型<br>    使用无主引用，你必须确保引用始终指向一个未销毁的实例。<br>如果你试图在实例被销毁后，访问该实例的无主引用，会触发运行时错误。</p>
+<p>下面的例子定义了两个类，Customer和CreditCard，模拟了银行客户和客户的信用卡。这两个类中，每一个都将另外一个类的实例作为自身的属性。这种关系可能会造成循环强引用。<br>Customer和CreditCard之间的关系与前面弱引用例子中Apartment和Person的关系略微不同。在这个数据模型中，一个客户可能有或者没有信用卡，但是一张信用卡总是关联着一个客户。为了表示这种关系，Customer类有一个可选类型的card属性，但是CreditCard类有一个非可选类型的customer属性。<br>此外，只能通过将一个number值和customer实例传递给CreditCard构造函数的方式来创建CreditCard实例。这样可以确保当创建CreditCard实例时总是有一个customer实例与之关联。<br>由于信用卡总是关联着一个客户，因此将customer属性定义为无主引用，用以避免循环强引用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">var</span> card: <span class="type">CreditCard</span>?</div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreditCard</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> number: <span class="type">UInt64</span></div><div class="line">    <span class="keyword">unowned</span> <span class="keyword">let</span> customer: <span class="type">Customer</span></div><div class="line">    <span class="keyword">init</span>(number: <span class="type">UInt64</span>, customer: <span class="type">Customer</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.number = number</div><div class="line">        <span class="keyword">self</span>.customer = customer</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"Card #<span class="subst">\(number)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面的代码片段定义了一个叫john的可选类型Customer变量，用来保存某个特定客户的引用。由于是可选类型，所以变量被初始化为nil：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> john: <span class="type">Customer</span>?</div></pre></td></tr></table></figure>
+<p>现在你可以创建Customer类的实例，用它初始化CreditCard实例，并将新创建的CreditCard实例赋值为客户的card属性：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">john = <span class="type">Customer</span>(name: <span class="string">"John Appleseed"</span>)</div><div class="line">john!.card = <span class="type">CreditCard</span>(number: <span class="number">1234_5678_9012_3456</span>, customer: john!)</div></pre></td></tr></table></figure>
+<p>在你关联两个实例后，它们的引用关系如下图所示：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/unownedReference01_2x.png" alt=""></p>
+<p>Customer实例持有对CreditCard实例的强引用，而CreditCard实例持有对Customer实例的无主引用。<br>由于customer的无主引用，当你断开john变量持有的强引用时，再也没有指向Customer实例的强引用了：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/unownedReference02_2x.png" alt=""><br>由于再也没有指向Customer实例的强引用，该实例被销毁了。其后，再也没有指向CreditCard实例的强引用，该实例也随之被销毁了：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">john = <span class="literal">nil</span></div><div class="line"><span class="comment">// Prints "John Appleseed is being deinitialized"</span></div><div class="line"><span class="comment">// Prints "Card #1234567890123456 is being deinitialized"</span></div></pre></td></tr></table></figure>
+<pre><code>上面的例子展示了如何使用安全的无主引用。对于需要禁用运行时的安全检查的情况（例如，出于性能方面的原因），Swift还提供了不安全的无主引用。与所有不安全的操作一样，你需要负责检查代码以确保其安全性。 你可以通过unowned(unsafe)来声明不安全无主引用。如果你试图在实例被销毁后，访问该实例的不安全无主引用，你的程序会尝试访问该实例之前所在的内存地址，这是一个不安全的操作。
+</code></pre><h4 id="无主引用以及隐式解析可选属性"><a href="#无主引用以及隐式解析可选属性" class="headerlink" title="无主引用以及隐式解析可选属性"></a>无主引用以及隐式解析可选属性</h4><p>上面弱引用和无主引用的例子涵盖了两种常用的需要打破循环强引用的场景。</p>
+<p>Person和Apartment的例子展示了两个属性的值都允许为nil，并会潜在的产生循环强引用。这种场景最适合用弱引用来解决。<br>Customer和CreditCard的例子展示了一个属性的值允许为nil，而另一个属性的值不允许为nil，这也可能会产生循环强引用。这种场景最适合通过无主引用来解决。</p>
+<p>然而，存在着第三种场景，在这种场景中，两个属性都必须有值，并且初始化完成后永远不会为nil。在这种场景中，需要一个类使用无主属性，而另外一个类使用隐式解析可选属性。<br>这使两个属性在初始化完成后能被直接访问（不需要可选展开），同时避免了循环引用。这一节将为你展示如何建立这种关系。<br>下面的例子定义了两个类，Country和City，每个类将另外一个类的实例保存为属性。在这个模型中，每个国家必须有首都，每个城市必须属于一个国家。为了实现这种关系，Country类拥有一个capitalCity属性，而City类有一个country属性：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Country</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">var</span> capitalCity: <span class="type">City</span>!</div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, capitalName: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="keyword">self</span>.capitalCity = <span class="type">City</span>(name: capitalName, country: <span class="keyword">self</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">City</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">unowned</span> <span class="keyword">let</span> country: <span class="type">Country</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, country: <span class="type">Country</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="keyword">self</span>.country = country</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了建立两个类的依赖关系，City的构造函数接受一个Country实例作为参数，并且将实例保存到country属性。</p>
+<p>Country的构造函数调用了City的构造函数。然而，只有Country的实例完全初始化后，Country的构造函数才能把self传给City的构造函数。在两段式构造过程中有具体描述。<br>为了满足这种需求，通过在类型结尾处加上感叹号（City!）的方式，将Country的capitalCity属性声明为隐式解析可选类型的属性。这意味着像其他可选类型一样，capitalCity属性的默认值为nil，但是不需要展开它的值就能访问它。在隐式解析可选类型中有描述。</p>
+<p>由于capitalCity默认值为nil，一旦Country的实例在构造函数中给name属性赋值后，整个初始化过程就完成了。这意味着一旦name属性被赋值后，Country的构造函数就能引用并传递隐式的self。Country的构造函数在赋值capitalCity时，就能将self作为参数传递给City的构造函数。</p>
+<p>以上的意义在于你可以通过一条语句同时创建Country和City的实例，而不产生循环强引用，并且capitalCity的属性能被直接访问，而不需要通过感叹号来展开它的可选值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> country = <span class="type">Country</span>(name: <span class="string">"Canada"</span>, capitalName: <span class="string">"Ottawa"</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(country.name)</span>'s capital city is called <span class="subst">\(country.capitalCity.name)</span>"</span>)</div><div class="line"><span class="comment">// Prints "Canada's capital city is called Ottawa"</span></div></pre></td></tr></table></figure>
+<p>在上面的例子中，使用隐式解析可选值意味着满足了类的构造函数的两个构造阶段的要求。capitalCity属性在初始化完成后，能像非可选值一样使用和存取，同时还避免了循环强引用。</p>
+<h3 id="闭包的循环强引用"><a href="#闭包的循环强引用" class="headerlink" title="闭包的循环强引用"></a>闭包的循环强引用</h3><p>前面我们看到了循环强引用是在两个类实例属性互相保持对方的强引用时产生的，还知道了如何用弱引用和无主引用来打破这些循环强引用。</p>
+<p>循环强引用还会发生在当你将一个闭包赋值给类实例的某个属性，并且这个闭包体中又使用了这个类实例时。这个闭包体中可能访问了实例的某个属性，例如self.someProperty，或者闭包中调用了实例的某个方法，例如self.someMethod()。这两种情况都导致了闭包“捕获”self，从而产生了循环强引用。</p>
+<p>循环强引用的产生，是因为闭包和类相似，都是引用类型。当你把一个闭包赋值给某个属性时，你是将这个闭包的引用赋值给了属性。实质上，这跟之前的问题是一样的——两个强引用让彼此一直有效。但是，和两个类实例不同，这次一个是类实例，另一个是闭包。</p>
+<p>Swift 提供了一种优雅的方法来解决这个问题，称之为闭包捕获列表（closure capture list）。同样的，在学习如何用闭包捕获列表打破循环强引用之前，先来了解一下这里的循环强引用是如何产生的，这对我们很有帮助。</p>
+<p>下面的例子为你展示了当一个闭包引用了self后是如何产生一个循环强引用的。例子中定义了一个叫HTMLElement的类，用一种简单的模型表示 HTML 文档中的一个单独的元素：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HTMLElement</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">let</span> text: <span class="type">String</span>?</div><div class="line">    </div><div class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> asHTML: () -&gt; <span class="type">String</span> = &#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> text = <span class="keyword">self</span>.text &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"&lt;<span class="subst">\(<span class="keyword">self</span>.name)</span>&gt;<span class="subst">\(text)</span>&lt;/<span class="subst">\(<span class="keyword">self</span>.name)</span>&gt;"</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"&lt;<span class="subst">\(<span class="keyword">self</span>.name)</span> /&gt;"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, text: <span class="type">String</span>? = <span class="literal">nil</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="keyword">self</span>.text = text</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being deinitialized"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HTMLElement类定义了一个name属性来表示这个元素的名称，例如代表头部元素的”h1”，代表段落的“p”，或者代表换行的“br”。HTMLElement还定义了一个可选属性text，用来设置 HTML 元素呈现的文本。</p>
+<p>除了上面的两个属性，HTMLElement还定义了一个lazy属性asHTML。这个属性引用了一个将name和text组合成 HTML 字符串片段的闭包。该属性是Void -&gt; String类型，或者可以理解为“一个没有参数，返回String的函数”。</p>
+<p>默认情况下，闭包赋值给了asHTML属性，这个闭包返回一个代表 HTML 标签的字符串。如果text值存在，该标签就包含可选值text；如果text不存在，该标签就不包含文本。对于段落元素，根据text是“some text”还是nil，闭包会返回”</p><p>some text</p>“或者”<p>“。</p>
+<p>可以像实例方法那样去命名、使用asHTML属性。然而，由于asHTML是闭包而不是实例方法，如果你想改变特定 HTML 元素的处理方式的话，可以用自定义的闭包来取代默认值。</p>
+<p>例如，可以将一个闭包赋值给asHTML属性，这个闭包能在text属性是nil时使用默认文本，这是为了避免返回一个空的 HTML 标签：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> heading = <span class="type">HTMLElement</span>(name: <span class="string">"h1"</span>)</div><div class="line"><span class="keyword">let</span> defaultText = <span class="string">"some default text"</span></div><div class="line">heading.asHTML = &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"&lt;<span class="subst">\(heading.name)</span>&gt;<span class="subst">\(heading.text ?? defaultText)</span>&lt;/<span class="subst">\(heading.name)</span>&gt;"</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(heading.asHTML())</div><div class="line"><span class="comment">// Prints "&lt;h1&gt;some default text&lt;/h1&gt;"</span></div></pre></td></tr></table></figure>
+<pre><code>asHTML声明为lazy属性，因为只有当元素确实需要被处理为 HTML 输出的字符串时，才需要使用asHTML。也就是说，在默认的闭包中可以使用self，因为只有当初始化完成以及self确实存在后，才能访问lazy属性。
+</code></pre><p>HTMLElement类只提供了一个构造函数，通过name和text（如果有的话）参数来初始化一个新元素。该类也定义了一个析构函数，当HTMLElement实例被销毁时，打印一条消息。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> paragraph: <span class="type">HTMLElement</span>? = <span class="type">HTMLElement</span>(name: <span class="string">"p"</span>, text: <span class="string">"hello, world"</span>)</div><div class="line"><span class="built_in">print</span>(paragraph!.asHTML())</div><div class="line"><span class="comment">// Prints "&lt;p&gt;hello, world&lt;/p&gt;"</span></div></pre></td></tr></table></figure>
+<p>不幸的是，上面写的HTMLElement类产生了类实例和作为asHTML默认值的闭包之间的循环强引用。循环强引用如下图所示：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle01_2x.png" alt=""><br>实例的asHTML属性持有闭包的强引用。但是，闭包在其闭包体内使用了self（引用了self.name和self.text），因此闭包捕获了self，这意味着闭包又反过来持有了HTMLElement实例的强引用。这样两个对象就产生了循环强引用。<br>    虽然闭包多次使用了self，它只捕获HTMLElement实例的一个强引用。</p>
+<p>如果设置paragraph变量为nil，打破它持有的HTMLElement实例的强引用，HTMLElement实例和它的闭包都不会被销毁，HTMLElement的析构函数中的消息并没有被打印。也是因为循环强引用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">paragraph = <span class="literal">nil</span></div></pre></td></tr></table></figure>
+<h3 id="解决闭包的循环强引用问题"><a href="#解决闭包的循环强引用问题" class="headerlink" title="解决闭包的循环强引用问题"></a>解决闭包的循环强引用问题</h3><p>在定义闭包时同时定义捕获列表作为闭包的一部分，通过这种方式可以解决闭包和类实例之间的循环强引用。捕获列表定义了闭包体内捕获一个或者多个引用类型的规则。跟解决两个类实例间的循环强引用一样，声明每个捕获的引用为弱引用或无主引用，而不是强引用。应当根据代码关系来决定使用弱引用还是无主引用。<br>    Swift 有如下要求：只要在闭包内使用self的成员，就要用self.someProperty或者self.someMethod()（而不只是someProperty或someMethod()）。这提醒你可能会一不小心就捕获了self。</p>
+<h4 id="定义捕获列表"><a href="#定义捕获列表" class="headerlink" title="定义捕获列表"></a>定义捕获列表</h4><p>捕获列表中的每一项都由一对元素组成，一个元素是weak或unowned关键字，另一个元素是类实例的引用（例如self）或初始化过的变量（如delegate = self.delegate!）。这些项在方括号中用逗号分开。<br>如果闭包有参数列表和返回类型，把捕获列表放在它们前面：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> someClosure: (<span class="type">Int</span>, <span class="type">String</span>) -&gt; <span class="type">String</span> = &#123;</div><div class="line">    [<span class="keyword">unowned</span> <span class="keyword">self</span>, <span class="keyword">weak</span> delegate = <span class="keyword">self</span>.delegate!] (index: <span class="type">Int</span>, stringToProcess: <span class="type">String</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">    <span class="comment">// closure body goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果闭包没有指明参数列表或者返回类型，即它们会通过上下文推断，那么可以把捕获列表和关键字in放在闭包最开始的地方：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> someClosure: () -&gt; <span class="type">String</span> = &#123;</div><div class="line">    [<span class="keyword">unowned</span> <span class="keyword">self</span>, <span class="keyword">weak</span> delegate = <span class="keyword">self</span>.delegate!] <span class="keyword">in</span></div><div class="line">    <span class="comment">// closure body goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="弱引用和无主引用"><a href="#弱引用和无主引用" class="headerlink" title="弱引用和无主引用"></a>弱引用和无主引用</h4><p>在闭包和捕获的实例总是互相引用并且总是同时销毁时，将闭包内的捕获定义为 <code>无主引用</code>。<br>相反的，在被捕获的引用可能会变为nil时，将闭包内的捕获定义为 <code>弱引用</code> 。弱引用总是可选类型，并且当引用的实例被销毁后，弱引用的值会自动置为nil。这使我们可以在闭包体内检查它们是否存在。<br>    如果被捕获的引用不会变为nil，应该用无主引用，而不是弱引用。</p>
+<p>前面的HTMLElement例子中，无主引用是正确的解决循环强引用的方法。这样编写HTMLElement类来避免循环强引用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HTMLElement</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">let</span> text: <span class="type">String</span>?</div><div class="line">    </div><div class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> asHTML: () -&gt; <span class="type">String</span> = &#123;</div><div class="line">        [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> text = <span class="keyword">self</span>.text &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"&lt;<span class="subst">\(<span class="keyword">self</span>.name)</span>&gt;<span class="subst">\(text)</span>&lt;/<span class="subst">\(<span class="keyword">self</span>.name)</span>&gt;"</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"&lt;<span class="subst">\(<span class="keyword">self</span>.name)</span> /&gt;"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, text: <span class="type">String</span>? = <span class="literal">nil</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="keyword">self</span>.text = text</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being deinitialized"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的HTMLElement实现和之前的实现一致，除了在asHTML闭包中多了一个捕获列表。这里，捕获列表是[unowned self]，表示“将self捕获为无主引用而不是强引用”。<br>和之前一样，我们可以创建并打印HTMLElement实例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> paragraph: <span class="type">HTMLElement</span>? = <span class="type">HTMLElement</span>(name: <span class="string">"p"</span>, text: <span class="string">"hello, world"</span>)</div><div class="line"><span class="built_in">print</span>(paragraph!.asHTML())</div><div class="line"><span class="comment">// Prints "&lt;p&gt;hello, world&lt;/p&gt;"</span></div></pre></td></tr></table></figure>
+<p>使用捕获列表后引用关系如下图所示：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle02_2x.png" alt=""><br>此时，闭包以无主引用的形式捕获self，并不会持有HTMLElement实例的强引用。如果将paragraph赋值为nil，HTMLElement实例将会被销毁，并能看到它的析构函数打印出的消息：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">paragraph = <span class="literal">nil</span></div><div class="line"><span class="comment">// Prints "p is being deinitialized"</span></div></pre></td></tr></table></figure>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html/" target="_blank" rel="external"> AutomaticReferenceCounting </a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -506,357 +757,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/27/iOS_Swift_language_note_Initialization/" itemprop="url">Swift Initialization</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-27T00:20:11+08:00">
-                2016-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/11/27/iOS_Swift_language_note_Initialization/" class="leancloud_visitors" data-flag-title="Swift Initialization">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    构造过程是使用类、结构体、枚举的实例之前的准备过程。具体操作包括设置实例中每个存储型属性的初始值和执行其他必须的设置或初始化工作。在新实例可用前必须执行这个过程。<br>通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法。与 Objective-C 中的构造器不同，Swift 的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化。<br>类的实例也可以通过定义析构器在实例释放之前执行特定的清除工作。</p>
-<h3 id="存储属性的初始化值"><a href="#存储属性的初始化值" class="headerlink" title="存储属性的初始化值"></a>存储属性的初始化值</h3><p>类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值。存储型属性的值不能处于一个未知的状态。你可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值。<br>    为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者。</p>
-<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><p>构造器在创建某个特定类型的新实例时被调用。它的最简形式类似于一个不带任何参数的实例方法，以关键字 <code>init</code> 命名：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">init</span>() &#123;</div><div class="line">    <span class="comment">// perform some initialization here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面例子中定义了一个用来保存华氏温度的结构体Fahrenheit，它拥有一个Double类型的存储型属性temperature：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Fahrenheit</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> temperature: <span class="type">Double</span></div><div class="line">    <span class="keyword">init</span>() &#123;</div><div class="line">        temperature = <span class="number">32.0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="type">Fahrenheit</span>()</div><div class="line"><span class="built_in">print</span>(<span class="string">"The default temperature is <span class="subst">\(f.temperature)</span>° Fahrenheit"</span>)</div><div class="line"><span class="comment">// Prints "The default temperature is 32.0° Fahrenheit"</span></div></pre></td></tr></table></figure>
-<h4 id="默认属性值"><a href="#默认属性值" class="headerlink" title="默认属性值"></a>默认属性值</h4><p>可以在构造器中为存储型属性设置初始值。也可以在属性声明时为其设置默认值。<br>    如果一个属性总是使用相同的初始值，那么为其设置一个默认值比每次都在构造器中赋值要好。两种方法的效果是一样的，只不过使用默认值让属性的初始化和声明结合得更紧密。使用默认值能让你的构造器更简洁、更清晰，且能通过默认值自动推导出属性的类型；同时，它也能让你充分利用默认构造器、构造器继承等特性。</p>
-<p>你可以使用更简单的方式在定义结构体Fahrenheit时为属性temperature设置默认值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Fahrenheit</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> temperature = <span class="number">32.0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="自定义构造函数"><a href="#自定义构造函数" class="headerlink" title="自定义构造函数"></a>自定义构造函数</h3><p>可以通过输入参数和可选类型的属性来自定义构造过程，也可以在构造过程中修改 <code>常量</code> 属性。</p>
-<h4 id="构造参数"><a href="#构造参数" class="headerlink" title="构造参数"></a>构造参数</h4><p>可以在构造器定义中提供构造参数，指定所需值的类型和名字。构造参数的功能和语法跟函数和方法的参数相同。<br>下面例子中定义了一个包含摄氏度温度的结构体Celsius。它定义了两个不同的构造器：init(fromFahrenheit:)和init(fromKelvin:)，二者分别通过接受不同温标下的温度值来创建新的实例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Celsius</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> temperatureInCelsius: <span class="type">Double</span></div><div class="line">    <span class="keyword">init</span>(fromFahrenheit fahrenheit: <span class="type">Double</span>) &#123;</div><div class="line">        temperatureInCelsius = (fahrenheit - <span class="number">32.0</span>) / <span class="number">1.8</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">init</span>(fromKelvin kelvin: <span class="type">Double</span>) &#123;</div><div class="line">        temperatureInCelsius = kelvin - <span class="number">273.15</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> boilingPointOfWater = <span class="type">Celsius</span>(fromFahrenheit: <span class="number">212.0</span>)</div><div class="line"><span class="comment">// boilingPointOfWater.temperatureInCelsius is 100.0</span></div><div class="line"><span class="keyword">let</span> freezingPointOfWater = <span class="type">Celsius</span>(fromKelvin: <span class="number">273.15</span>)</div><div class="line"><span class="comment">// freezingPointOfWater.temperatureInCelsius is 0.0</span></div></pre></td></tr></table></figure>
-<h4 id="参数的参数名和标签名-内部名称和外部名称"><a href="#参数的参数名和标签名-内部名称和外部名称" class="headerlink" title="参数的参数名和标签名(内部名称和外部名称)"></a>参数的参数名和标签名(内部名称和外部名称)</h4><p>跟函数和方法参数相同，构造参数也拥有一个在构造器内部使用的参数名字和一个在调用构造器时使用的外部参数名字（标签名）。<br>构造器并不像函数和方法那样在括号前有一个可辨别的名字（只有init）。因此在调用构造器时，主要通过构造器中的参数名和类型来确定应该被调用的构造器。正因为参数如此重要，如果你在定义构造器时没有提供参数的外部名字，Swift 会为构造器的每个参数自动生成一个跟内部名字相同的外部名。</p>
-<p>以下例子中定义了一个结构体Color，它包含了三个常量：red、green和blue。这些属性可以存储0.0到1.0之间的值，用来指示颜色中红、绿、蓝成分的含量。Color提供了一个构造器，其中包含三个Double类型的构造参数。Color也可以提供第二个构造器，它只包含名为white的Double类型的参数，它被用于给上述三个构造参数赋予同样的值。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Color</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> red, green, blue: <span class="type">Double</span></div><div class="line">    <span class="keyword">init</span>(red: <span class="type">Double</span>, green: <span class="type">Double</span>, blue: <span class="type">Double</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.red   = red</div><div class="line">        <span class="keyword">self</span>.green = green</div><div class="line">        <span class="keyword">self</span>.blue  = blue</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">init</span>(white: <span class="type">Double</span>) &#123;</div><div class="line">        red   = white</div><div class="line">        green = white</div><div class="line">        blue  = white</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> magenta = <span class="type">Color</span>(red: <span class="number">1.0</span>, green: <span class="number">0.0</span>, blue: <span class="number">1.0</span>)</div><div class="line"><span class="keyword">let</span> halfGray = <span class="type">Color</span>(white: <span class="number">0.5</span>)</div></pre></td></tr></table></figure>
-<pre><code>如果不通过外部参数名字传值，你是没法调用这个构造器的。只要构造器定义了某个外部参数名，你就必须使用它，忽略它将导致编译错误：
-</code></pre><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> veryGreen = <span class="type">Color</span>(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>)</div><div class="line"><span class="comment">// this reports a compile-time error - argument labels are required</span></div></pre></td></tr></table></figure>
-<h4 id="不带标签（外部名）的构造器参数"><a href="#不带标签（外部名）的构造器参数" class="headerlink" title="不带标签（外部名）的构造器参数"></a>不带标签（外部名）的构造器参数</h4><p>如果你不希望为构造器的某个参数提供外部名字，你可以使用下划线(<code>_</code>)来显式描述它的外部名，以此重写上面所说的默认行为。</p>
-<p>下面是之前Celsius例子的扩展，跟之前相比添加了一个带有Double类型参数的构造器，其外部名用<em>代替。调用Celsius(37.0)意图明确，不需要外部参数名称。因此适合使用init(</em> celsius: Double)这样的构造器，从而可以通过提供Double类型的参数值调用构造器，而不需要加上外部名。：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Celsius</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> temperatureInCelsius: <span class="type">Double</span></div><div class="line">    <span class="keyword">init</span>(fromFahrenheit fahrenheit: <span class="type">Double</span>) &#123;</div><div class="line">        temperatureInCelsius = (fahrenheit - <span class="number">32.0</span>) / <span class="number">1.8</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">init</span>(fromKelvin kelvin: <span class="type">Double</span>) &#123;</div><div class="line">        temperatureInCelsius = kelvin - <span class="number">273.15</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">init</span>(<span class="number">_</span> celsius: <span class="type">Double</span>) &#123;</div><div class="line">        temperatureInCelsius = celsius</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> bodyTemperature = <span class="type">Celsius</span>(<span class="number">37.0</span>)</div><div class="line"><span class="comment">// bodyTemperature.temperatureInCelsius is 37.0</span></div></pre></td></tr></table></figure>
-<h4 id="可选属性类型"><a href="#可选属性类型" class="headerlink" title="可选属性类型"></a>可选属性类型</h4><p>如果你定制的类型包含一个逻辑上允许取值为空的存储型属性，你都需要将它定义为可选类型。可选类型的属性将自动初始化为nil，表示这个属性是有意在初始化时设置为空的。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SurveyQuestion</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> text: <span class="type">String</span></div><div class="line">    <span class="keyword">var</span> response: <span class="type">String</span>?</div><div class="line">    <span class="keyword">init</span>(text: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.text = text</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">ask</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(text)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> cheeseQuestion = <span class="type">SurveyQuestion</span>(text: <span class="string">"Do you like cheese?"</span>)</div><div class="line">cheeseQuestion.ask()</div><div class="line"><span class="comment">// Prints "Do you like cheese?"</span></div><div class="line">cheeseQuestion.response = <span class="string">"Yes, I do like cheese."</span></div></pre></td></tr></table></figure>
-<h4 id="构造过程中常量属性的修改"><a href="#构造过程中常量属性的修改" class="headerlink" title="构造过程中常量属性的修改"></a>构造过程中常量属性的修改</h4><p>你可以在构造过程中的任意时间点给常量属性指定一个值，只要在构造过程结束时是一个确定的值。一旦常量属性被赋值，它将永远不可更改。<br>    对于类的实例来说，它的常量属性只能在定义它的类的构造过程中修改；不能在子类中修改。</p>
-<p>你可以修改上面的SurveyQuestion示例，用常量属性替代变量属性text，表示问题内容text在SurveyQuestion的实例被创建之后不会再被修改。尽管text属性现在是常量，我们仍然可以在类的构造器中设置它的值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SurveyQuestion</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> text: <span class="type">String</span></div><div class="line">    <span class="keyword">var</span> response: <span class="type">String</span>?</div><div class="line">    <span class="keyword">init</span>(text: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.text = text</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">ask</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(text)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> beetsQuestion = <span class="type">SurveyQuestion</span>(text: <span class="string">"How about beets?"</span>)</div><div class="line">beetsQuestion.ask()</div><div class="line"><span class="comment">// Prints "How about beets?"</span></div><div class="line">beetsQuestion.response = <span class="string">"I also like beets. (But not with cheese.)"</span></div></pre></td></tr></table></figure>
-<h3 id="默认构造器"><a href="#默认构造器" class="headerlink" title="默认构造器"></a>默认构造器</h3><p>如果结构体或类的所有属性都有默认值，同时没有自定义的构造器，那么 Swift 会给这些结构体或类提供一个默认构造器（default initializers）。这个默认构造器将简单地创建一个所有属性值都设置为默认值的实例。</p>
-<p>下面例子中创建了一个类ShoppingListItem，它封装了购物清单中的某一物品的属性：名字（name）、数量（quantity）和购买状态 purchase state：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShoppingListItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span>?</div><div class="line">    <span class="keyword">var</span> quantity = <span class="number">1</span></div><div class="line">    <span class="keyword">var</span> purchased = <span class="literal">false</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> item = <span class="type">ShoppingListItem</span>()</div></pre></td></tr></table></figure>
-<h4 id="结构体的逐一成员构造器"><a href="#结构体的逐一成员构造器" class="headerlink" title="结构体的逐一成员构造器"></a>结构体的逐一成员构造器</h4><p>除了上面提到的默认构造器，如果结构体没有提供自定义的构造器，它们将自动获得一个逐一成员构造器，即使结构体的存储型属性没有默认值。</p>
-<p>逐一成员构造器是用来初始化结构体新实例里成员属性的快捷方法。我们在调用逐一成员构造器时，通过与成员属性名相同的参数名进行传值来完成对成员属性的初始赋值。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Size</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> width = <span class="number">0.0</span>, height = <span class="number">0.0</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> twoByTwo = <span class="type">Size</span>(width: <span class="number">2.0</span>, height: <span class="number">2.0</span>)</div></pre></td></tr></table></figure>
-<h3 id="值类型的构造器代理"><a href="#值类型的构造器代理" class="headerlink" title="值类型的构造器代理"></a>值类型的构造器代理</h3><p>构造器可以通过调用其它构造器来完成实例的部分构造过程。这一过程称为构造器代理，它能减少多个构造器间的代码重复。</p>
-<p>构造器代理的实现规则和形式在值类型和类类型中有所不同。值类型（结构体和枚举类型）不支持继承，所以构造器代理的过程相对简单，因为它们只能代理给自己的其它构造器。类则不同，它可以继承自其它类，这意味着类有责任保证其所有继承的存储型属性在构造时也能正确的初始化。</p>
-<p>对于值类型，你可以使用self.init在自定义的构造器中引用相同类型中的其它构造器。并且你只能在构造器内部调用self.init。<br>    如果你为某个值类型定义了一个自定义的构造器，你将无法访问到默认构造器（如果是结构体，还将无法访问逐一成员构造器）。假如你希望默认构造器、逐一成员构造器以及你自己的自定义构造器都能用来创建实例，可以将自定义的构造器写到扩展（extension）中，而不是写在值类型的原始定义中。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Size</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> width = <span class="number">0.0</span>, height = <span class="number">0.0</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rect</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> origin = <span class="type">Point</span>()</div><div class="line">    <span class="keyword">var</span> size = <span class="type">Size</span>()</div><div class="line">    <span class="keyword">init</span>() &#123;&#125;</div><div class="line">    <span class="keyword">init</span>(origin: <span class="type">Point</span>, size: <span class="type">Size</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.origin = origin</div><div class="line">        <span class="keyword">self</span>.size = size</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">init</span>(center: <span class="type">Point</span>, size: <span class="type">Size</span>) &#123;</div><div class="line">        <span class="keyword">let</span> originX = center.x - (size.width / <span class="number">2</span>)</div><div class="line">        <span class="keyword">let</span> originY = center.y - (size.height / <span class="number">2</span>)</div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(origin: <span class="type">Point</span>(x: originX, y: originY), size: size)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上代码中，3中构造方法方式如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> basicRect = <span class="type">Rect</span>()</div><div class="line"><span class="comment">// basicRect's origin is (0.0, 0.0) and its size is (0.0, 0.0)</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> originRect = <span class="type">Rect</span>(origin: <span class="type">Point</span>(x: <span class="number">2.0</span>, y: <span class="number">2.0</span>),</div><div class="line">                      size: <span class="type">Size</span>(width: <span class="number">5.0</span>, height: <span class="number">5.0</span>))</div><div class="line"><span class="comment">// originRect's origin is (2.0, 2.0) and its size is (5.0, 5.0)</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> centerRect = <span class="type">Rect</span>(center: <span class="type">Point</span>(x: <span class="number">4.0</span>, y: <span class="number">4.0</span>),</div><div class="line">                      size: <span class="type">Size</span>(width: <span class="number">3.0</span>, height: <span class="number">3.0</span>))</div><div class="line"><span class="comment">// centerRect's origin is (2.5, 2.5) and its size is (3.0, 3.0)</span></div></pre></td></tr></table></figure>
-<pre><code>如果你想用另外一种不需要自己定义init()和init(origin:size:)的方式来实现这个例子，可以通过扩展（Extensions）实现
-</code></pre><h3 id="类的继承和构造过程"><a href="#类的继承和构造过程" class="headerlink" title="类的继承和构造过程"></a>类的继承和构造过程</h3><p>类里面的所有存储型属性都必须在构造过程中设置初始值，包括所有继承自父类的属性。<br>Swift 为类类型提供了两种构造器来确保实例中所有存储型属性都能获得初始值，它们分别是指定构造器和便利构造器。</p>
-<h4 id="指定构造器和便利构造器"><a href="#指定构造器和便利构造器" class="headerlink" title="指定构造器和便利构造器"></a>指定构造器和便利构造器</h4><p>指定构造器是类中最主要的构造器。一个指定构造器将初始化类中提供的所有属性，并根据父类链往上调用父类的构造器来实现父类的初始化。一般情况下，类通常只有一个指定构造器。<br>每一个类都必须拥有至少一个指定构造器。在某些情况下，许多类通过继承了父类中的指定构造器而满足了这个条件。</p>
-<p>便利构造器是类中比较次要的、辅助型的构造器。你可以定义便利构造器来调用同一个类中的指定构造器，并为其参数提供默认值。你也可以定义便利构造器来创建一个特殊用途或特定输入值的实例。<br>便利构造器不是必需的。只在必要的时候为类提供便利构造器，比方说某种情况下通过使用便利构造器来快捷调用某个指定构造器，能够节省更多开发时间并让类的构造过程更清晰明了。</p>
-<h4 id="指定构造器和便利构造器的语法"><a href="#指定构造器和便利构造器的语法" class="headerlink" title="指定构造器和便利构造器的语法"></a>指定构造器和便利构造器的语法</h4><p>类的指定构造器的写法跟值类型简单构造器一样：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">init</span>(parameters) &#123;</div><div class="line">    statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>便利构造器也采用相同样式的写法，但需要在 <code>init</code> 关键字之前放置 <code>convenience</code> 关键字，并使用空格将它们俩分开：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">convenience</span> <span class="keyword">init</span>(parameters) &#123;</div><div class="line">    statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="类的构造器代理规则"><a href="#类的构造器代理规则" class="headerlink" title="类的构造器代理规则"></a>类的构造器代理规则</h4><p>为了简化指定构造器和便利构造器之间的调用关系，Swift 采用以下三条规则来限制构造器之间的代理调用：</p>
-<ul>
-<li>指定构造器必须调用其直接父类的的指定构造器。</li>
-<li>便利构造器必须调用同类中定义的其它构造器。</li>
-<li>便利构造器必须最终导致一个指定构造器被调用。</li>
-</ul>
-<p>可以通过如下方法进行记忆：</p>
-<ul>
-<li>指定构造器必须总是向上代理</li>
-<li>便利构造器必须总是横向代理</li>
-</ul>
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializerDelegation01_2x.png" alt=""></p>
-<p>下面图例中展示了一种涉及四个类的更复杂的类层级结构。它演示了指定构造器是如何在类层级中充当“管道”的作用，在类的构造器链上简化了类之间的相互关系。<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializerDelegation02_2x.png" alt=""></p>
-<h4 id="两段式构造过程"><a href="#两段式构造过程" class="headerlink" title="两段式构造过程"></a>两段式构造过程</h4><p>Swift 中类的构造过程包含两个阶段。第一个阶段，每个存储型属性被引入它们的类指定一个初始值。当每个存储型属性的初始值被确定后，第二阶段开始，它给每个类一次机会，在新实例准备使用之前进一步定制它们的存储型属性。</p>
-<p>两段式构造过程的使用让构造过程更安全，同时在整个类层级结构中给予了每个类完全的灵活性。两段式构造过程可以防止属性值在初始化之前被访问，也可以防止属性被另外一个构造器意外地赋予不同的值。</p>
-<blockquote>
-<p>说明白点儿就是：第一阶段是使用内存的申请与属性的初始化，第二阶段是属性的初始化赋值。<br>    Swift 的两段式构造过程跟 Objective-C 中的构造过程类似。最主要的区别在于阶段 1，Objective-C 给每一个属性赋值0或空值（比如说0或nil）。Swift 的构造流程则更加灵活，它允许你设置定制的初始值，并自如应对某些属性不能以0或nil作为合法默认值的情况。</p>
-</blockquote>
-<p>Swift 编译器将执行 4 种有效的安全检查，以确保两段式构造过程能不出错地完成：</p>
-<ul>
-<li>安全检查 1<ul>
-<li>指定构造器必须保证它所在类引入的所有属性都必须先初始化完成，之后才能将其它构造任务向上代理给父类中的构造器。<br>如上所述，一个对象的内存只有在其所有存储型属性确定之后才能完全初始化。为了满足这一规则，指定构造器必须保证它所在类引入的属性在它往上代理之前先完成初始化。</li>
-</ul>
-</li>
-<li>安全检查 2<ul>
-<li>指定构造器必须先向上代理调用父类构造器，然后再为继承的属性设置新值。如果没这么做，指定构造器赋予的新值将被父类中的构造器所覆盖。</li>
-</ul>
-</li>
-<li>安全检查 3<ul>
-<li>指便利构造器必须先代理调用同一类中的其它构造器，然后再为任意属性赋新值。如果没这么做，便利构造器赋予的新值将被同一类中其它指定构造器所覆盖。</li>
-</ul>
-</li>
-<li>安全检查 4<ul>
-<li>构造器在第一阶段构造完成之前，不能调用任何实例方法，不能读取任何实例属性的值，不能引用self作为一个值。</li>
-</ul>
-</li>
-</ul>
-<p>类实例在第一阶段结束以前并不是完全有效的。只有第一阶段完成后，该实例才会成为有效实例，才能访问属性和调用方法。</p>
-<p>以下是两段式构造过程中基于上述安全检查的构造流程展示：</p>
-<ul>
-<li>阶段 1<ul>
-<li>某个指定构造器或便利构造器被调用。</li>
-<li>完成新实例内存的分配，但此时内存还没有被初始化。</li>
-<li>指定构造器确保其所在类引入的所有存储型属性都已赋初值。存储型属性所属的内存完成初始化。</li>
-<li>指定构造器将调用父类的构造器，完成父类属性的初始化。</li>
-<li>这个调用父类构造器的过程沿着构造器链一直往上执行，直到到达构造器链的最顶部。</li>
-<li>当到达了构造器链最顶部，且已确保所有实例包含的存储型属性都已经赋值，这个实例的内存被认为已经完全初始化。此时阶段 1 完成。</li>
-</ul>
-</li>
-<li>阶段 2<ul>
-<li>从顶部构造器链一直往下，每个构造器链中类的指定构造器都有机会进一步定制实例。构造器此时可以访问self、修改它的属性并调用实例方法等等。</li>
-<li>最终，任意构造器链中的便利构造器可以有机会定制实例和使用self。</li>
-</ul>
-</li>
-</ul>
-<p>下图展示了在假定的子类和父类之间的构造阶段 1：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization01_2x.png" alt=""><br>在这个例子中，构造过程从对子类中一个便利构造器的调用开始。这个便利构造器此时没法修改任何属性，它把构造任务代理给同一类中的指定构造器。<br>如安全检查 1 所示，指定构造器将确保所有子类的属性都有值。然后它将调用父类的指定构造器，并沿着构造器链一直往上完成父类的构造过程。<br>父类中的指定构造器确保所有父类的属性都有值。由于没有更多的父类需要初始化，也就无需继续向上代理。一旦父类中所有属性都有了初始值，实例的内存被认为是完全初始化，阶段 1 完成。</p>
-<p>以下展示了相同构造过程的阶段 2：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization02_2x.png" alt=""><br>父类中的指定构造器现在有机会进一步来定制实例（尽管这不是必须的）。<br>一旦父类中的指定构造器完成调用，子类中的指定构造器可以执行更多的定制操作（这也不是必须的）。<br>最终，一旦子类的指定构造器完成调用，最开始被调用的便利构造器可以执行更多的定制操作。</p>
-<h4 id="构造器的继承和重写"><a href="#构造器的继承和重写" class="headerlink" title="构造器的继承和重写"></a>构造器的继承和重写</h4><p>跟 Objective-C 中的子类不同，Swift 中的子类默认情况下不会继承父类的构造器。Swift 的这种机制可以防止一个父类的简单构造器被一个更精细的子类继承，并被错误地用来创建子类的实例。<br>    父类的构造器仅会在安全和适当的情况下被继承。</p>
-<p>假如你希望自定义的子类中能提供一个或多个跟父类相同的构造器，你可以在子类中提供这些构造器的自定义实现。<br>当你在编写一个和父类中指定构造器相匹配的子类构造器时，你实际上是在重写父类的这个指定构造器。因此，你必须在定义子类构造器时带上 <code>override</code> 修饰符。即使你重写的是系统自动提供的默认构造器，也需要带上override修饰符。<br>正如重写属性，方法或者是下标，override修饰符会让编译器去检查父类中是否有相匹配的指定构造器，并验证构造器参数是否正确。<br>    当你重写一个父类的指定构造器时，你总是需要写override修饰符，即使你的子类将父类的指定构造器重写为了便利构造器。</p>
-<p>如果你编写了一个和父类便利构造器相匹配的子类构造器，由于子类不能直接调用父类的便利构造器（每个规则都在上文类的构造器代理规则有所描述）。因此，严格意义上来讲，你的子类并未对一个父类构造器提供重写。最后的结果就是，你在子类中“重写”一个父类便利构造器时，不需要加override前缀。</p>
-<p>在下面的例子中定义了一个叫Vehicle的基类。基类中声明了一个存储型属性numberOfWheels，它是值为0的Int类型的存储型属性。numberOfWheels属性用于创建名为descrpiption的String类型的计算型属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> numberOfWheels = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"<span class="subst">\(numberOfWheels)</span> wheel(s)"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> vehicle = <span class="type">Vehicle</span>()</div><div class="line"><span class="built_in">print</span>(<span class="string">"Vehicle: <span class="subst">\(vehicle.description)</span>"</span>)</div><div class="line"><span class="comment">// Vehicle: 0 wheel(s)</span></div></pre></td></tr></table></figure>
-<p>下面例子中定义了一个Vehicle的子类Bicycle：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bicycle</span>: <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>()</div><div class="line">        numberOfWheels = <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> bicycle = <span class="type">Bicycle</span>()</div><div class="line"><span class="built_in">print</span>(<span class="string">"Bicycle: <span class="subst">\(bicycle.description)</span>"</span>)</div><div class="line"><span class="comment">// Bicycle: 2 wheel(s)</span></div></pre></td></tr></table></figure>
-<p>子类Bicycle定义了一个自定义指定构造器init()。这个指定构造器和父类的指定构造器相匹配，所以Bicycle中的指定构造器需要带上override修饰符。<br>Bicycle的构造器init()以调用super.init()方法开始，这个方法的作用是调用Bicycle的父类Vehicle的默认构造器。这样可以确保Bicycle在修改属性之前，它所继承的属性numberOfWheels能被Vehicle类初始化。在调用super.init()之后，属性numberOfWheels的原值被新值2替换。<br>    子类可以在初始化时修改继承来的变量属性，但是不能修改继承来的常量属性。</p>
-<h4 id="构造器的自动继承"><a href="#构造器的自动继承" class="headerlink" title="构造器的自动继承"></a>构造器的自动继承</h4><p>如上所述，子类在默认情况下不会继承父类的构造器。但是如果满足特定条件，父类构造器是可以被自动继承的。在实践中，这意味着对于许多常见场景你不必重写父类的构造器，并且可以在安全的情况下以最小的代价继承父类的构造器。<br>假设你为子类中引入的所有新属性都提供了默认值，以下 2 个规则适用：</p>
-<ul>
-<li>规则 1<ul>
-<li>如果子类没有定义任何指定构造器，它将自动继承所有父类的指定构造器。</li>
-</ul>
-</li>
-<li>规则 2<ul>
-<li>如果子类提供了所有父类指定构造器的实现——无论是通过规则 1 继承过来的，还是提供了自定义实现——它将自动继承所有父类的便利构造器。</li>
-</ul>
-</li>
-</ul>
-<p>即使你在子类中添加了更多的便利构造器，这两条规则仍然适用。<br>    对于规则 2，子类可以将父类的指定构造器实现为便利构造器。</p>
-<h4 id="指定构造器和便利构造器实践"><a href="#指定构造器和便利构造器实践" class="headerlink" title="指定构造器和便利构造器实践"></a>指定构造器和便利构造器实践</h4><p>接下来的例子将在实践中展示指定构造器、便利构造器以及构造器的自动继承。这个例子定义了包含三个类Food、RecipeIngredient以及ShoppingListItem的类层次结构，并将演示它们的构造器是如何相互作用的。<br>类层次中的基类是Food，它是一个简单的用来封装食物名字的类。Food类引入了一个叫做name的String类型的属性，并且提供了两个构造器来创建Food实例：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample01_2x.png" alt=""><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: <span class="string">"[Unnamed]"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>类没有默认的逐一成员构造器，所以Food类提供了一个接受单一参数name的指定构造器。这个构造器可以使用一个特定的名字来创建新的Food实例。同样提供了一个没有参数的便利构造器init()。这个init()构造器为新食物提供了一个默认的占位名字，通过横向代理到指定构造器init(name: String)并给参数name传值[Unnamed]来实现：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> namedMeat = <span class="type">Food</span>(name: <span class="string">"Bacon"</span>)</div><div class="line"><span class="comment">// namedMeat's name is "Bacon"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> mysteryMeat = <span class="type">Food</span>()</div><div class="line"><span class="comment">// mysteryMeat's name is "[Unnamed]"</span></div></pre></td></tr></table></figure>
-<p>类层级中的第二个类是Food的子类RecipeIngredient。RecipeIngredient类用来表示食谱中的一项原料。它引入了Int类型的属性quantity（以及从Food继承过来的name属性），并且定义了两个构造器来创建RecipeIngredient实例：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample02_2x.png" alt=""><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecipeIngredient</span>: <span class="title">Food</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, quantity: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.quantity = quantity</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: name, quantity: <span class="number">1</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>RecipeIngredient类拥有一个指定构造器init(name: String, quantity: Int)，它可以用来填充RecipeIngredient实例的所有属性值。这个构造器一开始先将传入的quantity参数赋值给quantity属性，这个属性也是唯一在RecipeIngredient中新引入的属性。随后，构造器向上代理到父类Food的init(name: String)。这个过程满足两段式构造过程中的安全检查 1。</p>
-<p>RecipeIngredient还定义了一个便利构造器init(name: String)，它只通过name来创建RecipeIngredient的实例。这个便利构造器假设任意RecipeIngredient实例的quantity为1，所以不需要显式指明数量即可创建出实例。这个便利构造器的定义可以更加方便和快捷地创建实例，并且避免了创建多个quantity为1的RecipeIngredient实例时的代码重复。这个便利构造器只是简单地横向代理到类中的指定构造器，并为quantity参数传递1。<br>注意，RecipeIngredient的便利构造器init(name: String)使用了跟Food中指定构造器init(name: String)相同的参数。由于这个便利构造器重写了父类的指定构造器init(name: String)，因此必须在前面使用override修饰符</p>
-<p>尽管RecipeIngredient将父类的指定构造器重写为了便利构造器，它依然提供了父类的所有指定构造器的实现。因此，RecipeIngredient会自动继承父类的所有便利构造器。<br>在这个例子中，RecipeIngredient的父类是Food，它有一个便利构造器init()。这个便利构造器会被RecipeIngredient继承。这个继承版本的init()在功能上跟Food提供的版本是一样的，只是它会代理到RecipeIngredient版本的init(name: String)而不是Food提供的版本。</p>
-<p>所有的这三种构造器都可以用来创建新的RecipeIngredient实例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> oneMysteryItem = <span class="type">RecipeIngredient</span>()</div><div class="line"><span class="keyword">let</span> oneBacon = <span class="type">RecipeIngredient</span>(name: <span class="string">"Bacon"</span>)</div><div class="line"><span class="keyword">let</span> sixEggs = <span class="type">RecipeIngredient</span>(name: <span class="string">"Eggs"</span>, quantity: <span class="number">6</span>)</div></pre></td></tr></table></figure>
-<p>类层级中第三个也是最后一个类是RecipeIngredient的子类，叫做ShoppingListItem。这个类构建了购物单中出现的某一种食谱原料。</p>
-<p>购物单中的每一项总是从未购买状态开始的。为了呈现这一事实，ShoppingListItem引入了一个布尔类型的属性purchased，它的默认值是false。ShoppingListItem还添加了一个计算型属性description，它提供了关于ShoppingListItem实例的一些文字描述：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShoppingListItem</span>: <span class="title">RecipeIngredient</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> purchased = <span class="literal">false</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">var</span> output = <span class="string">"<span class="subst">\(quantity)</span> x <span class="subst">\(name)</span>"</span></div><div class="line">        output += purchased ? <span class="string">" ✔"</span> : <span class="string">" ✘"</span></div><div class="line">        <span class="keyword">return</span> output</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<pre><code>ShoppingListItem没有定义构造器来为purchased提供初始值，因为添加到购物单的物品的初始状态总是未购买。
-</code></pre><p>由于它为自己引入的所有属性都提供了默认值，并且自己没有定义任何构造器，ShoppingListItem将自动继承所有父类中的指定构造器和便利构造器。<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample03_2x.png" alt=""><br>你可以使用全部三个继承来的构造器来创建ShoppingListItem的新实例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> breakfastList = [</div><div class="line">    <span class="type">ShoppingListItem</span>(),</div><div class="line">    <span class="type">ShoppingListItem</span>(name: <span class="string">"Bacon"</span>),</div><div class="line">    <span class="type">ShoppingListItem</span>(name: <span class="string">"Eggs"</span>, quantity: <span class="number">6</span>),</div><div class="line">]</div><div class="line">breakfastList[<span class="number">0</span>].name = <span class="string">"Orange juice"</span></div><div class="line">breakfastList[<span class="number">0</span>].purchased = <span class="literal">true</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> breakfastList &#123;</div><div class="line">    <span class="built_in">print</span>(item.description)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 1 x Orange juice ✔</span></div><div class="line"><span class="comment">// 1 x Bacon ✘</span></div><div class="line"><span class="comment">// 6 x Eggs ✘</span></div></pre></td></tr></table></figure>
-<h3 id="可失败构造器"><a href="#可失败构造器" class="headerlink" title="可失败构造器"></a>可失败构造器</h3><p>如果一个类、结构体或枚举类型的对象，在构造过程中有可能失败，则为其定义一个可失败构造器。这里所指的“失败”是指，如给构造器传入无效的参数值，或缺少某种所需的外部资源，又或是不满足某种必要的条件等。<br>为了妥善处理这种构造过程中可能会失败的情况。你可以在一个类，结构体或是枚举类型的定义中，添加一个或多个可失败构造器。其语法为在 <code>init</code> 关键字后面添加问号( <code>init?</code> )。<br>    可失败构造器的参数名和参数类型，不能与其它非可失败构造器的参数名，及其参数类型相同。</p>
-<p>可失败构造器会创建一个类型为自身类型的可选类型的对象。你通过return nil语句来表明可失败构造器在何种情况下应该“失败”。<br>    严格来说，构造器都不支持返回值。因为构造器本身的作用，只是为了确保对象能被正确构造。因此你只是用return nil表明可失败构造器构造失败，而不要用关键字return来表明构造成功。</p>
-<p>下例中，定义了一个名为Animal的结构体，其中有一个名为species的String类型的常量属性。同时该结构体还定义了一个接受一个名为species的String类型参数的可失败构造器。这个可失败构造器检查传入的参数是否为一个空字符串。如果为空字符串，则构造失败。否则，species属性被赋值，构造成功。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> species: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>?(species: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">if</span> species.isEmpty &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</div><div class="line">        <span class="keyword">self</span>.species = species</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>你可以通过该可失败构造器来构建一个Animal的实例，并检查构造过程是否成功：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someCreature = <span class="type">Animal</span>(species: <span class="string">"Giraffe"</span>)</div><div class="line"><span class="comment">// someCreature is of type Animal?, not Animal</span></div><div class="line"> </div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> giraffe = someCreature &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"An animal was initialized with a species of <span class="subst">\(giraffe.species)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "An animal was initialized with a species of Giraffe"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">let</span> anonymousCreature = <span class="type">Animal</span>(species: <span class="string">""</span>)</div><div class="line"><span class="comment">// anonymousCreature is of type Animal?, not Animal</span></div><div class="line"> </div><div class="line"><span class="keyword">if</span> anonymousCreature == <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The anonymous creature could not be initialized"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "The anonymous creature could not be initialized"</span></div></pre></td></tr></table></figure>
-<h4 id="枚举类型的可失败构造器"><a href="#枚举类型的可失败构造器" class="headerlink" title="枚举类型的可失败构造器"></a>枚举类型的可失败构造器</h4><p>你可以通过一个带一个或多个参数的可失败构造器来获取枚举类型中特定的枚举成员。如果提供的参数无法匹配任何枚举成员，则构造失败。</p>
-<p>下例中，定义了一个名为TemperatureUnit的枚举类型。其中包含了三个可能的枚举成员(Kelvin，Celsius，和Fahrenheit)，以及一个根据Character值找出所对应的枚举成员的可失败构造器：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">TemperatureUnit</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> kelvin, celsius, fahrenheit</div><div class="line">    <span class="keyword">init</span>?(symbol: <span class="type">Character</span>) &#123;</div><div class="line">        <span class="keyword">switch</span> symbol &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"K"</span>:</div><div class="line">            <span class="keyword">self</span> = .kelvin</div><div class="line">        <span class="keyword">case</span> <span class="string">"C"</span>:</div><div class="line">            <span class="keyword">self</span> = .celsius</div><div class="line">        <span class="keyword">case</span> <span class="string">"F"</span>:</div><div class="line">            <span class="keyword">self</span> = .fahrenheit</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>你可以利用该可失败构造器在三个枚举成员中获取一个相匹配的枚举成员，当参数的值不能与任何枚举成员相匹配时，则构造失败：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fahrenheitUnit = <span class="type">TemperatureUnit</span>(symbol: <span class="string">"F"</span>)</div><div class="line"><span class="keyword">if</span> fahrenheitUnit != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"This is a defined temperature unit, so initialization succeeded."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "This is a defined temperature unit, so initialization succeeded."</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> unknownUnit = <span class="type">TemperatureUnit</span>(symbol: <span class="string">"X"</span>)</div><div class="line"><span class="keyword">if</span> unknownUnit == <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"This is not a defined temperature unit, so initialization failed."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "This is not a defined temperature unit, so initialization failed."</span></div></pre></td></tr></table></figure>
-<h4 id="带原始值的枚举类型的可失败构造器"><a href="#带原始值的枚举类型的可失败构造器" class="headerlink" title="带原始值的枚举类型的可失败构造器"></a>带原始值的枚举类型的可失败构造器</h4><p>带原始值的枚举类型会自带一个可失败构造器init?(rawValue:)，该可失败构造器有一个名为rawValue的参数，其类型和枚举类型的原始值类型一致，如果该参数的值能够和某个枚举成员的原始值匹配，则该构造器会构造相应的枚举成员，否则构造失败。</p>
-<p>因此上面的TemperatureUnit的例子可以重写为：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">TemperatureUnit</span>: <span class="title">Character</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> kelvin = <span class="string">"K"</span>, celsius = <span class="string">"C"</span>, fahrenheit = <span class="string">"F"</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">let</span> fahrenheitUnit = <span class="type">TemperatureUnit</span>(rawValue: <span class="string">"F"</span>)</div><div class="line"><span class="keyword">if</span> fahrenheitUnit != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"This is a defined temperature unit, so initialization succeeded."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "This is a defined temperature unit, so initialization succeeded."</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> unknownUnit = <span class="type">TemperatureUnit</span>(rawValue: <span class="string">"X"</span>)</div><div class="line"><span class="keyword">if</span> unknownUnit == <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"This is not a defined temperature unit, so initialization failed."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "This is not a defined temperature unit, so initialization failed."</span></div></pre></td></tr></table></figure>
-<h4 id="构造失败的传递"><a href="#构造失败的传递" class="headerlink" title="构造失败的传递"></a>构造失败的传递</h4><p>类，结构体，枚举的可失败构造器可以横向代理到类型中的其他可失败构造器。类似的，子类的可失败构造器也能向上代理到父类的可失败构造器。<br>无论是向上代理还是横向代理，如果你代理到的其他可失败构造器触发构造失败，整个构造过程将立即终止，接下来的任何构造代码不会再被执行。<br>    可失败构造器也可以代理到其它的非可失败构造器。通过这种方式，你可以增加一个可能的失败状态到现有的构造过程中。</p>
-<p>下面这个例子，定义了一个名为CartItem的Product类的子类。这个类建立了一个在线购物车中的物品的模型，它有一个名为quantity的常量存储型属性，并确保该属性的值至少为1：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>?(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">if</span> name.isEmpty &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CartItem</span>: <span class="title">Product</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> quantity: <span class="type">Int</span></div><div class="line">    <span class="keyword">init</span>?(name: <span class="type">String</span>, quantity: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">if</span> quantity &lt; <span class="number">1</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</div><div class="line">        <span class="keyword">self</span>.quantity = quantity</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>CartItem 可失败构造器首先验证接收的 quantity 值是否大于等于 1 。倘若 quantity 值无效，则立即终止整个构造过程，返回失败结果，且不再执行余下代码。同样地，Product 的可失败构造器首先检查 name 值，假如 name 值为空字符串，则构造器立即执行失败。</p>
-<p>如果你通过传入一个非空字符串 name 以及一个值大于等于 1 的 quantity 来创建一个 CartItem 实例，那么构造方法能够成功被执行：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> twoSocks = <span class="type">CartItem</span>(name: <span class="string">"sock"</span>, quantity: <span class="number">2</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Item: <span class="subst">\(twoSocks.name)</span>, quantity: <span class="subst">\(twoSocks.quantity)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Item: sock, quantity: 2"</span></div></pre></td></tr></table></figure>
-<p>倘若你以一个值为 0 的 quantity 来创建一个 CartItem 实例，那么将导致 CartItem 构造器失败：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> zeroShirts = <span class="type">CartItem</span>(name: <span class="string">"shirt"</span>, quantity: <span class="number">0</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Item: <span class="subst">\(zeroShirts.name)</span>, quantity: <span class="subst">\(zeroShirts.quantity)</span>"</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to initialize zero shirts"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Unable to initialize zero shirts"</span></div></pre></td></tr></table></figure>
-<p>同样地，如果你尝试传入一个值为空字符串的 name来创建一个 CartItem 实例，那么将导致父类 Product 的构造过程失败：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> oneUnnamed = <span class="type">CartItem</span>(name: <span class="string">""</span>, quantity: <span class="number">1</span>) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Item: <span class="subst">\(oneUnnamed.name)</span>, quantity: <span class="subst">\(oneUnnamed.quantity)</span>"</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to initialize one unnamed product"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Unable to initialize one unnamed product"</span></div></pre></td></tr></table></figure>
-<h4 id="重写一个可失败构造器"><a href="#重写一个可失败构造器" class="headerlink" title="重写一个可失败构造器"></a>重写一个可失败构造器</h4><p>如同其它的构造器，你可以在子类中重写父类的可失败构造器。或者你也可以用子类的非可失败构造器重写一个父类的可失败构造器。这使你可以定义一个不会构造失败的子类，即使父类的构造器允许构造失败。<br>当你用子类的非可失败构造器重写父类的可失败构造器时，向上代理到父类的可失败构造器的唯一方式是对父类的可失败构造器的返回值进行强制解包。<br>    你可以用非可失败构造器重写可失败构造器，但反过来却不行。</p>
-<p>下例定义了一个名为Document的类，name属性的值必须为一个非空字符串或nil，但不能是一个空字符串：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Document</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span>?</div><div class="line">    <span class="comment">// this initializer creates a document with a nil name value</span></div><div class="line">    <span class="keyword">init</span>() &#123;&#125;</div><div class="line">    <span class="comment">// this initializer creates a document with a nonempty name value</span></div><div class="line">    <span class="keyword">init</span>?(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">if</span> name.isEmpty &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面这个例子，定义了一个Document类的子类AutomaticallyNamedDocument。这个子类重写了父类的两个指定构造器，确保了无论是使用init()构造器，还是使用init(name:)构造器并为参数传递空字符串，生成的实例中的name属性总有初始”[Untitled]”：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutomaticallyNamedDocument</span>: <span class="title">Document</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>()</div><div class="line">        <span class="keyword">self</span>.name = <span class="string">"[Untitled]"</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>()</div><div class="line">        <span class="keyword">if</span> name.isEmpty &#123;</div><div class="line">            <span class="keyword">self</span>.name = <span class="string">"[Untitled]"</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">self</span>.name = name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>AutomaticallyNamedDocument用一个非可失败构造器init(name:)重写了父类的可失败构造器init?(name:)。因为子类用另一种方式处理了空字符串的情况，所以不再需要一个可失败构造器，因此子类用一个非可失败构造器代替了父类的可失败构造器。</p>
-<p>你可以在子类的非可失败构造器中使用强制解包来调用父类的可失败构造器。比如，下面的UntitledDocument子类的name属性的值总是”[Untitled]”，它在构造过程中使用了父类的可失败构造器init?(name:)：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UntitledDocument</span>: <span class="title">Document</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: <span class="string">"[Untitled]"</span>)!</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="可失败构造器-init"><a href="#可失败构造器-init" class="headerlink" title="可失败构造器 init!"></a>可失败构造器 init!</h4><p>通常来说我们通过在init关键字后添加问号的方式（init?）来定义一个可失败构造器，但你也可以通过在init后面添加惊叹号的方式来定义一个可失败构造器（init!），该可失败构造器将会构建一个对应类型的隐式解包可选类型的对象。</p>
-<p>你可以在init?中代理到init!，反之亦然。你也可以用init?重写init!，反之亦然。你还可以用init代理到init!，不过，一旦init!构造失败，则会触发一个断言。</p>
-<h3 id="必要构造器"><a href="#必要构造器" class="headerlink" title="必要构造器"></a>必要构造器</h3><p>在类的构造器前添加 <code>required</code> 修饰符表明所有该类的子类都必须实现该构造器：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</div><div class="line">    <span class="keyword">required</span> <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="comment">// initializer implementation goes here</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在子类重写父类的必要构造器时，必须在子类的构造器前也添加required修饰符，表明该构造器要求也应用于继承链后面的子类。在重写父类中必要的指定构造器时，不需要添加override修饰符：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeSubclass</span>: <span class="title">SomeClass</span> </span>&#123;</div><div class="line">    <span class="keyword">required</span> <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="comment">// subclass implementation of the required initializer goes here</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<pre><code>如果子类继承的构造器能满足必要构造器的要求，则无须在子类中显式提供必要构造器的实现。
-</code></pre><h3 id="通过闭包或函数设置属性的默认值"><a href="#通过闭包或函数设置属性的默认值" class="headerlink" title="通过闭包或函数设置属性的默认值"></a>通过闭包或函数设置属性的默认值</h3><p>如果某个存储型属性的默认值需要一些定制或设置，你可以使用闭包或全局函数为其提供定制的默认值。每当某个属性所在类型的新实例被创建时，对应的闭包或函数会被调用，而它们的返回值会当做默认值赋值给这个属性。<br>这种类型的闭包或函数通常会创建一个跟属性类型相同的临时变量，然后修改它的值以满足预期的初始状态，最后返回这个临时变量，作为属性的默认值。</p>
-<p>下面介绍了如何用闭包为属性提供默认值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> someProperty: <span class="type">SomeType</span> = &#123;</div><div class="line">        <span class="comment">// create a default value for someProperty inside this closure</span></div><div class="line">        <span class="comment">// someValue must be of the same type as SomeType</span></div><div class="line">        <span class="keyword">return</span> someValue</div><div class="line">    &#125;()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意闭包结尾的大括号后面接了一对空的小括号。这用来告诉 Swift 立即执行此闭包。如果你忽略了这对括号，相当于将闭包本身作为值赋值给了属性，而不是将闭包的返回值赋值给属性。<br>    如果你使用闭包来初始化属性，请记住在闭包执行时，实例的其它部分都还没有初始化。这意味着你不能在闭包里访问其它属性，即使这些属性有默认值。同样，你也不能使用隐式的self属性，或者调用任何实例方法。</p>
-<p>下面例子中定义了一个结构体Checkerboard，它构建了西洋跳棋游戏的棋盘：<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/chessBoard_2x.png" alt=""><br>西洋跳棋游戏在一副黑白格交替的10x10的棋盘中进行。为了呈现这副游戏棋盘，Checkerboard结构体定义了一个属性boardColors，它是一个包含100个Bool值的数组。在数组中，值为true的元素表示一个黑格，值为false的元素表示一个白格。数组中第一个元素代表棋盘上左上角的格子，最后一个元素代表棋盘上右下角的格子。</p>
-<p>boardColor数组是通过一个闭包来初始化并设置颜色值的：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Chessboard</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> boardColors: [<span class="type">Bool</span>] = &#123;</div><div class="line">        <span class="keyword">var</span> temporaryBoard = [<span class="type">Bool</span>]()</div><div class="line">        <span class="keyword">var</span> isBlack = <span class="literal">false</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">8</span> &#123;</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">1</span>...<span class="number">8</span> &#123;</div><div class="line">                temporaryBoard.append(isBlack)</div><div class="line">                isBlack = !isBlack</div><div class="line">            &#125;</div><div class="line">            isBlack = !isBlack</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> temporaryBoard</div><div class="line">    &#125;()</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">squareIsBlackAt</span><span class="params">(row: Int, column: Int)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> boardColors[(row * <span class="number">8</span>) + column]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>每当一个新的Checkerboard实例被创建时，赋值闭包会被执行，boardColors的默认值会被计算出来并返回。上面例子中描述的闭包将计算出棋盘中每个格子对应的颜色，并将这些值保存到一个临时数组temporaryBoard中，最后在构建完成时将此数组作为闭包返回值返回。这个返回的数组会保存到boardColors中，并可以通过工具函数squareIsBlackAtRow来查询：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> board = <span class="type">Chessboard</span>()</div><div class="line"><span class="built_in">print</span>(board.squareIsBlackAt(row: <span class="number">0</span>, column: <span class="number">1</span>))</div><div class="line"><span class="comment">// Prints "true"</span></div><div class="line"><span class="built_in">print</span>(board.squareIsBlackAt(row: <span class="number">7</span>, column: <span class="number">7</span>))</div><div class="line"><span class="comment">// Prints "false"</span></div></pre></td></tr></table></figure>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html/" target="_blank" rel="external"> Initialization </a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -902,7 +807,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

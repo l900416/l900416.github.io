@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      shell中的chmod修改权限
+title:      chmod修改权限
 date:       2017-08-17 13:51:43
 author:     liangtong
 catalog: true

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      shell中修改文件所有者
+title:      修改文件所有者
 date:       2017-08-28 11:51:43
 author:     liangtong
 catalog: true

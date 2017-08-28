@@ -337,6 +337,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/29/os_shell_std_in_out_error_redirect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/29/os_shell_std_in_out_error_redirect/" itemprop="url">重定向</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T09:51:43+08:00">
+                2017-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/29/os_shell_std_in_out_error_redirect/" class="leancloud_visitors" data-flag-title="重定向">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在linux系统下，一切皆是文件，对文件的操作，一般要用到文件标识符。</p>
+<h4 id="常用的FD-File-Descriptor"><a href="#常用的FD-File-Descriptor" class="headerlink" title="常用的FD(File Descriptor)"></a>常用的FD(File Descriptor)</h4><p>linux启动后，会默认打开3个文件描述符。分别是：   </p>
+<ul>
+<li>0 - 标准输入，/dev/stdin，可以理解为键盘</li>
+<li>1 - 标准输出，/dev/stdout，正确的输出，可以理解为屏幕</li>
+<li>2 - 标准错误输出，/dev/stderr，错误输出</li>
+</ul>
+<p>对于任何一条linux命令，都会有以上默认的3个描述符。也可以简单的理解为每个程序(函数)都会有输入、正确／错误输出。</p>
+<h4 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h4><p>重定向分为输入重定向和输出重定向。</p>
+<h5 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h5><p>即不从键盘读入、而是从文件或者其他。</p>
+<blockquote>
+<p><em>&lt;</em> 表示输入重定向运算符。</p>
+</blockquote>
+<p>例如命令先删除b.txt文件中内容，然后将a.txt文件中内容复制到b.txt文件中。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt; b.txt  &lt; a.txt</div></pre></td></tr></table></figure>
+<p>等同与</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less a.txt &gt;b.txt</div></pre></td></tr></table></figure>
+<blockquote>
+<p><em>&lt;&lt;</em> 表示当前标准输入来自命令行，符号后边跟随的是『结束的输入字符』。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt; b.txt &lt;&lt; eof</div><div class="line"><span class="meta">&gt;</span><span class="bash"> hello</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> world</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> eof</span></div><div class="line">liangtongdeiMac:playground liangtong$ </div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt;&gt;b.txt  &lt;&lt; endofinput</div><div class="line"><span class="meta">&gt;</span><span class="bash"> hahaha</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> endofinput</span></div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt;&gt;b.txt  &lt;&lt; endofinput</div><div class="line"><span class="meta">&gt;</span><span class="bash"> adsfasdf</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> endofinput</span></div><div class="line">liangtongdeiMac:playground liangtong$ less b.txt</div></pre></td></tr></table></figure>
+<h5 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h5><p>将一条命令执行结果（标准输出，或者错误输出，本来都要打印到屏幕上面的）  重定向其它输出设备（文件，打开文件操作符，或打印机等等）1,2分别是标准输出，错误输出</p>
+<ul>
+<li><em>&gt;</em> 会判断右边文件是否存在，如果存在就先删除，并且创建新文件。不存在直接创建。</li>
+<li><em>&gt;&gt;</em>  判断右边文件，如果不存在，先创建。以添加方式打开文件。</li>
+</ul>
+<p>例如以下命令对应3种操作。 </p>
+<ul>
+<li>创建c.txt文件或者清除c.txt文件内容。</li>
+<li>将a.txt内容写入c.txt中。</li>
+<li>将b.txt内容追加写入c.txt中。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; c.txt</div><div class="line">liangtongdeiMac:playground liangtong$ less a.txt &gt; c.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less b.txt  &gt;&gt; c.txt</div></pre></td></tr></table></figure>
+<ul>
+<li>命令执行完后，绑定文件的描述符也自动失效。0,1,2又会空闲</li>
+</ul>
+<h4 id="典型案例分析"><a href="#典型案例分析" class="headerlink" title="典型案例分析"></a>典型案例分析</h4><p>经过上述介绍，下面我们看一些典型的例子，这些尤其在makefile中很常见。 <strong>特别注意的是，多个重定下复合时，按照顺序执行，例如 1&gt;/dev/null 2&gt;&amp;1 和 2&gt;&amp;1 1&gt;/dev//null 执行结果不一样</strong></p>
+<blockquote>
+<p>&amp; 是一个描述符，如果1或2前不加&amp;，会被当成一个普通文件</p>
+</blockquote>
+<h5 id="1-gt-amp-2和2-gt-amp-1和-amp-gt-filename"><a href="#1-gt-amp-2和2-gt-amp-1和-amp-gt-filename" class="headerlink" title="1&gt;&amp;2和2&gt;&amp;1和&amp;&gt;filename"></a>1&gt;&amp;2和2&gt;&amp;1和&amp;&gt;filename</h5><p>1&gt;&amp;2 意思是标准输出重定向到标准错误。比如以下命令将a.txt<br>2&gt;&amp;1 意思是把标准错误输出重定向到标准输出<br>&amp;&gt;filename 意思是把标准输出和标准错误输出都重定向到文件filename中</p>
+<p>比如，以下命令分别 <em>ls -l </em>命令的标准输出、错误输出重定向到right.txt和error.txt文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;right.txt 2&gt;error.txt</div><div class="line">liangtongdeiMac:playground liangtong$ less right.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less error.txt</div></pre></td></tr></table></figure>
+<p>以下命令将标准输出重定向到right.txt文件中，将标准错误输出重定向到标准输出（此时是right.txt文件），此时right.txt文件将存放命令执行的标准输出和标准错误输出。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;right.txt 2&gt;&amp;1</div><div class="line">liangtongdeiMac:playground liangtong$ less right.txt</div></pre></td></tr></table></figure>
+<h5 id="dev-null"><a href="#dev-null" class="headerlink" title="/dev/null"></a>/dev/null</h5><p>/dev/null是一个垃圾箱，是一个无底洞，表示的含义为不显示。直接丢弃。<br>比如以下命令效果一样，对标准输入、标准错误输出均丢弃</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;/dev/null 2&gt;/dev/null</div><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
+<h5 id="2-gt-amp-1-1-gt-dev-null"><a href="#2-gt-amp-1-1-gt-dev-null" class="headerlink" title="2&gt;&amp;1 1&gt;/dev/null"></a>2&gt;&amp;1 1&gt;/dev/null</h5><p>将标准错误输出在屏幕上（标准输出）表示，将标准输出丢弃，此时屏幕上只输出标准错误日志。</p>
+<h5 id="1-gt-dev-null-2-gt-amp-1"><a href="#1-gt-dev-null-2-gt-amp-1" class="headerlink" title="1&gt;/dev/null 2&gt;&amp;1"></a>1&gt;/dev/null 2&gt;&amp;1</h5><p>将标准输出丢弃，将标准错误重定向到标准输出，此时无任何输出(均被丢弃)。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/28/os_shell_authority_chown/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -356,7 +557,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/28/os_shell_authority_chown/" itemprop="url">shell中修改文件所有者</a></h1>
+                <a class="post-title-link" href="/2017/08/28/os_shell_authority_chown/" itemprop="url">修改文件所有者</a></h1>
         
 
         <div class="post-meta">
@@ -408,7 +609,7 @@
 
           
           
-             <span id="/2017/08/28/os_shell_authority_chown/" class="leancloud_visitors" data-flag-title="shell中修改文件所有者">
+             <span id="/2017/08/28/os_shell_authority_chown/" class="leancloud_visitors" data-flag-title="修改文件所有者">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -491,185 +692,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/24/bluetooth_central_level/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/24/bluetooth_central_level/" itemprop="url">蓝牙Central模式 - 水准仪蓝牙交互</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T18:50:12+08:00">
-                2017-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/蓝牙/" itemprop="url" rel="index">
-                    <span itemprop="name">蓝牙</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/24/bluetooth_central_level/" class="leancloud_visitors" data-flag-title="蓝牙Central模式 - 水准仪蓝牙交互">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    工程测量中，<a href="http://www.trimble.com/" target="_blank" rel="external">Trimble</a>电子水准仪(DiNi Level)在测量完成后，通过蓝牙模块与外设进行数据交互，本文介绍外设如何作为中心模式与水准仪进行数据交互。</p>
-<h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p>前期准备工作包括以下几个方面：   </p>
-<ul>
-<li>蓝牙外设扫描</li>
-<li>蓝牙外设连接</li>
-<li>外设服务发现</li>
-<li>特征值发现<ul>
-<li>订阅</li>
-</ul>
-</li>
-</ul>
-<p>可以参照<a href="https://l900416.github.io/2017/07/27/bluetooth_central/">iOS蓝牙开发 - Central模式</a>，此处不再赘述，参照以下摘要信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">2017-08-24 16:15:39.860 RoadBridgeOnline[1067:189910] CBCentralManagerStatePoweredOn</div><div class="line">2017-08-24 16:15:50.121 RoadBridgeOnline[1067:189910] -[BluetoothViewModel centralManager:didConnectPeripheral:], line = 198, CRTB_BT_MODULE=连接成功</div><div class="line">2017-08-24 16:15:50.188 RoadBridgeOnline[1067:189910]  -- 发现服务 -- :&lt;CBService: 0x15e6301c0, isPrimary = YES, UUID = 1101&gt;</div><div class="line">2017-08-24 16:15:50.189 RoadBridgeOnline[1067:189910]  -- 发现服务 -- :&lt;CBService: 0x15e6a6590, isPrimary = YES, UUID = 00001016-D102-11E1-9B23-00025B00A5A5&gt;</div><div class="line">2017-08-24 16:15:50.191 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didDiscoverCharacteristicsForService:error:], line = 236</div><div class="line">2017-08-24 16:15:50.191 RoadBridgeOnline[1067:189910] characteristic name:1102 value is: </div><div class="line"></div><div class="line">2017-08-24 16:15:50.193 RoadBridgeOnline[1067:189910] characteristic name:1103 value is:</div><div class="line">2017-08-24 16:15:50.194 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didDiscoverCharacteristicsForService:error:], line = 236</div><div class="line">2017-08-24 16:15:50.195 RoadBridgeOnline[1067:189910] characteristic name:00001013-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.197 RoadBridgeOnline[1067:189910] characteristic name:00001018-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.198 RoadBridgeOnline[1067:189910] characteristic name:00001014-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.199 RoadBridgeOnline[1067:189910] characteristic name:00001011-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.248 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:15:50.248 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:</div></pre></td></tr></table></figure>
-<h4 id="特征值订阅／监听"><a href="#特征值订阅／监听" class="headerlink" title="特征值订阅／监听"></a>特征值订阅／监听</h4><p>水准仪与蓝牙外设的通讯，主要是通过特征值来实现，故此处进行单独介绍。在特征值发现之后，我们可以根据特征值进行过滤，监听特定的特征值，这样，当特征值发生变更的时候，会通过CBPeripheralDelegate协议回调特征值数据。使用蓝牙外设对象 <em>CBPeripheral</em> 的方法 <em>setNotifyValue:forCharacteristic:</em> 来进行监听</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//订阅 - 接受通知</div><div class="line">   [self.connectedPeripheral setNotifyValue:YES forCharacteristic:characteristics];</div></pre></td></tr></table></figure>
-<p>通过协议回调处理特征值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * CBPeripheralDelegate协议，当特征值发生变更的时候，回调</div><div class="line"> **/</div><div class="line">- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error&#123;</div><div class="line">        NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);</div><div class="line">    NSString* valueString = [[NSString alloc] initWithData:characteristic.value  encoding:NSUTF8StringEncoding];</div><div class="line">    [self.readValueArray addObject:valueString];</div><div class="line">    [self postRecievedCharacteristicValue];</div><div class="line">    </div><div class="line">    NSLog(@&quot;characteristic name:%@ value is:%@&quot;,characteristic.UUID,valueString);</div><div class="line">//    NSLog(@&quot;接收到的数组：\n%@&quot;,self.readValueArray);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">  * 将水准仪返回的数据进行处理，获取关键字段，数据处理成功后，直接发全局Event通知。</div><div class="line">  * 单点测量</div><div class="line">  * 水准线路测量 - 后视</div><div class="line">  * 水准线路测量 - 前视</div><div class="line">  **/</div><div class="line">-(void)postRecievedCharacteristicValue&#123;</div><div class="line">    if ([self.readValueArray count] &gt; 0) &#123;</div><div class="line">        NSString * fullString = [self.readValueArray componentsJoinedByString:@&quot;&quot;];</div><div class="line">        NSLog(@&quot;待处理的特质值为：\n %@ \n&quot;,fullString);</div><div class="line">        </div><div class="line">        NSArray* sepArray = [fullString componentsSeparatedByString:@&quot;|&quot;];</div><div class="line">        NSMutableDictionary* postDic = [[NSMutableDictionary alloc] init];</div><div class="line">        </div><div class="line">	    //处理字符串数据，将不同数据进行封装，代码略</div><div class="line">        </div><div class="line">        if ([[postDic allKeys] count] &gt; 0) &#123;//直接全局通知</div><div class="line">            [[NSNotificationCenter defaultCenter] jk_postNotificationOnMainThreadName:RBBluetoothMeasureUpdateKey object:postDic];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>需要注意的是水准仪蓝牙数据的回传时将字符串进行了分隔。我们需要首先进行数据拼接，之后才能进行数据提取操作，以下是拼接后的字符串及原始字符串：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//以下是拼接后的字符串（水准线路测量 - 前视）</div><div class="line">For M5|Adr    32|KD1      5-a    g 15:49:151  L1|Rf        1.49585 m   |HD          9.988 m   |                      | </div><div class="line">For M5|Adr    33|KD1      5-a    g 15:49:15   L1|                      |                      |Z        -0.43374 m   | </div><div class="line"></div><div class="line">//以下是回调log信息：</div><div class="line">For M5|Adr      |K</div><div class="line">2017-08-24 16:18:42.299 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.300 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:D1       16    2 16:</div><div class="line">2017-08-24 16:18:42.327 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.328 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:17:37  L41|         </div><div class="line">2017-08-24 16:18:42.329 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.330 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:             |      </div><div class="line">2017-08-24 16:18:42.357 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.358 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:                |Z  </div><div class="line">2017-08-24 16:18:42.387 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:18:42.398 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:      44.98000 m   |</div><div class="line">2017-08-24 16:18:42.477 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div></pre></td></tr></table></figure>
-<h4 id="测量数据处理"><a href="#测量数据处理" class="headerlink" title="测量数据处理"></a>测量数据处理</h4><p>在前台界面相关的 <em>界面控制器</em> 中，使用 <em>NSNotificationCenter</em> 进行监听，对监听到的数据进行相应的业务逻辑处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">-(void)viewWillAppear:(BOOL)animated&#123;</div><div class="line">    [super viewWillAppear:animated];</div><div class="line">    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveLocalNotification:) name:BluetoothPeripheralUpdateKey object:nil];</div><div class="line">    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveLocalNotification:) name:RBBluetoothMeasureUpdateKey object:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)recieveLocalNotification:(NSNotification*)notification&#123;</div><div class="line">    NSString* notificationKeyName = [notification name];</div><div class="line">    //蓝牙连接状态发生变更</div><div class="line">    //蓝牙单点测量数据变更通知</div><div class="line">    if ([notificationKeyName isEqualToString:BluetoothPeripheralUpdateKey]) &#123;</div><div class="line">        [self updateBluetoothConnectionImage];</div><div class="line">    &#125;else if ([notificationKeyName isEqualToString:RBBluetoothMeasureUpdateKey]) &#123;</div><div class="line">        NSDictionary* measuredDic = notification.object;</div><div class="line">        [self uploadBluetoothMeasureData:measuredDic];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">-(void)viewWillDisappear:(BOOL)animated&#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>​    </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -715,7 +742,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

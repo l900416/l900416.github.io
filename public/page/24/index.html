@@ -337,6 +337,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/10/30/iOS_develop_ObjC_basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/30/iOS_develop_ObjC_basic/" itemprop="url">Objective-C 知识普及</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-30T18:00:00+08:00">
+                2016-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/30/iOS_develop_ObjC_basic/" class="leancloud_visitors" data-flag-title="Objective-C 知识普及">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>​    一种带有局部变量的匿名函数。语法结构：<code>^</code> <code>返回值类型</code> <code>参数列表</code> <code>表达式</code></p>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^int(int count)&#123;return count+1;&#125;</div></pre></td></tr></table></figure>
+<p>block的声明及使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//声明</div><div class="line">int(^blk) (int) = ^(int count)&#123;return count+1;&#125;;</div><div class="line"></div><div class="line">//使用 - 作为参数</div><div class="line">void function(int(^blk)(int))</div><div class="line"></div><div class="line">//使用 - 作为返回值</div><div class="line">int (^func())(int) &#123;</div><div class="line">return ^(int count)&#123;return count+1;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用 <code>typedef</code> 简化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">typedef int (^blk_t) (int);</div><div class="line"></div><div class="line">//原来的写法</div><div class="line">void func(int (^blk)(int))</div><div class="line">//新的写法</div><div class="line">void func(blk_t blk)</div><div class="line"></div><div class="line">//原来的写法</div><div class="line">int (^func()(int))</div><div class="line">//新的写法</div><div class="line">blk_t func()</div></pre></td></tr></table></figure>
+<p>Objective-C代码中常用的写法举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//点击课程更多按钮菜单的回调</div><div class="line">@property (nonatomic,copy) void(^courseMoreActionBlock)(EMoocCourseMoreActionType actionType, NSString* courseId);</div><div class="line"></div><div class="line">///#begin</div><div class="line">/**</div><div class="line"> *	@brief	用户提交登录请求</div><div class="line"> *</div><div class="line"> *	@param 	userName 	登录名字</div><div class="line"> *  @param  password    登录密码</div><div class="line"> *	@param 	complete 	回调函数</div><div class="line"> */</div><div class="line">///#end</div><div class="line">+(void)loginWithName:(NSString*)userName</div><div class="line">            password:(NSString*)password</div><div class="line">            progress:(void (^)(NSProgress *progress))progress</div><div class="line">            complete:(void (^)(id data,NSInteger stateCode))complete;</div></pre></td></tr></table></figure>
+<h5 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h5><p>block 只读block外的属性，不可修改。<br>__block可破坏闭包，其修饰的属性可以在block内修改。<br>使用block的时候，特别要注意循环引用的问题</p>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p>​    类似Java中的interface。在ObjC中使用@protocol定义一组方法规范，实现此协议的类必须实现对应的方法。<br>例如常用的UITableViewDelegate协议格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@protocol UITableViewDelegate&lt;NSObject, UIScrollViewDelegate&gt;//可以扩展多个协议</div><div class="line"></div><div class="line">@required //必须实现的方法</div><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;</div><div class="line"></div><div class="line">@optional //可选实现的方法</div><div class="line">- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<h5 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h5><ul>
+<li>协议方法的实现。<ul>
+<li>@required //必须实现的方法(或者属性)</li>
+<li>@optional //可选实现的方法(或者属性)</li>
+</ul>
+</li>
+<li>调用delegate（实现协议的委托对象）方法时，如果是可选方法，一定要通过@selector进行判断</li>
+</ul>
+<h3 id="常用传值方式"><a href="#常用传值方式" class="headerlink" title="常用传值方式"></a>常用传值方式</h3><p>​        这里说的传值方式，不包括View&lt;-&gt;ViewController之间的Outlet、Target、Action等</p>
+<h5 id="闭包-1"><a href="#闭包-1" class="headerlink" title="闭包"></a>闭包</h5><p>一言不合就上代码：注意<code>__weak</code>和<code>__strong</code>的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//闭包作为属性的例子</div><div class="line">@property (nonatomic,copy) void(^didTapCallBack)(id tapedItem);</div><div class="line">//使用</div><div class="line">__weak __typeof(self) weakSelf = self;</div><div class="line">obj1.didTapCallBack = ^(NSDictionary* tapedItem)&#123;</div><div class="line">	__strong __typeof(weakSelf)strongSelf = weakSelf;</div><div class="line">   	[strongSelf performSegueWithIdentifier:@&quot;showNextSegue” sender: tapedItem];</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">//闭包作为参数使用的例子：</div><div class="line">-(void)functionNameWithParamName1:(id)paramName1</div><div class="line">                    completeBlock:(NSDictionary* (^)(NSString* blockParam))completeBlock</div><div class="line">//使用</div><div class="line">[obj2 functionNameWithParamName1:@“” completeBlock:^NSDictionary*(NSString* blockParam) &#123;</div><div class="line">   	if (blockParam)&#123;</div><div class="line">		return @[];</div><div class="line">   	&#125;else&#123;</div><div class="line">		return nil;</div><div class="line">	&#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h5 id="协议-1"><a href="#协议-1" class="headerlink" title="协议"></a>协议</h5><p>​    很常用的形式，比如UITableView、UIScrollView等UIKit框架中都是使用Protocol。</p>
+<ul>
+<li><p>代码写起来清晰易懂</p>
+</li>
+<li><p>相对闭包来说代码量变大，第三者不容易理解</p>
+<p>​</p>
+</li>
+</ul>
+<h5 id="共有方法-属性"><a href="#共有方法-属性" class="headerlink" title="共有方法(属性)"></a>共有方法(属性)</h5><p>​    这块没啥说的，就是直接在<code>.h</code>文件中写属性，方法，对象直接调用（设置）即可</p>
+<h5 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h5><p>​    比较常用，一般Model、ViewModel层通过发广播的形式进行消息发送(数据传输)。</p>
+<p>&gt;<br>&gt;<br>&gt;<br>&gt;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/10/25/iOS_develop_viewController_life_circle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -552,282 +739,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/10/21/iOS_develop_overview_framework_1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/21/iOS_develop_overview_framework_1/" itemprop="url">iOS移动App开发综述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-21T23:50:12+08:00">
-                2016-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/10/21/iOS_develop_overview_framework_1/" class="leancloud_visitors" data-flag-title="iOS移动App开发综述">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>对iOS端移动App使用的开发语言、框架等信息进行介绍</p>
-<h3 id="环境及工具"><a href="#环境及工具" class="headerlink" title="环境及工具"></a>环境及工具</h3><ul>
-<li>OS<ul>
-<li>macOS , OSX</li>
-</ul>
-</li>
-<li>TOOL<ul>
-<li>XCode： <code>Version 8.0+</code> , 早期版本</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>建议：鉴于苹果的习惯，如果没有特殊需求，保持最新的系统和工具版本。</p>
-</blockquote>
-<h3 id="开发语言选择"><a href="#开发语言选择" class="headerlink" title="开发语言选择"></a>开发语言选择</h3><p>​        首先要对开发的应用的功能有一定的了解，结合应用需要的功能及部署系统版本选择合适的开发语言。可以使用的主要开发语言包括：</p>
-<ul>
-<li><p>Objective-C：</p>
-<ul>
-<li><p>优点：老牌iOS开发语言，很多成熟稳定的开源代码可以使用；可以用来开发各个iOS系统上的应用。</p>
-</li>
-<li><p>缺点：苹果已经开始主推Swift；语言较复杂，比如虽然引入了ARC概念，但是部分内存管理还是需要自己来搞定；</p>
-</li>
-</ul>
-</li>
-<li><p>Swift：苹果在2014年WWDC上发布的语言（函数式编程Monad，最低支持iOS7.0系统)，建议多使用结构体。</p>
-<ul>
-<li><p>优点：苹果主推的取代Objective-C语言，<em>开源</em>、<em>易学易用</em>、<em>借鉴了好多主流开发语言(很多概念比如：泛型，闭包，元组，协议等)，如果熟悉数据库，JavaScript、Objective-C等的话，可以快速入手</em></p>
-</li>
-<li><p>缺点：新语言，对旧系统不支持、多语言混合编译存在一些桥接问题；</p>
-</li>
-</ul>
-</li>
-<li><p>其它：C/C++​</p>
-</li>
-</ul>
-<hr>
-<blockquote>
-<ul>
-<li>如果想快速开发应用，建议使用Objective-C，毕竟有很多现成的东西；</li>
-<li>长远的看的话，建议使用Swift，新东西还是很让人兴奋的；</li>
-<li>Swift语言选择3.0以上的版本，因为XCode8.0及后续工具不兼容3.0之前的语言版本；</li>
-<li>如果项目中必须引入C++混合编译，建议使用Objective-C，Swift调用C代码还好，调用C++目前来说不可行。</li>
-<li>没啥想法，建议前期使用Objective-C和Swift混合开发，最终全面向Swift过渡。</li>
-</ul>
-</blockquote>
-<hr>
-<h3 id="程序框架选择"><a href="#程序框架选择" class="headerlink" title="程序框架选择"></a>程序框架选择</h3><p>​    这里主要介绍两个框架MVC和MVVM，以及最终程序开发中使用的MVMCV</p>
-<h5 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h5><p>​    MVC全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写，用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。<br><img src="http://hi.csdn.net/attachment/201105/19/0_1305768550zP1b.gif" alt=""></p>
-<ul>
-<li><p>View：负责数据展示。</p>
-<ul>
-<li>应用程序中用户可以看见的对象。在iOS应用程序开发中，所有的控件、窗口等都继承自 UIView，UIView及其子类主要负责UI的实现，而UIView所产生的事件都可以采用委托的方式，交给UIViewController实现。</li>
-</ul>
-</li>
-<li><p>Controller：处理输入输出。</p>
-<ul>
-<li>View和Model之间交互的媒介，控制器对象解释在视图对象中进行的用户操作，并将新的或更改过的数据传达给模型对象。模型对象更改时，一个控制器对象会将新的模型数据传达给视图对象，以便视图对象可以显示它。对于不同的UIView，有相应的UIViewController，例如在iOS上常用的UITableView，它所对应的Controller就是UITableViewController。</li>
-</ul>
-</li>
-<li><p>Model：持有数据，比如本地数据库，本地文件。<br>​</p>
-<p>​    iOS应用中，对应UIViewController其实可以理解为ViewContainer（View + Controler）；如果使用MVC框架进行移动App开发的话，ViewController会显得特别臃肿，并且如果更换Controller策略就会显得比较麻烦。对于功能复杂的页面，其ViewController结构将会非常庞大，后期维护代价明显会比较高。</p>
-</li>
-</ul>
-<h5 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h5><p>​        MVVM代表的是Model View View-Model，她的出现可以理解成是给MVC的视图控制器瘦身。<br><img src="http://images.cnitblog.com/i/380707/201403/152139487613221.png" alt=""></p>
-<ul>
-<li><p>View：负责数据展示。</p>
-<ul>
-<li>包含实际 UI 本身(不论是 UIView 代码, storyboard 和 xib), 任何视图特定的逻辑, 和对用户输入的反馈. 在 iOS 中这不仅需要 UIView 代码和那些文件, 还包括很多需由 UIViewController 处理的工作。</li>
-</ul>
-</li>
-<li><p>View-Model ：处理输入输出。</p>
-<ul>
-<li>它的职责之一就是作为一个表现视图显示自身所需数据的静态模型;但它也有收集, 解释和转换那些数据的责任. 这留给了 view (controller) 一个更加清晰明确的任务: 呈现由 view-model 提供的数据。</li>
-</ul>
-</li>
-<li><p>Model：持有数据，比如本地数据库，本地文件。<br>​</p>
-<p>​    说下View-Model：它从必要的资源(数据库, 网络服务调用, 等)中获取原始数据, 运用逻辑, 并处理成 view (controller) 的展示数据. 它(通常通过属性)暴露给视图控制器需要知道的仅关于显示视图工作的信息(理想地你不会暴漏你的 data-model 对象)。 它还负责对上游数据的修改(比如更新模型/数据库, API POST 调用)。</p>
-</li>
-</ul>
-<h5 id="MVC与MVVM的对比"><a href="#MVC与MVVM的对比" class="headerlink" title="MVC与MVVM的对比"></a>MVC与MVVM的对比</h5><p>​        经过上边对MVC和MVVM的介绍，相信大家对两种模式简单的映射关系有了一定的了解。通过对比，我们会发现视图控制器是非常大的。<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542173109354.png" alt=""></p>
-<h5 id="MVMCV的产生"><a href="#MVMCV的产生" class="headerlink" title="MVMCV的产生"></a>MVMCV的产生</h5><p>​        如果将两者结合，会是什么样子呢<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542301497557.gif" alt=""><br>​        结果就说MVMCV产生了。<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542328653234.png" alt=""></p>
-<p>​        view-model会在视图控制器上以一个属性的方式存在. 视图控制器知道 view-model 和它的公有属性, 但是 view-model 对视图控制器一无所知. 你早就该对这个设计感觉好多了因为我们的关注点在这儿进行更好地分离.最后我们用一个应用构建模块层级图来结束这节介绍：<br><img src="http://cc.cocimg.com/api/uploads/20150525/1432542362309133.png" alt=""></p>
-<h3 id="第三方应用的使用"><a href="#第三方应用的使用" class="headerlink" title="第三方应用的使用"></a>第三方应用的使用</h3><ul>
-<li>手动将别人的代码拖拽到自己工程中。<ul>
-<li>优点：随时可以修改别人的代码。</li>
-<li>缺点：需要自己维护该代码。</li>
-</ul>
-</li>
-<li>通过pod引用<ul>
-<li>优点：大家一起维护，代码质量高；代码更新只要一句<code>pod update</code>一切都搞定 </li>
-<li>缺点：如果发现问题，修改可能会比较慢</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>建议：如果不涉及UI，尽量使用pod来管理；使用GitHub第三方代码的时候需要注意几点：star、watch数量，还有活跃度。别选那种没人用的，不然后期出了问题你就很可能只能靠自己了</p>
-</blockquote>
-<h3 id="发布相关"><a href="#发布相关" class="headerlink" title="发布相关"></a>发布相关</h3><ul>
-<li>签名Code Sign<ul>
-<li>App标识符</li>
-<li>开发证书</li>
-<li>发布证书</li>
-</ul>
-</li>
-<li>APNS<ul>
-<li>开发证书</li>
-<li>发布证书</li>
-</ul>
-</li>
-<li>其他</li>
-</ul>
-<h3 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h3><ul>
-<li>如果有一定的语言基础，不用看「xx从入门到精通」之类的书。因为技术更新很快，书上很多东西都过时或者被弃用了</li>
-<li>多看看苹果开发者文档，接口文档介绍的非常详细。</li>
-<li>多逛逛GitHub，学习GitHub上一些牛人的思想，编码风格。链接 ： <a href="https://github.com/search?l=Objective-C&o=desc&q=stars%3A%3E1&s=stars&type=Repositories" target="_blank" rel="external">Objective-C 排行</a></li>
-</ul>
-<p>&gt;</p>
-<blockquote>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -873,7 +789,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

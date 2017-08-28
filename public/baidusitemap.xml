@@ -4,12 +4,52 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/08/28/os_shell_authority_chown/</loc>
-    <lastmod>2017-08-28T03:44:52.000Z</lastmod>
+    <loc>https://l900416.github.io/2017/08/17/os_shell_authority_chmod/</loc>
+    <lastmod>2017-08-28T10:17:31.000Z</lastmod>
     <data>
         <display>
-        <title>shell中修改文件所有者</title>
+        <title>chmod修改权限</title>
+        <pubTime>2017-08-17T05:51:43.000Z</pubTime>
+        
+        <tag>shell</tag>
+         
+         
+           
+             
+              <breadCrumb title="操作系统" url="https://l900416.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2017/08/28/os_shell_authority_chown/</loc>
+    <lastmod>2017-08-28T10:17:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>修改文件所有者</title>
         <pubTime>2017-08-28T03:51:43.000Z</pubTime>
+        
+        <tag>shell</tag>
+         
+         
+           
+             
+              <breadCrumb title="操作系统" url="https://l900416.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2017/08/29/os_shell_std_in_out_error_redirect/</loc>
+    <lastmod>2017-08-28T10:17:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>重定向</title>
+        <pubTime>2017-08-29T01:51:43.000Z</pubTime>
         
         <tag>shell</tag>
          
@@ -146,26 +186,6 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/08/17/os_shell_authority_chmod/</loc>
-    <lastmod>2017-08-23T08:42:27.000Z</lastmod>
-    <data>
-        <display>
-        <title>shell中的chmod修改权限</title>
-        <pubTime>2017-08-17T05:51:43.000Z</pubTime>
-        
-        <tag>shell</tag>
-         
-         
-           
-             
-              <breadCrumb title="操作系统" url="https://l900416.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://l900416.github.io/2017/08/23/algorithm_location_maximum_likelihood/</loc>
     <lastmod>2017-08-23T08:39:24.000Z</lastmod>
     <data>
@@ -185,26 +205,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>https://l900416.github.io/2016/11/25/iOS_Swift_language_note_Methods/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Methods</title>
-        <pubTime>2016-11-24T16:20:11.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>https://l900416.github.io/2017/04/27/database_sqlite3_fmdb/</loc>
@@ -327,26 +327,6 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Access Control</title>
-        <pubTime>2016-12-04T16:20:11.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://l900416.github.io/2016/11/04/iOS_Swift_language_note_Basic-Operators/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
@@ -367,32 +347,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/24/iOS_Swift_language_note_Classes%20and%20Structures/</loc>
+    <loc>https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Classes and Structures</title>
-        <pubTime>2016-11-23T16:20:11.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://l900416.github.io/2016/11/22/iOS_Swift_language_note_Closures/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Closures</title>
-        <pubTime>2016-11-21T16:20:11.000Z</pubTime>
+        <title>Swift Access Control</title>
+        <pubTime>2016-12-04T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -413,6 +373,26 @@
         <display>
         <title>Swift Collection Types</title>
         <pubTime>2016-11-05T16:20:11.000Z</pubTime>
+        
+        <tag>Swift</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/11/22/iOS_Swift_language_note_Closures/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swift Closures</title>
+        <pubTime>2016-11-21T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -467,32 +447,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/04/27/algorithm_search_binary/</loc>
+    <loc>https://l900416.github.io/2016/11/23/iOS_Swift_language_note_Enumerations/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>二分查找</title>
-        <pubTime>2017-04-27T02:07:43.000Z</pubTime>
-        
-        <tag>Search</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://l900416.github.io/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Error-Handling/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Error Handling</title>
-        <pubTime>2016-11-30T15:20:11.000Z</pubTime>
+        <title>Swift Enumerations</title>
+        <pubTime>2016-11-22T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -500,6 +460,46 @@
            
              
               <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/11/24/iOS_Swift_language_note_Classes%20and%20Structures/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swift Classes and Structures</title>
+        <pubTime>2016-11-23T16:20:11.000Z</pubTime>
+        
+        <tag>Swift</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2017/05/18/algorithm_sort_count/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>计数排序</title>
+        <pubTime>2017-05-18T13:05:37.000Z</pubTime>
+        
+        <tag>Sort</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="https://l900416.github.io/categories/Algorithm/"/>
           
         </display>
     </data>
@@ -587,32 +587,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/05/11/algorithm_sort_quick/</loc>
+    <loc>https://l900416.github.io/2016/11/25/iOS_Swift_language_note_Methods/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>快速排序</title>
-        <pubTime>2017-05-11T09:25:00.000Z</pubTime>
-        
-        <tag>Sort</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://l900416.github.io/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Nested Types</title>
-        <pubTime>2016-12-01T11:20:11.000Z</pubTime>
+        <title>Swift Methods</title>
+        <pubTime>2016-11-24T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -647,12 +627,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/25/iOS_Swift_language_note_Properties/</loc>
+    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Properties</title>
-        <pubTime>2016-11-24T16:20:11.000Z</pubTime>
+        <title>Swift Nested Types</title>
+        <pubTime>2016-12-01T11:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -667,12 +647,32 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Subscripts/</loc>
+    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Subscripts</title>
-        <pubTime>2016-11-25T16:20:11.000Z</pubTime>
+        <title>Swift Optional Chaining</title>
+        <pubTime>2016-11-29T17:20:11.000Z</pubTime>
+        
+        <tag>Swift</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/11/25/iOS_Swift_language_note_Properties/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swift Properties</title>
+        <pubTime>2016-11-24T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -707,12 +707,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/02/iOS_Swift_language_note_The-Basics/</loc>
+    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Subscripts/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift The Basics</title>
-        <pubTime>2016-11-02T14:06:31.000Z</pubTime>
+        <title>Swift Subscripts</title>
+        <pubTime>2016-11-25T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -727,12 +727,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/</loc>
+    <loc>https://l900416.github.io/2016/11/02/iOS_Swift_language_note_The-Basics/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Optional Chaining</title>
-        <pubTime>2016-11-29T17:20:11.000Z</pubTime>
+        <title>Swift The Basics</title>
+        <pubTime>2016-11-02T14:06:31.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -867,12 +867,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/04/26/algorithm_sort_merge/</loc>
+    <loc>https://l900416.github.io/2017/04/25/algorithm_sort_insert/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>归并排序</title>
-        <pubTime>2017-04-26T06:25:00.000Z</pubTime>
+        <title>插入排序</title>
+        <pubTime>2017-04-25T13:22:00.000Z</pubTime>
         
         <tag>Sort</tag>
          
@@ -887,12 +887,32 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/04/25/algorithm_sort_insert/</loc>
+    <loc>https://l900416.github.io/2017/05/11/algorithm_sort_quick/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>插入排序</title>
-        <pubTime>2017-04-25T13:22:00.000Z</pubTime>
+        <title>快速排序</title>
+        <pubTime>2017-05-11T09:25:00.000Z</pubTime>
+        
+        <tag>Sort</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="https://l900416.github.io/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2017/04/26/algorithm_sort_merge/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>归并排序</title>
+        <pubTime>2017-04-26T06:25:00.000Z</pubTime>
         
         <tag>Sort</tag>
          
@@ -967,14 +987,14 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/05/18/algorithm_sort_count/</loc>
+    <loc>https://l900416.github.io/2017/04/27/algorithm_search_binary/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>计数排序</title>
-        <pubTime>2017-05-18T13:05:37.000Z</pubTime>
+        <title>二分查找</title>
+        <pubTime>2017-04-27T02:07:43.000Z</pubTime>
         
-        <tag>Sort</tag>
+        <tag>Search</tag>
          
          
            
@@ -987,12 +1007,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/23/iOS_Swift_language_note_Enumerations/</loc>
+    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Error-Handling/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Enumerations</title>
-        <pubTime>2016-11-22T16:20:11.000Z</pubTime>
+        <title>Swift Error Handling</title>
+        <pubTime>2016-11-30T15:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
