@@ -7,6 +7,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="wKG531ni5l" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
@@ -95,7 +96,7 @@
 <meta name="description" content="Keep hungry keep foolish！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="liangtong">
-<meta property="og:url" content="http://yoursite.com/page/14/index.html">
+<meta property="og:url" content="https://l900416.github.io/page/14/index.html">
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="Keep hungry keep foolish！">
 <meta property="og:locale" content="zh-Hans">
@@ -130,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/14/"/>
+  <link rel="canonical" href="https://l900416.github.io/page/14/"/>
 
 
 
@@ -258,6 +259,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -325,7 +336,200 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/iOS_Swift_language_note_Error-Handling/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Type-Casting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" itemprop="url">Swift Type Casting</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T23:20:11+08:00">
+                2016-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/30/iOS_Swift_language_note_Type-Casting/" class="leancloud_visitors" data-flag-title="Swift Type Casting">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。<br>​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议</p>
+<h3 id="定义一个类层次作为例子"><a href="#定义一个类层次作为例子" class="headerlink" title="定义一个类层次作为例子"></a>定义一个类层次作为例子</h3><p>你可以将类型转换用在类和子类的层次结构上，检查特定类实例的类型并且转换这个类实例的类型成为这个层次结构中的其他类型。下面的三个代码段定义了一个类层次和一个包含了这些类实例的数组，作为类型转换的例子。<br>第一个代码片段定义了一个新的基类 MediaItem。这个类为任何出现在数字媒体库的媒体项提供基础功能。特别的，它声明了一个 String 类型的 name 属性，和一个 init(name:) 初始化器。（假定所有的媒体项都有个名称。）</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下一个代码段定义了 MediaItem 的两个子类。第一个子类 Movie 封装了与电影相关的额外信息，在父类（或者说基类）的基础上增加了一个 director（导演）属性，和相应的初始化器。第二个子类 Song，在父类的基础上增加了一个 artist（艺术家）属性，和相应的初始化器：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Movie</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> director: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, director: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.director = director</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Song</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> artist: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, artist: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.artist = artist</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后一个代码段创建了一个数组常量 library，包含两个 Movie 实例和三个 Song 实例。library 的类型是在它被初始化时根据它数组中所包含的内容推断来的。Swift 的类型检测器能够推断出 Movie 和 Song 有共同的父类 MediaItem，所以它推断出 [MediaItem] 类作为 library 的类型：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> library = [</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Casablanca"</span>, director: <span class="string">"Michael Curtiz"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Blue Suede Shoes"</span>, artist: <span class="string">"Elvis Presley"</span>),</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Citizen Kane"</span>, director: <span class="string">"Orson Welles"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"The One And Only"</span>, artist: <span class="string">"Chesney Hawkes"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Never Gonna Give You Up"</span>, artist: <span class="string">"Rick Astley"</span>)</div><div class="line">]</div><div class="line"><span class="comment">// the type of "library" is inferred to be [MediaItem]</span></div></pre></td></tr></table></figure>
+<p>在幕后 library 里存储的媒体项依然是 Movie 和 Song 类型的。但是，若你迭代它，依次取出的实例会是 MediaItem 类型的，而不是 Movie 和 Song 类型。为了让它们作为原本的类型工作，你需要检查它们的类型或者向下转换它们到其它类型，就像下面描述的一样。</p>
+<h3 id="检查类型"><a href="#检查类型" class="headerlink" title="检查类型"></a>检查类型</h3><p>用类型检查操作符（ <code>is</code> ）来检查一个实例是否属于特定子类型。若实例属于那个子类型，类型检查操作符返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
+<p>下面的例子定义了两个变量，movieCount 和 songCount，用来计算数组 library 中 Movie 和 Song 类型的实例数量：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> movieCount = <span class="number">0</span></div><div class="line"><span class="keyword">var</span> songCount = <span class="number">0</span></div><div class="line"> </div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> library &#123;</div><div class="line">    <span class="keyword">if</span> item <span class="keyword">is</span> <span class="type">Movie</span> &#123;</div><div class="line">        movieCount += <span class="number">1</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> item <span class="keyword">is</span> <span class="type">Song</span> &#123;</div><div class="line">        songCount += <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="built_in">print</span>(<span class="string">"Media library contains <span class="subst">\(movieCount)</span> movies and <span class="subst">\(songCount)</span> songs"</span>)</div><div class="line"><span class="comment">// Prints "Media library contains 2 movies and 3 songs"</span></div></pre></td></tr></table></figure>
+<p>若当前 MediaItem 是一个 Movie 类型的实例，item is Movie 返回 true，否则返回 false。同样的，item is Song 检查 item 是否为 Song 类型的实例。在循环结束后，movieCount 和 songCount 的值就是被找到的属于各自类型的实例的数量。</p>
+<h3 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h3><p>某类型的一个常量或变量可能在幕后实际上属于一个子类。当确定是这种情况时，你可以尝试向下转到它的子类型，用类型转换操作符（as? 或 as!）。<br>因为向下转型可能会失败，类型转型操作符带有两种不同形式。条件形式as? 返回一个你试图向下转成的类型的可选值。强制形式 as! 把试图向下转型和强制解包转换结果结合为一个操作。</p>
+<p>当你不确定向下转型可以成功时，用类型转换的条件形式（as?）。条件形式的类型转换总是返回一个可选值，并且若下转是不可能的，可选值将是 nil。这使你能够检查向下转型是否成功。<br>只有你可以确定向下转型一定会成功时，才使用强制形式（as!）。当你试图向下转型为一个不正确的类型时，强制形式的类型转换会触发一个运行时错误。</p>
+<p>下面的例子，迭代了 library 里的每一个 MediaItem，并打印出适当的描述。要这样做，item 需要真正作为 Movie 或 Song 的类型来使用，而不仅仅是作为 MediaItem。为了能够在描述中使用 Movie 或 Song 的 director 或 artist 属性，这是必要的。<br>在这个示例中，数组中的每一个 item 可能是 Movie 或 Song。事前你不知道每个 item 的真实类型，所以这里使用条件形式的类型转换（as?）去检查循环里的每次下转：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> library &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> movie = item <span class="keyword">as</span>? <span class="type">Movie</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Movie: <span class="subst">\(movie.name)</span>, dir. <span class="subst">\(movie.director)</span>"</span>)</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">let</span> song = item <span class="keyword">as</span>? <span class="type">Song</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Song: <span class="subst">\(song.name)</span>, by <span class="subst">\(song.artist)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// Movie: Casablanca, dir. Michael Curtiz</span></div><div class="line"><span class="comment">// Song: Blue Suede Shoes, by Elvis Presley</span></div><div class="line"><span class="comment">// Movie: Citizen Kane, dir. Orson Welles</span></div><div class="line"><span class="comment">// Song: The One And Only, by Chesney Hawkes</span></div><div class="line"><span class="comment">// Song: Never Gonna Give You Up, by Rick Astley</span></div></pre></td></tr></table></figure>
+<p>示例首先试图将 item 下转为 Movie。因为 item 是一个 MediaItem 类型的实例，它可能是一个 Movie；同样，它也可能是一个 Song，或者仅仅是基类 MediaItem。因为不确定，as? 形式在试图下转时将返回一个可选值。item as? Movie 的返回值是 Movie? 或者说“可选 Movie”。</p>
+<p>当向下转型为 Movie 应用在两个 Song 实例时将会失败。为了处理这种情况，上面的例子使用了可选绑定（optional binding）来检查可选 Movie 真的包含一个值（这个是为了判断下转是否成功。）可选绑定是这样写的“if let movie = item as? Movie”，可以这样解读：</p>
+<p>“尝试将 item 转为 Movie 类型。若成功，设置一个新的临时常量 movie 来存储返回的可选 Movie 中的值”</p>
+<p>若向下转型成功，然后 movie 的属性将用于打印一个 Movie 实例的描述，包括它的导演的名字 director。相似的原理被用来检测 Song 实例，当 Song 被找到时则打印它的描述（包含 artist 的名字）。<br>    转换没有真的改变实例或它的值。根本的实例保持不变；只是简单地把它作为它被转换成的类型来使用。</p>
+<h3 id="Any-和-AnyObject-的类型转换"><a href="#Any-和-AnyObject-的类型转换" class="headerlink" title="Any 和 AnyObject 的类型转换"></a>Any 和 AnyObject 的类型转换</h3><p>Swift 为不确定类型提供了两种特殊的类型别名：</p>
+<ul>
+<li>可以表示任何类型，包括函数类型。</li>
+<li>可以表示任何类类型的实例。</li>
+</ul>
+<p>只有当你确实需要它们的行为和功能时才使用 Any 和 AnyObject。代码中最好使用明确的类型。</p>
+<p>这里有个示例，使用 Any 类型来和混合的不同类型一起工作，包括函数类型和非类类型。它创建了一个可以存储 Any 类型的数组 things：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> things = [<span class="type">Any</span>]()</div><div class="line"> </div><div class="line">things.append(<span class="number">0</span>)</div><div class="line">things.append(<span class="number">0.0</span>)</div><div class="line">things.append(<span class="number">42</span>)</div><div class="line">things.append(<span class="number">3.14159</span>)</div><div class="line">things.append(<span class="string">"hello"</span>)</div><div class="line">things.append((<span class="number">3.0</span>, <span class="number">5.0</span>))</div><div class="line">things.append(<span class="type">Movie</span>(name: <span class="string">"Ghostbusters"</span>, director: <span class="string">"Ivan Reitman"</span>))</div><div class="line">things.append(&#123; (name: <span class="type">String</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span> <span class="string">"Hello, <span class="subst">\(name)</span>"</span> &#125;)</div></pre></td></tr></table></figure>
+<p>things 数组包含两个 Int 值，两个 Double 值，一个 String 值，一个元组 (Double, Double)，一个Movie实例“Ghostbusters”，以及一个接受 String 值并返回另一个 String 值的闭包表达式。<br>你可以在 switch 表达式的 case 中使用 is 和 as 操作符来找出只知道是 Any 或 AnyObject 类型的常量或变量的具体类型。下面的示例迭代 things 数组中的每一项，并用 switch 语句查找每一项的类型。有几个 switch 语句的 case 绑定它们匹配到的值到一个指定类型的常量，从而可以打印这些值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> thing <span class="keyword">in</span> things &#123;</div><div class="line">    <span class="keyword">switch</span> thing &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span> <span class="keyword">as</span> <span class="type">Int</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"zero as an Int"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span> <span class="keyword">as</span> <span class="type">Double</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"zero as a Double"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someInt <span class="keyword">as</span> <span class="type">Int</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"an integer value of <span class="subst">\(someInt)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someDouble <span class="keyword">as</span> <span class="type">Double</span> <span class="keyword">where</span> someDouble &gt; <span class="number">0</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a positive double value of <span class="subst">\(someDouble)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">is</span> <span class="type">Double</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"some other double value that I don't want to print"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> someString <span class="keyword">as</span> <span class="type">String</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a string value of \"<span class="subst">\(someString)</span>\""</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> (x, y) <span class="keyword">as</span> (<span class="type">Double</span>, <span class="type">Double</span>):</div><div class="line">        <span class="built_in">print</span>(<span class="string">"an (x, y) point at <span class="subst">\(x)</span>, <span class="subst">\(y)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> movie <span class="keyword">as</span> <span class="type">Movie</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"a movie called <span class="subst">\(movie.name)</span>, dir. <span class="subst">\(movie.director)</span>"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="keyword">let</span> stringConverter <span class="keyword">as</span> (<span class="type">String</span>) -&gt; <span class="type">String</span>:</div><div class="line">        <span class="built_in">print</span>(stringConverter(<span class="string">"Michael"</span>))</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"something else"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// zero as an Int</span></div><div class="line"><span class="comment">// zero as a Double</span></div><div class="line"><span class="comment">// an integer value of 42</span></div><div class="line"><span class="comment">// a positive double value of 3.14159</span></div><div class="line"><span class="comment">// a string value of "hello"</span></div><div class="line"><span class="comment">// an (x, y) point at 3.0, 5.0</span></div><div class="line"><span class="comment">// a movie called Ghostbusters, dir. Ivan Reitman</span></div><div class="line"><span class="comment">// Hello, Michael</span></div></pre></td></tr></table></figure>
+<pre><code>Any类型可以表示所有类型的值，包括可选类型。Swift 会在你用Any类型来表示一个可选值的时候，给你一个警告。如果你确实想使用Any类型来承载可选值，你可以使用as操作符显示转换为Any，如下所示：
+</code></pre><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> optionalNumber: <span class="type">Int</span>? = <span class="number">3</span></div><div class="line">things.append(optionalNumber)        <span class="comment">// Warning</span></div><div class="line">things.append(optionalNumber <span class="keyword">as</span> <span class="type">Any</span>) <span class="comment">// No warning</span></div></pre></td></tr></table></figure>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html/" target="_blank" rel="external"> Type Casting </a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Error-Handling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -507,239 +711,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/iOS_Swift_language_note_Optional-Chaining/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" itemprop="url">Swift Optional Chaining</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T01:20:11+08:00">
-                2016-11-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" class="leancloud_visitors" data-flag-title="Swift Optional Chaining">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。<br>    Swift 的可选链式调用和 Objective-C 中向nil发送消息有些相像，但是 Swift 的可选链式调用可以应用于任意类型，并且能检查调用是否成功。</p>
-<h3 id="使用可选链式调用代替强制展开"><a href="#使用可选链式调用代替强制展开" class="headerlink" title="使用可选链式调用代替强制展开"></a>使用可选链式调用代替强制展开</h3><p>通过在想调用的属性、方法、或下标的可选值后面放一个问号（?），可以定义一个可选链。这一点很像在可选值后面放一个叹号（!）来强制展开它的值。它们的主要区别在于当可选值为空时可选链式调用只会调用失败，然而强制展开将会触发运行时错误。</p>
-<p>为了反映可选链式调用可以在空值（nil）上调用的事实，不论这个调用的属性、方法及下标返回的值是不是可选值，它的返回结果都是一个可选值。你可以利用这个返回值来判断你的可选链式调用是否调用成功，如果调用有返回值则说明调用成功，返回nil则说明调用失败。</p>
-<p>特别地，可选链式调用的返回结果与原本的返回结果具有相同的类型，但是被包装成了一个可选值。例如，使用可选链式调用访问属性，当可选链式调用成功时，如果属性原本的返回结果是Int类型，则会变为Int?类型。</p>
-<p>下面几段代码将解释可选链式调用和强制展开的不同。首先定义两个类Person和Residence：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> residence: <span class="type">Residence</span>?</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Residence</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> numberOfRooms = <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Residence有一个Int类型的属性numberOfRooms，其默认值为1。Person具有一个可选的residence属性，其类型为Residence?。<br>假如你创建了一个新的Person实例,它的residence属性由于是是可选型而将初始化为nil,在下面的代码中,john有一个值为nil的residence属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> john = <span class="type">Person</span>()</div></pre></td></tr></table></figure>
-<p>如果使用叹号（!）强制展开获得这个john的residence属性中的numberOfRooms值，会触发运行时错误，因为这时residence没有可以展开的值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> roomCount = john.residence!.numberOfRooms</div><div class="line"><span class="comment">// this triggers a runtime error</span></div></pre></td></tr></table></figure>
-<p>john.residence为非nil值的时候，上面的调用会成功，并且把roomCount设置为Int类型的房间数量。正如上面提到的，当residence为nil的时候上面这段代码会触发运行时错误。</p>
-<p>可选链式调用提供了另一种访问numberOfRooms的方式，使用问号（?）来替代原来的叹号（!）：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> roomCount = john.residence?.numberOfRooms &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"John's residence has <span class="subst">\(roomCount)</span> room(s)."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to retrieve the number of rooms."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Unable to retrieve the number of rooms."</span></div></pre></td></tr></table></figure>
-<p>在residence后面添加问号之后，Swift 就会在residence不为nil的情况下访问numberOfRooms。<br>因为访问numberOfRooms有可能失败，可选链式调用会返回Int?类型，或称为“可选的 Int”。如上例所示，当residence为nil的时候，可选的Int将会为nil，表明无法访问numberOfRooms。访问成功时，可选的Int值会通过可选绑定展开，并赋值给非可选类型的roomCount常量。<br>要注意的是，即使numberOfRooms是非可选的Int时，这一点也成立。只要使用可选链式调用就意味着numberOfRooms会返回一个Int?而不是Int。<br>可以将一个Residence的实例赋给john.residence，这样它就不再是nil了：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">john.residence = <span class="type">Residence</span>()</div></pre></td></tr></table></figure>
-<p>john.residence现在包含一个实际的Residence实例，而不再是nil。如果你试图使用先前的可选链式调用访问numberOfRooms，它现在将返回值为1的Int?类型的值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> roomCount = john.residence?.numberOfRooms &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"John's residence has <span class="subst">\(roomCount)</span> room(s)."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to retrieve the number of rooms."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "John's residence has 1 room(s)."</span></div></pre></td></tr></table></figure>
-<h3 id="为可选链式调用定义模型类"><a href="#为可选链式调用定义模型类" class="headerlink" title="为可选链式调用定义模型类"></a>为可选链式调用定义模型类</h3><p>通过使用可选链式调用可以调用多层属性、方法和下标。这样可以在复杂的模型中向下访问各种子属性，并且判断能否访问子属性的属性、方法或下标。<br>下面这段代码定义了四个模型类，这些例子包括多层可选链式调用。为了方便说明，在Person和Residence的基础上增加了Room类和Address类，以及相关的属性、方法以及下标。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> residence: <span class="type">Residence</span>?</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Residence</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> rooms = [<span class="type">Room</span>]()</div><div class="line">    <span class="keyword">var</span> numberOfRooms: <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> rooms.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">subscript</span>(i: <span class="type">Int</span>) -&gt; <span class="type">Room</span> &#123;</div><div class="line">        <span class="keyword">get</span> &#123;</div><div class="line">            <span class="keyword">return</span> rooms[i]</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">set</span> &#123;</div><div class="line">            rooms[i] = newValue</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">printNumberOfRooms</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"The number of rooms is <span class="subst">\(numberOfRooms)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> address: <span class="type">Address</span>?</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在Residence有了一个存储Room实例的数组，numberOfRooms属性被实现为计算型属性，而不是存储型属性。numberOfRooms属性简单地返回rooms数组的count属性的值。</p>
-<p>Residence还提供了访问rooms数组的快捷方式，即提供可读写的下标来访问rooms数组中指定位置的元素。<br>此外，Residence还提供了printNumberOfRooms方法，这个方法的作用是打印numberOfRooms的值。<br>最后，Residence还定义了一个可选属性address，其类型为Address?。Address类的定义在下面会说明。</p>
-<p>Room类是一个简单类，其实例被存储在rooms数组中。该类只包含一个属性name，以及一个用于将该属性设置为适当的房间名的初始化函数：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Room</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123; <span class="keyword">self</span>.name = name &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后一个类是Address，这个类有三个String?类型的可选属性。buildingName以及buildingNumber属性分别表示某个大厦的名称和号码，第三个属性street表示大厦所在街道的名称：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> buildingName: <span class="type">String</span>?</div><div class="line">    <span class="keyword">var</span> buildingNumber: <span class="type">String</span>?</div><div class="line">    <span class="keyword">var</span> street: <span class="type">String</span>?</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">buildingIdentifier</span><span class="params">()</span></span> -&gt; <span class="type">String</span>? &#123;</div><div class="line">        <span class="keyword">if</span> buildingNumber != <span class="literal">nil</span> &amp;&amp; street != <span class="literal">nil</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"<span class="subst">\(buildingNumber)</span> <span class="subst">\(street)</span>"</span></div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> buildingName != <span class="literal">nil</span> &#123;</div><div class="line">            <span class="keyword">return</span> buildingName</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Address类提供了buildingIdentifier()方法，返回值为String?。 如果buildingName有值则返回buildingName。或者，如果buildingNumber和street均有值则返回buildingNumber。否则，返回nil。</p>
-<h3 id="通过可选链式调用访问属性"><a href="#通过可选链式调用访问属性" class="headerlink" title="通过可选链式调用访问属性"></a>通过可选链式调用访问属性</h3><p>可以通过可选链式调用在一个可选值上访问它的属性，并判断访问是否成功。<br>下面的代码创建了一个Person实例，然后像之前一样，尝试访问numberOfRooms属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> john = <span class="type">Person</span>()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> roomCount = john.residence?.numberOfRooms &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"John's residence has <span class="subst">\(roomCount)</span> room(s)."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to retrieve the number of rooms."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Unable to retrieve the number of rooms."</span></div></pre></td></tr></table></figure>
-<p>因为john.residence为nil，所以这个可选链式调用依旧会像先前一样失败。<br>还可以通过可选链式调用来设置属性值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someAddress = <span class="type">Address</span>()</div><div class="line">someAddress.buildingNumber = <span class="string">"29"</span></div><div class="line">someAddress.street = <span class="string">"Acacia Road"</span></div><div class="line">john.residence?.address = someAddress</div></pre></td></tr></table></figure>
-<p>在这个例子中，通过john.residence来设定address属性也会失败，因为john.residence当前为nil。</p>
-<p>上面代码中的赋值过程是可选链式调用的一部分，这意味着可选链式调用失败时，等号右侧的代码不会被执行。对于上面的代码来说，很难验证这一点，因为像这样赋值一个常量没有任何副作用。下面的代码完成了同样的事情，但是它使用一个函数来创建Address实例，然后将该实例返回用于赋值。该函数会在返回前打印“Function was called”，这使你能验证等号右侧的代码是否被执行。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">createAddress</span><span class="params">()</span></span> -&gt; <span class="type">Address</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Function was called."</span>)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> someAddress = <span class="type">Address</span>()</div><div class="line">    someAddress.buildingNumber = <span class="string">"29"</span></div><div class="line">    someAddress.street = <span class="string">"Acacia Road"</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> someAddress</div><div class="line">&#125;</div><div class="line">john.residence?.address = createAddress()</div></pre></td></tr></table></figure>
-<p>没有任何打印消息，可以看出createAddress()函数并未被执行。</p>
-<h3 id="通过可选链式调用调用方法"><a href="#通过可选链式调用调用方法" class="headerlink" title="通过可选链式调用调用方法"></a>通过可选链式调用调用方法</h3><p>可以通过可选链式调用来调用方法，并判断是否调用成功，即使这个方法没有返回值。<br>Residence类中的printNumberOfRooms()方法打印当前的numberOfRooms值，如下所示：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printNumberOfRooms</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The number of rooms is <span class="subst">\(numberOfRooms)</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个方法没有返回值。然而，没有返回值的方法具有隐式的返回类型Void。这意味着没有返回值的方法也会返回()，或者说空的元组。</p>
-<p>如果在可选值上通过可选链式调用来调用这个方法，该方法的返回类型会是Void?，而不是Void，因为通过可选链式调用得到的返回值都是可选的。这样我们就可以使用if语句来判断能否成功调用printNumberOfRooms()方法，即使方法本身没有定义返回值。通过判断返回值是否为nil可以判断调用是否成功：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> john.residence?.printNumberOfRooms() != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"It was possible to print the number of rooms."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"It was not possible to print the number of rooms."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "It was not possible to print the number of rooms."</span></div></pre></td></tr></table></figure>
-<p>同样的，可以据此判断通过可选链式调用为属性赋值是否成功。在上面的通过可选链式调用访问属性的例子中，我们尝试给john.residence中的address属性赋值，即使residence为nil。通过可选链式调用给属性赋值会返回Void?，通过判断返回值是否为nil就可以知道赋值是否成功：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (john.residence?.address = someAddress) != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"It was possible to set the address."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"It was not possible to set the address."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "It was not possible to set the address."</span></div></pre></td></tr></table></figure>
-<h3 id="通过可选链式调用访问下标"><a href="#通过可选链式调用访问下标" class="headerlink" title="通过可选链式调用访问下标"></a>通过可选链式调用访问下标</h3><p>通过可选链式调用，我们可以在一个可选值上访问下标，并且判断下标调用是否成功。<br>    通过可选链式调用访问可选值的下标时，应该将问号放在下标方括号的前面而不是后面。可选链式调用的问号一般直接跟在可选表达式的后面。</p>
-<p>下面这个例子用下标访问john.residence属性存储的Residence实例的rooms数组中的第一个房间的名称，因为john.residence为nil，所以下标调用失败了：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> firstRoomName = john.residence?[<span class="number">0</span>].name &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The first room name is <span class="subst">\(firstRoomName)</span>."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to retrieve the first room name."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Unable to retrieve the first room name."</span></div></pre></td></tr></table></figure>
-<p>在这个例子中，问号直接放在john.residence的后面，并且在方括号的前面，因为john.residence是可选值。<br>类似的，可以通过下标，用可选链式调用来赋值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">john.residence?[<span class="number">0</span>] = <span class="type">Room</span>(name: <span class="string">"Bathroom"</span>)</div></pre></td></tr></table></figure>
-<p>这次赋值同样会失败，因为residence目前是nil。<br>如果你创建一个Residence实例，并为其rooms数组添加一些Room实例，然后将Residence实例赋值给john.residence，那就可以通过可选链和下标来访问数组中的元素：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> johnsHouse = <span class="type">Residence</span>()</div><div class="line">johnsHouse.rooms.append(<span class="type">Room</span>(name: <span class="string">"Living Room"</span>))</div><div class="line">johnsHouse.rooms.append(<span class="type">Room</span>(name: <span class="string">"Kitchen"</span>))</div><div class="line">john.residence = johnsHouse</div><div class="line"> </div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> firstRoomName = john.residence?[<span class="number">0</span>].name &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The first room name is <span class="subst">\(firstRoomName)</span>."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to retrieve the first room name."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "The first room name is Living Room."</span></div></pre></td></tr></table></figure>
-<h4 id="访问可选类型的下标"><a href="#访问可选类型的下标" class="headerlink" title="访问可选类型的下标"></a>访问可选类型的下标</h4><p>如果下标返回可选类型值，比如 Swift 中Dictionary类型的键的下标，可以在下标的结尾括号后面放一个问号来在其可选返回值上进行可选链式调用：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> testScores = [<span class="string">"Dave"</span>: [<span class="number">86</span>, <span class="number">82</span>, <span class="number">84</span>], <span class="string">"Bev"</span>: [<span class="number">79</span>, <span class="number">94</span>, <span class="number">81</span>]]</div><div class="line">testScores[<span class="string">"Dave"</span>]?[<span class="number">0</span>] = <span class="number">91</span></div><div class="line">testScores[<span class="string">"Bev"</span>]?[<span class="number">0</span>] += <span class="number">1</span></div><div class="line">testScores[<span class="string">"Brian"</span>]?[<span class="number">0</span>] = <span class="number">72</span></div><div class="line"><span class="comment">// the "Dave" array is now [91, 82, 84] and the "Bev" array is now [80, 94, 81]</span></div></pre></td></tr></table></figure>
-<p>上面的例子中定义了一个testScores数组，包含了两个键值对，把String类型的键映射到一个Int值的数组。这个例子用可选链式调用把”Dave”数组中第一个元素设为91，把”Bev”数组的第一个元素+1，然后尝试把”Brian”数组中的第一个元素设为72。前两个调用成功，因为testScores字典中包含”Dave”和”Bev”这两个键。但是testScores字典中没有”Brian”这个键，所以第三个调用失败。</p>
-<h3 id="连接多层可选链式调用"><a href="#连接多层可选链式调用" class="headerlink" title="连接多层可选链式调用"></a>连接多层可选链式调用</h3><p>可以通过连接多个可选链式调用在更深的模型层级中访问属性、方法以及下标。然而，多层可选链式调用不会增加返回值的可选层级。</p>
-<ul>
-<li>如果你访问的值不是可选的，可选链式调用将会返回可选值。</li>
-<li>如果你访问的值就是可选的，可选链式调用不会让可选返回值变得“更可选”。</li>
-</ul>
-<p>因此：</p>
-<ul>
-<li>通过可选链式调用访问一个Int值，将会返回Int?，无论使用了多少层可选链式调用。</li>
-<li>类似的，通过可选链式调用访问Int?值，依旧会返回Int?值，并不会返回Int??。</li>
-</ul>
-<p>下面的例子尝试访问john中的residence属性中的address属性中的street属性。这里使用了两层可选链式调用，residence以及address都是可选值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> johnsStreet = john.residence?.address?.street &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"John's street name is <span class="subst">\(johnsStreet)</span>."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to retrieve the address."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "Unable to retrieve the address."</span></div></pre></td></tr></table></figure>
-<p>john.residence现在包含一个有效的Residence实例。然而，john.residence.address的值当前为nil。因此，调用john.residence?.address?.street会失败。<br>需要注意的是，上面的例子中，street的属性为String?。john.residence?.address?.street的返回值也依然是String?，即使已经使用了两层可选链式调用。</p>
-<p>如果为john.residence.address赋值一个Address实例，并且为address中的street属性设置一个有效值，我们就能过通过可选链式调用来访问street属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> johnsAddress = <span class="type">Address</span>()</div><div class="line">johnsAddress.buildingName = <span class="string">"The Larches"</span></div><div class="line">johnsAddress.street = <span class="string">"Laurel Street"</span></div><div class="line">john.residence?.address = johnsAddress</div><div class="line"> </div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> johnsStreet = john.residence?.address?.street &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"John's street name is <span class="subst">\(johnsStreet)</span>."</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Unable to retrieve the address."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "John's street name is Laurel Street."</span></div></pre></td></tr></table></figure>
-<h3 id="在方法的可选返回值上进行可选链式调用"><a href="#在方法的可选返回值上进行可选链式调用" class="headerlink" title="在方法的可选返回值上进行可选链式调用"></a>在方法的可选返回值上进行可选链式调用</h3><p>上面的例子展示了如何在一个可选值上通过可选链式调用来获取它的属性值。我们还可以在一个可选值上通过可选链式调用来调用方法，并且可以根据需要继续在方法的可选返回值上进行可选链式调用。</p>
-<p>在下面的例子中，通过可选链式调用来调用Address的buildingIdentifier()方法。这个方法返回String?类型的值。如上所述，通过可选链式调用来调用该方法，最终的返回值依旧会是String?类型：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> buildingIdentifier = john.residence?.address?.buildingIdentifier() &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"John's building identifier is <span class="subst">\(buildingIdentifier)</span>."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "John's building identifier is The Larches."</span></div></pre></td></tr></table></figure>
-<p>如果要在该方法的返回值上进行可选链式调用，在方法的圆括号后面加上问号即可：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> beginsWithThe =</div><div class="line">    john.residence?.address?.buildingIdentifier()?.hasPrefix(<span class="string">"The"</span>) &#123;</div><div class="line">    <span class="keyword">if</span> beginsWithThe &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"John's building identifier begins with \"The\"."</span>)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"John's building identifier does not begin with \"The\"."</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Prints "John's building identifier begins with "The"."</span></div></pre></td></tr></table></figure>
-<pre><code>在上面的例子中，在方法的圆括号后面加上问号是因为你要在buildingIdentifier()方法的可选返回值上进行可选链式调用，而不是方法本身。
-</code></pre><h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/OptionalChaining.html/" target="_blank" rel="external"> OptionalChaining </a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -790,7 +761,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -7,6 +7,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="wKG531ni5l" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
@@ -95,7 +96,7 @@
 <meta name="description" content="Keep hungry keep foolish！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="liangtong">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+<meta property="og:url" content="https://l900416.github.io/page/6/index.html">
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="Keep hungry keep foolish！">
 <meta property="og:locale" content="zh-Hans">
@@ -130,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/6/"/>
+  <link rel="canonical" href="https://l900416.github.io/page/6/"/>
 
 
 
@@ -258,6 +259,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -325,7 +336,167 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/06/13/algorithm_sort_radix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/13/algorithm_sort_radix/" itemprop="url">基数排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T11:25:37+08:00">
+                2017-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/13/algorithm_sort_radix/" class="leancloud_visitors" data-flag-title="基数排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    基数排序（radix sort）属于“分配式排序”（distribution sort），基数排序法是属于稳定性的排序，其时间复杂度为O (nlog(r)m)，其中r为所采取的基数，而m为堆数，在某些时候，基数排序法的效率高于其它的稳定性排序法。参照斯坦福大学算法公开课视频</p>
+<h3 id="基本思想及实现"><a href="#基本思想及实现" class="headerlink" title="基本思想及实现"></a>基本思想及实现</h3><p>基本思想： 对于一个整型数组：      </p>
+<ul>
+<li>① 将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。</li>
+<li>② 排序算法使用计数排序思想</li>
+</ul>
+<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  基数排序</span></div><div class="line"><span class="comment">* 分布式排序算法</span></div><div class="line"><span class="comment">* 将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。</span></div><div class="line"><span class="comment">* 基数排序的方式可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。</span></div><div class="line"><span class="comment">* 排序使用 - 计数排序</span></div><div class="line"><span class="comment">**/</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">*  @brief 基数排序 - LSD</span></div><div class="line"><span class="comment">*  @param  sortArray 待排序整形数组</span></div><div class="line"><span class="comment">*  @param  loop    排序轮次</span></div><div class="line"><span class="comment">*  @param  step    步长</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">radixSort</span><span class="params">(sortArray:<span class="keyword">inout</span> Array&lt;Int&gt;, loop:Int,step:Int)</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> length = sortArray.<span class="built_in">count</span>;<span class="comment">//待排序数组长度</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">    * 根据最高位和最低位，确定每次进行计数排序的中间位数</span></div><div class="line"><span class="comment">    **/</span></div><div class="line">    <span class="keyword">var</span> msb = <span class="number">1</span>;<span class="comment">//最高位</span></div><div class="line">    <span class="keyword">var</span> minimum = <span class="number">1</span>;<span class="comment">//最低位</span></div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; loop * step &#123;</div><div class="line">        msb = msb * <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; step &#123;</div><div class="line">        minimum = minimum * <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">    * 计数排序 - 非基于比较的排序算法 。 可参照上一篇文章</span></div><div class="line"><span class="comment">    */</span></div><div class="line">    <span class="keyword">var</span> countArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();</div><div class="line">    <span class="keyword">var</span> buckets = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ... minimum &#123;</div><div class="line">        countArray.append(<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; length&#123;</div><div class="line">        buckets.append(<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//第一个步骤：统计数量</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; length &#123;<span class="comment">//统计小于位置i的元素个数</span></div><div class="line">        <span class="keyword">let</span> sortValue = sortArray[i] / msb % minimum;</div><div class="line">        countArray[sortValue] = countArray[sortValue] + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> ... minimum &#123;<span class="comment">//统计出小于等于位置i的元素个数</span></div><div class="line">        countArray[i] = countArray[i] + countArray[i - <span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//第二个步骤：逆向扫描数组sortArray，将i位置元素放置到retArray中countArray对应值的位置上，同时修正countArray的值</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> (<span class="number">0</span> ..&lt; length).reversed() &#123;</div><div class="line">        <span class="keyword">let</span> value = sortArray[i] / msb % minimum;</div><div class="line">        <span class="keyword">let</span> countValue = countArray[value];</div><div class="line">        buckets[countValue - <span class="number">1</span>] = sortArray[i];</div><div class="line">        countArray[value] = countArray[value] - <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//对本次基数排序结果进行排序</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; length &#123;</div><div class="line">        sortArray[i] = buckets[i];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> intArray =  [<span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">81</span>, <span class="number">93</span>, <span class="number">100</span>, <span class="number">92</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">95</span>, <span class="number">10563</span>, <span class="number">55</span>, <span class="number">7</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">999</span>, <span class="number">1024</span>, <span class="number">20490</span>, <span class="number">1</span>];</div><div class="line"></div><div class="line">    <span class="keyword">var</span> maxValue = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> maxLength = <span class="number">1</span>;</div><div class="line">    <span class="keyword">var</span> step = <span class="number">2</span>;</div><div class="line">    <span class="keyword">var</span> loopTimes = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; intArray.<span class="built_in">count</span>&#123;</div><div class="line">        <span class="keyword">if</span> intArray[i] &gt; maxValue&#123;</div><div class="line">            maxValue = intArray[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span>(maxValue / <span class="number">10</span> != <span class="number">0</span>)&#123;</div><div class="line">        maxLength = maxLength + <span class="number">1</span>;</div><div class="line">        maxValue = maxValue / <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> maxLength % step &gt; <span class="number">0</span>&#123;</div><div class="line">        loopTimes = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    loopTimes = loopTimes + maxLength / step;</div><div class="line"></div><div class="line">    <span class="built_in">print</span>(<span class="string">"待排序数组<span class="subst">\(intArray)</span>"</span>);</div><div class="line">    <span class="built_in">print</span>(<span class="string">"步长：<span class="subst">\(step)</span>"</span>);</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; loopTimes&#123;</div><div class="line">        radixSort(sortArray: &amp;intArray, loop: i, step: step);</div><div class="line">        <span class="built_in">print</span>(<span class="string">"第<span class="subst">\(i)</span>次基数排序后结果：<span class="subst">\(intArray)</span>"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">待排序数组[<span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">81</span>, <span class="number">93</span>, <span class="number">100</span>, <span class="number">92</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">95</span>, <span class="number">10563</span>, <span class="number">55</span>, <span class="number">7</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">999</span>, <span class="number">1024</span>, <span class="number">20490</span>, <span class="number">1</span>]</div><div class="line">步长：<span class="number">2</span></div><div class="line">第<span class="number">0</span>次基数排序后结果：[<span class="number">100</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">14</span>, <span class="number">22</span>, <span class="number">1024</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">55</span>, <span class="number">10563</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">81</span>, <span class="number">20490</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">999</span>]</div><div class="line">第<span class="number">1</span>次基数排序后结果：[<span class="number">1</span>, <span class="number">7</span>, <span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">55</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">81</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">20490</span>, <span class="number">10563</span>, <span class="number">999</span>, <span class="number">1024</span>]</div><div class="line">第<span class="number">2</span>次基数排序后结果：[<span class="number">1</span>, <span class="number">7</span>, <span class="number">14</span>, <span class="number">22</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">43</span>, <span class="number">55</span>, <span class="number">65</span>, <span class="number">73</span>, <span class="number">81</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">999</span>, <span class="number">1024</span>, <span class="number">10563</span>, <span class="number">20490</span>]</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -484,166 +655,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/algorithm_sort_count/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/18/algorithm_sort_count/" itemprop="url">计数排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T21:05:37+08:00">
-                2017-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/05/18/algorithm_sort_count/" class="leancloud_visitors" data-flag-title="计数排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    计数排序是一个非基于比较的整数排序算法，用空间换时间，优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围）。</p>
-<h3 id="基本思想及实现"><a href="#基本思想及实现" class="headerlink" title="基本思想及实现"></a>基本思想及实现</h3><p>基本思想： 假设输入的线性表L的长度为n，L=L1,L2,..,Ln；线性表的元素属于有限偏序集S，|S|=k且k=O(n)，S={S1,S2,..Sk}；则计数排序可以描述如下：      </p>
-<ul>
-<li>① 扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；</li>
-<li>② 扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  计数排序</span></div><div class="line"><span class="comment">* 计数排序是一个非基于比较的排序算法，优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围），快于任何比较排序算法。当然这是一种牺牲空间换取时间的做法，而且当O(k)&gt;O(n*log(n))的时候其效率反而不如基于比较的排序。</span></div><div class="line"><span class="comment">* ① 扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；</span></div><div class="line"><span class="comment">* ② 扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">countSort</span><span class="params">(sortArray:<span class="keyword">inout</span> Array&lt;Int&gt;, maxValue:Int)</span></span> -&gt; <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;&#123;</div><div class="line"><span class="keyword">let</span> <span class="built_in">count</span> = sortArray.<span class="built_in">count</span>;</div><div class="line"><span class="keyword">var</span> retArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();<span class="comment">//用于存放返回值</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</div><div class="line"><span class="keyword">var</span> countArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();<span class="comment">//用于存放计数器</span></div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ... maxValue &#123;<span class="comment">//初始化计数器</span></div><div class="line">countArray.append(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="built_in">count</span> &#123;</div><div class="line">retArray.append(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//第一个步骤：统计数量</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="built_in">count</span> &#123;<span class="comment">//统计小于位置i的元素个数</span></div><div class="line">countArray[sortArray[i]] = countArray[sortArray[i]] + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> ... maxValue &#123;<span class="comment">//统计出小于等于位置i的元素个数</span></div><div class="line">countArray[i] = countArray[i] + countArray[i-<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//第二个步骤：逆向扫描数组sortArray，将i位置元素放置到retArray中countArray对应值的位置上，同时修正countArray的值</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (<span class="number">0</span> ..&lt; <span class="built_in">count</span>).reversed() &#123;</div><div class="line"><span class="keyword">let</span> value = sortArray[i];</div><div class="line"><span class="keyword">let</span> countValue = countArray[value];</div><div class="line">retArray[countValue - <span class="number">1</span>] = value;</div><div class="line">countArray[value] = countArray[value] - <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> retArray;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">print</span>(countSort(sortArray: &amp;intArray,maxValue:<span class="number">5</span>));</div><div class="line"></div><div class="line">intArray =  [<span class="number">100</span>,<span class="number">93</span>,<span class="number">97</span>,<span class="number">92</span>,<span class="number">96</span>,<span class="number">99</span>,<span class="number">92</span>,<span class="number">89</span>,<span class="number">93</span>,<span class="number">97</span>,<span class="number">90</span>,<span class="number">94</span>,<span class="number">92</span>,<span class="number">95</span>];</div><div class="line"><span class="built_in">print</span>(countSort(sortArray: &amp;intArray,maxValue:<span class="number">100</span>));</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>]</div><div class="line">[<span class="number">89</span>, <span class="number">90</span>, <span class="number">92</span>, <span class="number">92</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">93</span>, <span class="number">94</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">97</span>, <span class="number">97</span>, <span class="number">99</span>, <span class="number">100</span>]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -694,7 +705,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

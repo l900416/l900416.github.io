@@ -51,7 +51,7 @@ menu:
   archives: archives/
   tags: tags/
   about: about/
-  #sitemap: /sitemap.xml
+  sitemap: sitemap.xml
   #commonweal: /404/
 
 # Enable/Disable menu icons.

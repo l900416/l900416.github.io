@@ -7,6 +7,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="wKG531ni5l" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
@@ -96,7 +97,7 @@
 <meta name="keywords" content="Bluetooth">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蓝牙Central模式 - 水准仪蓝牙交互">
-<meta property="og:url" content="http://yoursite.com/2017/08/24/bluetooth_central_level/index.html">
+<meta property="og:url" content="https://l900416.github.io/2017/08/24/bluetooth_central_level/index.html">
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    工程测量中，Trimble电子水准仪(DiNi Level)在测量完成后，通过蓝牙模块与外设进行数据交互，本文介绍外设如何作为中心模式与水准仪进行数据交互。 前期准备前期准备工作包括以下几个方面：     蓝牙外设扫描 蓝牙外设连接 外设服务发现 特征值发现 订阅    可以参照iOS蓝牙开发 - Central模式，此处不再赘述，参照以下摘要信息： 123456789101112131">
 <meta property="og:locale" content="zh-Hans">
@@ -132,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/24/bluetooth_central_level/"/>
+  <link rel="canonical" href="https://l900416.github.io/2017/08/24/bluetooth_central_level/"/>
 
 
 
@@ -258,6 +259,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -325,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/24/bluetooth_central_level/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/24/bluetooth_central_level/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -436,7 +447,7 @@
 </ul>
 </li>
 </ul>
-<p>可以参照<a href="https://l900416.github.io/2017/07/27/bluetooth_central/" target="_blank" rel="external">iOS蓝牙开发 - Central模式</a>，此处不再赘述，参照以下摘要信息：</p>
+<p>可以参照<a href="https://l900416.github.io/2017/07/27/bluetooth_central/">iOS蓝牙开发 - Central模式</a>，此处不再赘述，参照以下摘要信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">2017-08-24 16:15:39.860 RoadBridgeOnline[1067:189910] CBCentralManagerStatePoweredOn</div><div class="line">2017-08-24 16:15:50.121 RoadBridgeOnline[1067:189910] -[BluetoothViewModel centralManager:didConnectPeripheral:], line = 198, CRTB_BT_MODULE=连接成功</div><div class="line">2017-08-24 16:15:50.188 RoadBridgeOnline[1067:189910]  -- 发现服务 -- :&lt;CBService: 0x15e6301c0, isPrimary = YES, UUID = 1101&gt;</div><div class="line">2017-08-24 16:15:50.189 RoadBridgeOnline[1067:189910]  -- 发现服务 -- :&lt;CBService: 0x15e6a6590, isPrimary = YES, UUID = 00001016-D102-11E1-9B23-00025B00A5A5&gt;</div><div class="line">2017-08-24 16:15:50.191 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didDiscoverCharacteristicsForService:error:], line = 236</div><div class="line">2017-08-24 16:15:50.191 RoadBridgeOnline[1067:189910] characteristic name:1102 value is: </div><div class="line"></div><div class="line">2017-08-24 16:15:50.193 RoadBridgeOnline[1067:189910] characteristic name:1103 value is:</div><div class="line">2017-08-24 16:15:50.194 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didDiscoverCharacteristicsForService:error:], line = 236</div><div class="line">2017-08-24 16:15:50.195 RoadBridgeOnline[1067:189910] characteristic name:00001013-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.197 RoadBridgeOnline[1067:189910] characteristic name:00001018-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.198 RoadBridgeOnline[1067:189910] characteristic name:00001014-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.199 RoadBridgeOnline[1067:189910] characteristic name:00001011-D102-11E1-9B23-00025B00A5A5 value is:</div><div class="line">2017-08-24 16:15:50.248 RoadBridgeOnline[1067:189910] -[BluetoothViewModel peripheral:didUpdateValueForCharacteristic:error:], line = 248</div><div class="line">2017-08-24 16:15:50.248 RoadBridgeOnline[1067:189910] characteristic name:1102 value is:</div></pre></td></tr></table></figure>
 <h4 id="特征值订阅／监听"><a href="#特征值订阅／监听" class="headerlink" title="特征值订阅／监听"></a>特征值订阅／监听</h4><p>水准仪与蓝牙外设的通讯，主要是通过特征值来实现，故此处进行单独介绍。在特征值发现之后，我们可以根据特征值进行过滤，监听特定的特征值，这样，当特征值发生变更的时候，会通过CBPeripheralDelegate协议回调特征值数据。使用蓝牙外设对象 <em>CBPeripheral</em> 的方法 <em>setNotifyValue:forCharacteristic:</em> 来进行监听</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//订阅 - 接受通知</div><div class="line">   [self.connectedPeripheral setNotifyValue:YES forCharacteristic:characteristics];</div></pre></td></tr></table></figure>
@@ -515,6 +526,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/28/os_shell_authority_chown/" rel="prev" title="shell中修改文件所有者">
+                shell中修改文件所有者 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -621,7 +636,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -891,7 +906,7 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/24/bluetooth_central_level/';
+          this.page.url = 'https://l900416.github.io/2017/08/24/bluetooth_central_level/';
           this.page.identifier = '2017/08/24/bluetooth_central_level/';
           this.page.title = '蓝牙Central模式 - 水准仪蓝牙交互';
         };

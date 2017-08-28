@@ -7,6 +7,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="wKG531ni5l" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
@@ -95,7 +96,7 @@
 <meta name="description" content="Keep hungry keep foolish！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="liangtong">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:url" content="https://l900416.github.io/page/4/index.html">
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="Keep hungry keep foolish！">
 <meta property="og:locale" content="zh-Hans">
@@ -130,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/4/"/>
+  <link rel="canonical" href="https://l900416.github.io/page/4/"/>
 
 
 
@@ -258,6 +259,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -325,7 +336,205 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/share_github_blog_hexo/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/07/share_github_blog_jekyll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/07/share_github_blog_jekyll/" itemprop="url">Mac下使用Jekyll搭建GitHub博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:25:19+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/07/share_github_blog_jekyll/" class="leancloud_visitors" data-flag-title="Mac下使用Jekyll搭建GitHub博客">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll</a>是一个静态网站和博客模版，本文介绍如何使用Jekyll进行个人GitHub博客的搭建。搭建前提是拥有个人<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，且Mac上有安装 <em>git</em> 工具。</p>
+<h3 id="安装Jekyll"><a href="#安装Jekyll" class="headerlink" title="安装Jekyll"></a>安装Jekyll</h3><p>  参照<a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll官方</a>介绍，打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> gem install jekyll bundler</span></div></pre></td></tr></table></figure></p>
+<p>注：gem的安装／更新可以自己去查，此处不再进行说明。Jekyll安装成功后，便可以进行个人博客／静态网站的创建了。</p>
+<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> jekyll new my_blog</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> my_blog</span></div><div class="line"><span class="meta">$</span><span class="bash"> bundle <span class="built_in">exec</span> jekyll serve</span></div></pre></td></tr></table></figure></p>
+<p>参照<a href="https://jekyllrb.com/docs/templates/" target="_blank" rel="external">官方模版配置介绍</a>,修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的<a href="http://jekyllthemes.org/" target="_blank" rel="external">博客模板</a>即可。  </p>
+<h3 id="快速使用博客-1"><a href="#快速使用博客-1" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>  此处选择使用博客模板<a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="external">jekyll-now</a>，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。<br>新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。<br>编写之后，直接在博客路径下，运行即可：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> jekyll serve</span></div></pre></td></tr></table></figure></p>
+<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><p>  使用Jekyll搭建博客也可以添加很多自定制功能，比如统计、评论、标签等；可以根据自己的喜好，选择不同的主题。以下是个人曾经使用过的主题：      </p>
+<ul>
+<li><a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="external">Hux Blog</a> 第一个GitHub博客系统就是从他的博客fork过去的。</li>
+<li><a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll" target="_blank" rel="external">Clean Blog</a> 简单的Jekyll博客模板。</li>
+</ul>
+<h3 id="Jekyll在GitHub上的维护"><a href="#Jekyll在GitHub上的维护" class="headerlink" title="Jekyll在GitHub上的维护"></a>Jekyll在GitHub上的维护</h3><p>直接将博客源码上传到GitHub博客仓库即可。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>通过在GitHub上搭建Jekyll和Hexo博客，个人更倾向于使用Hexo博客。</p>
+<ul>
+<li>Jekyll    <ul>
+<li>配置简单。</li>
+<li>维护简单，只需要一个Branch即可。</li>
+<li>使用简单，运行只需要 <em>jekyll server</em> 即可。</li>
+<li>发布简单，只需要将代码push到对应仓库即可。</li>
+<li>主题切换，比较麻烦。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Hexo<ul>
+<li>配置项相对较多，但是格式比较清晰。</li>
+<li>博客和源码需要分开维护。需要两个Branch对博客系统进行维护。</li>
+<li>使用相对简单。<ul>
+<li>hexo clean  // 清理</li>
+<li>hexo g      // 生成</li>
+<li>hexo s      // 运行</li>
+</ul>
+</li>
+<li>发布简单。<ul>
+<li>hexo d      // 将博客部署(到github)</li>
+<li>将博客源码push到对应仓库单独保存</li>
+</ul>
+</li>
+<li>主题切换简单。<ul>
+<li>下载新主题到themes文件夹下；</li>
+<li>修改站点配置文件_config.yml中对应的主题选项。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/04/share_github_blog_hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -537,228 +746,6 @@ branch: master
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/27/bluetooth_central/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/27/bluetooth_central/" itemprop="url">iOS蓝牙开发 - Central模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T19:50:12+08:00">
-                2017-07-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/蓝牙/" itemprop="url" rel="index">
-                    <span itemprop="name">蓝牙</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/07/27/bluetooth_central/" class="leancloud_visitors" data-flag-title="iOS蓝牙开发 - Central模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Central模式"><a href="#Central模式" class="headerlink" title="Central模式"></a>Central模式</h3><p>中心模式(Central Model)，可以简单理解为设备App作为中心，连接其他蓝牙外设设备。区别于外设模式，官方介绍可自行<a href="https://www.google.com/hk" target="_blank" rel="external">Google</a>。这里主要介绍iOS上蓝牙设备作为中心模式的集成。</p>
-<h3 id="功能集成"><a href="#功能集成" class="headerlink" title="功能集成"></a>功能集成</h3><p>  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;/array&gt;</div><div class="line">&lt;key&gt;NSBluetoothPeripheralUsageDescription&lt;/key&gt;</div><div class="line">&lt;string&gt;蓝牙设备请求描述，比如：程序需要使用蓝牙进行设备发现&lt;/string&gt;</div></pre></td></tr></table></figure></p>
-<p>  项目Targets对应的 <em>BuildPhases</em> 中，引入 <em>CoreBluetooth.framework</em> ，使用的代码中引入头文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="请求蓝牙服务"><a href="#请求蓝牙服务" class="headerlink" title="请求蓝牙服务"></a>请求蓝牙服务</h4><p>  使用CBCentralManager来进行蓝牙服务管理(授权请求)，监听蓝牙状态变化。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) CBCentralManager *cMgr;</div><div class="line"></div><div class="line"><span class="comment">//对象创建成功后，会请求使用蓝牙，CBCentralManagerDelegate协议会回调蓝牙的各个状态</span></div><div class="line">_cMgr = [[CBCentralManager alloc] initWithDelegate:<span class="keyword">self</span> queue:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="meta">#pragma mark - CBCentralManagerDelegate</span></div><div class="line">- (<span class="keyword">void</span>)centralManagerDidUpdateState:(CBCentralManager *)central&#123;</div><div class="line">    <span class="keyword">switch</span> (central.state) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateUnknown"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateResetting"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateUnsupported"</span>);<span class="comment">//不支持蓝牙</span></div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStateUnauthorized"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStatePoweredOff"</span>);<span class="comment">//蓝牙未开启</span></div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">5</span>:</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">NSLog</span>(<span class="string">@"CBCentralManagerStatePoweredOn"</span>);<span class="comment">//蓝牙已开启</span></div><div class="line">                <span class="comment">// 在中心管理者成功开启后再进行一些操作</span></div><div class="line">                <span class="comment">// 搜索外设， 搜索成功之后,会调用我们找到外设的代理方法</span></div><div class="line">                [<span class="keyword">self</span>.cMgr scanForPeripheralsWithServices:<span class="literal">nil</span> <span class="comment">// 通过某些服务筛选外设</span></div><div class="line">                                                  options:<span class="literal">nil</span>]; <span class="comment">// dict,条件</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="设备-外设-搜索"><a href="#设备-外设-搜索" class="headerlink" title="设备(外设)搜索"></a>设备(外设)搜索</h4><p>  在设备蓝牙开启的情况下，通过 <em>CBCentralManager</em> 的 <em>scanForPeripheralsWithServices:options:</em> 方法来搜索蓝牙外设，搜索成功后通过CBCentralManagerDelegate协议回调将外设返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">    //可以通过服务和选项进行蓝牙外设的过滤</div><div class="line">    [self.cMgr scanForPeripheralsWithServices:nil  options:nil]</div><div class="line"></div><div class="line">#pragma mark - CBCentralManagerDelegate</div><div class="line">//CBCentralManagerDelegate协议对应发现外设，协议回调函数附带外设携带的数据advertisementData和外设的信号强度RSSI</div><div class="line">- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *, id&gt; *)advertisementData RSSI:(NSNumber *)RSSI&#123;</div><div class="line">    //此处我们可以将外设设备组织成列表展示出来，以便用户根据实际情况进行特定外设的连接。</div><div class="line">    if (![self.self.peripheralList containsObject:peripheral]) &#123;</div><div class="line">        [self.peripheralList addObject:item];</div><div class="line">        [[NSNotificationCenter defaultCenter] jk_postNotificationOnMainThreadName:BluetoothPeripheralUpdateKey object:nil userInfo:nil];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //也可以根据信号强度、外设名称或者携带信息，直接过滤并通过CBCentralManager进行连接</div><div class="line">    //[self.cMgr connectPeripheral:self.peripheral options:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="设备连接"><a href="#设备连接" class="headerlink" title="设备连接"></a>设备连接</h4><p>  通过CBCentralManager的 <em>connectPeripheral:options:</em> 方法进行外设的连接，连接成功后通过CBCentralManagerDelegate协议回调将外设返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    //外设的连接</div><div class="line">    [self.cMgr connectPeripheral:self.peripheral options:nil];</div><div class="line"></div><div class="line">    //中心管理者连接外设成功,协议回调返回</div><div class="line">- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral&#123;</div><div class="line">    //设置外设代理</div><div class="line">    peripheral.delegate = self;</div><div class="line">&#125;</div><div class="line">```   </div><div class="line"> 此处需要注意的是，蓝牙连接受环境及设备的影响，经常会遇到连接断开的情况。此时可以通过在断开连接的协议回调中重新连接外设即可，此时连接时间非常快。   </div><div class="line">```Objective-C</div><div class="line">// 丢失连接</div><div class="line">- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error&#123;</div><div class="line">    NSLog(@&quot;%s, line = %d, %@=断开连接&quot;, __FUNCTION__, __LINE__, peripheral.name);</div><div class="line">    if (self.connectedPeripheral) &#123;</div><div class="line">        [self.cMgr connectPeripheral:self.peripheral options:nil];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>  通常情况下，我们在外设连接成功的回调中，设置外设回调相关协议代理CBPeripheralDelegate，以便后续的服务发现等操作。</p>
-<h4 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h4><p>  在蓝牙外设连接成功的情况下，我们通过外设的 <em>discoverServices:</em> 方法进行外设服务的发现，发现成功后，通过外设协议CBPeripheralDelegate回调外设提供的服务信息。   </p>
-<pre><code class="Objective-C">    //外设服务发现
-    [self.peripheral discoverServices:nil];
-
-    //外设服务回调
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error{
-    //    NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);
-    for (CBService *s in peripheral.services) {
-        NSLog(@&quot; -- 发现服务 -- :%@&quot;, s);
-    [self.connectedPeripheral discoverCharacteristics:nil forService:s];
-    }
-}
-</code></pre>
-<p>  通常情况下，我们会对发现的服务进行过滤，查找有用的服务，并查阅其特征值。以上代码读取的所有服务的特征值。</p>
-<h4 id="特征值发现"><a href="#特征值发现" class="headerlink" title="特征值发现"></a>特征值发现</h4><p>   外设服务发现的前提下，通过外设的方法 <em>discoverCharacteristics:forService:</em> 来进行服务特征值的发现。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。     </p>
-<pre><code class="Objective-C">    //特征值发现
-    [self.peripheral discoverCharacteristics:nil forService:s];
-
-    //特征值发现回调
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error{
-    NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);
-    for (CBCharacteristic *characteristics in service.characteristics) {
-        //NSLog(@&quot;%s, line = %d, char = %@&quot;, __FUNCTION__, __LINE__, cha);
-        NSLog(@&quot;characteristic name:%@ value is:%@&quot;,characteristics.UUID,characteristics.value);
-        [self.peripheral readValueForCharacteristic:characteristics];//读取特征值
-        [self.peripheral discoverDescriptorsForCharacteristic:characteristics];//发现特征值所携带的描述信息
-    }
-}
-</code></pre>
-<p>  发现外设特征值后，我们便可以读取特征值及发现特征值所携带的描述信息了</p>
-<h4 id="读取特征值"><a href="#读取特征值" class="headerlink" title="读取特征值"></a>读取特征值</h4><p> 发现特征值后，通过外设的方法 <em>readValueForCharacteristic:</em> 读取特征值。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。     </p>
-<pre><code class="Objective-C">    //特征值读取
-    [self.peripheral readValueForCharacteristic:characteristics];
-
-    //特征值更新回调
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-        NSLog(@&quot;%s, line = %d&quot;, __FUNCTION__, __LINE__);
-    //特征值更新
-}
-</code></pre>
-<p>  特征值携带的UUID、value信息可以直接读取，若特征值发生更新，则通过协议回调进行读取。</p>
-<h4 id="读取描述"><a href="#读取描述" class="headerlink" title="读取描述"></a>读取描述</h4><pre><code>发现特征值后，通过外设的方法 *discoverDescriptorsForCharacteristic:* 读取特征值的描述信息。通过外设协议CBPeripheralDelegate回调服务携带的特征值信息。 
-
-当特征值发生变更的时候，若想要监听，则需要调用蓝牙外设的方法 *- (void)setNotifyValue:(BOOL)enabled forCharacteristic:(CBCharacteristic *)characteristic*
-</code></pre><pre><code class="Objective-C">    //特征值描述字段读取
-    [self.peripheral discoverDescriptorsForCharacteristic:characteristics];
-    //特征值变更通知
-    [self.peripheral setNotifyValue:YES forCharacteristic:characteristics];//接受通知
-
-//特征值描述更新回调
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error{
-    NSLog(@&quot;===characteristic name:%@&quot;,characteristic.service.UUID);
-    for (CBDescriptor *d in characteristic.descriptors) {
-        NSLog(@&quot;CBDescriptor name is :%@&quot;,d.UUID);
-    [self.peripheral readValueForDescriptor:d];
-    }
-}
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(nullable NSError *)error{
-    NSLog(@&quot;Descriptor name:%@ value is:%@&quot;,descriptor.characteristic.UUID, descriptor.value);
-}
-</code></pre>
-<p>  可读取描述的UUID和value等信息。   </p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>​    </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -809,7 +796,7 @@ branch: master
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
