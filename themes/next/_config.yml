@@ -328,8 +328,7 @@ baidu_analytics: 8f71c95c1dd52064f48147aaafc39c0f
 disqus:
   enable: true
   shortname: liangtongdev
-# liangtongdev
-  count: true
+  count: false
 
 # Hypercomments
 #hypercomments_id:
@@ -429,9 +428,9 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true
+  app_id: tdQpGI23BQg5lWiySWyytUDc-gzGzoHsz
+  app_key: eG7Qtsg73DGkXKoRqOW93wh0
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
@@ -492,7 +491,7 @@ algolia_search:
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search
 local_search:
-  enable: false
+  enable: true
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
