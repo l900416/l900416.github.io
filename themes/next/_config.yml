@@ -335,6 +335,17 @@ valine:
   verify: false # Verification code
   placeholder: 你想说啥，ヽ(￣▽￣)ﾉ
 
+# Gitment comments
+gitment:
+  enable: true
+  githubID: 10991695
+  repo: l900416.github.io
+  ClientID: 34d1968476378037d414
+  ClientSecret: aa043eff0b36b1275bd6d718388eb487931352cc
+  lazy: false
+
+
+
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
 #youyan_uid: 2142919

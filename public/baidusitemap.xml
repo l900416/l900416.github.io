@@ -209,12 +209,12 @@
     
     
   <url>
-    <loc>https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/</loc>
+    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Initialization</title>
-        <pubTime>2016-11-26T16:20:11.000Z</pubTime>
+        <title>Swift Optional Chaining</title>
+        <pubTime>2016-11-29T17:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -289,26 +289,6 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Access Control</title>
-        <pubTime>2016-12-04T16:20:11.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://l900416.github.io/2016/11/24/iOS_Swift_language_note_Classes%20and%20Structures/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
@@ -329,12 +309,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/22/iOS_Swift_language_note_Closures/</loc>
+    <loc>https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Closures</title>
-        <pubTime>2016-11-21T16:20:11.000Z</pubTime>
+        <title>Swift Access Control</title>
+        <pubTime>2016-12-04T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -355,6 +335,26 @@
         <display>
         <title>Swift ARC</title>
         <pubTime>2016-11-28T19:20:11.000Z</pubTime>
+        
+        <tag>Swift</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/11/22/iOS_Swift_language_note_Closures/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swift Closures</title>
+        <pubTime>2016-11-21T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -449,12 +449,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Extensions/</loc>
+    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Error-Handling/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Extensions</title>
-        <pubTime>2016-12-01T11:20:11.000Z</pubTime>
+        <title>Swift Error Handling</title>
+        <pubTime>2016-11-30T15:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -489,12 +489,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Inheritance/</loc>
+    <loc>https://l900416.github.io/2016/11/20/iOS_Swift_language_note_Functions/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Inheritance</title>
-        <pubTime>2016-11-25T16:20:11.000Z</pubTime>
+        <title>Swift Functions</title>
+        <pubTime>2016-11-19T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -529,12 +529,32 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Error-Handling/</loc>
+    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Inheritance/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Error Handling</title>
-        <pubTime>2016-11-30T15:20:11.000Z</pubTime>
+        <title>Swift Inheritance</title>
+        <pubTime>2016-11-25T16:20:11.000Z</pubTime>
+        
+        <tag>Swift</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swift Initialization</title>
+        <pubTime>2016-11-26T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -575,26 +595,6 @@
         <display>
         <title>Swift Nested Types</title>
         <pubTime>2016-12-01T11:20:11.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Optional Chaining</title>
-        <pubTime>2016-11-29T17:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -769,12 +769,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/10/25/iOS_develop_viewController_life_circle/</loc>
+    <loc>https://l900416.github.io/2016/10/21/iOS_develop_overview_framework_1/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>ViewController Life-Circle</title>
-        <pubTime>2016-10-25T14:16:32.000Z</pubTime>
+        <title>iOS移动App开发综述</title>
+        <pubTime>2016-10-21T15:50:12.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -795,6 +795,26 @@
         <display>
         <title>浅谈iOS框架</title>
         <pubTime>2016-12-21T15:50:12.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/10/25/iOS_develop_viewController_life_circle/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>ViewController Life-Circle</title>
+        <pubTime>2016-10-25T14:16:32.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -842,26 +862,6 @@
            
              
               <breadCrumb title="Algorithm" url="https://l900416.github.io/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://l900416.github.io/2016/10/21/iOS_develop_overview_framework_1/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS移动App开发综述</title>
-        <pubTime>2016-10-21T15:50:12.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
           
         </display>
     </data>
@@ -929,26 +929,6 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/</loc>
-    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>LTxMenu</title>
-        <pubTime>2016-10-20T07:10:12.000Z</pubTime>
-        
-        <tag>Menu</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://l900416.github.io/2017/04/26/algorithm_sort_merge/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
@@ -962,6 +942,26 @@
            
              
               <breadCrumb title="Algorithm" url="https://l900416.github.io/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/</loc>
+    <lastmod>2017-08-07T09:20:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>LTxMenu</title>
+        <pubTime>2016-10-20T07:10:12.000Z</pubTime>
+        
+        <tag>Menu</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
           
         </display>
     </data>
@@ -1009,12 +1009,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/20/iOS_Swift_language_note_Functions/</loc>
+    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Extensions/</loc>
     <lastmod>2017-08-07T09:20:21.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Functions</title>
-        <pubTime>2016-11-19T16:20:11.000Z</pubTime>
+        <title>Swift Extensions</title>
+        <pubTime>2016-12-01T11:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
