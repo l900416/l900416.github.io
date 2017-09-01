@@ -337,8 +337,8 @@ valine:
 
 # Gitment comments
 gitment:
-  enable: true
-  githubID: 10991695
+  enable: false
+  githubID: l900416
   repo: l900416.github.io
   ClientID: 34d1968476378037d414
   ClientSecret: aa043eff0b36b1275bd6d718388eb487931352cc
@@ -358,7 +358,7 @@ gitment:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-baidushare: true
+baidushare: false
 ##  type: button
 
 # Share
@@ -435,7 +435,7 @@ vkontakte_api:
 # Star rating support to each article.
 # To get your ID visit https://widgetpack.com
 rating:
-  enable: true
+  enable: false
   id:     6871
   color:  fc6423
 
