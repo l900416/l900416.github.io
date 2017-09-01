@@ -21,5 +21,5 @@ var jiathis_config={
   hideMore:false
 }
 </script>
-<script type="text/javascript" src="/temp_js/jia.js?uid={{ theme.jiathis.uid }}" charset="utf-8"></script>
+<script type="text/javascript" src="https://tomoat.github.io/JiathisViaHttps/jia.js?uid={{ theme.jiathis.uid }}" charset="utf-8"></script>
 <!-- JiaThis Button END -->
