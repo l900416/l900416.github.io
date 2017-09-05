@@ -5,4 +5,3 @@
 {% include 'livere.swig' %}
 {% include 'changyan.swig' %}
 {% include 'valine.swig' %}
-{% include 'gitment.swig' %}

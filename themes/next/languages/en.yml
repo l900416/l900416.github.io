@@ -90,4 +90,8 @@ symbol:
   period: '. '
   colon: ':'
 
-gitmentbutton: Show comments from Gitment
+reward:
+  donate: Donate
+  wechatpay: WeChat Pay
+  alipay: Alipay
+  bitcoin: Bitcoin
