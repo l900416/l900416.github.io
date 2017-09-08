@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="对ViewController生命周期进行介绍，同时会说一些曾经遇到过的坑及注意事项 前言​    这部分其实没啥好说的，苹果UIViewController接口文档对各个接口的描述写的很详细。​    在视图的生命周期中，我曾经出问题的地方包括是UI表现异常；通知监听与释放没有成对出现；异步闭包回调引起的循环引用的资源无法释放；__weak和__strong问题导致的程序闪退等。这里就是把这些坑">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-07T09:20:21.000Z">
+<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ViewController Life-Circle">
 <meta name="twitter:description" content="对ViewController生命周期进行介绍，同时会说一些曾经遇到过的坑及注意事项 前言​    这部分其实没啥好说的，苹果UIViewController接口文档对各个接口的描述写的很详细。​    在视图的生命周期中，我曾经出问题的地方包括是UI表现异常；通知监听与释放没有成对出现；异步闭包回调引起的循环引用的资源无法释放；__weak和__strong问题导致的程序闪退等。这里就是把这些坑">
@@ -525,21 +525,21 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
+    <span>Donate</span>
   </button>
   <div id="QR" style="display: none;">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="liangtong 微信支付"/>
-        <p>微信支付</p>
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="liangtong WeChat Pay"/>
+        <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="liangtong 支付宝"/>
-        <p>支付宝</p>
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="liangtong Alipay"/>
+        <p>Alipay</p>
       </div>
     
 
@@ -701,25 +701,45 @@
               <span class="links-of-author-item">
                 <a href="https://github.com/l900416" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="mailto:l900416@163.com" target="_blank" title="E-Mail">
                   
-                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://weibo.com/liangtongdev" target="_blank" title="微博">
                   
-                    <i class="fa fa-fw fa-weibo"></i>微博</a>
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      微博
+                    
+                </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://www.zhihu.com/people/liangtongdev" target="_blank" title="知乎">
                   
-                    <i class="fa fa-fw fa-globe"></i>知乎</a>
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      知乎
+                    
+                </a>
               </span>
             
           
@@ -946,6 +966,7 @@
         placeholder: '你想说啥，ヽ(￣▽￣)ﾉ'
     });
   </script>
+
 
 
 
