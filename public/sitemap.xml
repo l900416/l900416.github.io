@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Error-Handling/</loc>
+    <loc>https://l900416.github.io/2017/09/22/ios_instance_message_xmpp/</loc>
     
-    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
+    <lastmod>2017-09-22T10:18:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/08/23/algorithm_location_maximum_likelihood/</loc>
+    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Extensions/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -51,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/07/27/bluetooth_central/</loc>
+    <loc>https://l900416.github.io/2017/08/24/bluetooth_central_level/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/08/24/bluetooth_central_level/</loc>
+    <loc>https://l900416.github.io/2017/07/27/bluetooth_central/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -86,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/08/08/bluetooth_peripheral/</loc>
+    <loc>https://l900416.github.io/2017/04/27/database_sqlite3_fmdb/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/04/27/database_sqlite3_fmdb/</loc>
+    <loc>https://l900416.github.io/2017/08/08/bluetooth_peripheral/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -107,14 +107,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/</loc>
+    <loc>https://l900416.github.io/2016/10/19/iOS_ObjC_SearchBar/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/10/19/iOS_ObjC_SearchBar/</loc>
+    <loc>https://l900416.github.io/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -156,14 +156,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/06/iOS_Swift_language_note_Collection-Types/</loc>
+    <loc>https://l900416.github.io/2016/11/22/iOS_Swift_language_note_Closures/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/22/iOS_Swift_language_note_Closures/</loc>
+    <loc>https://l900416.github.io/2016/11/06/iOS_Swift_language_note_Collection-Types/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -177,13 +177,6 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/</loc>
-    
-    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://l900416.github.io/2016/11/23/iOS_Swift_language_note_Enumerations/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
@@ -191,14 +184,21 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/04/27/algorithm_search_binary/</loc>
+    <loc>https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Extensions/</loc>
+    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Error-Handling/</loc>
+    
+    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/04/27/algorithm_search_binary/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -226,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/</loc>
-    
-    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://l900416.github.io/2016/11/25/iOS_Swift_language_note_Methods/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
@@ -247,13 +240,6 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/25/iOS_Swift_language_note_Properties/</loc>
-    
-    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
@@ -261,14 +247,7 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Protocols/</loc>
-    
-    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Subscripts/</loc>
+    <loc>https://l900416.github.io/2016/11/25/iOS_Swift_language_note_Properties/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -282,14 +261,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/02/iOS_Swift_language_note_The-Basics/</loc>
+    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Subscripts/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Type-Casting/</loc>
+    <loc>https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Protocols/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -303,7 +282,28 @@
   </url>
   
   <url>
+    <loc>https://l900416.github.io/2016/11/02/iOS_Swift_language_note_The-Basics/</loc>
+    
+    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://l900416.github.io/2016/10/21/iOS_develop_overview_framework_1/</loc>
+    
+    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Type-Casting/</loc>
+    
+    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/08/23/algorithm_location_maximum_likelihood/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -317,14 +317,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/10/25/iOS_develop_viewController_life_circle/</loc>
+    <loc>https://l900416.github.io/2017/08/04/share_github_blog_hexo/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/08/17/os_shell_authority_chmod/</loc>
+    <loc>https://l900416.github.io/2016/10/25/iOS_develop_viewController_life_circle/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -338,14 +338,7 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/08/29/os_shell_std_in_out_error_redirect/</loc>
-    
-    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://l900416.github.io/2017/08/04/share_github_blog_hexo/</loc>
+    <loc>https://l900416.github.io/2017/08/17/os_shell_authority_chmod/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     
@@ -353,6 +346,20 @@
   
   <url>
     <loc>https://l900416.github.io/2017/08/07/share_github_blog_jekyll/</loc>
+    
+    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/08/29/os_shell_std_in_out_error_redirect/</loc>
+    
+    <lastmod>2017-09-08T07:46:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/</loc>
     
     <lastmod>2017-09-08T07:46:37.000Z</lastmod>
     

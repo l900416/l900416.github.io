@@ -334,6 +334,410 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/17/os_shell_authority_chmod/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/17/os_shell_authority_chmod/" itemprop="url">chmod修改权限</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T13:51:43+08:00">
+                2017-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/17/os_shell_authority_chmod/" class="leancloud_visitors" data-flag-title="chmod修改权限">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>  Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。<br>    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每个用户的uid是不同的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:~ liangtong$ id</div><div class="line">uid=501(liangtong) gid=20(staff) groups=20(staff),701(com.apple.sharepoint.group.1),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),98(_lpadmin),33(_appstore),100(_lpoperator),204(_developer),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh)</div><div class="line">liangtongdeiMac:~ liangtong$</div></pre></td></tr></table></figure></p>
+<h3 id="文件的读写与执行"><a href="#文件的读写与执行" class="headerlink" title="文件的读写与执行"></a>文件的读写与执行</h3><p>对于文件的读写与执行，首先通过一下命令查看输出的结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ mkdir test_authority</div><div class="line">liangtongdeiMac:playground liangtong$ cd test_authority/</div><div class="line">liangtongdeiMac:test_authority liangtong$ &gt; authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$ ls -l authority_test.txt </div><div class="line">-rw-r--r--  1 liangtong  staff  0  8 16 18:43 authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$</div></pre></td></tr></table></figure></p>
+<p>这里创建了一个目录test_authority，并在目录中创建了一个文件authority_test.txt。之后查看文件线索。这里我们主要说前十个字符 <em>-rw-r–r–</em>。</p>
+<ul>
+<li>第一个代表的是文件类型。<ul>
+<li><em>-</em> 表示普通文件</li>
+<li><em>d</em> 表示目录</li>
+<li>其他，比如 <em>l</em> 符号链接、 <em>c</em> 字符设备文件，比如终端机或者调制解调器、 <em>b</em> 块设备文件比如硬盘，CD-ROM盘</li>
+</ul>
+</li>
+<li>剩下的九个字符叫做文件模式，代表文件所有者，文件组所有者，其他人的读、写、执行权限  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Owner</th>
+<th style="text-align:center">Group</th>
+<th style="text-align:center">World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">rwx</td>
+<td style="text-align:center">rwx</td>
+<td style="text-align:center">rwx</td>
+</tr>
+</tbody>
+</table>
+<p>当设置文件模式后，r、w、x模式属性对文件和目录产生以下影响：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:left">文件</th>
+<th style="text-align:left">目录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:left">读取文件的内容</td>
+<td style="text-align:left">允许列出目录内容，前提是目录必须可执行</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:left">写入文件内容，但不允许重命名或删除</td>
+<td style="text-align:left">可以在目录下新增、修改、重命名，前提是目录必须可执行</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:left">允许文件作为程序来执行，前提必须置为可读</td>
+<td style="text-align:left">允许进入目录，例如 cd xx</td>
+</tr>
+</tbody>
+</table>
+<p>以下举几个例子：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件属性</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-rwx——</td>
+<td style="text-align:left">普通文件，文件所有者可读可写可执行，其他人无任何权限</td>
+</tr>
+<tr>
+<td style="text-align:center">-rw——-</td>
+<td style="text-align:left">普通文件，文件所有者可读可写，其他人无任何权限</td>
+</tr>
+<tr>
+<td style="text-align:center">-rw-r–r–</td>
+<td style="text-align:left">普通文件，文件所有者可读可写，文件所有者所在组可读，其他人可读</td>
+</tr>
+<tr>
+<td style="text-align:center">-rwxr-xr-x</td>
+<td style="text-align:left">普通文件，文件所有者可读可写可执行，文件所有者所在组可读可执行，其他人可读可执行</td>
+</tr>
+<tr>
+<td style="text-align:center">drwxrwx—</td>
+<td style="text-align:left">目录，目录所有者及所有者所在的分组可以访问目录，在目录中新建、修改、删除文件，其他人无权限</td>
+</tr>
+<tr>
+<td style="text-align:center">drwxr-x—</td>
+<td style="text-align:left">目录，目录所有者可以访问目录，在目录中新建、修改、删除文件；文件所有者所在分组可以访问目录，其他人无权限</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chmod-修改文件模式"><a href="#chmod-修改文件模式" class="headerlink" title="chmod 修改文件模式"></a>chmod 修改文件模式</h3><p>文件／目录的所有者或者超级管理员可以用 <em>chmod</em> 命令来更改文件或者目录的权限。<br>chmod命令支持两种不同的方式来更改文件模式：   </p>
+<ul>
+<li>八进制数字表示法<ul>
+<li>每个八进制数字代表了3个二进制数字。</li>
+<li>可以使用命令 <em>chmod 600 authority_test.txt</em> 将文件模式修改为可读可写</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">十进制</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">文件模式</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">000</td>
+<td style="text-align:center">—</td>
+<td style="text-align:left">无权限</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">001</td>
+<td style="text-align:center">–x</td>
+<td style="text-align:left">执行</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">010</td>
+<td style="text-align:center">-w-</td>
+<td style="text-align:left">写</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">011</td>
+<td style="text-align:center">-wx</td>
+<td style="text-align:left">写、执行</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">r–</td>
+<td style="text-align:left">读</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">101</td>
+<td style="text-align:center">r-x</td>
+<td style="text-align:left">读、执行</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">rw-</td>
+<td style="text-align:left">读、写</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">111</td>
+<td style="text-align:center">rwx</td>
+<td style="text-align:left">读、写、执行</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>符号表示法<ul>
+<li>由3部分组成。<ul>
+<li>会影响谁，包括 <em>u</em> 、  <em>g</em> 、  <em>o</em> 、  <em>a</em> </li>
+<li>具体操作，包括 <em>+</em> 、  <em>-</em>  、  <em>=</em> </li>
+<li>设置的权限，由 r 、 w 、 x 进行组合，例如 <em>x</em> 、  <em>rw</em>  、 <em>rwx</em> 等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">影响谁</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:left">“user”的简写，意思是文件或目录的所有者。</td>
+</tr>
+<tr>
+<td style="text-align:center">g</td>
+<td style="text-align:left">用户组</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:left">“others”的简写，意思是其他所有的人</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">“all”的简写，是”u”, “g”和“o”三者的联合</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:left">如果没有指定字符，则假定使用”all”</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">具体操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:left">加上一个权限</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:left">删掉一个权限</td>
+</tr>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:left">只有指定的权限可用，其它所有的权限被删除</td>
+</tr>
+</tbody>
+</table>
+<p>​<br>以下举几个例子：   </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号表示</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u+x</td>
+<td style="text-align:left">为文件所有者添加可执行权限</td>
+</tr>
+<tr>
+<td style="text-align:center">+x</td>
+<td style="text-align:left">为文件所有者，用户组，和其他所有人添加可执行权限。 等价于 a+x。</td>
+</tr>
+<tr>
+<td style="text-align:center">o-rw</td>
+<td style="text-align:left">除了文件所有者和用户组，删除其他人的读权限和写权限</td>
+</tr>
+<tr>
+<td style="text-align:center">go=rw</td>
+<td style="text-align:left">给群组的主人和任意文件拥有者的人读写权限。如果群组的主人或全局之前已经有了执行的权限，他们将被移除。</td>
+</tr>
+<tr>
+<td style="text-align:center">u+x,go=rw</td>
+<td style="text-align:left">给文件拥有者执行权限并给组和其他人限定读和执行的权限。多种设定可以用逗号分开。</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/08/bluetooth_peripheral/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -486,204 +890,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/07/share_github_blog_jekyll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/07/share_github_blog_jekyll/" itemprop="url">Mac下使用Jekyll搭建GitHub博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:25:19+08:00">
-                2017-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/07/share_github_blog_jekyll/" class="leancloud_visitors" data-flag-title="Mac下使用Jekyll搭建GitHub博客">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll</a>是一个静态网站和博客模版，本文介绍如何使用Jekyll进行个人GitHub博客的搭建。搭建前提是拥有个人<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，且Mac上有安装 <em>git</em> 工具。</p>
-<h3 id="安装Jekyll"><a href="#安装Jekyll" class="headerlink" title="安装Jekyll"></a>安装Jekyll</h3><p>  参照<a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll官方</a>介绍，打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> gem install jekyll bundler</span></div></pre></td></tr></table></figure></p>
-<p>注：gem的安装／更新可以自己去查，此处不再进行说明。Jekyll安装成功后，便可以进行个人博客／静态网站的创建了。</p>
-<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> jekyll new my_blog</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> my_blog</span></div><div class="line"><span class="meta">$</span><span class="bash"> bundle <span class="built_in">exec</span> jekyll serve</span></div></pre></td></tr></table></figure></p>
-<p>参照<a href="https://jekyllrb.com/docs/templates/" target="_blank" rel="external">官方模版配置介绍</a>,修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的<a href="http://jekyllthemes.org/" target="_blank" rel="external">博客模板</a>即可。  </p>
-<h3 id="快速使用博客-1"><a href="#快速使用博客-1" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>  此处选择使用博客模板<a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="external">jekyll-now</a>，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。<br>新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。<br>编写之后，直接在博客路径下，运行即可：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> jekyll serve</span></div></pre></td></tr></table></figure></p>
-<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><p>  使用Jekyll搭建博客也可以添加很多自定制功能，比如统计、评论、标签等；可以根据自己的喜好，选择不同的主题。以下是个人曾经使用过的主题：      </p>
-<ul>
-<li><a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="external">Hux Blog</a> 第一个GitHub博客系统就是从他的博客fork过去的。</li>
-<li><a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll" target="_blank" rel="external">Clean Blog</a> 简单的Jekyll博客模板。</li>
-</ul>
-<h3 id="Jekyll在GitHub上的维护"><a href="#Jekyll在GitHub上的维护" class="headerlink" title="Jekyll在GitHub上的维护"></a>Jekyll在GitHub上的维护</h3><p>直接将博客源码上传到GitHub博客仓库即可。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>通过在GitHub上搭建Jekyll和Hexo博客，个人更倾向于使用Hexo博客。</p>
-<ul>
-<li>Jekyll    <ul>
-<li>配置简单。</li>
-<li>维护简单，只需要一个Branch即可。</li>
-<li>使用简单，运行只需要 <em>jekyll server</em> 即可。</li>
-<li>发布简单，只需要将代码push到对应仓库即可。</li>
-<li>主题切换，比较麻烦。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Hexo<ul>
-<li>配置项相对较多，但是格式比较清晰。</li>
-<li>博客和源码需要分开维护。需要两个Branch对博客系统进行维护。</li>
-<li>使用相对简单。<ul>
-<li>hexo clean  // 清理</li>
-<li>hexo g      // 生成</li>
-<li>hexo s      // 运行</li>
-</ul>
-</li>
-<li>发布简单。<ul>
-<li>hexo d      // 将博客部署(到github)</li>
-<li>将博客源码push到对应仓库单独保存</li>
-</ul>
-</li>
-<li>主题切换简单。<ul>
-<li>下载新主题到themes文件夹下；</li>
-<li>修改站点配置文件_config.yml中对应的主题选项。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -736,7 +942,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -747,7 +953,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -758,7 +964,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

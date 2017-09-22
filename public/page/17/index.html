@@ -334,6 +334,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/28/iOS_Swift_language_note_Deinitialization/" itemprop="url">Swift Deinitialization</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-28T00:20:11+08:00">
+                2016-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/28/iOS_Swift_language_note_Deinitialization/" class="leancloud_visitors" data-flag-title="Swift Deinitialization">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。</p>
+<h3 id="析构过程"><a href="#析构过程" class="headerlink" title="析构过程"></a>析构过程</h3><p>Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放之前手动去关闭该文件。</p>
+<p>在类的定义中，每个类最多只能有一个析构器，而且析构器不带任何参数，如下所示：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="comment">// perform the deinitialization</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>析构器是在实例释放发生前被自动调用。你不能主动调用析构器。子类继承了父类的析构器，并且在子类析构器实现的最后，父类的析构器会被自动调用。即使子类没有提供自己的析构器，父类的析构器也同样会被调用。</p>
+<p>因为直到实例的析构器被调用后，实例才会被释放，所以析构器可以访问实例的所有属性，并且可以根据那些属性可以修改它的行为（比如查找一个需要被关闭的文件）。</p>
+<h3 id="析构实践"><a href="#析构实践" class="headerlink" title="析构实践"></a>析构实践</h3><p>这是一个析构器实践的例子。这个例子描述了一个简单的游戏，这里定义了两种新类型，分别是Bank和Player。Bank类管理一种虚拟硬币，确保流通的硬币数量永远不可能超过 10,000。在游戏中有且只能有一个Bank存在，因此Bank用类来实现，并使用类型属性和类型方法来存储和管理其当前状态。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bank</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> coinsInBank = <span class="number">10_000</span></div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">distribute</span><span class="params">(coins numberOfCoinsRequested: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">let</span> numberOfCoinsToVend = <span class="built_in">min</span>(numberOfCoinsRequested, coinsInBank)</div><div class="line">        coinsInBank -= numberOfCoinsToVend</div><div class="line">        <span class="keyword">return</span> numberOfCoinsToVend</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">receive</span><span class="params">(coins: Int)</span></span> &#123;</div><div class="line">        coinsInBank += coins</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Bank使用coinsInBank属性来跟踪它当前拥有的硬币数量。Bank还提供了两个方法，distribute(coins:)和receive(coins:)，分别用来处理硬币的分发和收集。</p>
+<p>distribute(coins:)方法在Bank对象分发硬币之前检查是否有足够的硬币。如果硬币不足，Bank对象会返回一个比请求时小的数字（如果Bank对象中没有硬币了就返回0）。此方法返回一个整型值，表示提供的硬币的实际数量。</p>
+<p>receive(coins:)方法只是将Bank实例接收到的硬币数目加回硬币存储中。</p>
+<p>Player类描述了游戏中的一个玩家。每一个玩家在任意时间都有一定数量的硬币存储在他们的钱包中。这通过玩家的coinsInPurse属性来表示：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> coinsInPurse: <span class="type">Int</span></div><div class="line">    <span class="keyword">init</span>(coins: <span class="type">Int</span>) &#123;</div><div class="line">        coinsInPurse = <span class="type">Bank</span>.distribute(coins: coins)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">win</span><span class="params">(coins: Int)</span></span> &#123;</div><div class="line">        coinsInPurse += <span class="type">Bank</span>.distribute(coins: coins)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">        <span class="type">Bank</span>.receive(coins: coinsInPurse)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每个Player实例在初始化的过程中，都从Bank对象获取指定数量的硬币。如果没有足够的硬币可用，Player实例可能会收到比指定数量少的硬币.</p>
+<p>Player类定义了一个win(coins:)方法，该方法从Bank对象获取一定数量的硬币，并把它们添加到玩家的钱包。Player类还实现了一个析构器，这个析构器在Player实例释放前被调用。在这里，析构器的作用只是将玩家的所有硬币都返还给Bank对象：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> playerOne: <span class="type">Player</span>? = <span class="type">Player</span>(coins: <span class="number">100</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"A new player has joined the game with <span class="subst">\(playerOne!.coinsInPurse)</span> coins"</span>)</div><div class="line"><span class="comment">// Prints "A new player has joined the game with 100 coins"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"There are now <span class="subst">\(Bank.coinsInBank)</span> coins left in the bank"</span>)</div><div class="line"><span class="comment">// Prints "There are now 9900 coins left in the bank"</span></div></pre></td></tr></table></figure>
+<p>创建一个Player实例的时候，会向Bank对象请求 100 个硬币，如果有足够的硬币可用的话。这个Player实例存储在一个名为playerOne的可选类型的变量中。这里使用了一个可选类型的变量，因为玩家可以随时离开游戏，设置为可选使你可以追踪玩家当前是否在游戏中。<br>因为playerOne是可选的，所以访问其coinsInPurse属性来打印钱包中的硬币数量时，使用感叹号（!）来解包：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">playerOne!.win(coins: <span class="number">2_000</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"PlayerOne won 2000 coins &amp; now has <span class="subst">\(playerOne!.coinsInPurse)</span> coins"</span>)</div><div class="line"><span class="comment">// Prints "PlayerOne won 2000 coins &amp; now has 2100 coins"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The bank now only has <span class="subst">\(Bank.coinsInBank)</span> coins left"</span>)</div><div class="line"><span class="comment">// Prints "The bank now only has 7900 coins left"</span></div></pre></td></tr></table></figure>
+<p>这里，玩家已经赢得了 2,000 枚硬币，所以玩家的钱包中现在有 2,100 枚硬币，而Bank对象只剩余 7,900 枚硬币。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">playerOne = <span class="literal">nil</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"PlayerOne has left the game"</span>)</div><div class="line"><span class="comment">// Prints "PlayerOne has left the game"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The bank now has <span class="subst">\(Bank.coinsInBank)</span> coins"</span>)</div><div class="line"><span class="comment">// Prints "The bank now has 10000 coins"</span></div></pre></td></tr></table></figure>
+<p>玩家现在已经离开了游戏。这通过将可选类型的playerOne变量设置为nil来表示，意味着“没有Player实例”。当这一切发生时，playerOne变量对Player实例的引用被破坏了。没有其它属性或者变量引用Player实例，因此该实例会被释放，以便回收内存。在这之前，该实例的析构器被自动调用，玩家的硬币被返还给银行。</p>
+<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Deinitialization.html/" target="_blank" rel="external"> Deinitialization </a> </li>
+</ul>
+</blockquote>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>Copyright (c) liangtong. All rights reserved.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -667,202 +849,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Inheritance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/26/iOS_Swift_language_note_Inheritance/" itemprop="url">Swift Inheritance</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-26T00:20:11+08:00">
-                2016-11-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/11/26/iOS_Swift_language_note_Inheritance/" class="leancloud_visitors" data-flag-title="Swift Inheritance">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    一个类可以继承另一个类的方法，属性和其它特性。当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类）。在 Swift 中，继承是区分「类」与其它类型的一个基本特征。<br>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。<br>可以为类中继承来的属性添加属性观察器，这样一来，当属性值改变时，类就会被通知到。可以为任何属性添加属性观察器，无论它原本被定义为存储型属性还是计算型属性。</p>
-<h3 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h3><p>不继承于其它类的类，称之为基类。<br>    Swift 中的类并不是从一个通用的基类继承而来。如果你不为你定义的类指定一个超类的话，这个类就自动成为基类。</p>
-<p>下面的例子定义了一个叫Vehicle的基类。包含一个currentSpeed存储属性，一个description的只读计算属性，一个makeNoise方法，方法什么都不做，子类会重写该方法。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> currentSpeed = <span class="number">0.0</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"traveling at <span class="subst">\(currentSpeed)</span> miles per hour"</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">makeNoise</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="comment">// do nothing - an arbitrary vehicle doesn't necessarily make a noise</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>实例化对象，并访问其属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someVehicle = <span class="type">Vehicle</span>()</div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"Vehicle: <span class="subst">\(someVehicle.description)</span>"</span>)</div><div class="line"><span class="comment">// Vehicle: traveling at 0.0 miles per hour</span></div></pre></td></tr></table></figure>
-<h3 id="子类"><a href="#子类" class="headerlink" title="子类"></a>子类</h3><p>子类是在一个已有类的基础上创建一个新的类，你可以重新定义子类继承已有类的特性，也可以为子类添加新特性来完善子类。类继承使用冒号分割，将超类写在冒号后边：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeSubclass</span>: <span class="title">SomeSuperclass</span> </span>&#123;</div><div class="line">    <span class="comment">// subclass definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下一个例子，定义一个叫Bicycle的子类，继承成父类Vehicle：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bicycle</span>: <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> hasBasket = <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>新的Bicycle类自动获得Vehicle类的所有特性，Bicycle类还定义了一个默认值为false的存储型属性hasBasket（属性推断为Bool）。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bicycle = <span class="type">Bicycle</span>()</div><div class="line">bicycle.hasBasket = <span class="literal">true</span></div><div class="line"></div><div class="line">bicycle.currentSpeed = <span class="number">15.0</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"Bicycle: <span class="subst">\(bicycle.description)</span>"</span>)</div><div class="line"><span class="comment">// Bicycle: traveling at 15.0 miles per hour</span></div></pre></td></tr></table></figure>
-<p>子类还可以继续被其它类继承，下面的示例为Bicycle创建了一个名为Tandem（双人自行车）的子类：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tandem</span>: <span class="title">Bicycle</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> currentNumberOfPassengers = <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> tandem = <span class="type">Tandem</span>()</div><div class="line">tandem.hasBasket = <span class="literal">true</span></div><div class="line">tandem.currentNumberOfPassengers = <span class="number">2</span></div><div class="line">tandem.currentSpeed = <span class="number">22.0</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"Tandem: <span class="subst">\(tandem.description)</span>"</span>)</div><div class="line"><span class="comment">// Tandem: traveling at 22.0 miles per hour</span></div></pre></td></tr></table></figure>
-<h3 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h3><p>子类可以为继承来的实例方法，类方法，实例属性，或下标提供自己定制的实现。我们把这种行为叫重写。<br>如果要重写某个特性，你需要在重写定义的前面加上 <code>override</code> 关键字。这么做，你就表明了你是想提供一个重写版本，而非错误地提供了一个相同的定义。任何缺少override关键字的重写都会在编译时被诊断为错误。override关键字会提醒 Swift 编译器去检查该类的超类（或其中一个父类）是否有匹配重写版本的声明。这个检查可以确保你的重写定义是正确的。</p>
-<h4 id="访问超类的方法，属性及下标"><a href="#访问超类的方法，属性及下标" class="headerlink" title="访问超类的方法，属性及下标"></a>访问超类的方法，属性及下标</h4><p>当你在子类中重写超类的方法，属性或下标时，有时在你的重写版本中使用已经存在的超类实现会大有裨益。比如，你可以完善已有实现的行为，或在一个继承来的变量中存储一个修改过的值。<br>你可以通过使用 <code>super</code> 前缀来访问超类版本的方法，属性或下标：</p>
-<ul>
-<li>在方法someMethod()的重写实现中，可以通过super.someMethod()来调用超类版本的someMethod()方法。</li>
-<li>在属性someProperty的 getter 或 setter 的重写实现中，可以通过super.someProperty来访问超类版本的someProperty属性。</li>
-<li>在下标的重写实现中，可以通过super[someIndex]来访问超类版本中的相同下标。</li>
-</ul>
-<h4 id="重写方法"><a href="#重写方法" class="headerlink" title="重写方法"></a>重写方法</h4><p>在子类中，你可以重写继承来的实例方法或类方法，提供一个定制或替代的方法实现。<br>下面的例子定义了Vehicle的一个新的子类，叫Train，它重写了从Vehicle类继承来的makeNoise()方法：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Train</span>: <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">makeNoise</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Choo Choo"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> train = <span class="type">Train</span>()</div><div class="line">train.makeNoise()</div><div class="line"><span class="comment">// Prints "Choo Choo"</span></div></pre></td></tr></table></figure>
-<h4 id="重写属性"><a href="#重写属性" class="headerlink" title="重写属性"></a>重写属性</h4><p>你可以重写继承来的实例属性或类型属性，提供自己定制的 getter 和 setter，或添加属性观察器使重写的属性可以观察属性值什么时候发生改变。</p>
-<h5 id="重写属性的-Getters-和-Setters"><a href="#重写属性的-Getters-和-Setters" class="headerlink" title="重写属性的 Getters 和 Setters"></a>重写属性的 Getters 和 Setters</h5><p>你可以提供定制的 getter（或 setter）来重写任意继承来的属性，无论继承来的属性是存储型的还是计算型的属性。子类并不知道继承来的属性是存储型的还是计算型的，它只知道继承来的属性会有一个名字和类型。你在重写一个属性时，必需将它的名字和类型都写出来。这样才能使编译器去检查你重写的属性是与超类中同名同类型的属性相匹配的。<br>你可以将一个继承来的只读属性重写为一个读写属性，只需要在重写版本的属性里提供 getter 和 setter 即可。但是，你不可以将一个继承来的读写属性重写为一个只读属性。<br>    如果你在重写属性中提供了 setter，那么你也一定要提供 getter。如果你不想在重写版本中的 getter 里修改继承来的属性值，你可以直接通过super.someProperty来返回继承来的值，其中someProperty是你要重写的属性的名字。</p>
-<p>以下的例子定义了一个新类，叫Car，它是Vehicle的子类。这个类引入了一个新的存储型属性叫做gear，默认值为整数1。Car类重写了继承自Vehicle的description属性，提供包含当前档位的自定义描述：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>: <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> gear = <span class="number">1</span></div><div class="line">    <span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.description + <span class="string">" in gear <span class="subst">\(gear)</span>"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果你创建了Car的实例并且设置了它的gear和currentSpeed属性，你可以看到它的description返回了Car中的自定义描述：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> car = <span class="type">Car</span>()</div><div class="line">car.currentSpeed = <span class="number">25.0</span></div><div class="line">car.gear = <span class="number">3</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"Car: <span class="subst">\(car.description)</span>"</span>)</div><div class="line"><span class="comment">// Car: traveling at 25.0 miles per hour in gear 3</span></div></pre></td></tr></table></figure>
-<h5 id="重写属性观察器"><a href="#重写属性观察器" class="headerlink" title="重写属性观察器"></a>重写属性观察器</h5><p>你可以通过重写属性为一个继承来的属性添加属性观察器。这样一来，当继承来的属性值发生改变时，你就会被通知到，无论那个属性原本是如何实现的。<br>    你不可以为继承来的常量存储型属性或继承来的只读计算型属性添加属性观察器。这些属性的值是不可以被设置的，所以，为它们提供willSet或didSet实现是不恰当。<br>此外还要注意，你不可以同时提供重写的 setter 和重写的属性观察器。如果你想观察属性值的变化，并且你已经为那个属性提供了定制的 setter，那么你在 setter 中就可以观察到任何值变化了。</p>
-<p>下面的例子定义了一个新类叫AutomaticCar，它是Car的子类。AutomaticCar表示自动挡汽车，它可以根据当前的速度自动选择合适的挡位:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutomaticCar</span>: <span class="title">Car</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">var</span> currentSpeed: <span class="type">Double</span> &#123;</div><div class="line">        <span class="keyword">didSet</span> &#123;</div><div class="line">            gear = <span class="type">Int</span>(currentSpeed / <span class="number">10.0</span>) + <span class="number">1</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> automatic = <span class="type">AutomaticCar</span>()</div><div class="line">automatic.currentSpeed = <span class="number">35.0</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"AutomaticCar: <span class="subst">\(automatic.description)</span>"</span>)</div><div class="line"><span class="comment">// AutomaticCar: traveling at 35.0 miles per hour in gear 4</span></div></pre></td></tr></table></figure>
-<h3 id="防止重写"><a href="#防止重写" class="headerlink" title="防止重写"></a>防止重写</h3><p>你可以通过把方法，属性或下标标记为final来防止它们被重写，只需要在声明关键字前加上 <code>final</code> 修饰符即可（例如：final var，final func，final class func，以及final subscript）。</p>
-<p>如果你重写了带有 <code>final</code> 标记的方法，属性或下标，在编译时会报错。在类扩展中的方法，属性或下标也可以在扩展的定义里标记为 <code>final</code> 的。</p>
-<p>你可以通过在关键字 <code>class</code> 前添加 <code>final</code> 修饰符（final class）来将整个类标记为 <code>final</code> 的。这样的类是不可被继承的，试图继承这样的类会导致编译报错。</p>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Inheritance.html/" target="_blank" rel="external"> Inheritance </a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -915,7 +901,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -926,7 +912,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -937,7 +923,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

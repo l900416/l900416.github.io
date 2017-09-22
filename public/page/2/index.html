@@ -334,6 +334,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/28/os_shell_authority_chown/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/28/os_shell_authority_chown/" itemprop="url">修改文件所有者</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T11:51:43+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/28/os_shell_authority_chown/" class="leancloud_visitors" data-flag-title="修改文件所有者">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h4><p>  使用超级管理员用户权限时，可以更改文件的所有者和用户组，命令如下：   </p>
+<blockquote>
+<p>chown [owner][:[group]] file…</p>
+</blockquote>
+<p>命令将文件更改为第一个参数所表示的所有者 :所在分组。 例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:test_authority liangtong$ sudo chown guest authority_test.txt </div><div class="line">Password:</div><div class="line">liangtongdeiMac:test_authority liangtong$ ls -l</div><div class="line">total 0</div><div class="line">-rw-r--r--  1 Guest  staff  0  8 16 18:43 authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$</div></pre></td></tr></table></figure>
+<ul>
+<li>若命令中只包含 <em>用户名</em> ，则是把所有者更改为用户。</li>
+<li>若命令中包含 <em>:用户组</em> ，则将文件的用户组修改。</li>
+<li>特别的，若命令中参数格式是 <em>用户:</em> ， 即未指明用户组，那么用户组指的是用户所在的分组。</li>
+</ul>
+<h4 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h4><p>  使用超级管理员用户权限时，可以使用 <em>chgrp</em> 来修改用户组，命令与chown相似：</p>
+<blockquote>
+<p>chgrp group file</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/24/bluetooth_central_level/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -495,188 +662,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/23/bluetooth_location_maximum_likelihood/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/23/bluetooth_location_maximum_likelihood/" itemprop="url">基于蓝牙的室内定位</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T18:50:12+08:00">
-                2017-08-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/蓝牙/" itemprop="url" rel="index">
-                    <span itemprop="name">蓝牙</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/23/bluetooth_location_maximum_likelihood/" class="leancloud_visitors" data-flag-title="基于蓝牙的室内定位">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>基于Wi-Fi的室内定位，首先采集指纹库，即取多个角度的RSSI值，然后对原始RSSI值进行指纹数据入口。AP扫描硬件设备的RSSI和指纹库数据进行碰撞。来计算出设备的位置。<br>指纹库数据对采集设备的依赖比较大。尤其是目前各手机硬件厂商的蓝牙模块不同的情况下，定位精度影响比较大。</p>
-<p>利用蓝牙进行室内定位，由目标设备本身采集周围定位用蓝牙信号，从而在目标设备上进行定位运算，来实现室内定位。</p>
-<h4 id="蓝牙定位"><a href="#蓝牙定位" class="headerlink" title="蓝牙定位"></a>蓝牙定位</h4><p>使用蓝牙定位需要解决的一个问题是定位设备与目标设备的距离问题。我们可以轻松的通过蓝牙扫描来获取定位设备的RSSI值，那么问题的关键就是如何将RSSI值转换成距离了。<br>目前有两种方式来实现：   </p>
-<ul>
-<li>基于高度定制的蓝牙设备，由其提供距离参数，比如iBeacon技术的EstimoteBeacon<ul>
-<li>距离可以直接获取</li>
-<li>被硬件绑定</li>
-</ul>
-</li>
-<li>基于统一的蓝牙设备的RSSI，自行计算距离<ul>
-<li>定位用蓝牙设备可以自行选取</li>
-<li>距离可以自行通过校正函数进行获取：d = 10<sup>((abs(RSSI) - A) / (10 * n))</sup><ul>
-<li>d - 计算所得距离</li>
-<li>RSSI - 接收信号强度（负值）</li>
-<li>A - 发射端和接收端相隔1米时的信号强度</li>
-<li>n - 环境衰减因子</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>通过RSSI进行距离计算的时候，需要考虑蓝牙设备的校正因子measuredPower               </p>
-</blockquote>
-<p>当获取到距离后，可以通过极大似然估算法进行目标设备室内定位计算。可以参照<a href="https://l900416.github.io/2017/08/23/algorithm_location_maximum_likelihood/">基于二维空间的极大似然估计算法</a> 。 </p>
-<h4 id="定位数据处理"><a href="#定位数据处理" class="headerlink" title="定位数据处理"></a>定位数据处理</h4><p>受外界干扰，当扫描到的定位用蓝牙设备RSSI太小(或者距离过大)的时候，我们就可以考虑忽略掉。取有效的参数进行计算。结合设备本身对传感器信息，对定位数据进行展示。</p>
-<p><img src="/post/bluetooth/location_maximum_likelihood.jpg" alt=""> </p>
-<p>定位数据摘要信息如下：</p>
-<p><img src="/post/bluetooth/location_maximum_likelihood_log.jpg" alt=""> </p>
-<h4 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h4><p>​    <a href="https://wenku.baidu.com/view/3dba1baef524ccbff12184af.html?re=view" target="_blank" rel="external">https://wenku.baidu.com/view/3dba1baef524ccbff12184af.html?re=view</a><br>​    <a href="http://hxqhit.blog.163.com/blog/static/15357922200948112142918/" target="_blank" rel="external">http://hxqhit.blog.163.com/blog/static/15357922200948112142918/</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -729,7 +714,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -740,7 +725,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -751,7 +736,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
