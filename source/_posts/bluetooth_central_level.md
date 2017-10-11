@@ -21,6 +21,9 @@ tags: Bluetooth
  + 特征值发现
    + 订阅
 
+
+<!-- more -->
+
 可以参照[iOS蓝牙开发 - Central模式](https://l900416.github.io/2017/07/27/bluetooth_central/)，此处不再赘述，参照以下摘要信息：
 
 ```bash

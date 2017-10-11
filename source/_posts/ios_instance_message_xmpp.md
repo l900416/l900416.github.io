@@ -13,6 +13,7 @@ tags: xmpp
 [XMPP](https://xmpp.org/)是一个以XML为基础的开源的即时通讯协议。具有开放、标准、可用、分布式、安全、可扩展、多样性等优点。因为最近工作接触，在此进行记录。希望对你有帮助。
 本文为XMPP开发的第一讲，记录XMPP的用户注册／登录。
 
+
 #### 环境配置
 
 使用GitHub上现有的[XMPPFramework](https://github.com/robbiehanson/XMPPFramework)，直接将其依赖加入到工程的Podfile中后，执行 **pod install** 下载：    
@@ -23,6 +24,8 @@ target 'LTIM' do
     pod 'XMPPFramework', '~> 3.7.0'
 end
 ```
+
+<!-- more -->
 
 #### 登录流程
 

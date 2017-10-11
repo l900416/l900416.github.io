@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。 赋值运算符​    用来初始化或">
+<meta name="description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。">
 <meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift Basic Operators">
 <meta property="og:url" content="https://l900416.github.io/2016/11/04/iOS_Swift_language_note_Basic-Operators/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。 赋值运算符​    用来初始化或">
+<meta property="og:description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:06:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Basic Operators">
-<meta name="twitter:description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。 赋值运算符​    用来初始化或">
+<meta name="twitter:description" content="​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(=)不再拥有返回值来阻止被错误的使用在比较运算符(==)的场合；算术运算符(+, -, *, /, % 等)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(a..&amp;lt;b和a...b)，用来快捷表达一个区域范围值。">
 
 
 
@@ -420,6 +420,7 @@
 
       
         <p>​    Swift支持绝大部分的标准C语言操作符，并且增强了几个操作符的功能以消除常犯的编码错误。例如：赋值运算符(<code>=</code>)不再拥有返回值来阻止被错误的使用在比较运算符(<code>==</code>)的场合；算术运算符(<code>+, -, *, /, % 等</code>)会对数据进行检查，阻止数据溢出。Swift也提供了两个C语言中没有的范围运算符(<code>a..&lt;b</code>和<code>a...b</code>)，用来快捷表达一个区域范围值。</p>
+<a id="more"></a>
 <h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>​    用来初始化或者更新左值<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">5</span> </div><div class="line"><span class="keyword">let</span> (x, y) = (<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// x is equal to 1, and y is equal to 2</span></div><div class="line"><span class="keyword">if</span> x = y &#123;</div><div class="line">    <span class="comment">// 存在语法错误，因为赋值运算符没有返回值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>​    Swift支持四个标准的算术运算符<code>+, -, *, /</code>；与其他语言不同的是，这些运算符默认情况下不允许被重写。另外<code>+</code>运算符也支持字符串连接。</p>
 <h5 id="取模运算符"><a href="#取模运算符" class="headerlink" title="取模运算符"></a>取模运算符</h5><p>​    与其他语言一样，注意一点：<code>a % b</code>的符号与<code>a</code>相同</p>

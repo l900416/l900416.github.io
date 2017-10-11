@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="XMPP是一个以XML为基础的开源的即时通讯协议。具有开放、标准、可用、分布式、安全、可扩展、多样性等优点。因为最近工作接触，在此进行记录。希望对你有帮助。本文为XMPP开发的第一讲，记录XMPP的用户注册／登录。 环境配置使用GitHub上现有的XMPPFramework，直接将其依赖加入到工程的Podfile中后，执行 pod install 下载：12345platform :ios, &amp;a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T10:18:32.000Z">
+<meta property="og:updated_time" content="2017-10-11T00:52:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XMPP之用户注册／登录">
 <meta name="twitter:description" content="XMPP是一个以XML为基础的开源的即时通讯协议。具有开放、标准、可用、分布式、安全、可扩展、多样性等优点。因为最近工作接触，在此进行记录。希望对你有帮助。本文为XMPP开发的第一讲，记录XMPP的用户注册／登录。 环境配置使用GitHub上现有的XMPPFramework，直接将其依赖加入到工程的Podfile中后，执行 pod install 下载：12345platform :ios, &amp;a">
@@ -421,6 +421,7 @@
       
         <p><a href="https://xmpp.org/" target="_blank" rel="external">XMPP</a>是一个以XML为基础的开源的即时通讯协议。具有开放、标准、可用、分布式、安全、可扩展、多样性等优点。因为最近工作接触，在此进行记录。希望对你有帮助。<br>本文为XMPP开发的第一讲，记录XMPP的用户注册／登录。</p>
 <h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><p>使用GitHub上现有的<a href="https://github.com/robbiehanson/XMPPFramework" target="_blank" rel="external">XMPPFramework</a>，直接将其依赖加入到工程的Podfile中后，执行 <strong>pod install</strong> 下载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">platform :ios, &apos;8.0&apos;</div><div class="line">use_frameworks!</div><div class="line">target &apos;LTIM&apos; do</div><div class="line">    pod &apos;XMPPFramework&apos;, &apos;~&gt; 3.7.0&apos;</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h4 id="登录流程"><a href="#登录流程" class="headerlink" title="登录流程"></a>登录流程</h4><p>XMPP的登录主要需要了解 <strong>XMPPStreamDelegate</strong> 协议，用户登录分为以下几个步骤：</p>
 <ul>
 <li>设置代理并激活</li>

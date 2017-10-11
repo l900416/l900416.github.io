@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行 闭包​    一种带有局部变量的匿名函数。语法结构：^ 返回值类型 参数列表 表达式 比如： 1^int(int count)&amp;#123;return count+1;&amp;#125; block的声明及使用 12345678910//声明int(^blk) (int) = ^(int count)&amp;#123;return count+1;&amp;#">
+<meta name="description" content="讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行 闭包​    一种带有局部变量的匿名函数。语法结构：^ 返回值类型 参数列表 表达式 比如： 1^int(int count)&amp;#123;return count+1;&amp;#125;">
 <meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C 知识普及">
 <meta property="og:url" content="https://l900416.github.io/2016/10/30/iOS_develop_ObjC_basic/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行 闭包​    一种带有局部变量的匿名函数。语法结构：^ 返回值类型 参数列表 表达式 比如： 1^int(int count)&amp;#123;return count+1;&amp;#125; block的声明及使用 12345678910//声明int(^blk) (int) = ^(int count)&amp;#123;return count+1;&amp;#">
+<meta property="og:description" content="讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行 闭包​    一种带有局部变量的匿名函数。语法结构：^ 返回值类型 参数列表 表达式 比如： 1^int(int count)&amp;#123;return count+1;&amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:04:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C 知识普及">
-<meta name="twitter:description" content="讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行 闭包​    一种带有局部变量的匿名函数。语法结构：^ 返回值类型 参数列表 表达式 比如： 1^int(int count)&amp;#123;return count+1;&amp;#125; block的声明及使用 12345678910//声明int(^blk) (int) = ^(int count)&amp;#123;return count+1;&amp;#">
+<meta name="twitter:description" content="讲述闭包、协议、常用传值方式，交流时会结合参与的项目进行 闭包​    一种带有局部变量的匿名函数。语法结构：^ 返回值类型 参数列表 表达式 比如： 1^int(int count)&amp;#123;return count+1;&amp;#125;">
 
 
 
@@ -423,6 +423,7 @@
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>​    一种带有局部变量的匿名函数。语法结构：<code>^</code> <code>返回值类型</code> <code>参数列表</code> <code>表达式</code></p>
 <p>比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^int(int count)&#123;return count+1;&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>block的声明及使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//声明</div><div class="line">int(^blk) (int) = ^(int count)&#123;return count+1;&#125;;</div><div class="line"></div><div class="line">//使用 - 作为参数</div><div class="line">void function(int(^blk)(int))</div><div class="line"></div><div class="line">//使用 - 作为返回值</div><div class="line">int (^func())(int) &#123;</div><div class="line">return ^(int count)&#123;return count+1;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>使用 <code>typedef</code> 简化</p>

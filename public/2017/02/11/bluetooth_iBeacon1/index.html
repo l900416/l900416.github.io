@@ -90,7 +90,7 @@
 <meta property="og:description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://l900416.github.io/post/iOS/iBeacon/uuid_major_minor.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:04:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iBeacon基础">
 <meta name="twitter:description" content="​     iBeacon  标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。 位置服务​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在">
@@ -427,6 +427,7 @@
 <li>GPS本身定位精度能力有限，位置服务不可能提供精确的位置服务；</li>
 <li>室内环境下GPS信号普遍不好，或者信号不可达；</li>
 </ul>
+<a id="more"></a>
 <h3 id="iBeacon"><a href="#iBeacon" class="headerlink" title="iBeacon"></a>iBeacon</h3><p>​    iBeacon技术是基于基站的形式。一个iBeacon可以被认为是一个区域（物体所在位置+覆盖半径），由于使用低功耗蓝牙技术，实验环境下其精度可以达到10cm范围内（虽然有些吹嘘，但亲测是相当精确的）。关于iBeacon的软件部分，需要了解以下几个概念：</p>
 <ul>
 <li>Region : ProximityUUID &amp; Major &amp; Minor</li>

@@ -15,6 +15,8 @@ tags: Note
 
 对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。
 
+<!-- more -->
+
 ### UIDocumentInteractionController    
 
 界面表现上和AirDrop长得很像，这个也可以进行AirDrop蓝牙分享很强大的功能，与之不同的是，在与文件类型关联的备选APP列表中，会有类似 **[拷贝至 微信]** 应用的选择，如下：   

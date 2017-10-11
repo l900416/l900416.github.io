@@ -36,6 +36,9 @@ enum VendingMachineError: Error {
 throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 ```
 
+
+<!-- more -->
+
 ### 处理错误
 某个错误被抛出时，附近的某部分代码必须负责处理这个错误，例如纠正这个问题、尝试另外一种方式、或是向用户报告错误。
 Swift 中有4种处理错误的方式。你可以把函数抛出的错误传递给调用此函数的代码、用do-catch语句处理错误、将错误作为可选类型处理、或者断言此错误根本不会发生。

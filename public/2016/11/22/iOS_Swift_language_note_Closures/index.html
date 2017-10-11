@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    闭包是一种可以在代码中传递和使用的自包含代码块。Swift中的闭包盒C／ObjC中的闭包与其它语言中的lambdas表达式类似。闭包可用捕获其被定义的上下文中的变量或常量。Swift会为你处理所有的通过捕获的内存管理。函数章节介绍的全局／嵌套函数，是闭包的特殊形式，闭包采取以下三种形式之一   全局函数是一个有名字且不捕获任何值的闭包 嵌套函数是一个有名字且可用捕获其封闭函数作用域内值的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:06:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Closures">
 <meta name="twitter:description" content="​    闭包是一种可以在代码中传递和使用的自包含代码块。Swift中的闭包盒C／ObjC中的闭包与其它语言中的lambdas表达式类似。闭包可用捕获其被定义的上下文中的变量或常量。Swift会为你处理所有的通过捕获的内存管理。函数章节介绍的全局／嵌套函数，是闭包的特殊形式，闭包采取以下三种形式之一   全局函数是一个有名字且不捕获任何值的闭包 嵌套函数是一个有名字且可用捕获其封闭函数作用域内值的">
@@ -436,6 +436,7 @@
 <li>Trailing闭包语法</li>
 </ul>
 </blockquote>
+<a id="more"></a>
 <h3 id="闭包表达式"><a href="#闭包表达式" class="headerlink" title="闭包表达式"></a>闭包表达式</h3><p>嵌套函数是一种在较复杂函数中方便进行命名和定义自包含代码模块的方式，但是有时候编写一个不需要名字和参数的简洁版本更有用，尤其是在将函数作为参数传递给另一个函数的时候。<br>闭包表达式是一种利用简洁语法构建内联闭包的方式。闭包表达式提供了一些语法优化，使得撰写闭包变得简单明了。下面闭包表达式的例子通过使用几次迭代展示了 sort 函数定义和语法优化的方式。 每一次迭代都用更简洁的方式描述了相同的功能。</p>
 <h4 id="排序方法"><a href="#排序方法" class="headerlink" title="排序方法"></a>排序方法</h4><p>Swift标准库提供的一个排序方法<code>sorted(by:)</code>会根据你提供的排序闭包对已知类型的数组的值进行排序，排序完成后会返回一个同源数组大小相同的排序后的数组。例如一个原始数组如下：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> names = [<span class="string">"Chris"</span>, <span class="string">"Alex"</span>, <span class="string">"Ewa"</span>, <span class="string">"Barry"</span>, <span class="string">"Daniella"</span>]</div></pre></td></tr></table></figure>

@@ -38,6 +38,8 @@ var friendlyWelcome = "Hello!"
 let 你好 = "你好世界"
 ```
 
+<!-- more -->
+
 ​	通过print函数来输出查看结果：
 
 ```Swift

@@ -21,6 +21,10 @@ tags: Swift
 
 函数以关键字`func`开头，返回值类型紧跟符号`->`。说了这么多，还是直接看例子，函数名字为：`greet(person:)`参数和返回值是String类型，定义及调用如下：
 
+
+<!-- more -->
+
+
 ```Swift
 func greet(person: String) -> String {
     let greeting = "Hello, " + person + "!"

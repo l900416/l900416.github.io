@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF8_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF16_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UnicodeScalar_2x.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:10:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift String and Characters">
 <meta name="twitter:description" content="​    字符串String是一系列字符集合，Swift提供了一种快速、Unicode的方式的字符串和字符类型。和C语言的字符串字面值语法类似，Swift的字符串的创建和操作是轻量级、可读性的。可以通过+操作符连接两个字符串。Swift的字符串中的每个字符都是由Unicode编码的字符组成，并支持以各种方式访问这些字符。    注：Swift中的String类型通过Foundation框架的NSS">
@@ -426,6 +426,7 @@
         <p>​    字符串<code>String</code>是一系列字符集合，Swift提供了一种快速、Unicode的方式的字符串和字符类型。和C语言的字符串字面值语法类似，Swift的字符串的创建和操作是轻量级、可读性的。可以通过<code>+</code>操作符连接两个字符串。Swift的字符串中的每个字符都是由<code>Unicode</code>编码的字符组成，并支持以各种方式访问这些字符。<br>    注：Swift中的String类型通过Foundation框架的NSString类型桥接，Foundation也对String类型对应扩展了NSString中定义的方法。这就意味着如果引用了Foundation，就可以不用转换直接使用NSString中的方法。</p>
 <h3 id="字符串的字面值"><a href="#字符串的字面值" class="headerlink" title="字符串的字面值"></a>字符串的字面值</h3><p>​    可以通过双引号<code>&quot;</code>来定义字符串字面值，Swift会根据字符串字面值将对应类型推断为字符串类型。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someString = <span class="string">"Some string literal value"</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><h4 id="空字符串"><a href="#空字符串" class="headerlink" title="空字符串"></a>空字符串</h4><p>​    初始化，检查字符串是否为空。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> emptyString = <span class="string">""</span>               <span class="comment">// empty string literal</span></div><div class="line"><span class="keyword">var</span> anotherEmptyString = <span class="type">String</span>()  <span class="comment">// initializer syntax</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> emptyString.isEmpty &#123;</div><div class="line"><span class="built_in">print</span>(<span class="string">"Nothing to see here"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h4><p>​    字符串是值类型，创建一个字符串后，如果在函数或者方法中使用，或者该字符串会被赋值给常量或者变量，字符串值会被复制，源字符串数据不会变化。</p>

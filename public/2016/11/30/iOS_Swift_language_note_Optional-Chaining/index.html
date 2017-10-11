@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。    Swift 的可选链式调用和 Objective-C 中向nil发送消息有些相像，但是 Swift 的可选链式调用可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:09:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Optional Chaining">
 <meta name="twitter:description" content="​    可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。    Swift 的可选链式调用和 Objective-C 中向nil发送消息有些相像，但是 Swift 的可选链式调用可以">
@@ -423,6 +423,7 @@
 <h3 id="使用可选链式调用代替强制展开"><a href="#使用可选链式调用代替强制展开" class="headerlink" title="使用可选链式调用代替强制展开"></a>使用可选链式调用代替强制展开</h3><p>通过在想调用的属性、方法、或下标的可选值后面放一个问号（?），可以定义一个可选链。这一点很像在可选值后面放一个叹号（!）来强制展开它的值。它们的主要区别在于当可选值为空时可选链式调用只会调用失败，然而强制展开将会触发运行时错误。</p>
 <p>为了反映可选链式调用可以在空值（nil）上调用的事实，不论这个调用的属性、方法及下标返回的值是不是可选值，它的返回结果都是一个可选值。你可以利用这个返回值来判断你的可选链式调用是否调用成功，如果调用有返回值则说明调用成功，返回nil则说明调用失败。</p>
 <p>特别地，可选链式调用的返回结果与原本的返回结果具有相同的类型，但是被包装成了一个可选值。例如，使用可选链式调用访问属性，当可选链式调用成功时，如果属性原本的返回结果是Int类型，则会变为Int?类型。</p>
+<a id="more"></a>
 <p>下面几段代码将解释可选链式调用和强制展开的不同。首先定义两个类Person和Residence：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> residence: <span class="type">Residence</span>?</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Residence</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> numberOfRooms = <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Residence有一个Int类型的属性numberOfRooms，其默认值为1。Person具有一个可选的residence属性，其类型为Residence?。<br>假如你创建了一个新的Person实例,它的residence属性由于是是可选型而将初始化为nil,在下面的代码中,john有一个值为nil的residence属性：</p>
@@ -569,8 +570,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/30/iOS_Swift_language_note_Error-Handling/" rel="prev" title="Swift Error Handling">
-                Swift Error Handling <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" rel="prev" title="Swift Type Casting">
+                Swift Type Casting <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

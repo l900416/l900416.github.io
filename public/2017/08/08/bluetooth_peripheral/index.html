@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeriphe">
+<meta name="description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。">
 <meta name="keywords" content="Bluetooth">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS蓝牙开发 - Peripheral模式">
 <meta property="og:url" content="https://l900416.github.io/2017/08/08/bluetooth_peripheral/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeriphe">
+<meta property="og:description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:04:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS蓝牙开发 - Peripheral模式">
-<meta name="twitter:description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。 功能集成  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:123&amp;lt;/array&amp;gt;&amp;lt;key&amp;gt;NSBluetoothPeriphe">
+<meta name="twitter:description" content="Peripheral模式周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。">
 
 
 
@@ -420,6 +420,7 @@
 
       
         <h3 id="Peripheral模式"><a href="#Peripheral模式" class="headerlink" title="Peripheral模式"></a>Peripheral模式</h3><p>周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。<br>蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。</p>
+<a id="more"></a>
 <h3 id="功能集成"><a href="#功能集成" class="headerlink" title="功能集成"></a>功能集成</h3><p>  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;/array&gt;</div><div class="line">&lt;key&gt;NSBluetoothPeripheralUsageDescription&lt;/key&gt;</div><div class="line">&lt;string&gt;蓝牙设备请求描述，比如：程序需要使用蓝牙进行设备发现&lt;/string&gt;</div></pre></td></tr></table></figure></p>
 <p>  项目Targets对应的 <em>Build Phases</em> 中，引入 <em>CoreBluetooth.framework</em> ，使用的代码中引入头文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</div></pre></td></tr></table></figure></p>
 <h4 id="请求蓝牙服务"><a href="#请求蓝牙服务" class="headerlink" title="请求蓝牙服务"></a>请求蓝牙服务</h4><p>  使用CBPeripheralManagerDelegate来进行蓝牙服务管理(授权请求)，监听蓝牙状态变化。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) CBPeripheralManagerDelegate *perManager;</div><div class="line"></div><div class="line"><span class="comment">//对象创建成功后，会请求使用蓝牙，CBPeripheralManagerDelegate协议会回调蓝牙的各个状态</span></div><div class="line">_perManager = [[CBPeripheralManager alloc] initWithDelegate:<span class="keyword">self</span> queue:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="meta">#pragma mark - CBPeripheralManagerDelegate</span></div><div class="line">- (<span class="keyword">void</span>)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral&#123;</div><div class="line">    <span class="keyword">if</span> (peripheral.state == CBManagerStatePoweredOn) &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>

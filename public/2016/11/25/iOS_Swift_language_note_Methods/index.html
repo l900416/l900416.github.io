@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法；实例方法为给定类型的实例封装了具体的任务与功能。类、结构体、枚举也可以定义类型方法；类型方法与类型本身相关联。类型方法与 Objective-C 中的类方法（class methods）相似。结构体和枚举能够定义方法是 Swift 与 C/Objective-C 的主要区别之一。在 Objective-C 中，类是唯一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:08:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Methods">
 <meta name="twitter:description" content="​    方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法；实例方法为给定类型的实例封装了具体的任务与功能。类、结构体、枚举也可以定义类型方法；类型方法与类型本身相关联。类型方法与 Objective-C 中的类方法（class methods）相似。结构体和枚举能够定义方法是 Swift 与 C/Objective-C 的主要区别之一。在 Objective-C 中，类是唯一">
@@ -421,6 +421,7 @@
       
         <p>​    方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法；实例方法为给定类型的实例封装了具体的任务与功能。类、结构体、枚举也可以定义类型方法；类型方法与类型本身相关联。类型方法与 Objective-C 中的类方法（class methods）相似。<br>结构体和枚举能够定义方法是 Swift 与 C/Objective-C 的主要区别之一。在 Objective-C 中，类是唯一能定义方法的类型。但在 Swift 中，你不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在你创建的类型（类/结构体/枚举）上定义方法。</p>
 <h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p>实例方法是属于某个特定类、结构体或者枚举类型实例的方法。实例方法提供访问和修改实例属性的方法或提供与实例目的相关的功能，并以此来支撑实例的功能。实例方法的语法与函数完全一致。<br>实例方法要写在它所属的类型的前后大括号之间。实例方法能够隐式访问它所属类型的所有的其他实例方法和属性。实例方法只能被它所属的类的某个特定实例调用。实例方法只能由实例调用。<br>下面的例子，定义一个很简单的Counter类，Counter能被用来对一个动作发生的次数进行计数：</p>
+<a id="more"></a>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> <span class="built_in">count</span> = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">count</span> += <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">(by amount: Int)</span></span> &#123;</div><div class="line">        <span class="built_in">count</span> += amount</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reset</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">count</span> = <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Counter这个类定义了一个属性和3个方法，其实例可以通过点语法来调用属性和方法</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> counter = <span class="type">Counter</span>()</div><div class="line"><span class="comment">// the initial counter value is 0</span></div><div class="line">counter.increment()</div><div class="line"><span class="comment">// the counter's value is now 1</span></div><div class="line">counter.increment(by: <span class="number">5</span>)</div><div class="line"><span class="comment">// the counter's value is now 6</span></div><div class="line">counter.reset()</div><div class="line"><span class="comment">// the counter's value is now 0</span></div></pre></td></tr></table></figure>
@@ -520,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/25/iOS_Swift_language_note_Properties/" rel="next" title="Swift Properties">
-                <i class="fa fa-chevron-left"></i> Swift Properties
+              <a href="/2016/11/24/iOS_Swift_language_note_Classes and Structures/" rel="next" title="Swift Classes and Structures">
+                <i class="fa fa-chevron-left"></i> Swift Classes and Structures
               </a>
             
           </div>
@@ -530,8 +531,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/26/iOS_Swift_language_note_Subscripts/" rel="prev" title="Swift Subscripts">
-                Swift Subscripts <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/25/iOS_Swift_language_note_Properties/" rel="prev" title="Swift Properties">
+                Swift Properties <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

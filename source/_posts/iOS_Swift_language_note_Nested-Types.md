@@ -20,6 +20,9 @@ tags: Swift
 下面这个例子定义了一个结构体BlackjackCard，用来模拟BlackjackCard中的扑克牌点数。BlackjackCard结构体包含两个嵌套定义的枚举类型Suit和Rank。
 在BlackjackCard中，Ace牌可以表示1或者11，Ace牌的这一特征通过一个嵌套在Rank枚举中的结构体Values来表示：
 
+<!-- more -->
+
+
 ```Swift
 struct BlackjackCard {
     

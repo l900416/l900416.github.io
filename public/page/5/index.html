@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/07/share_github_blog_jekyll/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/06/13/algorithm_sort_radix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/07/share_github_blog_jekyll/" itemprop="url">Mac下使用Jekyll搭建GitHub博客</a></h1>
+                <a class="post-title-link" href="/2017/06/13/algorithm_sort_radix/" itemprop="url">基数排序</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:25:19+08:00">
-                2017-08-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T11:25:37+08:00">
+                2017-06-13
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2017/08/07/share_github_blog_jekyll/" class="leancloud_visitors" data-flag-title="Mac下使用Jekyll搭建GitHub博客">
+             <span id="/2017/06/13/algorithm_sort_radix/" class="leancloud_visitors" data-flag-title="基数排序">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,55 +411,14 @@
 
       
         
-          
-            <p><a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll</a>是一个静态网站和博客模版，本文介绍如何使用Jekyll进行个人GitHub博客的搭建。搭建前提是拥有个人<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，且Mac上有安装 <em>git</em> 工具。</p>
-<h3 id="安装Jekyll"><a href="#安装Jekyll" class="headerlink" title="安装Jekyll"></a>安装Jekyll</h3><p>  参照<a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll官方</a>介绍，打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> gem install jekyll bundler</span></div></pre></td></tr></table></figure></p>
-<p>注：gem的安装／更新可以自己去查，此处不再进行说明。Jekyll安装成功后，便可以进行个人博客／静态网站的创建了。</p>
-<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> jekyll new my_blog</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> my_blog</span></div><div class="line"><span class="meta">$</span><span class="bash"> bundle <span class="built_in">exec</span> jekyll serve</span></div></pre></td></tr></table></figure></p>
-<p>参照<a href="https://jekyllrb.com/docs/templates/" target="_blank" rel="external">官方模版配置介绍</a>,修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的<a href="http://jekyllthemes.org/" target="_blank" rel="external">博客模板</a>即可。  </p>
-<h3 id="快速使用博客-1"><a href="#快速使用博客-1" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>  此处选择使用博客模板<a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="external">jekyll-now</a>，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。<br>新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。<br>编写之后，直接在博客路径下，运行即可：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> jekyll serve</span></div></pre></td></tr></table></figure></p>
-<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><p>  使用Jekyll搭建博客也可以添加很多自定制功能，比如统计、评论、标签等；可以根据自己的喜好，选择不同的主题。以下是个人曾经使用过的主题：      </p>
-<ul>
-<li><a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="external">Hux Blog</a> 第一个GitHub博客系统就是从他的博客fork过去的。</li>
-<li><a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll" target="_blank" rel="external">Clean Blog</a> 简单的Jekyll博客模板。</li>
-</ul>
-<h3 id="Jekyll在GitHub上的维护"><a href="#Jekyll在GitHub上的维护" class="headerlink" title="Jekyll在GitHub上的维护"></a>Jekyll在GitHub上的维护</h3><p>直接将博客源码上传到GitHub博客仓库即可。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>通过在GitHub上搭建Jekyll和Hexo博客，个人更倾向于使用Hexo博客。</p>
-<ul>
-<li>Jekyll    <ul>
-<li>配置简单。</li>
-<li>维护简单，只需要一个Branch即可。</li>
-<li>使用简单，运行只需要 <em>jekyll server</em> 即可。</li>
-<li>发布简单，只需要将代码push到对应仓库即可。</li>
-<li>主题切换，比较麻烦。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Hexo<ul>
-<li>配置项相对较多，但是格式比较清晰。</li>
-<li>博客和源码需要分开维护。需要两个Branch对博客系统进行维护。</li>
-<li>使用相对简单。<ul>
-<li>hexo clean  // 清理</li>
-<li>hexo g      // 生成</li>
-<li>hexo s      // 运行</li>
-</ul>
-</li>
-<li>发布简单。<ul>
-<li>hexo d      // 将博客部署(到github)</li>
-<li>将博客源码push到对应仓库单独保存</li>
-</ul>
-</li>
-<li>主题切换简单。<ul>
-<li>下载新主题到themes文件夹下；</li>
-<li>修改站点配置文件_config.yml中对应的主题选项。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
+          <p>​    基数排序（radix sort）属于“分配式排序”（distribution sort），基数排序法是属于稳定性的排序，其时间复杂度为O (nlog(r)m)，其中r为所采取的基数，而m为堆数，在某些时候，基数排序法的效率高于其它的稳定性排序法。参照斯坦福大学算法公开课视频</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/13/algorithm_sort_radix/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -506,7 +465,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/04/share_github_blog_hexo/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -525,7 +484,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/04/share_github_blog_hexo/" itemprop="url">Mac下使用Hexo搭建GitHub博客</a></h1>
+                <a class="post-title-link" href="/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/" itemprop="url">LTxMenu</a></h1>
         
 
         <div class="post-meta">
@@ -537,8 +496,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T14:25:19+08:00">
-                2017-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T18:10:12+08:00">
+                2017-05-19
               </time>
             
 
@@ -560,8 +519,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -577,7 +536,7 @@
 
           
           
-             <span id="/2017/08/04/share_github_blog_hexo/" class="leancloud_visitors" data-flag-title="Mac下使用Hexo搭建GitHub博客">
+             <span id="/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/" class="leancloud_visitors" data-flag-title="LTxMenu">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -609,82 +568,183 @@
 
       
         
-          
-            <h3 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h3><p>  注册<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，建立个人博客仓库(Repository)，不在赘述。 </p>
-<h3 id="安装Git工具"><a href="#安装Git工具" class="headerlink" title="安装Git工具"></a>安装Git工具</h3><p>  终端直接执行 <em>git</em> 命令，或者通过安装GitHub客户端。</p>
-<h3 id="安装Node和NPM"><a href="#安装Node和NPM" class="headerlink" title="安装Node和NPM"></a>安装Node和NPM</h3><p>  打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> brew install node</span></div></pre></td></tr></table></figure></p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>  可以参照Hexo在<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Github</a>上的官方介绍，在终端依次执行以下命令进行：   </p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> npm install hexo-cli -g</span>
-</code></pre>
-<p>  安装成功后，可以通过以下命令进行查看   </p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo</span>
-</code></pre>
-<h3 id="快速使用博客"><a href="#快速使用博客" class="headerlink" title="快速使用博客"></a>快速使用博客</h3><p>通过在终端输入以下命令执行初始化</p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo init blog_name</span>
-<span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog_name</span>
-</code></pre>
-<p>修改Hexo配置文件_config.yml  </p>
-<pre><code class="Script"># Site
-title: liangtong
-subtitle: 
-description: Keep hungry keep foolish！
-author: liangtong
-language: zh-Hans
-timezone:
-</code></pre>
-<p>通过在终端输入以下命令新建博客文章</p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo new <span class="string">"Hello Hexo"</span></span>
-</code></pre>
-<p>通过在终端输入以下命令生成静态文件</p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo generate</span>
-</code></pre>
-<p>通过在终端输入以下命令启动服务</p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo server</span>
-</code></pre>
-<h3 id="更换Hexo主题"><a href="#更换Hexo主题" class="headerlink" title="更换Hexo主题"></a>更换Hexo主题</h3><p>这里使用GitHub上排名最靠前的主题<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT</a>，在终端输入以下命令进行主题下载：   </p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog_name</span>
-<span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span>
-</code></pre>
-<p>参照<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">NexT官方指导网站</a>，对博客进行个性化配置，常用设置包括：   </p>
-<ul>
-<li>主题设定   </li>
-<li>标签   </li>
-<li>分类   </li>
-<li>侧边栏   </li>
-<li>打赏   </li>
-<li>友情链接</li>
-<li>动画效果</li>
-<li>评论分享   </li>
-</ul>
-<h3 id="配置Hexo部署"><a href="#配置Hexo部署" class="headerlink" title="配置Hexo部署"></a>配置Hexo部署</h3><p>在Hexo配置文件中完善部署信息，即你的Github个人博客地址信息：   </p>
-<pre><code class="Script"># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-type: git
-repo: https://github.com/l900416/l900416.github.io.git
-branch: master
-</code></pre>
-<h3 id="发布Hexo网站到GitHub"><a href="#发布Hexo网站到GitHub" class="headerlink" title="发布Hexo网站到GitHub"></a>发布Hexo网站到GitHub</h3><p>通过终端输入以下命令将Hexo博客发布到Github上：   </p>
-<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo g</span>
-</code></pre>
-<p>此步骤如果出现错误 <em> Deployer not found: git </em> ：   </p>
-<ul>
-<li>检查Hexo配置的部署文件    </li>
-<li>终端输入命令：<ul>
-<li><blockquote>
-<p>npm install hexo-deployer-git –save </p>
+          <p><strong>[ Update v2.0.0 ]</strong> Similar to Facebook News Feed , Alipay Life , QZone and other social applications . click a drop-down button to display more functions</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>​         In Facebook News Feed , Alipay Life , QZone and other social applications , they all contain a function drop-down button which would show a list of more functions when taped . I didn’t find any on GitHub , so I wrote a similar UI controls myself using Objective-C. ：</p>
+<p><img src="https://raw.githubusercontent.com/l900416/LTxMenu/master/screenshots/1.png" alt=""></p>
+<blockquote>
+<blockquote>
+<p>GitHub link : <a href="https://github.com/l900416/LTxMenu" target="_blank" rel="external">LTxMenu</a></p>
 </blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Hexo在GitHub上的维护"><a href="#Hexo在GitHub上的维护" class="headerlink" title="Hexo在GitHub上的维护"></a>Hexo在GitHub上的维护</h3><p>说下本人的做法，创建新的Branch，命名为hexo，用于存放博客源码，master用于个人博客。这样使用一个仓库来维护。</p>
-<h3 id="Hexo与Jekyll不同之处"><a href="#Hexo与Jekyll不同之处" class="headerlink" title="Hexo与Jekyll不同之处"></a>Hexo与Jekyll不同之处</h3><ul>
-<li>Hexo博客文件需要单独维护。对应GitHub仓库中的文件是通过Hexo部署进去的。</li>
-<li>Jekyll博客文件直接上传到GitHub博客仓库中即可。</li>
-</ul>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/05/18/algorithm_sort_count/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/18/algorithm_sort_count/" itemprop="url">计数排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T21:05:37+08:00">
+                2017-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/18/algorithm_sort_count/" class="leancloud_visitors" data-flag-title="计数排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>​    计数排序是一个非基于比较的整数排序算法，用空间换时间，优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围）。</p>
+<h3 id="基本思想及实现"><a href="#基本思想及实现" class="headerlink" title="基本思想及实现"></a>基本思想及实现</h3><p>基本思想： 假设输入的线性表L的长度为n，L=L1,L2,..,Ln；线性表的元素属于有限偏序集S，|S|=k且k=O(n)，S={S1,S2,..Sk}；则计数排序可以描述如下：      </p>
+<ul>
+<li>① 扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；</li>
+<li>② 扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/18/algorithm_sort_count/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -722,7 +782,7 @@ branch: master
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

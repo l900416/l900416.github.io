@@ -26,6 +26,8 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 }
 ```
 
+<!-- more -->
+
 swapTwoInts(_:_:) 函数交换 b 的原始值到 a，并交换 a 的原始值到 b。你可以调用这个函数交换两个 Int 变量的值：
 
 ```Swift

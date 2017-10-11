@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="前言对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。 UIDocumentInteractionController界面表现上和AirDrop长得很像，这个也可以进行AirD">
+<meta name="description" content="前言对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。">
 <meta name="keywords" content="Note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件的查看">
 <meta property="og:url" content="https://l900416.github.io/2017/06/19/iOS_ObjC_file_preview/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="前言对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。 UIDocumentInteractionController界面表现上和AirDrop长得很像，这个也可以进行AirD">
+<meta property="og:description" content="前言对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://l900416.github.io/post/iOS/Objective-C/file_preview_1.png">
 <meta property="og:image" content="https://l900416.github.io/post/iOS/Objective-C/file_preview_2.png">
 <meta property="og:image" content="https://l900416.github.io/post/iOS/Objective-C/file_preview_3.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:05:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件的查看">
-<meta name="twitter:description" content="前言对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。 UIDocumentInteractionController界面表现上和AirDrop长得很像，这个也可以进行AirD">
+<meta name="twitter:description" content="前言对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。">
 <meta name="twitter:image" content="https://l900416.github.io/post/iOS/Objective-C/file_preview_1.png">
 
 
@@ -424,6 +424,7 @@
 
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。</p>
+<a id="more"></a>
 <h3 id="UIDocumentInteractionController"><a href="#UIDocumentInteractionController" class="headerlink" title="UIDocumentInteractionController"></a>UIDocumentInteractionController</h3><p>界面表现上和AirDrop长得很像，这个也可以进行AirDrop蓝牙分享很强大的功能，与之不同的是，在与文件类型关联的备选APP列表中，会有类似 <strong>[拷贝至 微信]</strong> 应用的选择，如下：<br><img src="/post/iOS/Objective-C/file_preview_1.png" alt="">    </p>
 <h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//引用</div><div class="line">@property (nonatomic, strong) UIDocumentInteractionController* docInteractionController;</div><div class="line"></div><div class="line"></div><div class="line">//初始化及动作定义</div><div class="line">NSURL* filePath = xxx;//文件路径</div><div class="line">_docInteractionController = [UIDocumentInteractionController  interactionControllerWithURL:filePath];</div><div class="line">_docInteractionController.delegate = self;</div><div class="line">[_docInteractionController presentOpenInMenuFromRect:CGRectZero</div><div class="line">                                              inView:self.view</div><div class="line">                                            animated:YES];</div></pre></td></tr></table></figure>
 <h4 id="实现常用协议"><a href="#实现常用协议" class="headerlink" title="实现常用协议"></a>实现常用协议</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#pragma mark - UIDocumentInteractionControllerDelegate</div><div class="line">-(void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application &#123;//将要发送的应用</div><div class="line">&#125;</div><div class="line"></div><div class="line">//下面是他的代理方法</div><div class="line"></div><div class="line">-(void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application&#123;//已经发送的应用</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)documentInteractionControllerDidDismissOpenInMenu:(UIDocumentInteractionController *)controller&#123;//dismiss</div><div class="line">&#125;</div></pre></td></tr></table></figure>

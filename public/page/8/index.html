@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/05/18/algorithm_sort_count/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/02/11/bluetooth_iBeacon1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/18/algorithm_sort_count/" itemprop="url">计数排序</a></h1>
+                <a class="post-title-link" href="/2017/02/11/bluetooth_iBeacon1/" itemprop="url">iBeacon基础</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T21:05:37+08:00">
-                2017-05-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-11T22:50:12+08:00">
+                2017-02-11
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/蓝牙/" itemprop="url" rel="index">
+                    <span itemprop="name">蓝牙</span>
                   </a>
                 </span>
 
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2017/05/18/algorithm_sort_count/" class="leancloud_visitors" data-flag-title="计数排序">
+             <span id="/2017/02/11/bluetooth_iBeacon1/" class="leancloud_visitors" data-flag-title="iBeacon基础">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,17 +411,19 @@
 
       
         
-          
-            <p>​    计数排序是一个非基于比较的整数排序算法，用空间换时间，优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围）。</p>
-<h3 id="基本思想及实现"><a href="#基本思想及实现" class="headerlink" title="基本思想及实现"></a>基本思想及实现</h3><p>基本思想： 假设输入的线性表L的长度为n，L=L1,L2,..,Ln；线性表的元素属于有限偏序集S，|S|=k且k=O(n)，S={S1,S2,..Sk}；则计数排序可以描述如下：      </p>
+          <p>​    <a href="https://developer.apple.com/ibeacon/" target="_blank" rel="external"> iBeacon </a> 标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。</p>
+<h3 id="位置服务"><a href="#位置服务" class="headerlink" title="位置服务"></a>位置服务</h3><p>​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在屏幕左下角显示该应用的图标。<a href="http://lbs.amap.com/" target="_blank" rel="external"> 高德地图 </a>中的地理围栏就是一个实际应用场景。位置服务有以下缺点：   </p>
 <ul>
-<li>① 扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；</li>
-<li>② 扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。</li>
+<li>GPS本身定位精度能力有限，位置服务不可能提供精确的位置服务；</li>
+<li>室内环境下GPS信号普遍不好，或者信号不可达；</li>
 </ul>
-<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  计数排序</span></div><div class="line"><span class="comment">* 计数排序是一个非基于比较的排序算法，优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围），快于任何比较排序算法。当然这是一种牺牲空间换取时间的做法，而且当O(k)&gt;O(n*log(n))的时候其效率反而不如基于比较的排序。</span></div><div class="line"><span class="comment">* ① 扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；</span></div><div class="line"><span class="comment">* ② 扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">countSort</span><span class="params">(sortArray:<span class="keyword">inout</span> Array&lt;Int&gt;, maxValue:Int)</span></span> -&gt; <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;&#123;</div><div class="line"><span class="keyword">let</span> <span class="built_in">count</span> = sortArray.<span class="built_in">count</span>;</div><div class="line"><span class="keyword">var</span> retArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();<span class="comment">//用于存放返回值</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</div><div class="line"><span class="keyword">var</span> countArray = <span class="type">Array</span>&lt;<span class="type">Int</span>&gt;();<span class="comment">//用于存放计数器</span></div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ... maxValue &#123;<span class="comment">//初始化计数器</span></div><div class="line">countArray.append(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="built_in">count</span> &#123;</div><div class="line">retArray.append(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//第一个步骤：统计数量</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="built_in">count</span> &#123;<span class="comment">//统计小于位置i的元素个数</span></div><div class="line">countArray[sortArray[i]] = countArray[sortArray[i]] + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> ... maxValue &#123;<span class="comment">//统计出小于等于位置i的元素个数</span></div><div class="line">countArray[i] = countArray[i] + countArray[i-<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//第二个步骤：逆向扫描数组sortArray，将i位置元素放置到retArray中countArray对应值的位置上，同时修正countArray的值</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (<span class="number">0</span> ..&lt; <span class="built_in">count</span>).reversed() &#123;</div><div class="line"><span class="keyword">let</span> value = sortArray[i];</div><div class="line"><span class="keyword">let</span> countValue = countArray[value];</div><div class="line">retArray[countValue - <span class="number">1</span>] = value;</div><div class="line">countArray[value] = countArray[value] - <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> retArray;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">print</span>(countSort(sortArray: &amp;intArray,maxValue:<span class="number">5</span>));</div><div class="line"></div><div class="line">intArray =  [<span class="number">100</span>,<span class="number">93</span>,<span class="number">97</span>,<span class="number">92</span>,<span class="number">96</span>,<span class="number">99</span>,<span class="number">92</span>,<span class="number">89</span>,<span class="number">93</span>,<span class="number">97</span>,<span class="number">90</span>,<span class="number">94</span>,<span class="number">92</span>,<span class="number">95</span>];</div><div class="line"><span class="built_in">print</span>(countSort(sortArray: &amp;intArray,maxValue:<span class="number">100</span>));</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>]</div><div class="line">[<span class="number">89</span>, <span class="number">90</span>, <span class="number">92</span>, <span class="number">92</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">93</span>, <span class="number">94</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">97</span>, <span class="number">97</span>, <span class="number">99</span>, <span class="number">100</span>]</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/11/bluetooth_iBeacon1/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -468,7 +470,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/05/11/algorithm_sort_quick/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/12/21/iOS_develop_overview_framework_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -487,7 +489,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/11/algorithm_sort_quick/" itemprop="url">快速排序</a></h1>
+                <a class="post-title-link" href="/2016/12/21/iOS_develop_overview_framework_2/" itemprop="url">浅谈iOS框架</a></h1>
         
 
         <div class="post-meta">
@@ -499,8 +501,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T17:25:00+08:00">
-                2017-05-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-21T23:50:12+08:00">
+                2016-12-21
               </time>
             
 
@@ -522,8 +524,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -539,7 +541,7 @@
 
           
           
-             <span id="/2017/05/11/algorithm_sort_quick/" class="leancloud_visitors" data-flag-title="快速排序">
+             <span id="/2016/12/21/iOS_develop_overview_framework_2/" class="leancloud_visitors" data-flag-title="浅谈iOS框架">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -571,20 +573,173 @@
 
       
         
-          
-            <p>​    快速排序是采用分治法（Divide and Conquer）的应用。和归并排序不同的是，她不需要额外的存储空间，时间复杂度： T(n) = Θ(nlgn)，最坏情况下是：T(n) = Θ(n²)。</p>
-<h3 id="基本原理及实现"><a href="#基本原理及实现" class="headerlink" title="基本原理及实现"></a>基本原理及实现</h3><p>基本原理： 使用递归、分治的思想，每次调用排序方法，随机选取一个key值，结果保证：key值所在数组中的位置，且能保证key左侧位置的数据总小于key值；右侧位置数据总大于key值      </p>
-<ul>
-<li>① 当数组为空时，数组不需要排序，算法结束。</li>
-<li>② 选取一个key值，可以是带排序数组中任意位置的元素，这里选第一个元素。</li>
-<li>③ 遍历数组(角标j)，将所有比key值小的元素移动到数组前边(角标i)。遍历结束时，i即是中间位置。</li>
-<li>④ 将key值与角标i位置元素位置互换。</li>
-<li>⑤ 递归对i位置左侧、右侧数组进行快速排序。</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*  快速排序</span></div><div class="line"><span class="comment">* 使用递归、分治的思想，每次调用排序方法，选取一个key值，结果保证：key值所在数组中的位置，且能保证key左侧位置的数据总小于key值；右侧位置数据总大于key值</span></div><div class="line"><span class="comment">* ① 当数组为空时，数组不需要排序，算法结束。</span></div><div class="line"><span class="comment">* ② 选取一个key值，可以是带排序数组中任意位置的元素，这里选第一个元素。</span></div><div class="line"><span class="comment">* ③ 遍历数组(角标j)，将所有比key值小的元素移动到数组前边(角标i)。遍历结束时，i即是中间位置。</span></div><div class="line"><span class="comment">* ④ 将key值与角标i位置元素位置互换。</span></div><div class="line"><span class="comment">* ⑤ 递归对i位置左侧、右侧数组进行快速排序。</span></div><div class="line"><span class="comment">**/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">quickSort</span>&lt;T:Comparable&gt;<span class="params">(array:<span class="keyword">inout</span> Array&lt;T&gt;, start:Int, end:Int)</span></span>&#123;</div><div class="line"><span class="keyword">if</span> end &lt;= start &#123;</div><div class="line"><span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> key = array[start];<span class="comment">//随机选取key值 - 这里我们固定选择第一个元素</span></div><div class="line"><span class="keyword">var</span> i = start;</div><div class="line"><span class="keyword">var</span> j = i + <span class="number">1</span>;</div><div class="line"><span class="keyword">while</span> j &lt;= end &#123;<span class="comment">//从key后开始遍历，查找所有比key小的元素，移动到数组前边</span></div><div class="line"><span class="keyword">let</span> aj = array[j];</div><div class="line"><span class="keyword">if</span> key &gt; aj &#123;</div><div class="line"><span class="comment">//交换元素</span></div><div class="line"><span class="keyword">let</span> tempValue = array[i+<span class="number">1</span>];</div><div class="line">array[i+<span class="number">1</span>] = aj;</div><div class="line">array[j] = tempValue;</div><div class="line"><span class="comment">//重新设置角标</span></div><div class="line">i += <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">j += <span class="number">1</span>;<span class="comment">//数组遍历</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//i位置即是最后一个比key值小的元素位置，然后交换key值和i位置元素</span></div><div class="line"><span class="keyword">let</span> ai = array[i];</div><div class="line">array[i] = key;</div><div class="line">array[start] = ai;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="string">"sorting：key：<span class="subst">\(key)</span>  values: <span class="subst">\(array[start...end])</span>"</span>);</div><div class="line"></div><div class="line"><span class="comment">//对i位置左侧、右侧的数组进行排序方法调用</span></div><div class="line"><span class="built_in">quickSort</span>(array: &amp;array, start: start, end: i - <span class="number">1</span>)</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;array, start: i+<span class="number">1</span>, end: end);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">6</span>,<span class="number">10</span>,<span class="number">13</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">11</span>];</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;intArray,start:<span class="number">0</span>,end:intArray.<span class="built_in">count</span>-<span class="number">1</span>);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序结束：<span class="subst">\(intArray)</span>"</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">sorting：key：<span class="number">6</span>  values: [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">13</span>, <span class="number">10</span>, <span class="number">11</span>]</div><div class="line">sorting：key：<span class="number">2</span>  values: [<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>]</div><div class="line">sorting：key：<span class="number">5</span>  values: [<span class="number">3</span>, <span class="number">5</span>]</div><div class="line">sorting：key：<span class="number">8</span>  values: [<span class="number">8</span>, <span class="number">13</span>, <span class="number">10</span>, <span class="number">11</span>]</div><div class="line">sorting：key：<span class="number">13</span>  values: [<span class="number">11</span>, <span class="number">10</span>, <span class="number">13</span>]</div><div class="line">sorting：key：<span class="number">11</span>  values: [<span class="number">10</span>, <span class="number">11</span>]</div><div class="line">排序结束：[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">13</span>]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Java"</span>,<span class="string">"C#"</span>,<span class="string">"Python"</span>,<span class="string">"Objective-C"</span>,<span class="string">"Swift"</span>,<span class="string">"PHP"</span>,<span class="string">"BASIC"</span>,<span class="string">"Pasical"</span>,<span class="string">"Assembly"</span>];</div><div class="line"><span class="built_in">quickSort</span>(array: &amp;stringArray,start:<span class="number">0</span>,end:stringArray.<span class="built_in">count</span>-<span class="number">1</span>);</div><div class="line"><span class="built_in">print</span>(<span class="string">"排序结束：<span class="subst">\(stringArray)</span>"</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line">sorting：key：<span class="type">Java</span>  values: [<span class="string">"Assembly"</span>, <span class="string">"C#"</span>, <span class="string">"BASIC"</span>, <span class="string">"Java"</span>, <span class="string">"Swift"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>, <span class="string">"Objective-C"</span>]</div><div class="line">sorting：key：<span class="type">Assembly</span>  values: [<span class="string">"Assembly"</span>, <span class="string">"C#"</span>, <span class="string">"BASIC"</span>]</div><div class="line">sorting：key：<span class="type">C</span>#  values: [<span class="string">"BASIC"</span>, <span class="string">"C#"</span>]</div><div class="line">sorting：key：<span class="type">Swift</span>  values: [<span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>, <span class="string">"Swift"</span>]</div><div class="line">sorting：key：<span class="type">Objective</span>-<span class="type">C</span>  values: [<span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>]</div><div class="line">sorting：key：<span class="type">PHP</span>  values: [<span class="string">"PHP"</span>, <span class="string">"Python"</span>, <span class="string">"Pasical"</span>]</div><div class="line">sorting：key：<span class="type">Python</span>  values: [<span class="string">"Pasical"</span>, <span class="string">"Python"</span>]</div><div class="line">排序结束：[<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Pasical"</span>, <span class="string">"Python"</span>, <span class="string">"Swift"</span>]</div></pre></td></tr></table></figure>
+          <p>记录下个人从事iOS开发过程中，使用过的程序框架，谈谈个人的理解。</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    回顾最近三年，我主要从事iOS前端开发工作。一个一无所知的摸石头过河，慢慢在前端开发的道路上寻找、探索。之前我是做嵌入式开发的，转做iOS前端开发可以说是一个幸运的意外。因为业务需要，看了两个星期的斯坦福大学大学iOS公开课，就开始了我的踩坑、脱坑之旅。这里就聊一聊近3年来iOS前端开发使用的框架吧。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/21/iOS_develop_overview_framework_2/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/05/iOS_Swift_language_note_Access-Control/" itemprop="url">Swift Access Control</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-05T00:20:11+08:00">
+                2016-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/05/iOS_Swift_language_note_Access-Control/" class="leancloud_visitors" data-flag-title="Swift Access Control">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>​<br>​    访问控制可以限定其他源文件或模块中的代码对你的代码的访问级别。这个特性可以让我们隐藏代码的一些实现细节，并且可以为其他人可以访问和使用的代码提供接口。</p>
+<p>你可以明确地给单个类型（类、结构体、枚举）设置访问级别，也可以给这些类型的属性、方法、构造器、下标等设置访问级别。协议也可以被限定在一定的范围内使用，包括协议里的全局常量、变量和函数。<br>Swift 不仅提供了多种不同的访问级别，还为某些典型场景提供了默认的访问级别，这样就不需要我们在每段代码中都申明显式访问级别。其实，如果只是开发一个单一目标的应用程序，我们完全可以不用显式声明代码的访问级别。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/05/iOS_Swift_language_note_Access-Control/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -622,7 +777,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

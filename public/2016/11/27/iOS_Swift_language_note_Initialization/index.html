@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample02_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample03_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/chessBoard_2x.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:08:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Initialization">
 <meta name="twitter:description" content="​    构造过程是使用类、结构体、枚举的实例之前的准备过程。具体操作包括设置实例中每个存储型属性的初始值和执行其他必须的设置或初始化工作。在新实例可用前必须执行这个过程。通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法。与 Objective-C 中的构造器不同，Swift 的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化。类的实例也">
@@ -430,6 +430,7 @@
       
         <p>​    构造过程是使用类、结构体、枚举的实例之前的准备过程。具体操作包括设置实例中每个存储型属性的初始值和执行其他必须的设置或初始化工作。在新实例可用前必须执行这个过程。<br>通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法。与 Objective-C 中的构造器不同，Swift 的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化。<br>类的实例也可以通过定义析构器在实例释放之前执行特定的清除工作。</p>
 <h3 id="存储属性的初始化值"><a href="#存储属性的初始化值" class="headerlink" title="存储属性的初始化值"></a>存储属性的初始化值</h3><p>类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值。存储型属性的值不能处于一个未知的状态。你可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值。<br>    为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者。</p>
+<a id="more"></a>
 <h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><p>构造器在创建某个特定类型的新实例时被调用。它的最简形式类似于一个不带任何参数的实例方法，以关键字 <code>init</code> 命名：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">init</span>() &#123;</div><div class="line">    <span class="comment">// perform some initialization here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下面例子中定义了一个用来保存华氏温度的结构体Fahrenheit，它拥有一个Double类型的存储型属性temperature：</p>

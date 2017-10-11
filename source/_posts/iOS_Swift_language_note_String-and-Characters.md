@@ -23,6 +23,8 @@ tags: Swift
 let someString = "Some string literal value"
 ```
 
+<!-- more -->
+
 ### 字符串操作
 
 #### 空字符串

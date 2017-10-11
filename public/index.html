@@ -411,34 +411,15 @@
 
       
         
-          
-            <p><a href="https://xmpp.org/" target="_blank" rel="external">XMPP</a>是一个以XML为基础的开源的即时通讯协议。具有开放、标准、可用、分布式、安全、可扩展、多样性等优点。因为最近工作接触，在此进行记录。希望对你有帮助。<br>本文为XMPP开发的第一讲，记录XMPP的用户注册／登录。</p>
+          <p><a href="https://xmpp.org/" target="_blank" rel="external">XMPP</a>是一个以XML为基础的开源的即时通讯协议。具有开放、标准、可用、分布式、安全、可扩展、多样性等优点。因为最近工作接触，在此进行记录。希望对你有帮助。<br>本文为XMPP开发的第一讲，记录XMPP的用户注册／登录。</p>
 <h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><p>使用GitHub上现有的<a href="https://github.com/robbiehanson/XMPPFramework" target="_blank" rel="external">XMPPFramework</a>，直接将其依赖加入到工程的Podfile中后，执行 <strong>pod install</strong> 下载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">platform :ios, &apos;8.0&apos;</div><div class="line">use_frameworks!</div><div class="line">target &apos;LTIM&apos; do</div><div class="line">    pod &apos;XMPPFramework&apos;, &apos;~&gt; 3.7.0&apos;</div><div class="line">end</div></pre></td></tr></table></figure></p>
-<h4 id="登录流程"><a href="#登录流程" class="headerlink" title="登录流程"></a>登录流程</h4><p>XMPP的登录主要需要了解 <strong>XMPPStreamDelegate</strong> 协议，用户登录分为以下几个步骤：</p>
-<ul>
-<li>设置代理并激活</li>
-<li>连接服务器</li>
-<li>完成注册／认证</li>
-<li>发送Presence状态数据</li>
-</ul>
-<p>对应需要重点关注 <strong>XMPPStreamDelegate</strong> 协议中的以下方法，其他方法根据需要进行实现即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#pragma mark - XMPPStreamDelegate</div><div class="line"></div><div class="line">/*证书相关*/</div><div class="line">- (void)xmppStream:(XMPPStream *)sender willSecureWithSettings:(NSMutableDictionary *)settings;</div><div class="line">/*连接服务器之后，回调的方法*/</div><div class="line">- (void)xmppStreamDidConnect:(XMPPStream *)sender;</div><div class="line">/*新用户注册，回调的方法*/</div><div class="line">- (void)xmppStreamDidRegister:(XMPPStream *)sender;</div><div class="line">/*用户登陆，回调的方法*/</div><div class="line">- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender;</div><div class="line">- (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error;</div></pre></td></tr></table></figure>
-<h5 id="设置代理并激活"><a href="#设置代理并激活" class="headerlink" title="设置代理并激活"></a>设置代理并激活</h5><p>初始化 <strong>XMPPStream</strong> 对象，并设置 <strong>XMPPStreamDelegate</strong> 代理组件，创建重连组件并将其在 <strong>XMPPStream</strong> 对象中生效(激活)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">self.xmppStream = [[XMPPStream alloc] init];</div><div class="line">[self.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];</div><div class="line"></div><div class="line">//创建XMPPReconnect重连组件，并把组件在XMPPStream中(激活)</div><div class="line">self.xmppReconnect = [[XMPPReconnect alloc] init];</div><div class="line">[self.xmppReconnect activate:self.xmppStream];</div></pre></td></tr></table></figure>
-<h5 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h5><p>使用  <strong>XMPPJID</strong> 连接到服务器，注意此处需要设置服务器的端口号和IP地址(hostName)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//若需要修改IP和port则在连接服务器前进行修改。</div><div class="line">_xmppStream.hostPort = hostPort;</div><div class="line">_xmppStream.hostName = hostIP;</div><div class="line"></div><div class="line">//创建JID；将JID添加到xmppStream中</div><div class="line">XMPPJID * jid = [XMPPJID jidWithString:self.jid resource:LTXMPP_RESOURCE];</div><div class="line">[self.xmppStream setMyJID:jid];</div><div class="line"></div><div class="line">//开始连接服务器</div><div class="line">NSError *error = nil;</div><div class="line">if (![self.xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&amp;error]) &#123;</div><div class="line">    NSLog(@&quot;%s - %s&quot;,__FILE__,__FUNCTION__);</div><div class="line">    NSLog(@&quot;连接服务器失败：%@&quot;,error);</div><div class="line">    return NO;</div><div class="line">&#125;</div><div class="line">NSLog(@&quot;连接服务器成功！&quot;);</div></pre></td></tr></table></figure>
-<blockquote>
-<p>需要说明的一点是：jid可以是已经有账户和待注册账户，通常形式为 “name@domain”</p>
-</blockquote>
-<h5 id="完成注册／认证"><a href="#完成注册／认证" class="headerlink" title="完成注册／认证"></a>完成注册／认证</h5><p>具体注册／认证是看你调用了XMPPStream的方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (BOOL)registerWithPassword:(NSString *)password error:(NSError **)errPtr</div><div class="line">- (BOOL)authenticateWithPassword:(NSString *)password error:(NSError **)errPtr</div></pre></td></tr></table></figure>
-<p>在执行注册／认证方法后，通过协议回调查看执行结果，例如登录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/*用户上线*/</div><div class="line">-(void)goOnline&#123;</div><div class="line">    if([self connect])&#123;</div><div class="line">        NSError *error = nil;</div><div class="line">        [self.xmppStream authenticateWithPassword:self.userPwd error:&amp;error];</div><div class="line">        if (error) &#123;</div><div class="line">            NSLog(@&quot;%s - %s&quot;,__FILE__,__FUNCTION__);</div><div class="line">            NSLog(@&quot;登陆认证失败：%@&quot;,error);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">/*用户登陆，回调的方法*/</div><div class="line">- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender&#123;</div><div class="line">    NSLog(@&quot;%s - %s&quot;,__FILE__,__FUNCTION__);</div><div class="line">    NSLog(@&quot;登陆认证成功！！&quot;);</div><div class="line">    //存储用户信息，下次自动登录</div><div class="line">&#125;</div><div class="line">- (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error&#123;</div><div class="line">    NSLog(@&quot;%s - %s&quot;,__FILE__,__FUNCTION__);</div><div class="line">    NSLog(@&quot;登陆失败：%@&quot;,error);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="发送Presence用户状态数据"><a href="#发送Presence用户状态数据" class="headerlink" title="发送Presence用户状态数据"></a>发送Presence用户状态数据</h5><p>用户登录成功后，需要发送表示用户状态 <strong>XMPPPresence</strong> 数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    XMPPPresence * presence = [XMPPPresence presence];//默认type是available</div><div class="line">    [presence addChild:[DDXMLElement elementWithName:@&quot;show&quot; stringValue:@&quot;away&quot;]];</div><div class="line">    [presence addChild:[DDXMLElement elementWithName:@&quot;status&quot; stringValue:@&quot;今天是个好日子,这里是显示的状态(iOS)&quot;]];</div><div class="line">    [self.xmppStream sendElement:presence];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>好了，本节就讲这些，下一节讲述：XMPPFramework之花名册获取。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/22/ios_instance_message_xmpp/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -588,8 +569,7 @@
 
       
         
-          
-            <p>在linux系统下，一切皆是文件，对文件的操作，一般要用到文件标识符。</p>
+          <p>在linux系统下，一切皆是文件，对文件的操作，一般要用到文件标识符。</p>
 <h4 id="常用的FD-File-Descriptor"><a href="#常用的FD-File-Descriptor" class="headerlink" title="常用的FD(File Descriptor)"></a>常用的FD(File Descriptor)</h4><p>linux启动后，会默认打开3个文件描述符。分别是：   </p>
 <ul>
 <li>0 - 标准输入，/dev/stdin，可以理解为键盘</li>
@@ -597,47 +577,178 @@
 <li>2 - 标准错误输出，/dev/stderr，错误输出</li>
 </ul>
 <p>对于任何一条linux命令，都会有以上默认的3个描述符。也可以简单的理解为每个程序(函数)都会有输入、正确／错误输出。</p>
-<h4 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h4><p>重定向分为输入重定向和输出重定向。</p>
-<h5 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h5><p>即不从键盘读入、而是从文件或者其他。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/29/os_shell_std_in_out_error_redirect/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/28/os_shell_authority_chown/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/28/os_shell_authority_chown/" itemprop="url">修改文件所有者</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T11:51:43+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/28/os_shell_authority_chown/" class="leancloud_visitors" data-flag-title="修改文件所有者">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h4><p>  使用超级管理员用户权限时，可以更改文件的所有者和用户组，命令如下：   </p>
 <blockquote>
-<p><em>&lt;</em> 表示输入重定向运算符。</p>
+<p>chown [owner][:[group]] file…</p>
 </blockquote>
-<p>例如命令先删除b.txt文件中内容，然后将a.txt文件中内容复制到b.txt文件中。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt; b.txt  &lt; a.txt</div></pre></td></tr></table></figure>
-<p>等同与</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less a.txt &gt;b.txt</div></pre></td></tr></table></figure>
+<p>命令将文件更改为第一个参数所表示的所有者 :所在分组。 例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:test_authority liangtong$ sudo chown guest authority_test.txt </div><div class="line">Password:</div><div class="line">liangtongdeiMac:test_authority liangtong$ ls -l</div><div class="line">total 0</div><div class="line">-rw-r--r--  1 Guest  staff  0  8 16 18:43 authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$</div></pre></td></tr></table></figure>
+<ul>
+<li>若命令中只包含 <em>用户名</em> ，则是把所有者更改为用户。</li>
+<li>若命令中包含 <em>:用户组</em> ，则将文件的用户组修改。</li>
+<li>特别的，若命令中参数格式是 <em>用户:</em> ， 即未指明用户组，那么用户组指的是用户所在的分组。</li>
+</ul>
+<h4 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h4><p>  使用超级管理员用户权限时，可以使用 <em>chgrp</em> 来修改用户组，命令与chown相似：</p>
 <blockquote>
-<p><em>&lt;&lt;</em> 表示当前标准输入来自命令行，符号后边跟随的是『结束的输入字符』。</p>
+<p>chgrp group file</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ &gt; b.txt </div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt; b.txt &lt;&lt; eof</div><div class="line"><span class="meta">&gt;</span><span class="bash"> hello</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> world</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> eof</span></div><div class="line">liangtongdeiMac:playground liangtong$ </div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt;&gt;b.txt  &lt;&lt; endofinput</div><div class="line"><span class="meta">&gt;</span><span class="bash"> hahaha</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> endofinput</span></div><div class="line">liangtongdeiMac:playground liangtong$ cat &gt;&gt;b.txt  &lt;&lt; endofinput</div><div class="line"><span class="meta">&gt;</span><span class="bash"> adsfasdf</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> endofinput</span></div><div class="line">liangtongdeiMac:playground liangtong$ less b.txt</div></pre></td></tr></table></figure>
-<h5 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h5><p>将一条命令执行结果（标准输出，或者错误输出，本来都要打印到屏幕上面的）  重定向其它输出设备（文件，打开文件操作符，或打印机等等）1,2分别是标准输出，错误输出</p>
-<ul>
-<li><em>&gt;</em> 会判断右边文件是否存在，如果存在就先删除，并且创建新文件。不存在直接创建。</li>
-<li><em>&gt;&gt;</em>  判断右边文件，如果不存在，先创建。以添加方式打开文件。</li>
-</ul>
-<p>例如以下命令对应3种操作。 </p>
-<ul>
-<li>创建c.txt文件或者清除c.txt文件内容。</li>
-<li>将a.txt内容写入c.txt中。</li>
-<li>将b.txt内容追加写入c.txt中。</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ &gt; c.txt</div><div class="line">liangtongdeiMac:playground liangtong$ less a.txt &gt; c.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less b.txt  &gt;&gt; c.txt</div></pre></td></tr></table></figure>
-<ul>
-<li>命令执行完后，绑定文件的描述符也自动失效。0,1,2又会空闲</li>
-</ul>
-<h4 id="典型案例分析"><a href="#典型案例分析" class="headerlink" title="典型案例分析"></a>典型案例分析</h4><p>经过上述介绍，下面我们看一些典型的例子，这些尤其在makefile中很常见。 <strong>特别注意的是，多个重定下复合时，按照顺序执行，例如 1&gt;/dev/null 2&gt;&amp;1 和 2&gt;&amp;1 1&gt;/dev//null 执行结果不一样</strong></p>
-<blockquote>
-<p>&amp; 是一个描述符，如果1或2前不加&amp;，会被当成一个普通文件</p>
-</blockquote>
-<h5 id="1-gt-amp-2和2-gt-amp-1和-amp-gt-filename"><a href="#1-gt-amp-2和2-gt-amp-1和-amp-gt-filename" class="headerlink" title="1&gt;&amp;2和2&gt;&amp;1和&amp;&gt;filename"></a>1&gt;&amp;2和2&gt;&amp;1和&amp;&gt;filename</h5><p>1&gt;&amp;2 意思是标准输出重定向到标准错误。比如以下命令将a.txt<br>2&gt;&amp;1 意思是把标准错误输出重定向到标准输出<br>&amp;&gt;filename 意思是把标准输出和标准错误输出都重定向到文件filename中</p>
-<p>比如，以下命令分别 <em>ls -l </em>命令的标准输出、错误输出重定向到right.txt和error.txt文件中</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;right.txt 2&gt;error.txt</div><div class="line">liangtongdeiMac:playground liangtong$ less right.txt </div><div class="line">liangtongdeiMac:playground liangtong$ less error.txt</div></pre></td></tr></table></figure>
-<p>以下命令将标准输出重定向到right.txt文件中，将标准错误输出重定向到标准输出（此时是right.txt文件），此时right.txt文件将存放命令执行的标准输出和标准错误输出。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;right.txt 2&gt;&amp;1</div><div class="line">liangtongdeiMac:playground liangtong$ less right.txt</div></pre></td></tr></table></figure>
-<h5 id="dev-null"><a href="#dev-null" class="headerlink" title="/dev/null"></a>/dev/null</h5><p>/dev/null是一个垃圾箱，是一个无底洞，表示的含义为不显示。直接丢弃。<br>比如以下命令效果一样，对标准输入、标准错误输出均丢弃</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;/dev/null 2&gt;/dev/null</div><div class="line">liangtongdeiMac:playground liangtong$ ls -l not_exist.txt a.txt 1&gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
-<h5 id="2-gt-amp-1-1-gt-dev-null"><a href="#2-gt-amp-1-1-gt-dev-null" class="headerlink" title="2&gt;&amp;1 1&gt;/dev/null"></a>2&gt;&amp;1 1&gt;/dev/null</h5><p>将标准错误输出在屏幕上（标准输出）表示，将标准输出丢弃，此时屏幕上只输出标准错误日志。</p>
-<h5 id="1-gt-dev-null-2-gt-amp-1"><a href="#1-gt-dev-null-2-gt-amp-1" class="headerlink" title="1&gt;/dev/null 2&gt;&amp;1"></a>1&gt;/dev/null 2&gt;&amp;1</h5><p>将标准输出丢弃，将标准错误重定向到标准输出，此时无任何输出(均被丢弃)。</p>
 
           
         
@@ -677,7 +788,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

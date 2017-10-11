@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。 析构过程Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:06:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Deinitialization">
 <meta name="twitter:description" content="​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。 析构过程Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放">
@@ -424,6 +424,7 @@
 <p>在类的定义中，每个类最多只能有一个析构器，而且析构器不带任何参数，如下所示：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="comment">// perform the deinitialization</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>析构器是在实例释放发生前被自动调用。你不能主动调用析构器。子类继承了父类的析构器，并且在子类析构器实现的最后，父类的析构器会被自动调用。即使子类没有提供自己的析构器，父类的析构器也同样会被调用。</p>
+<a id="more"></a>
 <p>因为直到实例的析构器被调用后，实例才会被释放，所以析构器可以访问实例的所有属性，并且可以根据那些属性可以修改它的行为（比如查找一个需要被关闭的文件）。</p>
 <h3 id="析构实践"><a href="#析构实践" class="headerlink" title="析构实践"></a>析构实践</h3><p>这是一个析构器实践的例子。这个例子描述了一个简单的游戏，这里定义了两种新类型，分别是Bank和Player。Bank类管理一种虚拟硬币，确保流通的硬币数量永远不可能超过 10,000。在游戏中有且只能有一个Bank存在，因此Bank用类来实现，并使用类型属性和类型方法来存储和管理其当前状态。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bank</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> coinsInBank = <span class="number">10_000</span></div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">distribute</span><span class="params">(coins numberOfCoinsRequested: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">let</span> numberOfCoinsToVend = <span class="built_in">min</span>(numberOfCoinsRequested, coinsInBank)</div><div class="line">        coinsInBank -= numberOfCoinsToVend</div><div class="line">        <span class="keyword">return</span> numberOfCoinsToVend</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">receive</span><span class="params">(coins: Int)</span></span> &#123;</div><div class="line">        coinsInBank += coins</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>

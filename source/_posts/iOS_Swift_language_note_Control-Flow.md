@@ -20,6 +20,9 @@ tags: Swift
 ### for-in 循环
 可以使用`for-in`循环来遍历一个序列，比如一个区间(range)中的数字、数组中的元素、字符串的字符，例如：
 
+
+<!-- more -->
+
 ```Swift
 //使用index变量来访问range中的具体值。注意操作符`...`的用法
 for index in 1...5 {

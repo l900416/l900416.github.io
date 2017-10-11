@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    SQLite是一款轻型的数据库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它使用B+树存储表，整个SQLite数据库就是这些B+树组成的森林。。它的设计目标是嵌入式的，目前被广泛应用。 FMDB  是基于SQLite的实现 。 数据库（连接）数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:04:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FMDB">
 <meta name="twitter:description" content="​    SQLite是一款轻型的数据库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它使用B+树存储表，整个SQLite数据库就是这些B+树组成的森林。。它的设计目标是嵌入式的，目前被广泛应用。 FMDB  是基于SQLite的实现 。 数据库（连接）数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是">
@@ -421,6 +421,7 @@
       
         <p>​    SQLite是一款轻型的数据库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它使用B+树存储表，整个SQLite数据库就是这些B+树组成的森林。。它的设计目标是嵌入式的，目前被广泛应用。<a href="https://github.com/ccgus/fmdb/" target="_blank" rel="external"> FMDB </a> 是基于SQLite的实现 。</p>
 <h3 id="数据库（连接）"><a href="#数据库（连接）" class="headerlink" title="数据库（连接）"></a>数据库（连接）</h3><p>数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是一个单一的用来执行SQL语句的数据库连接，使用同步的方式进行，如果需要在多线程执行查询或者更新，则需要使用FMDatabaseQueue</p>
+<a id="more"></a>
 <h4 id="FMDatabase"><a href="#FMDatabase" class="headerlink" title="FMDatabase"></a>FMDatabase</h4><p>FMDatabase可以用来执行增、删、改、查相关的SQL语句，通常情况下，不会有什么问题。这里需要说明的一点是移动端在涉及到多线程操作时，不要使用单例模式建立一个FMDatabase对象，否则会发生死锁问题。其官方文档中也有给出警告: Do not instantiate a single <code>FMDatabase</code> object and use it across multiple threads.</p>
 <h4 id="FMDatabaseQueue"><a href="#FMDatabaseQueue" class="headerlink" title="FMDatabaseQueue"></a>FMDatabaseQueue</h4><p>FMDatabaseQueue的方法调用时异步的，通常在多线程中使用。即使在不同的闭包中使用，也是在发送在同一个线程中。</p>
 <h3 id="表结构操作"><a href="#表结构操作" class="headerlink" title="表结构操作"></a>表结构操作</h3><p>SQLite对于每个表的元数据(表名、根节点地址、表scheme等)信息均记录在一个叫’sql_master’的表中。常见的表结构变更包括创建、修改、删除，这些信息的变更均会影响’sql_master’表。</p>

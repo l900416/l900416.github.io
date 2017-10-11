@@ -32,6 +32,8 @@ $ npm install hexo-cli -g
 $ hexo
 ```  
 
+<!-- more -->
+
 ### 快速使用博客   
 
 通过在终端输入以下命令执行初始化

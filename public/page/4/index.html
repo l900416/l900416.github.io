@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/17/os_shell_authority_chmod/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/04/share_github_blog_hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/17/os_shell_authority_chmod/" itemprop="url">chmod修改权限</a></h1>
+                <a class="post-title-link" href="/2017/08/04/share_github_blog_hexo/" itemprop="url">Mac下使用Hexo搭建GitHub博客</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T13:51:43+08:00">
-                2017-08-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T14:25:19+08:00">
+                2017-08-04
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
                   </a>
                 </span>
 
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2017/08/17/os_shell_authority_chmod/" class="leancloud_visitors" data-flag-title="chmod修改权限">
+             <span id="/2017/08/04/share_github_blog_hexo/" class="leancloud_visitors" data-flag-title="Mac下使用Hexo搭建GitHub博客">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,261 +411,22 @@
 
       
         
-          
-            <p>  Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。<br>    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每个用户的uid是不同的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:~ liangtong$ id</div><div class="line">uid=501(liangtong) gid=20(staff) groups=20(staff),701(com.apple.sharepoint.group.1),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),98(_lpadmin),33(_appstore),100(_lpoperator),204(_developer),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh)</div><div class="line">liangtongdeiMac:~ liangtong$</div></pre></td></tr></table></figure></p>
-<h3 id="文件的读写与执行"><a href="#文件的读写与执行" class="headerlink" title="文件的读写与执行"></a>文件的读写与执行</h3><p>对于文件的读写与执行，首先通过一下命令查看输出的结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ mkdir test_authority</div><div class="line">liangtongdeiMac:playground liangtong$ cd test_authority/</div><div class="line">liangtongdeiMac:test_authority liangtong$ &gt; authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$ ls -l authority_test.txt </div><div class="line">-rw-r--r--  1 liangtong  staff  0  8 16 18:43 authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$</div></pre></td></tr></table></figure></p>
-<p>这里创建了一个目录test_authority，并在目录中创建了一个文件authority_test.txt。之后查看文件线索。这里我们主要说前十个字符 <em>-rw-r–r–</em>。</p>
-<ul>
-<li>第一个代表的是文件类型。<ul>
-<li><em>-</em> 表示普通文件</li>
-<li><em>d</em> 表示目录</li>
-<li>其他，比如 <em>l</em> 符号链接、 <em>c</em> 字符设备文件，比如终端机或者调制解调器、 <em>b</em> 块设备文件比如硬盘，CD-ROM盘</li>
-</ul>
-</li>
-<li>剩下的九个字符叫做文件模式，代表文件所有者，文件组所有者，其他人的读、写、执行权限  </li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Owner</th>
-<th style="text-align:center">Group</th>
-<th style="text-align:center">World</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">rwx</td>
-<td style="text-align:center">rwx</td>
-<td style="text-align:center">rwx</td>
-</tr>
-</tbody>
-</table>
-<p>当设置文件模式后，r、w、x模式属性对文件和目录产生以下影响：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">属性</th>
-<th style="text-align:left">文件</th>
-<th style="text-align:left">目录</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">r</td>
-<td style="text-align:left">读取文件的内容</td>
-<td style="text-align:left">允许列出目录内容，前提是目录必须可执行</td>
-</tr>
-<tr>
-<td style="text-align:center">w</td>
-<td style="text-align:left">写入文件内容，但不允许重命名或删除</td>
-<td style="text-align:left">可以在目录下新增、修改、重命名，前提是目录必须可执行</td>
-</tr>
-<tr>
-<td style="text-align:center">x</td>
-<td style="text-align:left">允许文件作为程序来执行，前提必须置为可读</td>
-<td style="text-align:left">允许进入目录，例如 cd xx</td>
-</tr>
-</tbody>
-</table>
-<p>以下举几个例子：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">文件属性</th>
-<th style="text-align:left">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">-rwx——</td>
-<td style="text-align:left">普通文件，文件所有者可读可写可执行，其他人无任何权限</td>
-</tr>
-<tr>
-<td style="text-align:center">-rw——-</td>
-<td style="text-align:left">普通文件，文件所有者可读可写，其他人无任何权限</td>
-</tr>
-<tr>
-<td style="text-align:center">-rw-r–r–</td>
-<td style="text-align:left">普通文件，文件所有者可读可写，文件所有者所在组可读，其他人可读</td>
-</tr>
-<tr>
-<td style="text-align:center">-rwxr-xr-x</td>
-<td style="text-align:left">普通文件，文件所有者可读可写可执行，文件所有者所在组可读可执行，其他人可读可执行</td>
-</tr>
-<tr>
-<td style="text-align:center">drwxrwx—</td>
-<td style="text-align:left">目录，目录所有者及所有者所在的分组可以访问目录，在目录中新建、修改、删除文件，其他人无权限</td>
-</tr>
-<tr>
-<td style="text-align:center">drwxr-x—</td>
-<td style="text-align:left">目录，目录所有者可以访问目录，在目录中新建、修改、删除文件；文件所有者所在分组可以访问目录，其他人无权限</td>
-</tr>
-</tbody>
-</table>
-<h3 id="chmod-修改文件模式"><a href="#chmod-修改文件模式" class="headerlink" title="chmod 修改文件模式"></a>chmod 修改文件模式</h3><p>文件／目录的所有者或者超级管理员可以用 <em>chmod</em> 命令来更改文件或者目录的权限。<br>chmod命令支持两种不同的方式来更改文件模式：   </p>
-<ul>
-<li>八进制数字表示法<ul>
-<li>每个八进制数字代表了3个二进制数字。</li>
-<li>可以使用命令 <em>chmod 600 authority_test.txt</em> 将文件模式修改为可读可写</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">十进制</th>
-<th style="text-align:center">二进制</th>
-<th style="text-align:center">文件模式</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">000</td>
-<td style="text-align:center">—</td>
-<td style="text-align:left">无权限</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">001</td>
-<td style="text-align:center">–x</td>
-<td style="text-align:left">执行</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">010</td>
-<td style="text-align:center">-w-</td>
-<td style="text-align:left">写</td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">011</td>
-<td style="text-align:center">-wx</td>
-<td style="text-align:left">写、执行</td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center">100</td>
-<td style="text-align:center">r–</td>
-<td style="text-align:left">读</td>
-</tr>
-<tr>
-<td style="text-align:center">5</td>
-<td style="text-align:center">101</td>
-<td style="text-align:center">r-x</td>
-<td style="text-align:left">读、执行</td>
-</tr>
-<tr>
-<td style="text-align:center">6</td>
-<td style="text-align:center">110</td>
-<td style="text-align:center">rw-</td>
-<td style="text-align:left">读、写</td>
-</tr>
-<tr>
-<td style="text-align:center">7</td>
-<td style="text-align:center">111</td>
-<td style="text-align:center">rwx</td>
-<td style="text-align:left">读、写、执行</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>符号表示法<ul>
-<li>由3部分组成。<ul>
-<li>会影响谁，包括 <em>u</em> 、  <em>g</em> 、  <em>o</em> 、  <em>a</em> </li>
-<li>具体操作，包括 <em>+</em> 、  <em>-</em>  、  <em>=</em> </li>
-<li>设置的权限，由 r 、 w 、 x 进行组合，例如 <em>x</em> 、  <em>rw</em>  、 <em>rwx</em> 等</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">影响谁</th>
-<th style="text-align:left">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">u</td>
-<td style="text-align:left">“user”的简写，意思是文件或目录的所有者。</td>
-</tr>
-<tr>
-<td style="text-align:center">g</td>
-<td style="text-align:left">用户组</td>
-</tr>
-<tr>
-<td style="text-align:center">o</td>
-<td style="text-align:left">“others”的简写，意思是其他所有的人</td>
-</tr>
-<tr>
-<td style="text-align:center">a</td>
-<td style="text-align:left">“all”的简写，是”u”, “g”和“o”三者的联合</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:left">如果没有指定字符，则假定使用”all”</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">具体操作</th>
-<th style="text-align:left">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:left">加上一个权限</td>
-</tr>
-<tr>
-<td style="text-align:center">-</td>
-<td style="text-align:left">删掉一个权限</td>
-</tr>
-<tr>
-<td style="text-align:center">=</td>
-<td style="text-align:left">只有指定的权限可用，其它所有的权限被删除</td>
-</tr>
-</tbody>
-</table>
-<p>​<br>以下举几个例子：   </p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">符号表示</th>
-<th style="text-align:left">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">u+x</td>
-<td style="text-align:left">为文件所有者添加可执行权限</td>
-</tr>
-<tr>
-<td style="text-align:center">+x</td>
-<td style="text-align:left">为文件所有者，用户组，和其他所有人添加可执行权限。 等价于 a+x。</td>
-</tr>
-<tr>
-<td style="text-align:center">o-rw</td>
-<td style="text-align:left">除了文件所有者和用户组，删除其他人的读权限和写权限</td>
-</tr>
-<tr>
-<td style="text-align:center">go=rw</td>
-<td style="text-align:left">给群组的主人和任意文件拥有者的人读写权限。如果群组的主人或全局之前已经有了执行的权限，他们将被移除。</td>
-</tr>
-<tr>
-<td style="text-align:center">u+x,go=rw</td>
-<td style="text-align:left">给文件拥有者执行权限并给组和其他人限定读和执行的权限。多种设定可以用逗号分开。</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <h3 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h3><p>  注册<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，建立个人博客仓库(Repository)，不在赘述。 </p>
+<h3 id="安装Git工具"><a href="#安装Git工具" class="headerlink" title="安装Git工具"></a>安装Git工具</h3><p>  终端直接执行 <em>git</em> 命令，或者通过安装GitHub客户端。</p>
+<h3 id="安装Node和NPM"><a href="#安装Node和NPM" class="headerlink" title="安装Node和NPM"></a>安装Node和NPM</h3><p>  打开终端，通过以下命令安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> brew install node</span></div></pre></td></tr></table></figure></p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>  可以参照Hexo在<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Github</a>上的官方介绍，在终端依次执行以下命令进行：   </p>
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> npm install hexo-cli -g</span>
+</code></pre>
+<p>  安装成功后，可以通过以下命令进行查看   </p>
+<pre><code class="Shell"><span class="meta">$</span><span class="bash"> hexo</span>
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/04/share_github_blog_hexo/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -712,7 +473,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/08/08/bluetooth_peripheral/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/07/27/bluetooth_central/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -731,7 +492,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/08/bluetooth_peripheral/" itemprop="url">iOS蓝牙开发 - Peripheral模式</a></h1>
+                <a class="post-title-link" href="/2017/07/27/bluetooth_central/" itemprop="url">iOS蓝牙开发 - Central模式</a></h1>
         
 
         <div class="post-meta">
@@ -743,8 +504,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T18:50:12+08:00">
-                2017-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T19:50:12+08:00">
+                2017-07-27
               </time>
             
 
@@ -783,7 +544,7 @@
 
           
           
-             <span id="/2017/08/08/bluetooth_peripheral/" class="leancloud_visitors" data-flag-title="iOS蓝牙开发 - Peripheral模式">
+             <span id="/2017/07/27/bluetooth_central/" class="leancloud_visitors" data-flag-title="iOS蓝牙开发 - Central模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -815,22 +576,173 @@
 
       
         
-          
-            <h3 id="Peripheral模式"><a href="#Peripheral模式" class="headerlink" title="Peripheral模式"></a>Peripheral模式</h3><p>周边模式(Peripheral Model)，可以简单理解为设备App作为周边，供其他蓝牙设备连接。区别于中心模式。<br>蓝牙设备不能同时作为周边和中心设备，在某次连接中，只能担当一个角色。</p>
+          <h3 id="Central模式"><a href="#Central模式" class="headerlink" title="Central模式"></a>Central模式</h3><p>中心模式(Central Model)，可以简单理解为设备App作为中心，连接其他蓝牙外设设备。区别于外设模式，官方介绍可自行<a href="https://www.google.com/hk" target="_blank" rel="external">Google</a>。这里主要介绍iOS上蓝牙设备作为中心模式的集成。</p>
 <h3 id="功能集成"><a href="#功能集成" class="headerlink" title="功能集成"></a>功能集成</h3><p>  作为蓝牙使用者，程序需要请求蓝牙设备授权，在info.plist配置文件中，添加代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;/array&gt;</div><div class="line">&lt;key&gt;NSBluetoothPeripheralUsageDescription&lt;/key&gt;</div><div class="line">&lt;string&gt;蓝牙设备请求描述，比如：程序需要使用蓝牙进行设备发现&lt;/string&gt;</div></pre></td></tr></table></figure></p>
-<p>  项目Targets对应的 <em>Build Phases</em> 中，引入 <em>CoreBluetooth.framework</em> ，使用的代码中引入头文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="请求蓝牙服务"><a href="#请求蓝牙服务" class="headerlink" title="请求蓝牙服务"></a>请求蓝牙服务</h4><p>  使用CBPeripheralManagerDelegate来进行蓝牙服务管理(授权请求)，监听蓝牙状态变化。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) CBPeripheralManagerDelegate *perManager;</div><div class="line"></div><div class="line"><span class="comment">//对象创建成功后，会请求使用蓝牙，CBPeripheralManagerDelegate协议会回调蓝牙的各个状态</span></div><div class="line">_perManager = [[CBPeripheralManager alloc] initWithDelegate:<span class="keyword">self</span> queue:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="meta">#pragma mark - CBPeripheralManagerDelegate</span></div><div class="line">- (<span class="keyword">void</span>)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral&#123;</div><div class="line">    <span class="keyword">if</span> (peripheral.state == CBManagerStatePoweredOn) &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在蓝牙开启的情况下，可以创建服务、创建特质值等。</p>
-<h4 id="带特质值的服务创建"><a href="#带特质值的服务创建" class="headerlink" title="带特质值的服务创建"></a>带特质值的服务创建</h4><p>  在设备蓝牙开启的情况下，可以建立服务 <em>CBMutableService</em> 和特征值 <em>CBCharacteristic</em> 并通过 <em> CBPeripheralManagerDelegate</em> 的 <em>addService:</em> 方法将带有特征值的服务注册给蓝牙设备。注册成功后，通过 <em> CBPeripheralManagerDelegate</em> 协议将服务返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">    //创建服务，其中服务关键字UUID换成自己的</div><div class="line">    CBMutableService * service = [[CBMutableService alloc] initWithType:</div><div class="line">                                  [CBUUID UUIDWithString:@&quot;service UUID&quot;] primary:YES];</div><div class="line">    //创建特征值，其中特征值的UUID换成自己的，特征值可以携带value信息（nsdata）</div><div class="line">    CBCharacteristic * characteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:@&quot;characteristic UUID&quot;]</div><div class="line">                                                                           properties:(CBCharacteristicPropertyRead |</div><div class="line">                                                                                        CBCharacteristicPropertyWrite |</div><div class="line">                                                                                        CBCharacteristicPropertyNotify) </div><div class="line">                                                                                value:[@&quot;characteristic value&quot;</div><div class="line">                                                                    dataUsingEncoding:NSUTF8StringEncoding]  </div><div class="line">                                                                          permissions:CBAttributePermissionsReadable];</div><div class="line"></div><div class="line">    //将特征值加入到服务中</div><div class="line">    service.characteristics = @[characteristic];</div><div class="line"></div><div class="line">    //给设备添加服务，注册服务</div><div class="line">    [_perManager addService:service];</div><div class="line"></div><div class="line">#pragma mark - CBPeripheralManagerDelegate</div><div class="line">//服务注册成功后，会通过以下回调将信息返回</div><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral </div><div class="line">  			didAddService:(CBService *)service</div><div class="line">              		error:(NSError *)error&#123;</div><div class="line">    //对于注册成功的服务，蓝牙设备可以直接进行广播</div><div class="line">    //开启广播，此处我们广播刚才注册的服务，UUID是：service uuid</div><div class="line">    [_perManager startAdvertising:</div><div class="line">     @&#123;CBAdvertisementDataServiceUUIDsKey:[CBUUID UUIDWithString:@&quot;service UUID&quot;]&#125;];	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>注：一个服务可以携带多个特征值，一个蓝牙周边设备可以注册多个服务。</p>
-<h4 id="开启广播"><a href="#开启广播" class="headerlink" title="开启广播"></a>开启广播</h4><p>  通过CBPeripheralManager的 <em>startAdvertising:</em> 方法开启广播，成功后通过CBPeripheralManagerDelegate协议回调。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    //开启广播</div><div class="line">    [_perManager startAdvertising:@&#123;CBAdvertisementDataServiceUUIDsKey:[CBUUID UUIDWithString:@&quot;service UUID&quot;]&#125;];</div><div class="line"></div><div class="line">    //开启广播的回调</div><div class="line">- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral </div><div class="line">  										error:(NSError *)error &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="数据读写"><a href="#数据读写" class="headerlink" title="数据读写"></a>数据读写</h4><p>当外设蓝牙设备收到ATT特征值请求时，协议 <em> CBPeripheralManagerDelegate</em> 的方法会被触发。参照协议描述，在处理数据读／写操作的协议回调方法中，必须执行方法 <em>respondToRequest:withResult:</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 读数据请求</div><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request &#123;</div><div class="line">    //请求的响应</div><div class="line">    NSData *data = request.characteristic.value; //蓝牙中心设备想读取的数据</div><div class="line">    [request setValue:data];// 读取的值</div><div class="line">    [_perManager respondToRequest:request withResult:CBATTErrorSuccess];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//写数据请求</div><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray&lt;CBATTRequest *&gt; *)requests &#123;</div><div class="line">    //请求的响应</div><div class="line">    //需要转换成CBMutableCharacteristic对象才能进行写值</div><div class="line">    for (CBATTRequest* request in requests) &#123;</div><div class="line">        CBMutableCharacteristic *c =(CBMutableCharacteristic *)request.characteristic;</div><div class="line">        c.value = request.value;</div><div class="line">        [_perManager respondToRequest:[requests firstObject] withResult:CBATTErrorSuccess];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>​</p>
-<h4 id="特征值订阅"><a href="#特征值订阅" class="headerlink" title="特征值订阅"></a>特征值订阅</h4><p>当蓝牙中心设备在进行蓝牙设备服务的特征发现时，若将特征值配置包含被通知 <em>CBCharacteristicPropertyNotify</em> ， 则协议中的以下回调会被调用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//订阅characteristics</div><div class="line">-(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic&#123;</div><div class="line">    NSLog(@&quot;订阅了 %@的数据&quot;,characteristic.UUID);</div><div class="line">    </div><div class="line">    //每秒执行一次给主设备发送一个当前时间的秒数</div><div class="line">    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:characteristic  repeats:YES];</div><div class="line">&#125;</div><div class="line">//如果不设置订阅的设备，则代表全部。</div><div class="line">-(void)sendData:(NSTimer *)t &#123;</div><div class="line">    CBMutableCharacteristic *characteristic = t.userInfo;</div><div class="line">    [_perManager updateValue:[@&quot;Subscribe To Characteristic Value Send &quot; dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic onSubscribedCentrals:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//取消订阅characteristics</div><div class="line">-(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic&#123;</div><div class="line">    NSLog(@&quot;取消订阅 %@的数据&quot;,characteristic.UUID);</div><div class="line">    </div><div class="line">    //取消回应</div><div class="line">    [_timer invalidate];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  项目Targets对应的 <em>BuildPhases</em> 中，引入 <em>CoreBluetooth.framework</em> ，使用的代码中引入头文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/27/bluetooth_central/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/06/19/iOS_ObjC_file_preview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/19/iOS_ObjC_file_preview/" itemprop="url">文件的查看</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-19T21:25:19+08:00">
+                2017-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/19/iOS_ObjC_file_preview/" class="leancloud_visitors" data-flag-title="文件的查看">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于特定格式（比如DWG等）文件的预览，没有必要耗费代价去自行开发功能，此时可能需要使用第三方应用来打开特定格式的文件。本文中记录三种方式：UIDocumentInteractionController、UIActivityViewController和特定第三方分享方式。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/19/iOS_ObjC_file_preview/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -868,7 +780,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

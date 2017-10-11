@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/barcode_UPC_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/barcode_QR_2x.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:06:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Enumerations">
 <meta name="twitter:description" content="​    枚举为一系相关联的值定义了一个公共的组类型来保证你在类型安全的情况下去使用这些值。 C语言里边的枚举是一系列整型值；Swift中的枚举更佳灵活，而且你不需要为枚举的每个成员赋值，枚举中的原始值（raw）可以是字符串、字符、数字等。​    就像其他语言中的联合体和变体，枚举中的成员可以被指定为不同于其他成员的可以存储的类型，你可以在一个枚举中定义一组相关的枚举成员，每一个枚举成员都可以有">
@@ -428,6 +428,7 @@
 <p>例如一个指南针方向的例子：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">CompassPoint</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> north</div><div class="line">    <span class="keyword">case</span> south</div><div class="line">    <span class="keyword">case</span> east</div><div class="line">    <span class="keyword">case</span> west</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>枚举中定义的值（如 north，south，east和west）是这个枚举的成员值（或成员）。你可以使用case关键字来定义一个新的枚举成员值。<br>    与 C 和 Objective-C 不同，Swift 的枚举成员在被创建时不会被赋予一个默认的整型值。在上面的CompassPoint例子中，north，south，east和west不会被隐式地赋值为0，1，2和3。相反，这些枚举成员本身就是完备的值，这些值的类型是已经明确定义好的CompassPoint类型。</p>
+<a id="more"></a>
 <p>多个成员变量可以出现在一行上，用逗号隔开：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Planet</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> mercury, venus, earth, mars, jupiter, saturn, uranus, neptune</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>每个枚举定义了一个全新的类型。像 Swift 中其他类型一样，它们的名字（例如CompassPoint和Planet）应该以一个大写字母开头。给枚举类型起一个单数名字而不是复数名字，以便于读起来更加容易理解：</p>

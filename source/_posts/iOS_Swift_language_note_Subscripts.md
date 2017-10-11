@@ -31,6 +31,8 @@ subscript(index: Int) -> Int {
 
 newValue的类型和下标的返回类型相同。如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数。如同只读计算型属性，可以省略只读下标的get关键字：
 
+<!-- more -->
+
 ```Swift
 subscript(index: Int) -> Int {
     // return an appropriate subscript value here

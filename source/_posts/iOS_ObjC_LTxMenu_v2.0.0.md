@@ -22,6 +22,8 @@ tags: Menu
 
 >>GitHub link : <a href="https://github.com/l900416/LTxMenu">LTxMenu</a>
 
+<!-- more -->
+
 ### Get Start
 > * Manually add the files into your Xcode project.
 > * LTxMenu is available as LTxMenu in Cocoapods.

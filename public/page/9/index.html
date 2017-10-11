@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/04/27/database_sqlite3_fmdb/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Generics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/27/database_sqlite3_fmdb/" itemprop="url">FMDB</a></h1>
+                <a class="post-title-link" href="/2016/12/02/iOS_Swift_language_note_Generics/" itemprop="url">Swift Generics</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T12:07:43+08:00">
-                2017-04-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-02T19:20:11+08:00">
+                2016-12-02
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Database/" itemprop="url" rel="index">
-                    <span itemprop="name">Database</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2017/04/27/database_sqlite3_fmdb/" class="leancloud_visitors" data-flag-title="FMDB">
+             <span id="/2016/12/02/iOS_Swift_language_note_Generics/" class="leancloud_visitors" data-flag-title="Swift Generics">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,39 +411,16 @@
 
       
         
-          
-            <p>​    SQLite是一款轻型的数据库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它使用B+树存储表，整个SQLite数据库就是这些B+树组成的森林。。它的设计目标是嵌入式的，目前被广泛应用。<a href="https://github.com/ccgus/fmdb/" target="_blank" rel="external"> FMDB </a> 是基于SQLite的实现 。</p>
-<h3 id="数据库（连接）"><a href="#数据库（连接）" class="headerlink" title="数据库（连接）"></a>数据库（连接）</h3><p>数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是一个单一的用来执行SQL语句的数据库连接，使用同步的方式进行，如果需要在多线程执行查询或者更新，则需要使用FMDatabaseQueue</p>
-<h4 id="FMDatabase"><a href="#FMDatabase" class="headerlink" title="FMDatabase"></a>FMDatabase</h4><p>FMDatabase可以用来执行增、删、改、查相关的SQL语句，通常情况下，不会有什么问题。这里需要说明的一点是移动端在涉及到多线程操作时，不要使用单例模式建立一个FMDatabase对象，否则会发生死锁问题。其官方文档中也有给出警告: Do not instantiate a single <code>FMDatabase</code> object and use it across multiple threads.</p>
-<h4 id="FMDatabaseQueue"><a href="#FMDatabaseQueue" class="headerlink" title="FMDatabaseQueue"></a>FMDatabaseQueue</h4><p>FMDatabaseQueue的方法调用时异步的，通常在多线程中使用。即使在不同的闭包中使用，也是在发送在同一个线程中。</p>
-<h3 id="表结构操作"><a href="#表结构操作" class="headerlink" title="表结构操作"></a>表结构操作</h3><p>SQLite对于每个表的元数据(表名、根节点地址、表scheme等)信息均记录在一个叫’sql_master’的表中。常见的表结构变更包括创建、修改、删除，这些信息的变更均会影响’sql_master’表。</p>
-<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>表的创建跟通常sql语句区别不大，通常在表创建时设置主键、默认值等。使用语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> RecordSign(recordId <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>, </div><div class="line">					projectName <span class="built_in">TEXT</span>, </div><div class="line">					visibleState <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> , </div><div class="line">					lastTriggerTime <span class="built_in">text</span> <span class="keyword">DEFAULT</span> <span class="string">'2017-03-13 23:59:59'</span>)</div></pre></td></tr></table></figure></p>
-<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>判断某个表是否存在，语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
-<p>判断某个表中是否存在某列，语法如下（通过判断sql语句中是否包含列名）：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sqlite_master <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">'table'</span> <span class="keyword">and</span> <span class="keyword">name</span> = <span class="string">'表名'</span> <span class="keyword">and</span> <span class="keyword">sql</span> <span class="keyword">like</span> %列表%</div></pre></td></tr></table></figure></p>
-<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>表的删除，使用drop语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="string">'表名'</span></div></pre></td></tr></table></figure></p>
-<h3 id="表内容操作"><a href="#表内容操作" class="headerlink" title="表内容操作"></a>表内容操作</h3><p>多表联合操作使用关键字：<code>join</code>，或者<code>in</code>(如果不需要跨表取字段的话)，比如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString* filterBusinessIDSql = [NSString stringWithFormat:@"select businessID from BeaconRelatedPolicyAndBusiness where isValid = 1 and policyID in ('%@')", [minPriorityPolicyIDArray componentsJoinedByString:@"','"]];  </div><div class="line"></div><div class="line">NSString* retSql = [NSString stringWithFormat:@"select * from BeaconBusinessMsg where businessID in (%@) and isValid = 1 order by priority asc",filterBusinessIDSql];</div></pre></td></tr></table></figure></p>
-<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>支持使用<code>insert</code> 或 <code>insert or replace</code> 或 <code>insert or ignore</code> 等语法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div></pre></td></tr></table></figure></p>
-<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>使用<code>update</code>语句进行表结构的更新，如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">               projectName,</span></div><div class="line"><span class="string">               recordId</span></div><div class="line"><span class="string">				];</span></div></pre></td></tr></table></figure></p>
-<h4 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h4><p>使用 <code>select</code> 关键字进行表数据查询，返回 <code>ResultSet</code> ，然后可以根据具体情况进行处理。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeQuery:@"<span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div></pre></td></tr></table></figure></p>
-<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>使用 <code>delete</code> 关键字来删除表中的记录。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dbms executeUpdate:@"<span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div></pre></td></tr></table></figure></p>
-<h4 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h4><p>当涉及到数据量比较大或者原子性操作时，可能会用到批处理相关操作，例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//假设数据量不是太大，不需要通过分批次提交</div><div class="line">[[GKDatabaseManager sharedInstance].dbQueue inTransaction:^(FMDatabase *dbms, BOOL *rollback) &#123;</div><div class="line">    [dbms executeUpdate:@"<span class="keyword">update</span>  RecordSign <span class="keyword">set</span> visibleState = <span class="number">0</span> <span class="string">"];</span></div><div class="line"><span class="string">    for (NSDictionary* projectModel in projectList) &#123;</span></div><div class="line"><span class="string">        NSString* recordId = [projectModel objectForKey:@"</span>recordId<span class="string">"];</span></div><div class="line"><span class="string">        NSString* projectName = [projectModel objectForKey:@"</span>projectName<span class="string">"];</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">        FMResultSet* retSet = [dbms executeQuery:@"</span><span class="keyword">select</span> * <span class="keyword">from</span> RecordSign <span class="keyword">where</span>  recordId = ? <span class="string">",recordId];</span></div><div class="line"><span class="string">        if ([retSet next]) &#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">update</span> RecordSign <span class="keyword">set</span> projectName = ? ,  visibleState = <span class="number">1</span> <span class="keyword">where</span>  recordId = ? <span class="string">",</span></div><div class="line"><span class="string">                        projectName,</span></div><div class="line"><span class="string">                         recordId</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;else&#123;</span></div><div class="line"><span class="string">            [dbms executeUpdate:@"</span><span class="keyword">insert</span> <span class="keyword">OR</span> <span class="keyword">IGNORE</span> <span class="keyword">into</span> RecordSign (recordId, projectName,visibleState) <span class="keyword">values</span> (?, ?,  <span class="number">1</span>)<span class="string">",</span></div><div class="line"><span class="string">                         recordId,</span></div><div class="line"><span class="string">                         projectName</span></div><div class="line"><span class="string">                         ];</span></div><div class="line"><span class="string">        &#125;//end if retSet</span></div><div class="line"><span class="string">        [retSet close];</span></div><div class="line"><span class="string">    &#125;//end for</span></div><div class="line"><span class="string">    [dbms executeUpdate:@"</span><span class="keyword">delete</span> <span class="keyword">from</span> RecordSign <span class="keyword">where</span> visibleState = <span class="number">0</span><span class="string">"];</span></div><div class="line"><span class="string">&#125;];</span></div><div class="line"><span class="string">[[GKDatabaseManager sharedInstance].dbQueue close];</span></div></pre></td></tr></table></figure></p>
-<h3 id="使用心结"><a href="#使用心结" class="headerlink" title="使用心结"></a>使用心结</h3><p>我的态度是：数据库能实现的东西，自己就没必要再折腾了。数据库本身是一个很强大的软件，她已经可以帮助我们解决很多的问题。<br>所以在拿到需求后，别急着写代码逻辑，最好先考虑下是否可以利用这些现成的工具。有时候数据库处理数据的能力比自己写程序效率要高很多，且代价也比较小；数据库已经实现的功能，当然没有必要再自行编写程序解决，除非你觉得自己比数据库处理的好。      </p>
-<ul>
-<li>使用SQLite数据库处理缓存的话，需要考虑数据库表结构的更新。<ul>
-<li>建议在建立表结构的时候，添加版本信息，比如 <code>tablename_v1</code>。就像CoreData处理版本升级时的version版本号一样。</li>
-<li>数据迁移。</li>
-<li>表结构受损后的数据恢复。   </li>
-</ul>
-</li>
-<li>数据库连接的选择<ul>
-<li>FMDatabase是同步操作，FMDatabaseQueue是异步操作。</li>
-<li>不要单例FMDatabase对象，在多线程处理时各种死锁绝对够你受的。</li>
-<li>不要将FMDatabase和FMDatabaseQueue同时使用，否则等着数据异常或者死锁崩溃吧。</li>
-</ul>
-</li>
-</ul>
-
-          
+          <p>​<br>​    泛型代码让你编写出适用于任意类型、灵活可重用的函数及类型。它能让你避免代码的重复，用一种清晰和抽象的方式来表达代码的意图。 </p>
+<h3 id="泛型所解决的问题"><a href="#泛型所解决的问题" class="headerlink" title="泛型所解决的问题"></a>泛型所解决的问题</h3><p>下面是一个标准的非泛型函数 swapTwoInts(<em>:</em>:)，用来交换两个 Int 值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Int, <span class="number">_</span> b: <span class="keyword">inout</span> Int)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> temporaryA = a</div><div class="line">    a = b</div><div class="line">    b = temporaryA</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/02/iOS_Swift_language_note_Generics/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -490,7 +467,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/04/27/algorithm_search_binary/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Protocols/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -509,7 +486,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/27/algorithm_search_binary/" itemprop="url">二分查找</a></h1>
+                <a class="post-title-link" href="/2016/12/02/iOS_Swift_language_note_Protocols/" itemprop="url">Swift Protocols</a></h1>
         
 
         <div class="post-meta">
@@ -521,8 +498,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T10:07:43+08:00">
-                2017-04-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-02T19:20:11+08:00">
+                2016-12-02
               </time>
             
 
@@ -544,8 +521,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -561,7 +538,7 @@
 
           
           
-             <span id="/2017/04/27/algorithm_search_binary/" class="leancloud_visitors" data-flag-title="二分查找">
+             <span id="/2016/12/02/iOS_Swift_language_note_Protocols/" class="leancloud_visitors" data-flag-title="Swift Protocols">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -593,20 +570,178 @@
 
       
         
-          
-            <p>​    二分查找算法也称为折半搜索、二分搜索，是一种在有序数组中查找某一特定元素的搜索算法。算法是建立在有序数组基础上的。时间复杂度： T(n) = Θ(logn)。</p>
-<h3 id="原理及实现"><a href="#原理及实现" class="headerlink" title="原理及实现"></a>原理及实现</h3><p>基本原理：使用递归、分治的思想</p>
-<ul>
-<li>① 当数组为空时，说明数组中不存在需查找的元素。</li>
-<li>② 用有序数组的中间位置元素与需查找元素进行大小比较，如果相等，则查找结束。</li>
-<li>③ 如果中间位置元素大于需查找元素，则从数组左侧位置进行递归查找。</li>
-<li>④ 如果中间位置元素小于需查找元素，则从数组右侧位置进行递归查找。</li>
-</ul>
-<p>使用Swift编写简单的代码实现，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  二分查找</span></div><div class="line"><span class="comment"> * 使用递归、分治的思想</span></div><div class="line"><span class="comment"> * ① 当数组为空时，说明数组中不存在需查找的元素。</span></div><div class="line"><span class="comment"> * ② 用有序数组的中间位置元素与需查找元素进行大小比较，如果相等，则查找结束。</span></div><div class="line"><span class="comment"> * ③ 如果中间位置元素大于需查找元素，则从数组左侧位置进行递归查找。</span></div><div class="line"><span class="comment"> * ④ 如果中间位置元素小于需查找元素，则从数组右侧位置进行递归查找。</span></div><div class="line"><span class="comment"> **/</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">binarySearch</span>&lt;T:Comparable&gt;<span class="params">(array:Array&lt;T&gt;, start:Int, end:Int, value:T)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">let</span> <span class="built_in">count</span> = end - start + <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">count</span> &lt;= <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//没有查找到</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> midIndex = (start + end) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">let</span> midValue = array[midIndex];</div><div class="line">    <span class="keyword">if</span> midValue &gt; value &#123;<span class="comment">//在左侧查找</span></div><div class="line">        <span class="keyword">return</span> binarySearch(array: array, start: start, end: midIndex - <span class="number">1</span>, value: value);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> midValue &lt; value &#123;<span class="comment">//在右侧查找</span></div><div class="line">        <span class="keyword">return</span> binarySearch(array: array, start: midIndex + <span class="number">1</span>, end: end, value: value);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;<span class="comment">//位置查找到，即当前数组中间位置元素</span></div><div class="line">        <span class="keyword">return</span> midIndex;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="测试用例及结果"><a href="#测试用例及结果" class="headerlink" title="测试用例及结果"></a>测试用例及结果</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">callBinarySearch</span>&lt;T:Comparable&gt;<span class="params">(array: Array&lt;T&gt;, value:T)</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> index = binarySearch(array: array, start: <span class="number">0</span>, end: array.<span class="built_in">count</span> - <span class="number">1</span>, value: value);</div><div class="line">    </div><div class="line">    <span class="built_in">print</span>(<span class="string">"Index Of Value <span class="subst">\(value)</span>  In Array <span class="subst">\(array)</span> is : <span class="subst">\(index)</span>"</span>)</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> intArray =  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>];</div><div class="line">callBinarySearch(array: intArray , value: <span class="number">3</span>)</div><div class="line">callBinarySearch(array: intArray , value: <span class="number">16</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> stringArray =  [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>];</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"Assembly"</span>)</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"PHP"</span>)</div><div class="line">callBinarySearch(array: stringArray,value:<span class="string">"AAA"</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//程序输出</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="number">3</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>] <span class="keyword">is</span> : -<span class="number">1</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="number">16</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">24</span>] <span class="keyword">is</span> : <span class="number">8</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">Assembly</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : <span class="number">0</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">PHP</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : <span class="number">5</span></div><div class="line"><span class="type">Index</span> <span class="type">Of</span> <span class="type">Value</span> <span class="type">AAA</span>  <span class="type">In</span> <span class="type">Array</span> [<span class="string">"Assembly"</span>, <span class="string">"BASIC"</span>, <span class="string">"C#"</span>, <span class="string">"Java"</span>, <span class="string">"Objective-C"</span>, <span class="string">"PHP"</span>, <span class="string">"Swift"</span>] <span class="keyword">is</span> : -<span class="number">1</span></div></pre></td></tr></table></figure>
+          <p>​    协议 定义了用来实现某一特定任务或者功能的方法、属性，以及其他需要的东西的一个蓝图。类、结构体或枚举都可以遵循协议，并为协议定义的这些要求提供具体实现。任何类型能够满足某个协议的要求，就可以说该类型遵循这个协议。<br>除了遵循协议的类型必须实现的要求外，还可以对协议进行扩展，通过扩展来实现一部分要求或者实现一些附加功能，这样遵循协议的类型就能够使用这些功能。</p>
+<h3 id="协议语法"><a href="#协议语法" class="headerlink" title="协议语法"></a>协议语法</h3><p>协议的定义方式与类、结构体和枚举的定义非常相似：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SomeProtocol</span> </span>&#123;</div><div class="line">    <span class="comment">// protocol definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要让自定义类型遵循某个协议，在定义类型时，需要在类型名称后加上协议名称，中间以冒号（:）分隔。遵循多个协议时，各协议之间用逗号（,）分隔：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SomeStructure</span>: <span class="title">FirstProtocol</span>, <span class="title">AnotherProtocol</span> </span>&#123;</div><div class="line">    <span class="comment">// structure definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>拥有父类的类在遵循协议时，应该将父类名放在协议名之前，以逗号分隔：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>: <span class="title">SomeSuperclass</span>, <span class="title">FirstProtocol</span>, <span class="title">AnotherProtocol</span> </span>&#123;</div><div class="line">    <span class="comment">// class definition goes here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/02/iOS_Swift_language_note_Protocols/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="url">Swift Nested Types</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T19:20:11+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/01/iOS_Swift_language_note_Nested-Types/" class="leancloud_visitors" data-flag-title="Swift Nested Types">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>​    枚举常被用于为特定类或结构体实现某些功能。类似的，枚举可以方便的定义工具类或结构体，从而为某个复杂的类型所使用。为了实现这种功能，Swift 允许你定义嵌套类型，可以在支持的类型中定义嵌套的枚举、类和结构体。<br>要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的{}内，而且可以根据需要定义多级嵌套。</p>
+<h3 id="嵌套类型实践"><a href="#嵌套类型实践" class="headerlink" title="嵌套类型实践"></a>嵌套类型实践</h3><p>下面这个例子定义了一个结构体BlackjackCard，用来模拟BlackjackCard中的扑克牌点数。BlackjackCard结构体包含两个嵌套定义的枚举类型Suit和Rank。<br>在BlackjackCard中，Ace牌可以表示1或者11，Ace牌的这一特征通过一个嵌套在Rank枚举中的结构体Values来表示：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/01/iOS_Swift_language_note_Nested-Types/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -644,7 +779,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

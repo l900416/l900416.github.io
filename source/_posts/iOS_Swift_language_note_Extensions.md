@@ -26,6 +26,8 @@ tags: Swift
 
 
 
+<!-- more -->
+
 ### 扩展语法
 使用关键字 extension 来声明扩展：
 

@@ -29,6 +29,8 @@ $ bundle exec jekyll serve
 ```
 参照[官方模版配置介绍](https://jekyllrb.com/docs/templates/),修改Jekyll配置文件_config.yml，如果没有特殊要求，建议直接GitHub找现成的[博客模板](http://jekyllthemes.org/)即可。  
 
+<!-- more -->
+
 ### 快速使用博客  
   此处选择使用博客模板[jekyll-now](https://github.com/barryclark/jekyll-now)，使用Github直接fork到自己的博客仓库中，然后将代码下载到本地。
 新建博客静态文件，格式:yyyy-MM-dd-articlename.md，使用markdown语法对编写博客内容。

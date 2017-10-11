@@ -17,6 +17,8 @@ tags: 位置
 设节点的坐标为(x<sub>1</sub>,y<sub>1</sub>) , (x<sub>2</sub>,y<sub>2</sub>) , ... , (x<sub>n</sub>,y<sub>n</sub>)，目标点坐标 (x,y)，各节点到目标点的距离d<sub>1</sub> , d<sub>2</sub>,..., d<sub>n</sub>，则可的方程组 ( x<sub>i</sub> - x )²  + (y<sub>i</sub> -y)² = d<sub>i</sub>² , 其中I∈[1,n]。
 对方程组进行求解，可得x，y坐标
 
+<!-- more -->
+
 #### 代码实现
 
 用于运算的节点简单二维空间节点对象，主要包含坐标及距离，用于极大似然算法估算。

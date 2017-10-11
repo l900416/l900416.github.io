@@ -19,6 +19,8 @@ liangtongdeiMac:~ liangtong$
 
 ```
 
+<!-- more -->
+
 ### 文件的读写与执行    
 对于文件的读写与执行，首先通过一下命令查看输出的结果：   
 ```shell

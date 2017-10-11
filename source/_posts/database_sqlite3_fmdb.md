@@ -18,6 +18,8 @@ tags: SQLite3
 ### 数据库（连接）   
 数据库在使用前均需要建立连接，FMDB提供了两种方式对应数据库文件’通常xx.db’路径建立连接。FMDatabase是一个单一的用来执行SQL语句的数据库连接，使用同步的方式进行，如果需要在多线程执行查询或者更新，则需要使用FMDatabaseQueue
 
+<!-- more -->
+
 #### FMDatabase      
 FMDatabase可以用来执行增、删、改、查相关的SQL语句，通常情况下，不会有什么问题。这里需要说明的一点是移动端在涉及到多线程操作时，不要使用单例模式建立一个FMDatabase对象，否则会发生死锁问题。其官方文档中也有给出警告: Do not instantiate a single `FMDatabase` object and use it across multiple threads.
 

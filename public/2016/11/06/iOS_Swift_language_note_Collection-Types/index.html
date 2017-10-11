@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:06:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Collection Types">
 <meta name="twitter:description" content="​    同其他语言类型类似，Swift提供了3个集合类型Array、Set和Dictionary来存储集合值。与ObjC不同的是，Swift中的集合属于范型，不能不同类型的数据添加的同一个集合类型中，且Swift中的集合类型变量都支持修改。 Array数组类型是存储相同类型数据的有序列表，其中数组不同位置存储的数可以相同。Swift中的Array类型是Foundation框架中的NSArray类">
@@ -424,6 +424,7 @@
       
         <p>​    同其他语言类型类似，Swift提供了3个集合类型<code>Array</code>、<code>Set</code>和<code>Dictionary</code>来存储集合值。与ObjC不同的是，Swift中的集合属于范型，不能不同类型的数据添加的同一个集合类型中，且Swift中的集合类型变量都支持修改。<br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt=""></p>
 <h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>数组类型是存储相同类型数据的有序列表，其中数组不同位置存储的数可以相同。Swift中的<code>Array</code>类型是Foundation框架中的<code>NSArray</code>类型的桥接.Swift中Array属于范型类，具体的写法是<code>Array&lt;Element&gt;</code>或者<code>[Element]</code>，两种写法相同。</p>
+<a id="more"></a>
 <h4 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h4><p>可以通过<code>[Element](), []</code>的形式创建空数组，可以通过Array提供方法进行创建，当然也可以通过字面值<code>[value 1, value 2, value 3]</code>的形式创建并初始化一个数组</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> someInts = [<span class="type">Int</span>]()<span class="comment">//创建一个空的Int数组</span></div><div class="line">someInts.append(<span class="number">3</span>)<span class="comment">//数组中添加一个元素</span></div><div class="line">someInts = []<span class="comment">//数组被清空</span></div><div class="line"></div><div class="line"><span class="comment">// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]</span></div><div class="line"><span class="keyword">var</span> threeDoubles = <span class="type">Array</span>(repeating: <span class="number">0.0</span>, <span class="built_in">count</span>: <span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> shoppingList: [<span class="type">String</span>] = [<span class="string">"Eggs"</span>, <span class="string">"Milk”]</span></div></pre></td></tr></table></figure>
 <h4 id="数组的组合"><a href="#数组的组合" class="headerlink" title="数组的组合"></a>数组的组合</h4><p>可以通过操作符<code>+</code>将两个形同类型元素的数组合并到一起。</p>

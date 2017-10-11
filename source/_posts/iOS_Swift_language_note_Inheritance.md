@@ -35,6 +35,8 @@ class Vehicle {
 }
 ```
 
+<!-- more -->
+
 实例化对象，并访问其属性：
 
 ```Swift

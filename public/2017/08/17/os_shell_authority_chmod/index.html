@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:01:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="chmod修改权限">
 <meta name="twitter:description" content="Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每">
@@ -420,6 +420,7 @@
 
       
         <p>  Unix是多任务、多用户的操作系统，这以为着多个用户可以在同一时间使用同一台计算机。用户拥有文件或目录，则该用户对这个文件或目录的访问权限具有控制权。而用户又属于一个用户组(可以包含一个或多个用户)，用户组成员由文件或目录的所有者授予对文件或目录的访问权限。除了对用户组授权外，文件所有者可以给每个人一些权限。<br>    在Unix系统中，可以通过shell中输入命令 id 来查看身份信息，系统中每个用户的uid是不同的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:~ liangtong$ id</div><div class="line">uid=501(liangtong) gid=20(staff) groups=20(staff),701(com.apple.sharepoint.group.1),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),98(_lpadmin),33(_appstore),100(_lpoperator),204(_developer),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh)</div><div class="line">liangtongdeiMac:~ liangtong$</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h3 id="文件的读写与执行"><a href="#文件的读写与执行" class="headerlink" title="文件的读写与执行"></a>文件的读写与执行</h3><p>对于文件的读写与执行，首先通过一下命令查看输出的结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">liangtongdeiMac:playground liangtong$ mkdir test_authority</div><div class="line">liangtongdeiMac:playground liangtong$ cd test_authority/</div><div class="line">liangtongdeiMac:test_authority liangtong$ &gt; authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$ ls -l authority_test.txt </div><div class="line">-rw-r--r--  1 liangtong  staff  0  8 16 18:43 authority_test.txt</div><div class="line">liangtongdeiMac:test_authority liangtong$</div></pre></td></tr></table></figure></p>
 <p>这里创建了一个目录test_authority，并在目录中创建了一个文件authority_test.txt。之后查看文件线索。这里我们主要说前十个字符 <em>-rw-r–r–</em>。</p>
 <ul>

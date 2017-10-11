@@ -29,6 +29,8 @@ tags: Bluetooth
 #import <CoreBluetooth/CoreBluetooth.h>
 ```
 
+<!-- more -->
+
 #### 请求蓝牙服务
   使用CBCentralManager来进行蓝牙服务管理(授权请求)，监听蓝牙状态变化。    
 ```ObjectiveC

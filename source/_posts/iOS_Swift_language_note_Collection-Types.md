@@ -19,6 +19,9 @@ tags: Swift
 ### Array
 数组类型是存储相同类型数据的有序列表，其中数组不同位置存储的数可以相同。Swift中的`Array`类型是Foundation框架中的`NSArray`类型的桥接.Swift中Array属于范型类，具体的写法是`Array<Element>`或者`[Element]`，两种写法相同。
 
+
+<!-- more -->
+
 #### 数组的创建
 可以通过`[Element](), []`的形式创建空数组，可以通过Array提供方法进行创建，当然也可以通过字面值`[value 1, value 2, value 3]`的形式创建并初始化一个数组
 

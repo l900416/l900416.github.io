@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    错误处理（Error handling）是响应错误以及从错误中恢复的过程。Swift 提供了在运行时对可恢复错误的抛出、捕获、传递和操作的一等公民支持。某些操作无法保证总是执行完所有代码或总是生成有用的结果。可选类型可用来表示值缺失，但是当某个操作失败时，最好能得知失败的原因，从而可以作出相应的应对。举个例子，假如有个从磁盘上的某个文件读取数据并进行处理的任务，该任务会有多种可能失败的情">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:07:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Error Handling">
 <meta name="twitter:description" content="​    错误处理（Error handling）是响应错误以及从错误中恢复的过程。Swift 提供了在运行时对可恢复错误的抛出、捕获、传递和操作的一等公民支持。某些操作无法保证总是执行完所有代码或总是生成有用的结果。可选类型可用来表示值缺失，但是当某个操作失败时，最好能得知失败的原因，从而可以作出相应的应对。举个例子，假如有个从磁盘上的某个文件读取数据并进行处理的任务，该任务会有多种可能失败的情">
@@ -424,6 +424,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">VendingMachineError</span>: <span class="title">Error</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> invalidSelection</div><div class="line">    <span class="keyword">case</span> insufficientFunds(coinsNeeded: <span class="type">Int</span>)</div><div class="line">    <span class="keyword">case</span> outOfStock</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>抛出一个错误可以让你表明有意外情况发生，导致正常的执行流程无法继续执行。抛出错误使用throw关键字。例如，下面的代码抛出一个错误，提示贩卖机还需要5个硬币：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="type">VendingMachineError</span>.insufficientFunds(coinsNeeded: <span class="number">5</span>)</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h3><p>某个错误被抛出时，附近的某部分代码必须负责处理这个错误，例如纠正这个问题、尝试另外一种方式、或是向用户报告错误。<br>Swift 中有4种处理错误的方式。你可以把函数抛出的错误传递给调用此函数的代码、用do-catch语句处理错误、将错误作为可选类型处理、或者断言此错误根本不会发生。</p>
 <p>当一个函数抛出一个错误时，你的程序流程会发生改变，所以重要的是你能迅速识别代码中会抛出错误的地方。为了标识出这些地方，在调用一个能抛出错误的函数、方法或者构造器之前，加上 <code>try</code> 关键字，或者 <code>try?</code> 或 <code>try!</code> 这种变体。<br>    Swift 中的错误处理和其他语言中用try，catch和throw进行异常处理很像。和其他语言中（包括 Objective-C ）的异常处理不同的是，Swift 中的错误处理并不涉及解除调用栈，这是一个计算代价高昂的过程。就此而言，throw语句的性能特性是可以和return语句相媲美的。</p>
 <h4 id="用-throwing-函数传递错误"><a href="#用-throwing-函数传递错误" class="headerlink" title="用 throwing 函数传递错误"></a>用 throwing 函数传递错误</h4><p>为了表示一个函数、方法或构造器可以抛出错误，在函数声明的参数列表之后加上throws关键字。一个标有 <code>throws</code> 关键字的函数被称作throwing 函数。如果这个函数指明了返回值类型，throws关键词需要写在箭头（-&gt;）的前面。</p>
@@ -521,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" rel="next" title="Swift Optional Chaining">
-                <i class="fa fa-chevron-left"></i> Swift Optional Chaining
+              <a href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" rel="next" title="Swift Type Casting">
+                <i class="fa fa-chevron-left"></i> Swift Type Casting
               </a>
             
           </div>
@@ -531,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" rel="prev" title="Swift Type Casting">
-                Swift Type Casting <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/01/iOS_Swift_language_note_Extensions/" rel="prev" title="Swift Extensions">
+                Swift Extensions <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

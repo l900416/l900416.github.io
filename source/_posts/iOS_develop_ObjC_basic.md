@@ -23,6 +23,8 @@ tags: 随笔
 ^int(int count){return count+1;}
 ```
 
+<!-- more -->
+
 block的声明及使用
 
 ```Objective-C

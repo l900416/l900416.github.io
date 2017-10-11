@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/03/13/bluetooth_iBeacon2/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/13/bluetooth_iBeacon2/" itemprop="url">iBeacon应用</a></h1>
+                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" itemprop="url">Swift Optional Chaining</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T21:25:19+08:00">
-                2017-03-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T01:20:11+08:00">
+                2016-11-30
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/蓝牙/" itemprop="url" rel="index">
-                    <span itemprop="name">蓝牙</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2017/03/13/bluetooth_iBeacon2/" class="leancloud_visitors" data-flag-title="iBeacon应用">
+             <span id="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" class="leancloud_visitors" data-flag-title="Swift Optional Chaining">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,80 +411,17 @@
 
       
         
-          
-            <p>​    讲述iBeacon技术的方案设想、设计及实际应用。充分利用iBeacon的优势，位置、距离、感知相关的场合构造合适的场景。</p>
-<h3 id="方案设想"><a href="#方案设想" class="headerlink" title="方案设想"></a>方案设想</h3><p>在上一篇文章中有提到iBeacon应用场景举例。这里从3各方面进行描述：   </p>
-<ul>
-<li><p>测距</p>
-<p>  主要是在程序前台激活状态下，可能会用到的场景：</p>
-<ul>
-<li>周边摇、现场摇、签到等</li>
-<li>产品介绍，商场导购，博物馆导游等 </li>
-<li>位置修正，iBeacon的精度可以辅助一些其他功能</li>
-<li>精确区域预警、地理围栏</li>
-<li>室内导航等</li>
-</ul>
-</li>
-<li><p>监听</p>
-<p>  托管给iOS系统，程序本身不需要打开即可触发功能，可能会用到以下场景：   </p>
-<ul>
-<li>欢迎语：比如当用户手持设备进入任意场景区域内时，进行交互提醒。</li>
-<li>业务联动：比如当用户进入某个控制区后，告知概况，同周边设备联动。</li>
-<li>区域预警：比如设置特定的围栏区域。</li>
-<li>其他：比如与门禁系统联动等</li>
-</ul>
-</li>
-<li><p>角色交换</p>
-<p>  通常情况下，iBeacon设备作为基站，移动设备比如iPhone和iPad来接收信号，从而进行机遇位置的场景交互。我们也可以讲iPhone和iPad作为基站，给其设定特定的区域值进行广播。而接收设备位置固定等。可以设想以下场景：</p>
-<ul>
-<li>演示大屏上展示周边设备。</li>
-<li>教师要求输入动态口令进行签到。</li>
-</ul>
-</li>
-</ul>
-<h3 id="基础方案"><a href="#基础方案" class="headerlink" title="基础方案"></a>基础方案</h3><p>​    理想情况下，以下数据需要预缓存，保证在无网络或者网络环境差的情况下，交互动作可以顺利进行。因此，各类信息的版本控制需要在前期考虑。</p>
-<h4 id="iBeacon策略"><a href="#iBeacon策略" class="headerlink" title="iBeacon策略"></a>iBeacon策略</h4><p>​    iBeacon策略，或者说应用场景。如上一篇文章中所说，这里主要在iBeacon对应的区域Region（ProximityUUID &amp; Major &amp; Minor）上的三个值上做文章。 比如：  </p>
-<ul>
-<li>ProximityUUID ： 公司编码</li>
-<li>Major ： 建筑编码</li>
-<li>Minor ： 某类区域（物品）编码</li>
-</ul>
-<p>策略相关信息确定后，就可以给不同的策略配置个性化信息了，比如进入／离开策略对应的区域时，定制以下信息：   </p>
-<ul>
-<li>通知声音：个性化提示音</li>
-<li>通知内容：跟具体业务相关</li>
-<li>通知优先级：当多个策略同时触发时，可根据优先级来动态显示</li>
-<li>通知频次：用来确保特定时间段内，不重复通知</li>
-</ul>
-<h4 id="iBeacon业务"><a href="#iBeacon业务" class="headerlink" title="iBeacon业务"></a>iBeacon业务</h4><p>​    单纯的触发iBeacon对应区域的策略，仅仅是对用户的消息提醒，我们比较关注的是策略的后续动作。比如当用户到达某个iBeacon区域（或者在某个区域驻足时间较长）后，收到了个性化的策略通知。很自然的点击查看感兴趣的消息，那么后续的动作就是这里所说的iBeacon业务。通常情况下，后续动作包括以下几种：   </p>
-<ul>
-<li>打开某个本地模块</li>
-<li>打开某个Web网页</li>
-<li>打开某个本地网页</li>
-<li>无后续动作</li>
-</ul>
-<p>需要注意的是，后续动作可能不止一种。</p>
-<h4 id="策略业务关联"><a href="#策略业务关联" class="headerlink" title="策略业务关联"></a>策略业务关联</h4><p>​    为了保证数据的灵活，策略与业务的对应关系为1:N（N &gt;= 0），当策略对应多个业务的时候，需要考虑各业务的优先级等。</p>
-<h4 id="用户策略"><a href="#用户策略" class="headerlink" title="用户策略"></a>用户策略</h4><p>​    除了一些共通的策略外，用户也可以拥有独特权限的策略，比如同一个区域，不同角色进入时，看到的数据根据其权限表现出差异。</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="设备选择"><a href="#设备选择" class="headerlink" title="设备选择"></a>设备选择</h4><p>iBeacon设备选取可能会考虑的几个因素包括：   </p>
-<ul>
-<li>电池及续航</li>
-<li>设备运维</li>
-<li>设备部署</li>
-<li>设备美感</li>
-<li>设备软件能力</li>
-<li>设备使用</li>
-</ul>
-<p>通常情况下，电池、部署、软件能力需要着重考虑。</p>
-<h4 id="设备部署"><a href="#设备部署" class="headerlink" title="设备部署"></a>设备部署</h4><p>部署时可能需要考虑以下几个因素：   </p>
-<ul>
-<li>环境干扰</li>
-<li>工厂校正电压</li>
-<li>放置位置（高度／间距）</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    iBeacon技术在旅游景点、博物馆、商场、酒店、会议室等场景中可以给人很好的用户体验，但在成本、运维部署方面一直存在着问题。目前情况下小范围内玩iBeacon，还是很有搞头的。</p>
-
-          
+          <p>​    可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。<br>    Swift 的可选链式调用和 Objective-C 中向nil发送消息有些相像，但是 Swift 的可选链式调用可以应用于任意类型，并且能检查调用是否成功。</p>
+<h3 id="使用可选链式调用代替强制展开"><a href="#使用可选链式调用代替强制展开" class="headerlink" title="使用可选链式调用代替强制展开"></a>使用可选链式调用代替强制展开</h3><p>通过在想调用的属性、方法、或下标的可选值后面放一个问号（?），可以定义一个可选链。这一点很像在可选值后面放一个叹号（!）来强制展开它的值。它们的主要区别在于当可选值为空时可选链式调用只会调用失败，然而强制展开将会触发运行时错误。</p>
+<p>为了反映可选链式调用可以在空值（nil）上调用的事实，不论这个调用的属性、方法及下标返回的值是不是可选值，它的返回结果都是一个可选值。你可以利用这个返回值来判断你的可选链式调用是否调用成功，如果调用有返回值则说明调用成功，返回nil则说明调用失败。</p>
+<p>特别地，可选链式调用的返回结果与原本的返回结果具有相同的类型，但是被包装成了一个可选值。例如，使用可选链式调用访问属性，当可选链式调用成功时，如果属性原本的返回结果是Int类型，则会变为Int?类型。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -531,7 +468,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/02/11/bluetooth_iBeacon1/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/29/iOS_Swift_language_note_ARC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -550,7 +487,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/11/bluetooth_iBeacon1/" itemprop="url">iBeacon基础</a></h1>
+                <a class="post-title-link" href="/2016/11/29/iOS_Swift_language_note_ARC/" itemprop="url">Swift ARC</a></h1>
         
 
         <div class="post-meta">
@@ -562,8 +499,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-11T22:50:12+08:00">
-                2017-02-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-29T03:20:11+08:00">
+                2016-11-29
               </time>
             
 
@@ -585,8 +522,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/蓝牙/" itemprop="url" rel="index">
-                    <span itemprop="name">蓝牙</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -602,7 +539,7 @@
 
           
           
-             <span id="/2017/02/11/bluetooth_iBeacon1/" class="leancloud_visitors" data-flag-title="iBeacon基础">
+             <span id="/2016/11/29/iOS_Swift_language_note_ARC/" class="leancloud_visitors" data-flag-title="Swift ARC">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -634,50 +571,176 @@
 
       
         
-          
-            <p>​    <a href="https://developer.apple.com/ibeacon/" target="_blank" rel="external"> iBeacon </a> 标准是Apple在2013年WWDC上提出的，运行在iOS7+系统的设备上，且要求设备配备低功耗蓝牙BLE通信功能。本文简单介绍下iBeacon在位置、感知、距离方面的基本能力。</p>
-<h3 id="位置服务"><a href="#位置服务" class="headerlink" title="位置服务"></a>位置服务</h3><p>​    位置服务(Location Service)通常是在某个区域(Region)，通过GPS来实现的某些功能。比如当你手持安装星巴克应用的苹果手机在星巴克附近时，锁屏状态下会在屏幕左下角显示该应用的图标。<a href="http://lbs.amap.com/" target="_blank" rel="external"> 高德地图 </a>中的地理围栏就是一个实际应用场景。位置服务有以下缺点：   </p>
-<ul>
-<li>GPS本身定位精度能力有限，位置服务不可能提供精确的位置服务；</li>
-<li>室内环境下GPS信号普遍不好，或者信号不可达；</li>
-</ul>
-<h3 id="iBeacon"><a href="#iBeacon" class="headerlink" title="iBeacon"></a>iBeacon</h3><p>​    iBeacon技术是基于基站的形式。一个iBeacon可以被认为是一个区域（物体所在位置+覆盖半径），由于使用低功耗蓝牙技术，实验环境下其精度可以达到10cm范围内（虽然有些吹嘘，但亲测是相当精确的）。关于iBeacon的软件部分，需要了解以下几个概念：</p>
-<ul>
-<li>Region : ProximityUUID &amp; Major &amp; Minor</li>
-<li>Advertise Interval</li>
-<li>Measured Power</li>
-<li>RSSI    </li>
-</ul>
-<p>关于iBeacon区域的定义，由3个值来唯一确定一个区域，举例如下图：<br><img src="/post/iOS/iBeacon/uuid_major_minor.png" alt=""><br>图描述的很清楚了，我们可以通过ProximityUUID、Major和Minor三个值来定义不同的有关联的区域（事物），并通过不同的值组合来做很多有意思的事情。</p>
-<h3 id="iBeacon基础场景"><a href="#iBeacon基础场景" class="headerlink" title="iBeacon基础场景"></a>iBeacon基础场景</h3><h4 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h4><p>​    区域监听(Region Monitoring)即当设备进入／离开某个／某类区域的时候，可以触发后续联动，其监听的区域可能是ProximityUUID代表的某个大的类别区域比如一个公司在全国的所有子公司、或者由ProximityUUID和Major组合的相对小的区域比如某个城市中的子公司。至于什么区域就比较灵活了。<br>​    一般情况下，iOS程序退出或者后台挂起后，程序是不能执行的(其他Background-Mode除外)。但是这里所说的区域监听是托管给iOS系统，也就是说程序设置完监听区域后，iOS系统会托管，当设备进入／离开监听区域时，系统会触发相应的操作，并唤醒程序。</p>
-<h4 id="测距"><a href="#测距" class="headerlink" title="测距"></a>测距</h4><p>测距（Ranging）即设备与Beacon区域中心点的接近距离（接近状态），包括：   </p>
-<ul>
-<li>Immediate 非常近</li>
-<li>Near 1～3米</li>
-<li>Far 3米以外</li>
-<li>Unknown 距离不可测量</li>
-</ul>
-<p>测距是在iOS程序处于前台激活状态下使用的，程序推到后台时，该功能便不可用。</p>
-<h4 id="应用场景举例"><a href="#应用场景举例" class="headerlink" title="应用场景举例"></a>应用场景举例</h4><p>监听：由iOS系统接管，所以该功能需慎用，搞不好会让用户厌烦。   </p>
-<ul>
-<li>欢迎语：比如商店入口／出口放置，用来给顾客相关提示。</li>
-<li>物品介绍：比如在博物馆某些区域，导游和网络信号不好的情况下，可以通过给文物贴上标签(iBeacon)，让每个设备都当导游。</li>
-<li>业务确认：比如在某些病房中放置，在特定时刻向病人确定吃药情况。</li>
-<li>预警：比如钥匙坠，当不在身边时及时提醒。</li>
-<li>其他：比如门禁、宠物饰品等</li>
-</ul>
-<p>测距：需要程序处于前台激活状态下使用，这里主要用在区域相关和用户互动的场景。</p>
-<ul>
-<li>商场活动：比如现场抽奖、现场摇一摇</li>
-<li>自动售货机：付款</li>
-<li>活动签到：上课／开会等</li>
-<li>商场导购：在某个商品前停留，自动推该商品信息、折扣信息等</li>
-<li>微信摇一摇周边</li>
-<li>其他：室内导航等</li>
-</ul>
-<h3 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h3><p>​    经过这么多年的发展，iBeacon技术并没有达到前几年预想的效果。可能是受成本及运维的影响，也可能是关于位置感知的场景化需求太少，一直没有流行起来。目前国内主要的厂商包括：智石科技、四月兄弟、DropBeacon等，提供了Beacon的基础能力，但在设备美观及精确度方面个人不敢恭维。<br>国外Beacon技术相对先进不少，应该是受苹果的影响。比较突出的一个是<a href="http://estimote.com/" target="_blank" rel="external"> Estiomte </a>，他家的产品及配套SDK是真心不错，就是略贵。</p>
+          <p>​    Swift 使用自动引用计数（ARC）机制来跟踪和管理你的应用程序的内存。通常情况下，Swift 内存管理机制会一直起作用，你无须自己来考虑内存的管理。ARC 会在类的实例不再被使用时，自动释放其占用的内存。然而在少数情况下，为了能帮助你管理内存，ARC 需要更多的，代码之间关系的信息。在 Swift 使用 ARC 与在 Obejctive-C 中使用 ARC 非常类似<br>    引用计数仅仅应用于类的实例。结构体和枚举类型是值类型，不是引用类型，也不是通过引用的方式存储和传递。</p>
+<h3 id="ARC工作机制"><a href="#ARC工作机制" class="headerlink" title="ARC工作机制"></a>ARC工作机制</h3><p>当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信息，以及这个实例所有相关的存储型属性的值。<br>当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的实例，不会一直占用内存空间。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/29/iOS_Swift_language_note_ARC/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/28/iOS_Swift_language_note_Deinitialization/" itemprop="url">Swift Deinitialization</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-28T00:20:11+08:00">
+                2016-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/28/iOS_Swift_language_note_Deinitialization/" class="leancloud_visitors" data-flag-title="Swift Deinitialization">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。</p>
+<h3 id="析构过程"><a href="#析构过程" class="headerlink" title="析构过程"></a>析构过程</h3><p>Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放之前手动去关闭该文件。</p>
+<p>在类的定义中，每个类最多只能有一个析构器，而且析构器不带任何参数，如下所示：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="comment">// perform the deinitialization</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>析构器是在实例释放发生前被自动调用。你不能主动调用析构器。子类继承了父类的析构器，并且在子类析构器实现的最后，父类的析构器会被自动调用。即使子类没有提供自己的析构器，父类的析构器也同样会被调用。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/28/iOS_Swift_language_note_Deinitialization/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -715,7 +778,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

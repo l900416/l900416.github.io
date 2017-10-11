@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议 定义一个类层次作为例子你可以将类型转换用在类和子类的层次结构上，检查特定类实例的类型并且转换这个类实例的类型成为这个层次结构中的其他类型。下面的三">
+<meta name="description" content="​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议">
 <meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift Type Casting">
 <meta property="og:url" content="https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Type-Casting/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议 定义一个类层次作为例子你可以将类型转换用在类和子类的层次结构上，检查特定类实例的类型并且转换这个类实例的类型成为这个层次结构中的其他类型。下面的三">
+<meta property="og:description" content="​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:10:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Type Casting">
-<meta name="twitter:description" content="​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议 定义一个类层次作为例子你可以将类型转换用在类和子类的层次结构上，检查特定类实例的类型并且转换这个类实例的类型成为这个层次结构中的其他类型。下面的三">
+<meta name="twitter:description" content="​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议">
 
 
 
@@ -420,6 +420,7 @@
 
       
         <p>​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。<br>​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议</p>
+<a id="more"></a>
 <h3 id="定义一个类层次作为例子"><a href="#定义一个类层次作为例子" class="headerlink" title="定义一个类层次作为例子"></a>定义一个类层次作为例子</h3><p>你可以将类型转换用在类和子类的层次结构上，检查特定类实例的类型并且转换这个类实例的类型成为这个层次结构中的其他类型。下面的三个代码段定义了一个类层次和一个包含了这些类实例的数组，作为类型转换的例子。<br>第一个代码片段定义了一个新的基类 MediaItem。这个类为任何出现在数字媒体库的媒体项提供基础功能。特别的，它声明了一个 String 类型的 name 属性，和一个 init(name:) 初始化器。（假定所有的媒体项都有个名称。）</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下一个代码段定义了 MediaItem 的两个子类。第一个子类 Movie 封装了与电影相关的额外信息，在父类（或者说基类）的基础上增加了一个 director（导演）属性，和相应的初始化器。第二个子类 Song，在父类的基础上增加了一个 artist（艺术家）属性，和相应的初始化器：</p>
@@ -519,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/30/iOS_Swift_language_note_Error-Handling/" rel="next" title="Swift Error Handling">
-                <i class="fa fa-chevron-left"></i> Swift Error Handling
+              <a href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" rel="next" title="Swift Optional Chaining">
+                <i class="fa fa-chevron-left"></i> Swift Optional Chaining
               </a>
             
           </div>
@@ -529,8 +530,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/01/iOS_Swift_language_note_Extensions/" rel="prev" title="Swift Extensions">
-                Swift Extensions <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/30/iOS_Swift_language_note_Error-Handling/" rel="prev" title="Swift Error Handling">
+                Swift Error Handling <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

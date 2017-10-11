@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/unownedReference02_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle01_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle02_2x.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:05:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift ARC">
 <meta name="twitter:description" content="​    Swift 使用自动引用计数（ARC）机制来跟踪和管理你的应用程序的内存。通常情况下，Swift 内存管理机制会一直起作用，你无须自己来考虑内存的管理。ARC 会在类的实例不再被使用时，自动释放其占用的内存。然而在少数情况下，为了能帮助你管理内存，ARC 需要更多的，代码之间关系的信息。在 Swift 使用 ARC 与在 Obejctive-C 中使用 ARC 非常类似    引用计数仅">
@@ -432,6 +432,7 @@
       
         <p>​    Swift 使用自动引用计数（ARC）机制来跟踪和管理你的应用程序的内存。通常情况下，Swift 内存管理机制会一直起作用，你无须自己来考虑内存的管理。ARC 会在类的实例不再被使用时，自动释放其占用的内存。然而在少数情况下，为了能帮助你管理内存，ARC 需要更多的，代码之间关系的信息。在 Swift 使用 ARC 与在 Obejctive-C 中使用 ARC 非常类似<br>    引用计数仅仅应用于类的实例。结构体和枚举类型是值类型，不是引用类型，也不是通过引用的方式存储和传递。</p>
 <h3 id="ARC工作机制"><a href="#ARC工作机制" class="headerlink" title="ARC工作机制"></a>ARC工作机制</h3><p>当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信息，以及这个实例所有相关的存储型属性的值。<br>当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的实例，不会一直占用内存空间。</p>
+<a id="more"></a>
 <p>然而，当 ARC 收回和释放了正在被使用中的实例，该实例的属性和方法将不能再被访问和调用。实际上，如果你试图访问这个实例，你的应用程序很可能会崩溃。<br>为了确保使用中的实例不会被销毁，ARC 会跟踪和计算每一个实例正在被多少属性，常量和变量所引用。哪怕实例的引用数为1，ARC都不会销毁这个实例。</p>
 <p>为了使上述成为可能，无论你将实例赋值给属性、常量或变量，它们都会创建此实例的强引用。之所以称之为“强”引用，是因为它会将实例牢牢地保持住，只要强引用还在，实例是不允许被销毁的。</p>
 <h3 id="ARC实践"><a href="#ARC实践" class="headerlink" title="ARC实践"></a>ARC实践</h3><p>下面的例子展示了自动引用计数的工作机制。例子以一个简单的Person类开始，并定义了一个叫name的常量属性：</p>

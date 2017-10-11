@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​    下标可以定义在类、结构体和枚举中，为访问集合，列表或序列中元素提供便捷。可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法。举例来说，用下标访问一个Array实例中的元素可以写作someArray[index]，访问Dictionary实例中的元素可以写作someDictionary[key]。 语法下标允许你通过在实例化对象后边的中括号中添加一个或多个索引值来查询或修改实例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:10:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Subscripts">
 <meta name="twitter:description" content="​    下标可以定义在类、结构体和枚举中，为访问集合，列表或序列中元素提供便捷。可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法。举例来说，用下标访问一个Array实例中的元素可以写作someArray[index]，访问Dictionary实例中的元素可以写作someDictionary[key]。 语法下标允许你通过在实例化对象后边的中括号中添加一个或多个索引值来查询或修改实例">
@@ -423,6 +423,7 @@
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>下标允许你通过在实例化对象后边的中括号中添加一个或多个索引值来查询或修改实例。语法类似于实例方法语法和计算型属性语法。通过关键字 <code>subscript</code> 定义，并指定一个或多个输入参数和返回类型；与实例方法不同的是。下标语法可以设定为读写( <code>read-write</code> )或只读( <code>read-only</code> )。这种行为由 getter 和 setter 实现，有点类似计算型属性：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">get</span> &#123;</div><div class="line">        <span class="comment">// return an appropriate subscript value here</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">set</span>(newValue) &#123;</div><div class="line">        <span class="comment">// perform a suitable setting action here</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>newValue的类型和下标的返回类型相同。如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数。如同只读计算型属性，可以省略只读下标的get关键字：</p>
+<a id="more"></a>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="comment">// return an appropriate subscript value here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下面代码演示了只读下标的实现：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TimesTable</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> multiplier: <span class="type">Int</span></div><div class="line">    <span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> multiplier * index</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> threeTimesTable = <span class="type">TimesTable</span>(multiplier: <span class="number">3</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"six times three is <span class="subst">\(threeTimesTable[<span class="number">6</span>])</span>"</span>)</div><div class="line"><span class="comment">// Prints "six times three is 18"</span></div></pre></td></tr></table></figure>
@@ -505,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/25/iOS_Swift_language_note_Methods/" rel="next" title="Swift Methods">
-                <i class="fa fa-chevron-left"></i> Swift Methods
+              <a href="/2016/11/25/iOS_Swift_language_note_Properties/" rel="next" title="Swift Properties">
+                <i class="fa fa-chevron-left"></i> Swift Properties
               </a>
             
           </div>

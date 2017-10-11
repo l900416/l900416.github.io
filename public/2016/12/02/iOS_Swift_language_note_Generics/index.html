@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPushPop_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPushedFourStrings_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPoppedOneString_2x.png">
-<meta property="og:updated_time" content="2017-09-08T07:46:37.000Z">
+<meta property="og:updated_time" content="2017-10-11T01:08:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Generics">
 <meta name="twitter:description" content="​​    泛型代码让你编写出适用于任意类型、灵活可重用的函数及类型。它能让你避免代码的重复，用一种清晰和抽象的方式来表达代码的意图。  泛型所解决的问题下面是一个标准的非泛型函数 swapTwoInts(::)，用来交换两个 Int 值： 12345func swapTwoInts(_ a: inout Int, _ b: inout Int) &amp;#123;    let temporaryA">
@@ -426,6 +426,7 @@
         <p>​<br>​    泛型代码让你编写出适用于任意类型、灵活可重用的函数及类型。它能让你避免代码的重复，用一种清晰和抽象的方式来表达代码的意图。 </p>
 <h3 id="泛型所解决的问题"><a href="#泛型所解决的问题" class="headerlink" title="泛型所解决的问题"></a>泛型所解决的问题</h3><p>下面是一个标准的非泛型函数 swapTwoInts(<em>:</em>:)，用来交换两个 Int 值：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Int, <span class="number">_</span> b: <span class="keyword">inout</span> Int)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> temporaryA = a</div><div class="line">    a = b</div><div class="line">    b = temporaryA</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>swapTwoInts(<em>:</em>:) 函数交换 b 的原始值到 a，并交换 a 的原始值到 b。你可以调用这个函数交换两个 Int 变量的值：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> someInt = <span class="number">3</span></div><div class="line"><span class="keyword">var</span> anotherInt = <span class="number">107</span></div><div class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)</div><div class="line"><span class="built_in">print</span>(<span class="string">"someInt is now <span class="subst">\(someInt)</span>, and anotherInt is now <span class="subst">\(anotherInt)</span>"</span>)</div><div class="line"><span class="comment">// Prints "someInt is now 107, and anotherInt is now 3"</span></div></pre></td></tr></table></figure>
 <p>swapTwoInts(<em>:</em>:) 函数挺有用，但是它只能交换 Int 值，如果你想要交换两个 String 值或者 Double值，就不得不写更多的函数，例如 swapTwoStrings(<em>:</em>:) 和 swapTwoDoubles(<em>:</em>:)，如下所示：</p>
