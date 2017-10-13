@@ -99,14 +99,16 @@ XMPPStream这里不再赘述，直接介绍花名册相关。
 
 如果不使用CoreData进行数据存储，我们主要需要在两个协议回调中做文章。
 
- * 好友列表同步结束时，我们需要解析 **XMPPRoster** 中的XML数据，存储好友列表。
+ * 好友列表同步结束时，我们需要解析 ** XMPPIQ** 中的XML数据，存储好友列表。
  * 收到好友花名册变更时，与存储的好友列表内好友比较，更新列表及列表中状态。
 
 ```Objective-C
-  - (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender
-  - (void)xmppRoster:(XMPPRoster *)sender didReceiveRosterItem:(NSXMLElement *)item
+  -(BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
+  -(void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence
 ```
 
+其中，解析 **XMPPIQ** 中的XML携带有好友列表相关数据， **XMPPPresence** 会携带状态数据或者其他。一定要注意的是好友列表是由两者根据用户JID共同维护的。
+解析XML方法此处不在说明。
 
 
 好了，本节就讲这些，下一节讲述：WebRTC实时通讯。
