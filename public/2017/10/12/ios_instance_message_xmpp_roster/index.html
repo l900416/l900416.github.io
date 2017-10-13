@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="上一节讲了XMPP的用户注册／登录，这节介绍花名册的使用。花名册的存储可以直接使用XMPPFramework中的coreData存储，也可以自己建立数据库存储。本节介绍两种方式：  使用XMPPFramework来存储。 不使用CoreData的存储方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-12T13:29:15.000Z">
+<meta property="og:updated_time" content="2017-10-13T10:44:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XMPP之用户花名册">
 <meta name="twitter:description" content="上一节讲了XMPP的用户注册／登录，这节介绍花名册的使用。花名册的存储可以直接使用XMPPFramework中的coreData存储，也可以自己建立数据库存储。本节介绍两种方式：  使用XMPPFramework来存储。 不使用CoreData的存储方法。">
@@ -442,10 +442,11 @@
 <p>因为XMPPFramework的CoreData数据库已经将大多数操作进行了封装，我们如果使用CoreData，只需要在好友列表同步结束和好友花名册变更的回调中，发送个好友列表变更通知，使用好友花名册的地方根据实际需求处理即可</p>
 <h4 id="不使用CoreData存储"><a href="#不使用CoreData存储" class="headerlink" title="不使用CoreData存储"></a>不使用CoreData存储</h4><p>如果不使用CoreData进行数据存储，我们主要需要在两个协议回调中做文章。</p>
 <ul>
-<li>好友列表同步结束时，我们需要解析 <strong>XMPPRoster</strong> 中的XML数据，存储好友列表。</li>
+<li>好友列表同步结束时，我们需要解析 <strong> XMPPIQ</strong> 中的XML数据，存储好友列表。</li>
 <li>收到好友花名册变更时，与存储的好友列表内好友比较，更新列表及列表中状态。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender</div><div class="line">- (void)xmppRoster:(XMPPRoster *)sender didReceiveRosterItem:(NSXMLElement *)item</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq</div><div class="line">-(void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence</div></pre></td></tr></table></figure>
+<p>其中，解析 <strong>XMPPIQ</strong> 中的XML携带有好友列表相关数据， <strong>XMPPPresence</strong> 会携带状态数据或者其他。一定要注意的是好友列表是由两者根据用户JID共同维护的。<br>解析XML方法此处不在说明。</p>
 <p>好了，本节就讲这些，下一节讲述：WebRTC实时通讯。</p>
 
       
