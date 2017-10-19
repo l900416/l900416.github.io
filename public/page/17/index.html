@@ -308,6 +308,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/02/iOS_Swift_language_note_The-Basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liangtong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangtong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/02/iOS_Swift_language_note_The-Basics/" itemprop="url">Swift The Basics</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-02T22:06:31+08:00">
+                2016-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/02/iOS_Swift_language_note_The-Basics/" class="leancloud_visitors" data-flag-title="Swift The Basics">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>​    Swift的很多地方类似C和Objective-C语言。在Swift中，用<code>Int</code>表示整型，用<code>Double</code>和<code>Float</code>表示浮点类型，用<code>Bool</code>表示布尔类型，用<code>String</code>表示文本类型。另外还提供有一些集合类型，比如<code>Array</code>，<code>Set</code>和<code>Dictionary</code>。是一种类型安全的语言。<br>​    Swift拥有和C语言类似变量和常量。还有一些高级的类型例如元组<code>tuples</code>（同PL/SQL中的类似）、不仅仅用在Class上的可选类型<code>optional types</code>(<code>Optionals say either “there is a value, and it equals x” or “there isn’t a value at all”.</code>)</p>
+<h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><p>​    常量和变量在使用前必须声明，使用<code>var</code>来声明变量，使用<code>let</code>来声明常量，例如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> maximumNumberOfLoginAttempts = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> currentLoginAttempt = <span class="number">0</span></div><div class="line"><span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span>, z = <span class="number">0.0</span></div></pre></td></tr></table></figure>
+<p>​    可以通过<code>let(var) name: type</code>来明确常量或变量的类型，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> welcomeMessage: <span class="type">String</span></div><div class="line"><span class="keyword">var</span> red, green, blue: <span class="type">Double</span></div></pre></td></tr></table></figure>
+<p>​    变量和常量的名称可以包括绝大多数字符（包括Unicode），但不能包含空格、数学符号、箭头以及一些无效的Unicode，且不能以数字开头。变量或者常量一旦被定义，其名称不能就不能被重复使用，或者改变其类型，也不能将变量改变为常量（反之也不可以）。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> friendlyWelcome = <span class="string">"Hello!"</span></div><div class="line"><span class="keyword">let</span> 你好 = <span class="string">"你好世界"</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/02/iOS_Swift_language_note_The-Basics/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/10/30/iOS_develop_ObjC_basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -613,176 +776,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/10/21/iOS_develop_overview_framework_1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liangtong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liangtong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/21/iOS_develop_overview_framework_1/" itemprop="url">iOS移动App开发综述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-21T23:50:12+08:00">
-                2016-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/10/21/iOS_develop_overview_framework_1/" class="leancloud_visitors" data-flag-title="iOS移动App开发综述">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>对iOS端移动App使用的开发语言、框架等信息进行介绍</p>
-<h3 id="环境及工具"><a href="#环境及工具" class="headerlink" title="环境及工具"></a>环境及工具</h3><ul>
-<li>OS<ul>
-<li>macOS , OSX</li>
-</ul>
-</li>
-<li>TOOL<ul>
-<li>XCode： <code>Version 8.0+</code> , 早期版本</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>建议：鉴于苹果的习惯，如果没有特殊需求，保持最新的系统和工具版本。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/10/21/iOS_develop_overview_framework_1/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -837,7 +830,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -859,7 +852,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
