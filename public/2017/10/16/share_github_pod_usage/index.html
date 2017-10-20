@@ -84,16 +84,18 @@
 <meta name="description" content="Cocoapods是非常好用的一个iOS依赖管理工具，使用它可以方便的管理和更新项目中所使用到的第三方库，本节介绍如何将自己的组件代码交由它去管理。 创建Git仓库  根据GitHub提示操作即可，建立自己的Git仓库。  创建podspec文件  终端直接执行以下命令，创建Pod项目工程文件，例如要创建一个叫做 LTChat 的Pod工程，命令执行成功后，会看到一个叫做 LTChat.podsp">
 <meta name="keywords" content="GitHub CocoaPods">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CocoaPods制作">
-<meta property="og:url" content="https://l900416.github.io/2017/10/16/share_github_pod_create/index.html">
+<meta property="og:title" content="CocoaPods个人代码组件管理">
+<meta property="og:url" content="https://l900416.github.io/2017/10/16/share_github_pod_usage/index.html">
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="Cocoapods是非常好用的一个iOS依赖管理工具，使用它可以方便的管理和更新项目中所使用到的第三方库，本节介绍如何将自己的组件代码交由它去管理。 创建Git仓库  根据GitHub提示操作即可，建立自己的Git仓库。  创建podspec文件  终端直接执行以下命令，创建Pod项目工程文件，例如要创建一个叫做 LTChat 的Pod工程，命令执行成功后，会看到一个叫做 LTChat.podsp">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://l900416.github.io/post/share/github_pod_create_1.png">
 <meta property="og:image" content="https://l900416.github.io/post/share/github_pod_create_2.png">
-<meta property="og:updated_time" content="2017-10-19T02:33:39.000Z">
+<meta property="og:image" content="https://l900416.github.io/post/share/github_pod_update_1.png">
+<meta property="og:image" content="https://l900416.github.io/post/share/github_pod_update_2.png">
+<meta property="og:updated_time" content="2017-10-20T07:39:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CocoaPods制作">
+<meta name="twitter:title" content="CocoaPods个人代码组件管理">
 <meta name="twitter:description" content="Cocoapods是非常好用的一个iOS依赖管理工具，使用它可以方便的管理和更新项目中所使用到的第三方库，本节介绍如何将自己的组件代码交由它去管理。 创建Git仓库  根据GitHub提示操作即可，建立自己的Git仓库。  创建podspec文件  终端直接执行以下命令，创建Pod项目工程文件，例如要创建一个叫做 LTChat 的Pod工程，命令执行成功后，会看到一个叫做 LTChat.podsp">
 <meta name="twitter:image" content="https://l900416.github.io/post/share/github_pod_create_1.png">
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://l900416.github.io/2017/10/16/share_github_pod_create/"/>
+  <link rel="canonical" href="https://l900416.github.io/2017/10/16/share_github_pod_usage/"/>
 
 
 
 
 
-  <title>CocoaPods制作 | liangtong</title>
+  <title>CocoaPods个人代码组件管理 | liangtong</title>
   
 
 
@@ -312,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/10/16/share_github_pod_create/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/10/16/share_github_pod_usage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -329,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CocoaPods制作</h1>
+          <h1 class="post-title" itemprop="name headline">CocoaPods个人代码组件管理</h1>
         
 
         <div class="post-meta">
@@ -382,8 +384,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/16/share_github_pod_create/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/16/share_github_pod_create/" itemprop="commentsCount"></span>
+                <a href="/2017/10/16/share_github_pod_usage/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/16/share_github_pod_usage/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -391,7 +393,7 @@
 
           
           
-             <span id="/2017/10/16/share_github_pod_create/" class="leancloud_visitors" data-flag-title="CocoaPods制作">
+             <span id="/2017/10/16/share_github_pod_usage/" class="leancloud_visitors" data-flag-title="CocoaPods个人代码组件管理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -442,12 +444,19 @@
 <li>pod trunk register 邮箱 ‘用户名’：注册，之后在邮件中进行验证。</li>
 <li>pod trunk me ： 查看个人信息，包括该邮件下已经注册的代码组件、个人信息、登陆session等。</li>
 <li>pod trunk push *.podspec : 发布podspec</li>
+<li>等待审核</li>
 <li>pod search： 检查是否发布成功</li>
 </ul>
-<h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><h3 id="依赖工程dependency处理"><a href="#依赖工程dependency处理" class="headerlink" title="依赖工程dependency处理"></a>依赖工程dependency处理</h3><p>如果有多个依赖工程（组件），则需要在podspec文件中明确工程（组件）的放置位置。例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">s.dependency  &apos;XMPPFramework&apos;</div><div class="line">s.dependency  &apos;GoogleWebRTC&apos;</div><div class="line"></div><div class="line">s.subspec &quot;XMPPFramework&quot; do |ss|</div><div class="line">ss.dependency &quot;XMPPFramework&quot;</div><div class="line">ss.xcconfig = &#123; &quot;FRAMEWORK_SEARCH_PATHS&quot; =&gt; &quot;$(PODS_ROOT)/XMPPFramework&quot;&#125;</div><div class="line">end</div><div class="line"></div><div class="line">s.subspec &quot;GoogleWebRTC&quot; do |ss|</div><div class="line">ss.dependency &quot;GoogleWebRTC&quot;</div><div class="line">ss.xcconfig = &#123; &quot;FRAMEWORK_SEARCH_PATHS&quot; =&gt; &quot;$(PODS_ROOT)/GoogleWebRTC&quot;&#125;</div><div class="line">end</div></pre></td></tr></table></figure>
-<h3 id="验证失败"><a href="#验证失败" class="headerlink" title="验证失败"></a>验证失败</h3><p>根据失败的log日志，确认失败原因，比如LTChat依赖于XMPPFramework，而XMPPFramework又依赖了KissXML。此时编译的时候出现了Swift版本不明确的错误。</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>建立TAG，并发布。<br><img src="/post/share/github_pod_update_1.png" alt=""><br><img src="/post/share/github_pod_update_2.png" alt=""></p>
+<h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><h4 id="pod-lib-lint验证失败"><a href="#pod-lib-lint验证失败" class="headerlink" title="pod lib lint验证失败"></a>pod lib lint验证失败</h4><p>如果出现验证失败，则需要添加参数 <strong>–verbose</strong> 查看详细错误原因 。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">The following build commands failed:</div><div class="line">Ld /Users/liangtong/Library/Developer/Xcode/DerivedData/App-eowwjkrvluwvfdhhkljszfucgimo/Build/Intermediates.noindex/Pods.build/Release-iphonesimulator/LTChat.build/Objects-normal/i386/LTChat normal i386</div><div class="line">(1 failure)</div><div class="line"></div><div class="line"></div><div class="line">[!] LTChat did not pass validation, due to 1 error and 71 warnings.</div></pre></td></tr></table></figure>
+<p>原因是由于谷歌官方iOS版本的 <strong>GoogleWebRTC</strong> 仅支持处理器<strong>x86_64 armv7 arm64</strong>导致</p>
+<h4 id="Swift-Language-Version"><a href="#Swift-Language-Version" class="headerlink" title="Swift Language Version"></a>Swift Language Version</h4><p>根据失败的log日志，确认失败原因，比如LTChat依赖于XMPPFramework，而XMPPFramework又依赖了KissXML。此时编译的时候出现了Swift版本不明确的错误。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">=== BUILD TARGET KissXML OF PROJECT Pods WITH CONFIGURATION Release ===</div><div class="line"></div><div class="line">Check dependencies</div><div class="line">The “Swift Language Version” (SWIFT_VERSION) build setting must be set to a supported value for targets which use Swift. This setting can be set in the build settings editor.</div><div class="line">The “Swift Language Version” (SWIFT_VERSION) build setting must be set to a supported value for targets which use Swift. This setting can be set in the build settings editor.</div><div class="line"></div><div class="line">** BUILD FAILED **</div><div class="line"></div><div class="line">The following build commands failed:</div><div class="line">Check dependencies</div></pre></td></tr></table></figure>
+<p>解决办法，指定 <strong>Swift Language</strong> 版本</p>
+<blockquote>
+<p> pod lib lint –swift-version=4.0</p>
+</blockquote>
 
       
     </div>
@@ -700,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Git仓库"><span class="nav-number">1.</span> <span class="nav-text">创建Git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建podspec文件"><span class="nav-number">2.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑podspec文件"><span class="nav-number">3.</span> <span class="nav-text">编辑podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立TAG"><span class="nav-number">4.</span> <span class="nav-text">建立TAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证Pod文件"><span class="nav-number">5.</span> <span class="nav-text">验证Pod文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">6.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题记录"><span class="nav-number">7.</span> <span class="nav-text">问题记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖工程dependency处理"><span class="nav-number">8.</span> <span class="nav-text">依赖工程dependency处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证失败"><span class="nav-number">9.</span> <span class="nav-text">验证失败</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Git仓库"><span class="nav-number">1.</span> <span class="nav-text">创建Git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建podspec文件"><span class="nav-number">2.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑podspec文件"><span class="nav-number">3.</span> <span class="nav-text">编辑podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立TAG"><span class="nav-number">4.</span> <span class="nav-text">建立TAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证Pod文件"><span class="nav-number">5.</span> <span class="nav-text">验证Pod文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">6.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">7.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题记录"><span class="nav-number">8.</span> <span class="nav-text">问题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pod-lib-lint验证失败"><span class="nav-number">8.1.</span> <span class="nav-text">pod lib lint验证失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Swift-Language-Version"><span class="nav-number">8.2.</span> <span class="nav-text">Swift Language Version</span></a></li></ol></li></ol></div>
             
 
           </div>

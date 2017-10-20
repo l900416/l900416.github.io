@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      CocoaPods制作
+title:      CocoaPods个人代码组件管理
 date:       2017-10-16 14:25:19
 author:     liangtong
 categories: 技术分享
@@ -12,7 +12,7 @@ tags: GitHub
 [Cocoapods](https://cocoapods.org/)是非常好用的一个iOS依赖管理工具，使用它可以方便的管理和更新项目中所使用到的第三方库，本节介绍如何将自己的组件代码交由它去管理。
 
 ### 创建Git仓库
-   
+
   根据GitHub提示操作即可，建立自己的Git仓库。 
 
 ### 创建podspec文件
@@ -29,7 +29,7 @@ pod spec create "LTChat"
 <!-- more -->
 
 ### 编辑podspec文件  
-  
+
 编辑文件时注意编辑工具的使用，Mac上默认的文本编辑文件编辑时很容易出现编码问题。
 修改Pod文件的配置信息，摘要如下：
 
@@ -94,30 +94,33 @@ pod spec create "LTChat"
   * pod trunk register 邮箱 '用户名'：注册，之后在邮件中进行验证。
   * pod trunk me ： 查看个人信息，包括该邮件下已经注册的代码组件、个人信息、登陆session等。
   * pod trunk push *.podspec : 发布podspec
+  * 等待审核
   * pod search： 检查是否发布成功
+
+### 更新
+
+建立TAG，并发布。
+![](/post/share/github_pod_update_1.png)
+![](/post/share/github_pod_update_2.png)
 
 ### 问题记录
 
-### 依赖工程dependency处理
+#### pod lib lint验证失败
 
-如果有多个依赖工程（组件），则需要在podspec文件中明确工程（组件）的放置位置。例如
+如果出现验证失败，则需要添加参数 **--verbose** 查看详细错误原因 。例如
 
 ```Objective-C
-s.dependency  'XMPPFramework'
-s.dependency  'GoogleWebRTC'
+The following build commands failed:
+Ld /Users/liangtong/Library/Developer/Xcode/DerivedData/App-eowwjkrvluwvfdhhkljszfucgimo/Build/Intermediates.noindex/Pods.build/Release-iphonesimulator/LTChat.build/Objects-normal/i386/LTChat normal i386
+(1 failure)
 
-s.subspec "XMPPFramework" do |ss|
-ss.dependency "XMPPFramework"
-ss.xcconfig = { "FRAMEWORK_SEARCH_PATHS" => "$(PODS_ROOT)/XMPPFramework"}
-end
 
-s.subspec "GoogleWebRTC" do |ss|
-ss.dependency "GoogleWebRTC"
-ss.xcconfig = { "FRAMEWORK_SEARCH_PATHS" => "$(PODS_ROOT)/GoogleWebRTC"}
-end
+[!] LTChat did not pass validation, due to 1 error and 71 warnings.
 ```
 
-### 验证失败
+原因是由于谷歌官方iOS版本的 **GoogleWebRTC** 仅支持处理器**x86_64 armv7 arm64**导致
+
+#### Swift Language Version
 
 根据失败的log日志，确认失败原因，比如LTChat依赖于XMPPFramework，而XMPPFramework又依赖了KissXML。此时编译的时候出现了Swift版本不明确的错误。
 
@@ -134,6 +137,8 @@ The following build commands failed:
 Check dependencies
 ```
 
+解决办法，指定 **Swift Language** 版本
+>  pod lib lint --swift-version=4.0
 
 
 
