@@ -384,12 +384,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/04/iOS_Swift_language_note_Basic-Operators/</loc>
+    <loc>https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Basic Operators</title>
-        <pubTime>2016-11-03T16:00:00.000Z</pubTime>
+        <title>Swift Access Control</title>
+        <pubTime>2016-12-04T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -404,12 +404,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/</loc>
+    <loc>https://l900416.github.io/2016/11/04/iOS_Swift_language_note_Basic-Operators/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Access Control</title>
-        <pubTime>2016-12-04T16:20:11.000Z</pubTime>
+        <title>Swift Basic Operators</title>
+        <pubTime>2016-11-03T16:00:00.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -664,12 +664,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/</loc>
+    <loc>https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Nested Types</title>
-        <pubTime>2016-12-01T11:20:11.000Z</pubTime>
+        <title>Swift Initialization</title>
+        <pubTime>2016-11-26T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -684,12 +684,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/27/iOS_Swift_language_note_Initialization/</loc>
+    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Initialization</title>
-        <pubTime>2016-11-26T16:20:11.000Z</pubTime>
+        <title>Swift Nested Types</title>
+        <pubTime>2016-12-01T11:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -744,12 +744,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/11/05/iOS_Swift_language_note_String-and-Characters/</loc>
+    <loc>https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Protocols/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Swift String and Characters</title>
-        <pubTime>2016-11-04T16:20:11.000Z</pubTime>
+        <title>Swift Protocols</title>
+        <pubTime>2016-12-02T11:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -764,12 +764,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Protocols/</loc>
+    <loc>https://l900416.github.io/2016/11/05/iOS_Swift_language_note_String-and-Characters/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Swift Protocols</title>
-        <pubTime>2016-12-02T11:20:11.000Z</pubTime>
+        <title>Swift String and Characters</title>
+        <pubTime>2016-11-04T16:20:11.000Z</pubTime>
         
         <tag>Swift</tag>
          
@@ -904,26 +904,6 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2016/10/25/iOS_develop_viewController_life_circle/</loc>
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>ViewController Life-Circle</title>
-        <pubTime>2016-10-25T14:16:32.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://l900416.github.io/2017/10/12/ios_instance_message_xmpp_roster/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
@@ -937,6 +917,26 @@
            
              
               <breadCrumb title="即时通讯" url="https://l900416.github.io/categories/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://l900416.github.io/2016/10/25/iOS_develop_viewController_life_circle/</loc>
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>ViewController Life-Circle</title>
+        <pubTime>2016-10-25T14:16:32.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://l900416.github.io/categories/iOS/"/>
           
         </display>
     </data>
@@ -1024,12 +1024,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/08/07/share_github_blog_jekyll/</loc>
+    <loc>https://l900416.github.io/2017/08/04/share_github_blog_hexo/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Mac下使用Jekyll搭建GitHub博客</title>
-        <pubTime>2017-08-07T08:25:19.000Z</pubTime>
+        <title>Mac下使用Hexo搭建GitHub博客</title>
+        <pubTime>2017-08-04T06:25:19.000Z</pubTime>
         
         <tag>GitHub</tag>
          
@@ -1044,12 +1044,12 @@
 
     
   <url>
-    <loc>https://l900416.github.io/2017/08/04/share_github_blog_hexo/</loc>
+    <loc>https://l900416.github.io/2017/08/07/share_github_blog_jekyll/</loc>
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     <data>
         <display>
-        <title>Mac下使用Hexo搭建GitHub博客</title>
-        <pubTime>2017-08-04T06:25:19.000Z</pubTime>
+        <title>Mac下使用Jekyll搭建GitHub博客</title>
+        <pubTime>2017-08-07T08:25:19.000Z</pubTime>
         
         <tag>GitHub</tag>
          
