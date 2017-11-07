@@ -40,7 +40,7 @@ tags: 问题记录
 
 界面竟然正常了！！！！
 
-所以，我觉得，如果不设置 **rowHeight** 属性时，实现 **UITableViewDelegate** 协议的方法也可以吧。
+如果不设置 **rowHeight** 属性时，实现 **UITableViewDelegate** 协议的方法也可以，但是从性能方面考虑，不建议使用协议的方式。
 
 ```Objective-C
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -48,7 +48,6 @@ tags: 问题记录
 }
 ```
 
-事实证明，以上也是可行的。
 
 ### 结论
 

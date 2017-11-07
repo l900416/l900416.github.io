@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="liangtong">
 <meta property="og:description" content="​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell无法展示了，然后控制台报了一大堆的约束警告。 1234&amp;quot;&amp;lt;NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-01T08:32:18.000Z">
+<meta property="og:updated_time" content="2017-11-07T09:50:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode9中TableViewCell高度自适应">
 <meta name="twitter:description" content="​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell无法展示了，然后控制台报了一大堆的约束警告。 1234&amp;quot;&amp;lt;NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8&amp;gt">
@@ -426,9 +426,8 @@
 <h3 id="rowHeight"><a href="#rowHeight" class="headerlink" title="rowHeight"></a>rowHeight</h3><p>代码没有问题，无奈点开UITableView文件进行查看，发现还有个 <strong>rowHeight</strong> 属性，印象中之前如果使用 <strong>estimatedRowHeight</strong> 时不设置 <strong>rowHeight</strong> 也没有影响。考虑到log信息，决定添加上该属性设置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.tableView.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
 <p>界面竟然正常了！！！！</p>
-<p>所以，我觉得，如果不设置 <strong>rowHeight</strong> 属性时，实现 <strong>UITableViewDelegate</strong> 协议的方法也可以吧。</p>
+<p>如果不设置 <strong>rowHeight</strong> 属性时，实现 <strong>UITableViewDelegate</strong> 协议的方法也可以，但是从性能方面考虑，不建议使用协议的方式。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath&#123;</div><div class="line">    return UITableViewAutomaticDimension;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>事实证明，以上也是可行的。</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>应该是Xcode9在处理UITableView时，对属性 <strong>rowHeight</strong> 的支持出现了问题。以下摘自UIKit中源码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic) CGFloat rowHeight;             // default is UITableViewAutomaticDimension</div></pre></td></tr></table></figure>
 <p>注释中提到该属性的默认值就是UITableViewAutomaticDimension。</p>
