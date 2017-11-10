@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://l900416.github.io/post/share/github_pod_create_2.png">
 <meta property="og:image" content="https://l900416.github.io/post/share/github_pod_update_1.png">
 <meta property="og:image" content="https://l900416.github.io/post/share/github_pod_update_2.png">
-<meta property="og:updated_time" content="2017-10-20T07:39:39.000Z">
+<meta property="og:updated_time" content="2017-11-10T09:38:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods个人代码组件管理">
 <meta name="twitter:description" content="Cocoapods是非常好用的一个iOS依赖管理工具，使用它可以方便的管理和更新项目中所使用到的第三方库，本节介绍如何将自己的组件代码交由它去管理。 创建Git仓库  根据GitHub提示操作即可，建立自己的Git仓库。  创建podspec文件  终端直接执行以下命令，创建Pod项目工程文件，例如要创建一个叫做 LTChat 的Pod工程，命令执行成功后，会看到一个叫做 LTChat.podsp">
@@ -457,6 +457,8 @@
 <blockquote>
 <p> pod lib lint –swift-version=4.0</p>
 </blockquote>
+<h4 id="上传后查询不到最新版本"><a href="#上传后查询不到最新版本" class="headerlink" title="上传后查询不到最新版本"></a>上传后查询不到最新版本</h4><p>解决办法：清理缓存，重新setup</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rm -rf ~/.cocoapods/repos/master</div><div class="line">pod setup</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -713,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Git仓库"><span class="nav-number">1.</span> <span class="nav-text">创建Git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建podspec文件"><span class="nav-number">2.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑podspec文件"><span class="nav-number">3.</span> <span class="nav-text">编辑podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立TAG"><span class="nav-number">4.</span> <span class="nav-text">建立TAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证Pod文件"><span class="nav-number">5.</span> <span class="nav-text">验证Pod文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">6.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">7.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题记录"><span class="nav-number">8.</span> <span class="nav-text">问题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pod-lib-lint验证失败"><span class="nav-number">8.1.</span> <span class="nav-text">pod lib lint验证失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Swift-Language-Version"><span class="nav-number">8.2.</span> <span class="nav-text">Swift Language Version</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Git仓库"><span class="nav-number">1.</span> <span class="nav-text">创建Git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建podspec文件"><span class="nav-number">2.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑podspec文件"><span class="nav-number">3.</span> <span class="nav-text">编辑podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立TAG"><span class="nav-number">4.</span> <span class="nav-text">建立TAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证Pod文件"><span class="nav-number">5.</span> <span class="nav-text">验证Pod文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">6.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">7.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题记录"><span class="nav-number">8.</span> <span class="nav-text">问题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pod-lib-lint验证失败"><span class="nav-number">8.1.</span> <span class="nav-text">pod lib lint验证失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Swift-Language-Version"><span class="nav-number">8.2.</span> <span class="nav-text">Swift Language Version</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传后查询不到最新版本"><span class="nav-number">8.3.</span> <span class="nav-text">上传后查询不到最新版本</span></a></li></ol></li></ol></div>
             
 
           </div>
