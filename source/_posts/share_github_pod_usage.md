@@ -141,5 +141,13 @@ Check dependencies
 >  pod lib lint --swift-version=4.0
 
 
+#### 上传后查询不到最新版本
+
+解决办法：清理缓存，重新setup
+
+```Shell
+  rm -rf ~/.cocoapods/repos/master
+  pod setup
+```
 
 
