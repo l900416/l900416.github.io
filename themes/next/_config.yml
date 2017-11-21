@@ -34,7 +34,7 @@ keywords: "Hexo, NexT"
 # Set rss to specific value if you have burned your feed already.
 rss:
 
-footer:
+footer: Copyright © 2016～2017 liangtong. All rights reserved.\n powered-by Hexo
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
 since: 2016
