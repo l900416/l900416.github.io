@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/11/22/iOS_develop_xcode9_ios11_problem/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/11/22/iOS_develop_problem_xcode9_ios11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/22/iOS_develop_xcode9_ios11_problem/" itemprop="url">XCode9对应iOS11系统适配</a></h1>
+                <a class="post-title-link" href="/2017/11/22/iOS_develop_problem_xcode9_ios11/" itemprop="url">XCode9对应iOS11系统适配</a></h1>
         
 
         <div class="post-meta">
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2017/11/22/iOS_develop_xcode9_ios11_problem/" class="leancloud_visitors" data-flag-title="XCode9对应iOS11系统适配">
+             <span id="/2017/11/22/iOS_develop_problem_xcode9_ios11/" class="leancloud_visitors" data-flag-title="XCode9对应iOS11系统适配">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -629,7 +629,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/11/01/iOS_develop_tableview_problem/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/11/01/iOS_develop_problem_xcode9__tableview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -648,7 +648,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/01/iOS_develop_tableview_problem/" itemprop="url">Xcode9中TableViewCell高度自适应</a></h1>
+                <a class="post-title-link" href="/2017/11/01/iOS_develop_problem_xcode9__tableview/" itemprop="url">Xcode9中TableViewCell高度自适应</a></h1>
         
 
         <div class="post-meta">
@@ -700,7 +700,7 @@
 
           
           
-             <span id="/2017/11/01/iOS_develop_tableview_problem/" class="leancloud_visitors" data-flag-title="Xcode9中TableViewCell高度自适应">
+             <span id="/2017/11/01/iOS_develop_problem_xcode9__tableview/" class="leancloud_visitors" data-flag-title="Xcode9中TableViewCell高度自适应">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -733,14 +733,14 @@
       
         
           
-            <p>​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell无法展示了，然后控制台报了一大堆的约束警告。</p>
+            <p>​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell展示异常了，然后控制台报了一大堆的约束警告。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;&lt;NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8&gt;&quot;,</div><div class="line">&quot;&lt;NSLayoutConstraint:0x60c0000979d0 UIView:0x7fbb8c7841d0.top == UITableViewCellContentView:0x7fbb8c781b70.top&gt;&quot;,</div><div class="line">&quot;&lt;NSLayoutConstraint:0x60c000097a70 UITableViewCellContentView:0x7fbb8c781b70.bottom == UIView:0x7fbb8c7841d0.bottom + 2&gt;&quot;,</div><div class="line">&quot;&lt;NSLayoutConstraint:0x60c000098bf0 UITableViewCellContentView:0x7fbb8c781b70.height == 44&gt;&quot;</div></pre></td></tr></table></figure>
-<p>最初以为是有人动了代码，检查各种约束（比如log中有提到的UITableViewCellContentView高度44），发现UI并没有变更。<br>从log上看，觉得应该是tableview的高度设置有问题。于是查看对应 <strong>Controller</strong> 相关代码。</p>
+<p>从log上看，觉得应该是tableview的高度设置有问题。于是查看对应 <strong>Controller</strong> 相关代码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//注册自定义TableViewCell</div><div class="line">[self.tableView registerNib:[UINib nibWithNibName:@&quot;GKProjectSearchHeaderFilterView&quot; bundle:nil] forHeaderFooterViewReuseIdentifier:GKProjectSearchHeaderFilterViewIdentifier];</div><div class="line">self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</div><div class="line">self.tableView.estimatedRowHeight = 60.0f;</div></pre></td></tr></table></figure>
 <h3 id="rowHeight"><a href="#rowHeight" class="headerlink" title="rowHeight"></a>rowHeight</h3><p>代码没有问题，无奈点开UITableView文件进行查看，发现还有个 <strong>rowHeight</strong> 属性，印象中之前如果使用 <strong>estimatedRowHeight</strong> 时不设置 <strong>rowHeight</strong> 也没有影响。考虑到log信息，决定添加上该属性设置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.tableView.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
-<p>界面竟然正常了！！！！</p>
-<p>如果不设置 <strong>rowHeight</strong> 属性时，实现 <strong>UITableViewDelegate</strong> 协议的方法也可以，但是从性能方面考虑，不建议使用协议的方式。</p>
+<p>界面表现正常！</p>
+<p>如果不设置 <strong>rowHeight</strong> 属性时，实现 <strong>UITableViewDelegate</strong> 协议的方法也可以，但是 <strong>从性能方面考虑，不建议使用协议的方式</strong> 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath&#123;</div><div class="line">    return UITableViewAutomaticDimension;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>应该是Xcode9在处理UITableView时，对属性 <strong>rowHeight</strong> 的支持出现了问题。以下摘自UIKit中源码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic) CGFloat rowHeight;             // default is UITableViewAutomaticDimension</div></pre></td></tr></table></figure>
