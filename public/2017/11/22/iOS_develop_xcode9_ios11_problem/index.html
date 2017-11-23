@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 控制台出现以下log信息：  This app has attempted to access privacy-sensiti">
+<meta name="description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：">
 <meta name="keywords" content="问题记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XCode9对应iOS11系统适配">
 <meta property="og:url" content="https://l900416.github.io/2017/11/22/iOS_develop_xcode9_ios11_problem/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 控制台出现以下log信息：  This app has attempted to access privacy-sensiti">
+<meta property="og:description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-22T09:56:35.000Z">
+<meta property="og:updated_time" content="2017-11-23T01:12:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XCode9对应iOS11系统适配">
-<meta name="twitter:description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 控制台出现以下log信息：  This app has attempted to access privacy-sensiti">
+<meta name="twitter:description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：">
 
 
 
@@ -420,11 +420,12 @@
 
       
         <p>​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。</p>
-<h5 id="NSLocationAlwaysUsageDescription-变更为-NSLocationAlwaysAndWhenInUseUsageDescription"><a href="#NSLocationAlwaysUsageDescription-变更为-NSLocationAlwaysAndWhenInUseUsageDescription" class="headerlink" title="NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription"></a>NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription</h5><p> 控制台出现以下log信息：</p>
+<h5 id="NSLocationAlwaysUsageDescription-变更为-NSLocationAlwaysAndWhenInUseUsageDescription"><a href="#NSLocationAlwaysUsageDescription-变更为-NSLocationAlwaysAndWhenInUseUsageDescription" class="headerlink" title="NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription"></a>NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription</h5><p> 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：</p>
 <blockquote>
 <p>This app has attempted to access privacy-sensitive data without a usage description. The app’s Info.plist must contain both NSLocationAlwaysAndWhenInUseUsageDescription and NSLocationWhenInUseUsageDescription keys with string values explaining to the user how the app uses this data</p>
 </blockquote>
-<p>&lt;–持续更新中–&gt;</p>
+<p>意思是说在plist中需要设置请求位置服务的描述信息。字段名已经提供，只需要将info.plist中响应的字段修改下就可以了。</p>
+<p>&lt;—-持续更新中—-&gt;</p>
 
       
     </div>
