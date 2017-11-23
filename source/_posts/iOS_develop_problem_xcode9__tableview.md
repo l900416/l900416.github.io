@@ -11,7 +11,7 @@ tags: 问题记录
 
 
 
-​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell无法展示了，然后控制台报了一大堆的约束警告。
+​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell展示异常了，然后控制台报了一大堆的约束警告。
 
 ```Objective-C
     "<NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8>",
@@ -20,7 +20,6 @@ tags: 问题记录
     "<NSLayoutConstraint:0x60c000098bf0 UITableViewCellContentView:0x7fbb8c781b70.height == 44>"
 ```
 
-最初以为是有人动了代码，检查各种约束（比如log中有提到的UITableViewCellContentView高度44），发现UI并没有变更。
 从log上看，觉得应该是tableview的高度设置有问题。于是查看对应 **Controller** 相关代码。
 
 ```Objective-C
@@ -38,9 +37,9 @@ tags: 问题记录
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 ```
 
-界面竟然正常了！！！！
+界面表现正常！
 
-如果不设置 **rowHeight** 属性时，实现 **UITableViewDelegate** 协议的方法也可以，但是从性能方面考虑，不建议使用协议的方式。
+如果不设置 **rowHeight** 属性时，实现 **UITableViewDelegate** 协议的方法也可以，但是 **从性能方面考虑，不建议使用协议的方式** 。
 
 ```Objective-C
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

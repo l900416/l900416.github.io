@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：">
+<meta name="description" content="​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell展示异常了，然后控制台报了一大堆的约束警告。 1234&amp;quot;&amp;lt;NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8&amp;gt">
 <meta name="keywords" content="问题记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XCode9对应iOS11系统适配">
-<meta property="og:url" content="https://l900416.github.io/2017/11/22/iOS_develop_xcode9_ios11_problem/index.html">
+<meta property="og:title" content="Xcode9中TableViewCell高度自适应">
+<meta property="og:url" content="https://l900416.github.io/2017/11/01/iOS_develop_problem_xcode9__tableview/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：">
+<meta property="og:description" content="​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell展示异常了，然后控制台报了一大堆的约束警告。 1234&amp;quot;&amp;lt;NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T01:12:34.000Z">
+<meta property="og:updated_time" content="2017-11-23T02:11:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XCode9对应iOS11系统适配">
-<meta name="twitter:description" content="​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。 NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：">
+<meta name="twitter:title" content="Xcode9中TableViewCell高度自适应">
+<meta name="twitter:description" content="​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell展示异常了，然后控制台报了一大堆的约束警告。 1234&amp;quot;&amp;lt;NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8&amp;gt">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://l900416.github.io/2017/11/22/iOS_develop_xcode9_ios11_problem/"/>
+  <link rel="canonical" href="https://l900416.github.io/2017/11/01/iOS_develop_problem_xcode9__tableview/"/>
 
 
 
 
 
-  <title>XCode9对应iOS11系统适配 | liangtong</title>
+  <title>Xcode9中TableViewCell高度自适应 | liangtong</title>
   
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/11/22/iOS_develop_xcode9_ios11_problem/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/11/01/iOS_develop_problem_xcode9__tableview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">XCode9对应iOS11系统适配</h1>
+          <h1 class="post-title" itemprop="name headline">Xcode9中TableViewCell高度自适应</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T17:51:43+08:00">
-                2017-11-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-01T15:51:43+08:00">
+                2017-11-01
               </time>
             
 
@@ -379,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/22/iOS_develop_xcode9_ios11_problem/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/22/iOS_develop_xcode9_ios11_problem/" itemprop="commentsCount"></span>
+                <a href="/2017/11/01/iOS_develop_problem_xcode9__tableview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/01/iOS_develop_problem_xcode9__tableview/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -388,7 +388,7 @@
 
           
           
-             <span id="/2017/11/22/iOS_develop_xcode9_ios11_problem/" class="leancloud_visitors" data-flag-title="XCode9对应iOS11系统适配">
+             <span id="/2017/11/01/iOS_develop_problem_xcode9__tableview/" class="leancloud_visitors" data-flag-title="Xcode9中TableViewCell高度自适应">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -419,13 +419,18 @@
       
 
       
-        <p>​        为了适配iOS11系统，将XCode工具升级到了9.1版本。本文记录适配过程中遇到的问题。</p>
-<h5 id="NSLocationAlwaysUsageDescription-变更为-NSLocationAlwaysAndWhenInUseUsageDescription"><a href="#NSLocationAlwaysUsageDescription-变更为-NSLocationAlwaysAndWhenInUseUsageDescription" class="headerlink" title="NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription"></a>NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription</h5><p> 使用iBeacon技术，在程序不打开的情况下对区域进行监听时，需要将位置使用方式设置为Always。控制台出现以下log信息：</p>
-<blockquote>
-<p>This app has attempted to access privacy-sensitive data without a usage description. The app’s Info.plist must contain both NSLocationAlwaysAndWhenInUseUsageDescription and NSLocationWhenInUseUsageDescription keys with string values explaining to the user how the app uses this data</p>
-</blockquote>
-<p>意思是说在plist中需要设置请求位置服务的描述信息。字段名已经提供，只需要将info.plist中响应的字段修改下就可以了。</p>
-<p>&lt;—-持续更新中—-&gt;</p>
+        <p>​        前几天升级了Xcode9后，在对一个项目进行调试时突然发现有个使用UITableView的自定义Cell展示异常了，然后控制台报了一大堆的约束警告。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;&lt;NSLayoutConstraint:0x60c0000977f0 UIView:0x7fbb8c7841d0.bottom == UILabel:0x7fbb8c7870e0.bottom + 8&gt;&quot;,</div><div class="line">&quot;&lt;NSLayoutConstraint:0x60c0000979d0 UIView:0x7fbb8c7841d0.top == UITableViewCellContentView:0x7fbb8c781b70.top&gt;&quot;,</div><div class="line">&quot;&lt;NSLayoutConstraint:0x60c000097a70 UITableViewCellContentView:0x7fbb8c781b70.bottom == UIView:0x7fbb8c7841d0.bottom + 2&gt;&quot;,</div><div class="line">&quot;&lt;NSLayoutConstraint:0x60c000098bf0 UITableViewCellContentView:0x7fbb8c781b70.height == 44&gt;&quot;</div></pre></td></tr></table></figure>
+<p>从log上看，觉得应该是tableview的高度设置有问题。于是查看对应 <strong>Controller</strong> 相关代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//注册自定义TableViewCell</div><div class="line">[self.tableView registerNib:[UINib nibWithNibName:@&quot;GKProjectSearchHeaderFilterView&quot; bundle:nil] forHeaderFooterViewReuseIdentifier:GKProjectSearchHeaderFilterViewIdentifier];</div><div class="line">self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</div><div class="line">self.tableView.estimatedRowHeight = 60.0f;</div></pre></td></tr></table></figure>
+<h3 id="rowHeight"><a href="#rowHeight" class="headerlink" title="rowHeight"></a>rowHeight</h3><p>代码没有问题，无奈点开UITableView文件进行查看，发现还有个 <strong>rowHeight</strong> 属性，印象中之前如果使用 <strong>estimatedRowHeight</strong> 时不设置 <strong>rowHeight</strong> 也没有影响。考虑到log信息，决定添加上该属性设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.tableView.rowHeight = UITableViewAutomaticDimension;</div></pre></td></tr></table></figure>
+<p>界面表现正常！</p>
+<p>如果不设置 <strong>rowHeight</strong> 属性时，实现 <strong>UITableViewDelegate</strong> 协议的方法也可以，但是 <strong>从性能方面考虑，不建议使用协议的方式</strong> 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath&#123;</div><div class="line">    return UITableViewAutomaticDimension;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>应该是Xcode9在处理UITableView时，对属性 <strong>rowHeight</strong> 的支持出现了问题。以下摘自UIKit中源码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic) CGFloat rowHeight;             // default is UITableViewAutomaticDimension</div></pre></td></tr></table></figure>
+<p>注释中提到该属性的默认值就是UITableViewAutomaticDimension。</p>
 
       
     </div>
@@ -485,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/21/ios_instance_message_webrtc_message/" rel="next" title="GoogleWebRTC实时通讯">
-                <i class="fa fa-chevron-left"></i> GoogleWebRTC实时通讯
+              <a href="/2017/10/16/share_github_pod_usage/" rel="next" title="CocoaPods个人代码组件管理">
+                <i class="fa fa-chevron-left"></i> CocoaPods个人代码组件管理
               </a>
             
           </div>
@@ -494,6 +499,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/21/ios_instance_message_webrtc_message/" rel="prev" title="GoogleWebRTC实时通讯">
+                GoogleWebRTC实时通讯 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -678,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#NSLocationAlwaysUsageDescription-变更为-NSLocationAlwaysAndWhenInUseUsageDescription"><span class="nav-number">1.</span> <span class="nav-text">NSLocationAlwaysUsageDescription 变更为 NSLocationAlwaysAndWhenInUseUsageDescription</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#rowHeight"><span class="nav-number">1.</span> <span class="nav-text">rowHeight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">2.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
 
           </div>
