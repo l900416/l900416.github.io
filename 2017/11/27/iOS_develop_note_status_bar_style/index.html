@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Swift," />
+  <meta name="keywords" content="Note," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。 析构过程Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放">
-<meta name="keywords" content="Swift">
+<meta name="description" content="​        iOS9之后，APP在修改状态栏前端等颜色时，弃用了部分接口。比如： 12// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.@property(readwrite, nonatomi">
+<meta name="keywords" content="Note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift Deinitialization">
-<meta property="og:url" content="https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/index.html">
+<meta property="og:title" content="最低支持iOS9系统对应状态栏、导航栏UI设置">
+<meta property="og:url" content="https://l900416.github.io/2017/11/27/iOS_develop_note_status_bar_style/index.html">
 <meta property="og:site_name" content="liangtong">
-<meta property="og:description" content="​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。 析构过程Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放">
+<meta property="og:description" content="​        iOS9之后，APP在修改状态栏前端等颜色时，弃用了部分接口。比如： 12// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.@property(readwrite, nonatomi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-13T10:44:09.000Z">
+<meta property="og:updated_time" content="2017-11-27T08:28:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift Deinitialization">
-<meta name="twitter:description" content="​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。 析构过程Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放">
+<meta name="twitter:title" content="最低支持iOS9系统对应状态栏、导航栏UI设置">
+<meta name="twitter:description" content="​        iOS9之后，APP在修改状态栏前端等颜色时，弃用了部分接口。比如： 12// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.@property(readwrite, nonatomi">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/"/>
+  <link rel="canonical" href="https://l900416.github.io/2017/11/27/iOS_develop_note_status_bar_style/"/>
 
 
 
 
 
-  <title>Swift Deinitialization | liangtong</title>
+  <title>最低支持iOS9系统对应状态栏、导航栏UI设置 | liangtong</title>
   
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/28/iOS_Swift_language_note_Deinitialization/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2017/11/27/iOS_develop_note_status_bar_style/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Swift Deinitialization</h1>
+          <h1 class="post-title" itemprop="name headline">最低支持iOS9系统对应状态栏、导航栏UI设置</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-28T00:20:11+08:00">
-                2016-11-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-27T15:51:43+08:00">
+                2017-11-27
               </time>
             
 
@@ -379,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/28/iOS_Swift_language_note_Deinitialization/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2016/11/28/iOS_Swift_language_note_Deinitialization/" itemprop="commentsCount"></span>
+                <a href="/2017/11/27/iOS_develop_note_status_bar_style/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/27/iOS_develop_note_status_bar_style/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -388,7 +388,7 @@
 
           
           
-             <span id="/2016/11/28/iOS_Swift_language_note_Deinitialization/" class="leancloud_visitors" data-flag-title="Swift Deinitialization">
+             <span id="/2017/11/27/iOS_develop_note_status_bar_style/" class="leancloud_visitors" data-flag-title="最低支持iOS9系统对应状态栏、导航栏UI设置">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -419,37 +419,16 @@
       
 
       
-        <p>​    析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示。</p>
-<h3 id="析构过程"><a href="#析构过程" class="headerlink" title="析构过程"></a>析构过程</h3><p>Swift 会自动释放不再需要的实例以释放资源。通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放之前手动去关闭该文件。</p>
-<p>在类的定义中，每个类最多只能有一个析构器，而且析构器不带任何参数，如下所示：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="comment">// perform the deinitialization</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>析构器是在实例释放发生前被自动调用。你不能主动调用析构器。子类继承了父类的析构器，并且在子类析构器实现的最后，父类的析构器会被自动调用。即使子类没有提供自己的析构器，父类的析构器也同样会被调用。</p>
-<a id="more"></a>
-<p>因为直到实例的析构器被调用后，实例才会被释放，所以析构器可以访问实例的所有属性，并且可以根据那些属性可以修改它的行为（比如查找一个需要被关闭的文件）。</p>
-<h3 id="析构实践"><a href="#析构实践" class="headerlink" title="析构实践"></a>析构实践</h3><p>这是一个析构器实践的例子。这个例子描述了一个简单的游戏，这里定义了两种新类型，分别是Bank和Player。Bank类管理一种虚拟硬币，确保流通的硬币数量永远不可能超过 10,000。在游戏中有且只能有一个Bank存在，因此Bank用类来实现，并使用类型属性和类型方法来存储和管理其当前状态。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bank</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> coinsInBank = <span class="number">10_000</span></div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">distribute</span><span class="params">(coins numberOfCoinsRequested: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">let</span> numberOfCoinsToVend = <span class="built_in">min</span>(numberOfCoinsRequested, coinsInBank)</div><div class="line">        coinsInBank -= numberOfCoinsToVend</div><div class="line">        <span class="keyword">return</span> numberOfCoinsToVend</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">receive</span><span class="params">(coins: Int)</span></span> &#123;</div><div class="line">        coinsInBank += coins</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Bank使用coinsInBank属性来跟踪它当前拥有的硬币数量。Bank还提供了两个方法，distribute(coins:)和receive(coins:)，分别用来处理硬币的分发和收集。</p>
-<p>distribute(coins:)方法在Bank对象分发硬币之前检查是否有足够的硬币。如果硬币不足，Bank对象会返回一个比请求时小的数字（如果Bank对象中没有硬币了就返回0）。此方法返回一个整型值，表示提供的硬币的实际数量。</p>
-<p>receive(coins:)方法只是将Bank实例接收到的硬币数目加回硬币存储中。</p>
-<p>Player类描述了游戏中的一个玩家。每一个玩家在任意时间都有一定数量的硬币存储在他们的钱包中。这通过玩家的coinsInPurse属性来表示：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> coinsInPurse: <span class="type">Int</span></div><div class="line">    <span class="keyword">init</span>(coins: <span class="type">Int</span>) &#123;</div><div class="line">        coinsInPurse = <span class="type">Bank</span>.distribute(coins: coins)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">win</span><span class="params">(coins: Int)</span></span> &#123;</div><div class="line">        coinsInPurse += <span class="type">Bank</span>.distribute(coins: coins)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">        <span class="type">Bank</span>.receive(coins: coinsInPurse)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>每个Player实例在初始化的过程中，都从Bank对象获取指定数量的硬币。如果没有足够的硬币可用，Player实例可能会收到比指定数量少的硬币.</p>
-<p>Player类定义了一个win(coins:)方法，该方法从Bank对象获取一定数量的硬币，并把它们添加到玩家的钱包。Player类还实现了一个析构器，这个析构器在Player实例释放前被调用。在这里，析构器的作用只是将玩家的所有硬币都返还给Bank对象：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> playerOne: <span class="type">Player</span>? = <span class="type">Player</span>(coins: <span class="number">100</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"A new player has joined the game with <span class="subst">\(playerOne!.coinsInPurse)</span> coins"</span>)</div><div class="line"><span class="comment">// Prints "A new player has joined the game with 100 coins"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"There are now <span class="subst">\(Bank.coinsInBank)</span> coins left in the bank"</span>)</div><div class="line"><span class="comment">// Prints "There are now 9900 coins left in the bank"</span></div></pre></td></tr></table></figure>
-<p>创建一个Player实例的时候，会向Bank对象请求 100 个硬币，如果有足够的硬币可用的话。这个Player实例存储在一个名为playerOne的可选类型的变量中。这里使用了一个可选类型的变量，因为玩家可以随时离开游戏，设置为可选使你可以追踪玩家当前是否在游戏中。<br>因为playerOne是可选的，所以访问其coinsInPurse属性来打印钱包中的硬币数量时，使用感叹号（!）来解包：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">playerOne!.win(coins: <span class="number">2_000</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"PlayerOne won 2000 coins &amp; now has <span class="subst">\(playerOne!.coinsInPurse)</span> coins"</span>)</div><div class="line"><span class="comment">// Prints "PlayerOne won 2000 coins &amp; now has 2100 coins"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The bank now only has <span class="subst">\(Bank.coinsInBank)</span> coins left"</span>)</div><div class="line"><span class="comment">// Prints "The bank now only has 7900 coins left"</span></div></pre></td></tr></table></figure>
-<p>这里，玩家已经赢得了 2,000 枚硬币，所以玩家的钱包中现在有 2,100 枚硬币，而Bank对象只剩余 7,900 枚硬币。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">playerOne = <span class="literal">nil</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"PlayerOne has left the game"</span>)</div><div class="line"><span class="comment">// Prints "PlayerOne has left the game"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"The bank now has <span class="subst">\(Bank.coinsInBank)</span> coins"</span>)</div><div class="line"><span class="comment">// Prints "The bank now has 10000 coins"</span></div></pre></td></tr></table></figure>
-<p>玩家现在已经离开了游戏。这通过将可选类型的playerOne变量设置为nil来表示，意味着“没有Player实例”。当这一切发生时，playerOne变量对Player实例的引用被破坏了。没有其它属性或者变量引用Player实例，因此该实例会被释放，以便回收内存。在这之前，该实例的析构器被自动调用，玩家的硬币被返还给银行。</p>
-<h3 id="参照文档"><a href="#参照文档" class="headerlink" title="参照文档"></a>参照文档</h3><blockquote>
-<ul>
-<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Deinitialization.html/" target="_blank" rel="external"> Deinitialization </a> </li>
-</ul>
-</blockquote>
-<p>&gt;<br>&gt;</p>
-<blockquote>
-<p>Copyright (c) liangtong. All rights reserved.</p>
-</blockquote>
+        <p>​        iOS9之后，APP在修改状态栏前端等颜色时，弃用了部分接口。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.</div><div class="line">@property(readwrite, nonatomic) UIStatusBarStyle statusBarStyle NS_DEPRECATED_IOS(2_0, 9_0, &quot;Use -[UIViewController preferredStatusBarStyle]&quot;) __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
+<p>本文介绍最低支持iOS9系统对应的状态栏前段UI设置。</p>
+<h3 id="状态栏字体颜色"><a href="#状态栏字体颜色" class="headerlink" title="状态栏字体颜色"></a>状态栏字体颜色</h3><h4 id="程序启动Launch画面"><a href="#程序启动Launch画面" class="headerlink" title="程序启动Launch画面"></a>程序启动Launch画面</h4><p>对应状态栏字体颜色，可以通过在plist文件中添加属性 <strong>UIStatusBarStyle</strong> （或者 <strong>Status bar style</strong>）来设置字体颜色为黑色 <strong>UIStatusBarStyleDefault</strong> ，或者白色 <strong>UIStatusBarStyleLightContent</strong></p>
+<h4 id="功能页面"><a href="#功能页面" class="headerlink" title="功能页面"></a>功能页面</h4><p>程序启动后，可以通过重写 <strong>UIViewController</strong> 中的方法 <strong>preferredStatusBarStyle</strong> 来实现。例如在程序的Base NavigationController中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (UIStatusBarStyle)preferredStatusBarStyle&#123;</div><div class="line">    return UIStatusBarStyleLightContent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="导航栏字体颜色"><a href="#导航栏字体颜色" class="headerlink" title="导航栏字体颜色"></a>导航栏字体颜色</h3><p>可以在程序启动时，通过以下代码设置。例如以下代码将导航栏字体颜色设置为白色：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//NavigationBar 字体颜色</div><div class="line">[[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];</div></pre></td></tr></table></figure>
+<h3 id="背景颜色"><a href="#背景颜色" class="headerlink" title="背景颜色"></a>背景颜色</h3><p>在程序启动时，可以通过代码进行设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UIColor* statusBarBackgroundColor;//状态栏颜色</div><div class="line">[[UINavigationBar appearance] setBarTintColor:statusBarBackgroundColor];</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -496,7 +475,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/tags/Note/" rel="tag"># Note</a>
           
         </div>
       
@@ -509,8 +488,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/27/iOS_Swift_language_note_Initialization/" rel="next" title="Swift Initialization">
-                <i class="fa fa-chevron-left"></i> Swift Initialization
+              <a href="/2017/11/22/iOS_develop_problem_xcode9_ios11/" rel="next" title="XCode9对应iOS11系统适配">
+                <i class="fa fa-chevron-left"></i> XCode9对应iOS11系统适配
               </a>
             
           </div>
@@ -518,10 +497,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/29/iOS_Swift_language_note_ARC/" rel="prev" title="Swift ARC">
-                Swift ARC <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -706,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#析构过程"><span class="nav-number">1.</span> <span class="nav-text">析构过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构实践"><span class="nav-number">2.</span> <span class="nav-text">析构实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参照文档"><span class="nav-number">3.</span> <span class="nav-text">参照文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态栏字体颜色"><span class="nav-number">1.</span> <span class="nav-text">状态栏字体颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#程序启动Launch画面"><span class="nav-number">1.1.</span> <span class="nav-text">程序启动Launch画面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能页面"><span class="nav-number">1.2.</span> <span class="nav-text">功能页面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航栏字体颜色"><span class="nav-number">2.</span> <span class="nav-text">导航栏字体颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景颜色"><span class="nav-number">3.</span> <span class="nav-text">背景颜色</span></a></li></ol></div>
             
 
           </div>

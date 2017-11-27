@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Type-Casting/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" itemprop="url">Swift Type Casting</a></h1>
+                <a class="post-title-link" href="/2016/12/01/iOS_Swift_language_note_Nested-Types/" itemprop="url">Swift Nested Types</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T23:20:11+08:00">
-                2016-11-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T19:20:11+08:00">
+                2016-12-01
               </time>
             
 
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2016/11/30/iOS_Swift_language_note_Type-Casting/" class="leancloud_visitors" data-flag-title="Swift Type Casting">
+             <span id="/2016/12/01/iOS_Swift_language_note_Nested-Types/" class="leancloud_visitors" data-flag-title="Swift Nested Types">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,10 +411,11 @@
 
       
         
-          <p>​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。<br>​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议</p>
+          <p>​    枚举常被用于为特定类或结构体实现某些功能。类似的，枚举可以方便的定义工具类或结构体，从而为某个复杂的类型所使用。为了实现这种功能，Swift 允许你定义嵌套类型，可以在支持的类型中定义嵌套的枚举、类和结构体。<br>要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的{}内，而且可以根据需要定义多级嵌套。</p>
+<h3 id="嵌套类型实践"><a href="#嵌套类型实践" class="headerlink" title="嵌套类型实践"></a>嵌套类型实践</h3><p>下面这个例子定义了一个结构体BlackjackCard，用来模拟BlackjackCard中的扑克牌点数。BlackjackCard结构体包含两个嵌套定义的枚举类型Suit和Rank。<br>在BlackjackCard中，Ace牌可以表示1或者11，Ace牌的这一特征通过一个嵌套在Rank枚举中的结构体Values来表示：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" rel="contents">
+            <a class="btn" href="/2016/12/01/iOS_Swift_language_note_Nested-Types/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -626,7 +627,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Type-Casting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -645,7 +646,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" itemprop="url">Swift Optional Chaining</a></h1>
+                <a class="post-title-link" href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" itemprop="url">Swift Type Casting</a></h1>
         
 
         <div class="post-meta">
@@ -657,7 +658,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T01:20:11+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-30T23:20:11+08:00">
                 2016-11-30
               </time>
             
@@ -697,7 +698,7 @@
 
           
           
-             <span id="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" class="leancloud_visitors" data-flag-title="Swift Optional Chaining">
+             <span id="/2016/11/30/iOS_Swift_language_note_Type-Casting/" class="leancloud_visitors" data-flag-title="Swift Type Casting">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -729,13 +730,10 @@
 
       
         
-          <p>​    可选链式调用是一种可以在当前值可能为nil的可选值上请求和调用属性、方法及下标的方法。如果可选值有值，那么调用就会成功；如果可选值是nil，那么调用将返回nil。多个调用可以连接在一起形成一个调用链，如果其中任何一个节点为nil，整个调用链都会失败，即返回nil。<br>    Swift 的可选链式调用和 Objective-C 中向nil发送消息有些相像，但是 Swift 的可选链式调用可以应用于任意类型，并且能检查调用是否成功。</p>
-<h3 id="使用可选链式调用代替强制展开"><a href="#使用可选链式调用代替强制展开" class="headerlink" title="使用可选链式调用代替强制展开"></a>使用可选链式调用代替强制展开</h3><p>通过在想调用的属性、方法、或下标的可选值后面放一个问号（?），可以定义一个可选链。这一点很像在可选值后面放一个叹号（!）来强制展开它的值。它们的主要区别在于当可选值为空时可选链式调用只会调用失败，然而强制展开将会触发运行时错误。</p>
-<p>为了反映可选链式调用可以在空值（nil）上调用的事实，不论这个调用的属性、方法及下标返回的值是不是可选值，它的返回结果都是一个可选值。你可以利用这个返回值来判断你的可选链式调用是否调用成功，如果调用有返回值则说明调用成功，返回nil则说明调用失败。</p>
-<p>特别地，可选链式调用的返回结果与原本的返回结果具有相同的类型，但是被包装成了一个可选值。例如，使用可选链式调用访问属性，当可选链式调用成功时，如果属性原本的返回结果是Int类型，则会变为Int?类型。</p>
+          <p>​    类型转换 可以判断实例的类型，也可以将实例看做是其父类或者子类的实例。<br>​类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。也可以用它来检查一个类型是否实现了某个协议</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/11/30/iOS_Swift_language_note_Optional-Chaining/" rel="contents">
+            <a class="btn" href="/2016/11/30/iOS_Swift_language_note_Type-Casting/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -777,7 +775,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -827,7 +825,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

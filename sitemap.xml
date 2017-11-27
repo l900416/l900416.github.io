@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://l900416.github.io/2017/11/27/iOS_develop_note_status_bar_style/</loc>
+    
+    <lastmod>2017-11-27T08:28:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://l900416.github.io/2017/11/01/iOS_develop_problem_xcode9__tableview/</loc>
     
     <lastmod>2017-11-23T02:11:43.000Z</lastmod>
@@ -37,28 +44,7 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Generics/</loc>
-    
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://l900416.github.io/2017/06/13/algorithm_sort_radix/</loc>
-    
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://l900416.github.io/2017/07/27/bluetooth_central/</loc>
-    
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://l900416.github.io/2017/02/11/bluetooth_iBeacon1/</loc>
+    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Inheritance/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -73,6 +59,20 @@
   
   <url>
     <loc>https://l900416.github.io/2017/03/13/bluetooth_iBeacon2/</loc>
+    
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/02/11/bluetooth_iBeacon1/</loc>
+    
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/06/13/algorithm_sort_radix/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -100,14 +100,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/</loc>
+    <loc>https://l900416.github.io/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/05/19/iOS_ObjC_LTxMenu_v2.0.0/</loc>
+    <loc>https://l900416.github.io/2016/10/20/iOS_ObjC_LTxMenu_v1.0.0/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -128,13 +128,6 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/29/iOS_Swift_language_note_ARC/</loc>
-    
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://l900416.github.io/2016/12/05/iOS_Swift_language_note_Access-Control/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
@@ -142,7 +135,7 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/24/iOS_Swift_language_note_Classes%20and%20Structures/</loc>
+    <loc>https://l900416.github.io/2016/11/29/iOS_Swift_language_note_ARC/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -150,6 +143,13 @@
   
   <url>
     <loc>https://l900416.github.io/2016/11/04/iOS_Swift_language_note_Basic-Operators/</loc>
+    
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2016/11/24/iOS_Swift_language_note_Classes%20and%20Structures/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -212,14 +212,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/04/27/algorithm_search_binary/</loc>
+    <loc>https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Generics/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Inheritance/</loc>
+    <loc>https://l900416.github.io/2017/04/27/algorithm_search_binary/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -240,14 +240,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/</loc>
+    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/12/01/iOS_Swift_language_note_Nested-Types/</loc>
+    <loc>https://l900416.github.io/2016/11/30/iOS_Swift_language_note_Optional-Chaining/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -261,6 +261,13 @@
   </url>
   
   <url>
+    <loc>https://l900416.github.io/2016/11/05/iOS_Swift_language_note_String-and-Characters/</loc>
+    
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://l900416.github.io/2016/12/02/iOS_Swift_language_note_Protocols/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
@@ -268,7 +275,14 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2016/11/05/iOS_Swift_language_note_String-and-Characters/</loc>
+    <loc>https://l900416.github.io/2016/10/30/iOS_develop_ObjC_basic/</loc>
+    
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/08/23/algorithm_location_maximum_likelihood/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -296,27 +310,6 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/08/23/algorithm_location_maximum_likelihood/</loc>
-    
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://l900416.github.io/2017/05/18/algorithm_sort_count/</loc>
-    
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://l900416.github.io/2016/10/30/iOS_develop_ObjC_basic/</loc>
-    
-    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://l900416.github.io/2016/10/21/iOS_develop_overview_framework_1/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
@@ -325,6 +318,13 @@
   
   <url>
     <loc>https://l900416.github.io/2016/12/21/iOS_develop_overview_framework_2/</loc>
+    
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/05/18/algorithm_sort_count/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -345,7 +345,7 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/10/12/ios_instance_message_xmpp_roster/</loc>
+    <loc>https://l900416.github.io/2017/04/26/algorithm_sort_merge/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -359,7 +359,7 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/08/28/os_shell_authority_chown/</loc>
+    <loc>https://l900416.github.io/2017/10/12/ios_instance_message_xmpp_roster/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -367,6 +367,13 @@
   
   <url>
     <loc>https://l900416.github.io/2017/08/17/os_shell_authority_chmod/</loc>
+    
+    <lastmod>2017-10-13T10:44:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://l900416.github.io/2017/08/28/os_shell_authority_chown/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
@@ -401,7 +408,7 @@
   </url>
   
   <url>
-    <loc>https://l900416.github.io/2017/04/26/algorithm_sort_merge/</loc>
+    <loc>https://l900416.github.io/2017/07/27/bluetooth_central/</loc>
     
     <lastmod>2017-10-13T10:44:09.000Z</lastmod>
     
