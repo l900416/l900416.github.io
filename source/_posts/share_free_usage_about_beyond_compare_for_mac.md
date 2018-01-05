@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Beyond Compare for Mac 你懂的
+title:      Beyond Compare for Mac免License方法
 date:       2017-12-15 14:25:19
 author:     liangtong
 categories: 技术分享
@@ -8,7 +8,7 @@ tags: Tool
 
 ---
 
-本文操作仅供参考，如果感觉使用方面建议购买正版。[Beyond Compare链接](http://www.scootersoftware.com/)
+本文操作仅供参考，如果感觉使用方面建议购买正版[Beyond Compare链接](http://www.scootersoftware.com/)。
 
 
 具体操作 
