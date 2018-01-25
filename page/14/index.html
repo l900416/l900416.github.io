@@ -627,7 +627,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Subscripts/">
+    <link itemprop="mainEntityOfPage" href="https://l900416.github.io/2016/11/26/iOS_Swift_language_note_Inheritance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liangtong">
@@ -646,7 +646,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/11/26/iOS_Swift_language_note_Subscripts/" itemprop="url">Swift Subscripts</a></h1>
+                <a class="post-title-link" href="/2016/11/26/iOS_Swift_language_note_Inheritance/" itemprop="url">Swift Inheritance</a></h1>
         
 
         <div class="post-meta">
@@ -698,7 +698,7 @@
 
           
           
-             <span id="/2016/11/26/iOS_Swift_language_note_Subscripts/" class="leancloud_visitors" data-flag-title="Swift Subscripts">
+             <span id="/2016/11/26/iOS_Swift_language_note_Inheritance/" class="leancloud_visitors" data-flag-title="Swift Inheritance">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -730,13 +730,13 @@
 
       
         
-          <p>​    下标可以定义在类、结构体和枚举中，为访问集合，列表或序列中元素提供便捷。可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法。举例来说，用下标访问一个Array实例中的元素可以写作someArray[index]，访问Dictionary实例中的元素可以写作someDictionary[key]。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>下标允许你通过在实例化对象后边的中括号中添加一个或多个索引值来查询或修改实例。语法类似于实例方法语法和计算型属性语法。通过关键字 <code>subscript</code> 定义，并指定一个或多个输入参数和返回类型；与实例方法不同的是。下标语法可以设定为读写( <code>read-write</code> )或只读( <code>read-only</code> )。这种行为由 getter 和 setter 实现，有点类似计算型属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">get</span> &#123;</div><div class="line">        <span class="comment">// return an appropriate subscript value here</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">set</span>(newValue) &#123;</div><div class="line">        <span class="comment">// perform a suitable setting action here</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>newValue的类型和下标的返回类型相同。如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数。如同只读计算型属性，可以省略只读下标的get关键字：</p>
+          <p>​    一个类可以继承另一个类的方法，属性和其它特性。当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类）。在 Swift 中，继承是区分「类」与其它类型的一个基本特征。<br>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。<br>可以为类中继承来的属性添加属性观察器，这样一来，当属性值改变时，类就会被通知到。可以为任何属性添加属性观察器，无论它原本被定义为存储型属性还是计算型属性。</p>
+<h3 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h3><p>不继承于其它类的类，称之为基类。<br>    Swift 中的类并不是从一个通用的基类继承而来。如果你不为你定义的类指定一个超类的话，这个类就自动成为基类。</p>
+<p>下面的例子定义了一个叫Vehicle的基类。包含一个currentSpeed存储属性，一个description的只读计算属性，一个makeNoise方法，方法什么都不做，子类会重写该方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> currentSpeed = <span class="number">0.0</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"traveling at <span class="subst">\(currentSpeed)</span> miles per hour"</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">makeNoise</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="comment">// do nothing - an arbitrary vehicle doesn't necessarily make a noise</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/11/26/iOS_Swift_language_note_Subscripts/" rel="contents">
+            <a class="btn" href="/2016/11/26/iOS_Swift_language_note_Inheritance/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
